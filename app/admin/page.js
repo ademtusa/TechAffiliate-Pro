@@ -234,8 +234,9 @@ export default function AdminPage() {
   }
 
   const handleSignOut = async () => {
+    clearAdminAuth()
     await supabase.auth.signOut()
-    router.push('/')
+    router.push('/admin/login')
   }
 
   const menuItems = [
