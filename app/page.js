@@ -485,7 +485,7 @@ export default function Home() {
                 <Linkedin className="h-6 w-6 cursor-pointer hover:text-blue-500" />
                 <Instagram className="h-6 w-6 cursor-pointer hover:text-pink-400" />
                 <Youtube className="h-6 w-6 cursor-pointer hover:text-red-500" />
-                <Pinterest className="h-6 w-6 cursor-pointer hover:text-red-400" />
+                <Share2 className="h-6 w-6 cursor-pointer hover:text-purple-400" />
               </div>
             </div>
           </div>
