@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
-import { Calendar, ArrowLeft, ExternalLink, Facebook, Twitter, Linkedin, Pinterest } from 'lucide-react'
+import { Calendar, ArrowLeft, ExternalLink, Facebook, Twitter, Linkedin, Share2 } from 'lucide-react'
 import Link from 'next/link'
 
 export default function BlogPostPage() {
