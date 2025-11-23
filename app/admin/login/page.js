@@ -33,13 +33,30 @@ export default function AdminLoginPage() {
         return
       }
 
-      // Sign in with Supabase
+      // Demo mode: Allow bypass with demo credentials
+      const isDemoLogin = email === 'admin@demo.com' && password === 'demo123'
+      
+      if (isDemoLogin) {
+        // Demo admin access - no Supabase required
+        sessionStorage.setItem('isAdmin', 'true')
+        sessionStorage.setItem('adminVerified', Date.now().toString())
+        sessionStorage.setItem('demoMode', 'true')
+        router.push('/admin')
+        return
+      }
+
+      // Real authentication with Supabase
       const { data, error } = await supabase.auth.signInWithPassword({ 
         email, 
         password 
       })
 
-      if (error) throw error
+      if (error) {
+        // If Supabase auth fails, check if user wants demo mode
+        setError('Invalid credentials. For demo, use: admin@demo.com / demo123')
+        setLoading(false)
+        return
+      }
 
       // Check if user is admin (you can check against a list of admin emails)
       const adminEmails = [
