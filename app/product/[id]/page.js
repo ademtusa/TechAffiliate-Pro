@@ -246,8 +246,8 @@ export default function ProductPage() {
                 <Button size="sm" variant="outline" onClick={() => handleShare('linkedin')}>
                   <Linkedin className="h-4 w-4" />
                 </Button>
-                <Button size="sm" variant="outline" onClick={() => handleShare('pinterest')}>
-                  <Pinterest className="h-4 w-4" />
+                <Button size="sm" variant="outline" onClick={() => handleShare('linkedin')}>
+                  <Share2 className="h-4 w-4" />
                 </Button>
               </div>
             </div>
