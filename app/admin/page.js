@@ -54,6 +54,21 @@ export default function AdminPage() {
       return
     }
 
+    // Check if demo mode
+    const isDemoMode = typeof window !== 'undefined' && sessionStorage.getItem('demoMode') === 'true'
+    
+    if (isDemoMode) {
+      // Demo mode - create a mock user
+      setUser({
+        email: 'admin@demo.com',
+        id: 'demo-admin',
+        user_metadata: {
+          name: 'Demo Admin'
+        }
+      })
+      return
+    }
+
     const { data: { user } } = await supabase.auth.getUser()
     
     if (!user) {
