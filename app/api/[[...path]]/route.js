@@ -1,7 +1,10 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
+import { mockCategories, mockProducts, mockBlogPosts, mockReviews, mockResources } from '@/lib/mockData'
 
-// Initialize Supabase tables (run once)
+// Helper to use mock data if Supabase fails
+const useMockData = true // Set to false once Supabase is set up
+
 export async function GET(request) {
   const url = new URL(request.url)
   const pathname = url.pathname.replace('/api', '')
