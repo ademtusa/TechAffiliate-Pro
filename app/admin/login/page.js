@@ -213,9 +213,13 @@ export default function AdminLoginPage() {
 
         {/* Demo Credentials Info */}
         <div className="mt-6 p-4 bg-blue-900/20 border border-blue-700/50 rounded-lg">
-          <p className="text-sm text-blue-300 font-semibold mb-2">Demo Credentials:</p>
-          <p className="text-xs text-blue-400">Admin Code: <span className="font-mono bg-gray-900 px-2 py-1 rounded">ADMIN2025</span></p>
-          <p className="text-xs text-blue-400 mt-1">Use any registered account + admin code to access</p>
+          <p className="text-sm text-blue-300 font-semibold mb-2">🎯 Demo Access:</p>
+          <div className="space-y-1">
+            <p className="text-xs text-blue-400">Admin Code: <span className="font-mono bg-gray-900 px-2 py-1 rounded">ADMIN2025</span></p>
+            <p className="text-xs text-blue-400">Email: <span className="font-mono bg-gray-900 px-2 py-1 rounded">admin@demo.com</span></p>
+            <p className="text-xs text-blue-400">Password: <span className="font-mono bg-gray-900 px-2 py-1 rounded">demo123</span></p>
+          </div>
+          <p className="text-xs text-gray-500 mt-2">Or use your registered Supabase account</p>
         </div>
       </div>
     </div>
