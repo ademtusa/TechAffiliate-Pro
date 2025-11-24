@@ -53,9 +53,16 @@ export default function Home() {
   }
 
   const fetchCategories = async () => {
-    const { data, error } = await supabase.from('categories').select('*')
-    if (!error && data) {
-      setCategories(data)
+    try {
+      // Try to fetch from API instead of Supabase directly
+      const response = await fetch('/api/categories')
+      const result = await response.json()
+      if (result.success && result.data) {
+        setCategories(result.data)
+      }
+    } catch (error) {
+      console.log('Categories fetch skipped')
+      setCategories([])
     }
   }
 
