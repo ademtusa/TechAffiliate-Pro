@@ -42,8 +42,14 @@ export default function Home() {
   }, [selectedCategory, sortBy, searchQuery])
 
   const checkUser = async () => {
-    const { data: { user } } = await supabase.auth.getUser()
-    setUser(user)
+    try {
+      const { data: { user } } = await supabase.auth.getUser()
+      setUser(user)
+    } catch (error) {
+      // Supabase not configured, continue with null user
+      console.log('Auth check skipped - Supabase not available')
+      setUser(null)
+    }
   }
 
   const fetchCategories = async () => {
