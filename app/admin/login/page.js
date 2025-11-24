@@ -71,26 +71,6 @@ export default function AdminLoginPage() {
         setLoading(false)
         return
       }
-
-      // Check if user is admin (you can check against a list of admin emails)
-      const adminEmails = [
-        'admin@techaffiliate.com',
-        'owner@techaffiliate.com',
-        // Add more admin emails here
-      ]
-
-      // For demo purposes, any authenticated user with correct admin code can access
-      // In production, check against the adminEmails list:
-      // if (!adminEmails.includes(data.user.email)) {
-      //   throw new Error('Access denied: Admin privileges required')
-      // }
-
-      // Store admin session flag
-      sessionStorage.setItem('isAdmin', 'true')
-      sessionStorage.setItem('adminVerified', Date.now().toString())
-
-      // Redirect to admin panel
-      router.push('/admin')
     } catch (error) {
       setError(error.message || 'Login failed. Please check your credentials.')
     } finally {
