@@ -96,7 +96,7 @@ export default function StatsSection() {
               <div className="h-16 w-16 mx-auto mb-4 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
                 <ShoppingCart className="h-8 w-8 text-white" />
               </div>
-              <div className="text-4xl font-bold text-gray-900 mb-2">{stats.totalSales.toLocaleString()}+</div>
+              <div className="text-4xl font-bold text-gray-900 mb-2">{mounted ? stats.totalSales.toLocaleString() : '5,623'}+</div>
               <div className="text-gray-600 font-medium">Affiliate Clicks</div>
             </CardContent>
           </Card>
