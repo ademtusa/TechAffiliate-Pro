@@ -13,6 +13,7 @@ import { Separator } from '@/components/ui/separator'
 import { Search, Star, TrendingUp, Eye, ShoppingCart, Menu, X, User, LogOut, LayoutDashboard, Gift, BookOpen, Facebook, Twitter, Linkedin, Instagram, Youtube, Share2, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import StatsSection from '@/components/StatsSection'
 
 export default function Home() {
   const [user, setUser] = useState(null)
