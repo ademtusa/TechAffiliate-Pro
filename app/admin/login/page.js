@@ -46,14 +46,28 @@ export default function AdminLoginPage() {
       }
 
       // Real authentication with Supabase
-      const { data, error } = await supabase.auth.signInWithPassword({ 
-        email, 
-        password 
-      })
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({ 
+          email, 
+          password 
+        })
 
-      if (error) {
-        // If Supabase auth fails, check if user wants demo mode
-        setError('Invalid credentials. For demo, use: admin@demo.com / demo123')
+        if (error) {
+          // If Supabase auth fails, check if user wants demo mode
+          setError('Invalid credentials. For demo, use: admin@demo.com / demo123')
+          setLoading(false)
+          return
+        }
+
+        // Store admin session flag
+        sessionStorage.setItem('isAdmin', 'true')
+        sessionStorage.setItem('adminVerified', Date.now().toString())
+
+        // Redirect to admin panel
+        router.push('/admin')
+      } catch (authError) {
+        // Supabase not available
+        setError('Authentication service unavailable. Use demo credentials: admin@demo.com / demo123')
         setLoading(false)
         return
       }
