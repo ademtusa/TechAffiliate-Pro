@@ -417,6 +417,9 @@ export default function Home() {
         )}
       </div>
 
+      {/* Stats Section */}
+      <StatsSection />
+
       {/* Member Benefits Section */}
       <section className="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-16 px-4">
         <div className="container mx-auto text-center">
