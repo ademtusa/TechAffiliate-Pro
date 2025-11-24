@@ -12,6 +12,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Star, ExternalLink, ArrowLeft, Heart, Share2, Facebook, Twitter, Linkedin, Check, TrendingUp, ShoppingCart, CreditCard, Package, Shield, Truck, RotateCcw, Plus, Minus } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { CartStore } from '@/lib/cartStore'
 
 export default function ProductPage() {
   const params = useParams()
