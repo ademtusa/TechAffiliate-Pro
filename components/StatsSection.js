@@ -13,12 +13,18 @@ export default function StatsSection() {
     totalSales: 5623,
     avgRating: 4.7
   })
+  
+  const [mounted, setMounted] = useState(false)
 
   const [topProducts, setTopProducts] = useState({
     bestsellers: [],
     mostViewed: [],
     topRated: []
   })
+  
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     fetchTopProducts()
