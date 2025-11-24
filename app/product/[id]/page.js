@@ -43,8 +43,13 @@ export default function ProductPage() {
   }, [params.id])
 
   const checkUser = async () => {
-    const { data: { user } } = await supabase.auth.getUser()
-    setUser(user)
+    try {
+      const { data: { user } } = await supabase.auth.getUser()
+      setUser(user)
+    } catch (error) {
+      console.log('Auth check skipped')
+      setUser(null)
+    }
   }
 
   const fetchProduct = async () => {
