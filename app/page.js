@@ -6,21 +6,20 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
-import { Search, Star, TrendingUp, Eye, ShoppingCart, Menu, X, User, LogOut, LayoutDashboard, Gift, BookOpen, Facebook, Twitter, Linkedin, Instagram, Youtube, Share2, ExternalLink } from 'lucide-react'
+import { Search, Star, TrendingUp, Eye, ShoppingCart, Menu, X, User, LogOut, LayoutDashboard, Gift, BookOpen, Facebook, Twitter, Linkedin, Instagram, Youtube, Share2, Download } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import StatsSection from '@/components/StatsSection'
+import ProductSlider from '@/components/ProductSlider'
 
 export default function Home() {
   const [user, setUser] = useState(null)
   const [products, setProducts] = useState([])
   const [categories, setCategories] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('all')
-  const [sortBy, setSortBy] = useState('latest')
   const [searchQuery, setSearchQuery] = useState('')
   const [loading, setLoading] = useState(true)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -31,22 +30,23 @@ export default function Home() {
   const [name, setName] = useState('')
   const router = useRouter()
 
+  // Product lists for sliders
+  const [bestSellers, setBestSellers] = useState([])
+  const [mostViewed, setMostViewed] = useState([])
+  const [mostAddedToCart, setMostAddedToCart] = useState([])
+  const [mostDownloads, setMostDownloads] = useState([])
+
   useEffect(() => {
     checkUser()
     fetchCategories()
-    fetchProducts()
+    fetchProductSliders()
   }, [])
-
-  useEffect(() => {
-    fetchProducts()
-  }, [selectedCategory, sortBy, searchQuery])
 
   const checkUser = async () => {
     try {
       const { data: { user } } = await supabase.auth.getUser()
       setUser(user)
     } catch (error) {
-      // Supabase not configured, continue with null user
       console.log('Auth check skipped - Supabase not available')
       setUser(null)
     }
@@ -54,7 +54,6 @@ export default function Home() {
 
   const fetchCategories = async () => {
     try {
-      // Try to fetch from API instead of Supabase directly
       const response = await fetch('/api/categories')
       const result = await response.json()
       if (result.success && result.data) {
@@ -66,19 +65,31 @@ export default function Home() {
     }
   }
 
-  const fetchProducts = async () => {
+  const fetchProductSliders = async () => {
     setLoading(true)
     try {
-      const params = new URLSearchParams()
-      if (selectedCategory !== 'all') params.append('category', selectedCategory)
-      if (sortBy !== 'latest') params.append('sort', sortBy)
-      if (searchQuery) params.append('search', searchQuery)
-
-      const response = await fetch(`/api/products?${params.toString()}`)
+      // Fetch all products
+      const response = await fetch('/api/products')
       const result = await response.json()
       
-      if (result.success) {
-        setProducts(result.data || [])
+      if (result.success && result.data) {
+        const allProducts = result.data
+        
+        // Best Sellers (sorted by sales_count)
+        const bestsellers = [...allProducts].sort((a, b) => (b.sales_count || 0) - (a.sales_count || 0))
+        setBestSellers(bestsellers)
+        
+        // Most Viewed (sorted by views)
+        const viewed = [...allProducts].sort((a, b) => (b.views || 0) - (a.views || 0))
+        setMostViewed(viewed)
+        
+        // Most Added to Cart (using sales_count as proxy)
+        const cart = [...allProducts].sort((a, b) => (b.sales_count || 0) - (a.sales_count || 0))
+        setMostAddedToCart(cart)
+        
+        // Most Downloads (using views as proxy for digital downloads)
+        const downloads = [...allProducts].sort((a, b) => (b.views || 0) - (a.views || 0))
+        setMostDownloads(downloads)
       }
     } catch (error) {
       console.error('Error fetching products:', error)
@@ -119,18 +130,9 @@ export default function Home() {
 
   const handleSearch = (e) => {
     e.preventDefault()
-    fetchProducts()
-  }
-
-  const handleAffiliateClick = async (product) => {
-    // Track click
-    await fetch('/api/track-click', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ productId: product.id })
-    })
-    // Open affiliate link
-    window.open(product.affiliate_url, '_blank')
+    if (searchQuery) {
+      router.push(`/blog?search=${searchQuery}`)
+    }
   }
 
   return (
@@ -145,8 +147,8 @@ export default function Home() {
               </h1>
               <div className="hidden md:flex space-x-6">
                 <Link href="/" className="text-gray-700 hover:text-blue-600 transition">Home</Link>
-                <Link href="/blog" className="text-gray-700 hover:text-blue-600 transition">Blog</Link>
-                <Link href="/resources" className="text-gray-700 hover:text-blue-600 transition">Free Resources</Link>
+                <Link href="/blog" className="text-gray-700 hover:text-blue-600 transition">Compare</Link>
+                <Link href="/resources" className="text-gray-700 hover:text-blue-600 transition">Resources</Link>
                 {user && (
                   <Link href="/dashboard" className="text-gray-700 hover:text-blue-600 transition">Dashboard</Link>
                 )}
@@ -245,8 +247,8 @@ export default function Home() {
           {mobileMenuOpen && (
             <div className="md:hidden pt-4 pb-2 space-y-2">
               <Link href="/" className="block py-2 text-gray-700 hover:text-blue-600">Home</Link>
-              <Link href="/blog" className="block py-2 text-gray-700 hover:text-blue-600">Blog</Link>
-              <Link href="/resources" className="block py-2 text-gray-700 hover:text-blue-600">Free Resources</Link>
+              <Link href="/blog" className="block py-2 text-gray-700 hover:text-blue-600">Compare</Link>
+              <Link href="/resources" className="block py-2 text-gray-700 hover:text-blue-600">Resources</Link>
               {user && (
                 <Link href="/dashboard" className="block py-2 text-gray-700 hover:text-blue-600">Dashboard</Link>
               )}
@@ -293,139 +295,55 @@ export default function Home() {
           {/* Quick Category Icons */}
           <div className="flex flex-wrap justify-center gap-4 mt-8">
             {categories.slice(0, 4).map((cat) => (
-              <Button
-                key={cat.id}
-                variant="secondary"
-                onClick={() => setSelectedCategory(cat.slug)}
-                className="bg-white/20 hover:bg-white/30 text-white border-white/30"
-              >
-                {cat.name}
-              </Button>
+              <Link key={cat.id} href={`/blog?category=${cat.slug}`}>
+                <Button
+                  variant="secondary"
+                  className="bg-white/20 hover:bg-white/30 text-white border-white/30"
+                >
+                  {cat.name}
+                </Button>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Main Content */}
+      {/* Main Content - Product Sliders */}
       <div className="container mx-auto px-4 py-12">
-        {/* Filter Tabs */}
-        <Tabs value={sortBy} onValueChange={setSortBy} className="mb-8">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-3">
-            <TabsTrigger value="latest">
-              <ShoppingCart className="h-4 w-4 mr-2" />
-              Latest
-            </TabsTrigger>
-            <TabsTrigger value="bestsellers">
-              <TrendingUp className="h-4 w-4 mr-2" />
-              Best Sellers
-            </TabsTrigger>
-            <TabsTrigger value="mostviewed">
-              <Eye className="h-4 w-4 mr-2" />
-              Most Viewed
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
-
-        {/* Categories Filter */}
-        <div className="flex flex-wrap gap-2 mb-8 justify-center">
-          <Button
-            variant={selectedCategory === 'all' ? 'default' : 'outline'}
-            onClick={() => setSelectedCategory('all')}
-          >
-            All Products
-          </Button>
-          {categories.map((cat) => (
-            <Button
-              key={cat.id}
-              variant={selectedCategory === cat.slug ? 'default' : 'outline'}
-              onClick={() => setSelectedCategory(cat.slug)}
-            >
-              {cat.name}
-            </Button>
-          ))}
-        </div>
-
-        {/* Products Grid */}
         {loading ? (
           <div className="text-center py-12">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
             <p className="mt-4 text-gray-600">Loading products...</p>
           </div>
-        ) : products.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-gray-600 text-lg">No products found. Try adjusting your filters.</p>
-          </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <Card key={product.id} className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-blue-500">
-                <CardHeader>
-                  <div className="aspect-video relative mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-100">
-                    {product.image_url ? (
-                      <img
-                        src={product.image_url}
-                        alt={product.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <ShoppingCart className="h-16 w-16 text-blue-300" />
-                      </div>
-                    )}
-                    {product.badge && (
-                      <Badge className="absolute top-2 right-2 bg-red-500">
-                        {product.badge}
-                      </Badge>
-                    )}
-                  </div>
-                  <CardTitle className="line-clamp-2 group-hover:text-blue-600 transition">
-                    {product.name}
-                  </CardTitle>
-                  <CardDescription className="line-clamp-2">
-                    {product.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`h-4 w-4 ${i < (product.rating || 4) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
-                        />
-                      ))}
-                      <span className="text-sm text-gray-600 ml-2">({product.rating || 4.5})</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-500">
-                      <Eye className="h-4 w-4 mr-1" />
-                      {product.views || 0}
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-2xl font-bold text-blue-600">${product.price}</p>
-                      {product.original_price && (
-                        <p className="text-sm text-gray-500 line-through">${product.original_price}</p>
-                      )}
-                    </div>
-                    <Badge variant="secondary">{product.category}</Badge>
-                  </div>
-                </CardContent>
-                <CardFooter className="flex gap-2">
-                  <Link href={`/product/${product.id}`} className="flex-1">
-                    <Button variant="outline" className="w-full">
-                      View Details
-                    </Button>
-                  </Link>
-                  <Button 
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
-                    onClick={() => handleAffiliateClick(product)}
-                  >
-                    Get Deal <ExternalLink className="ml-2 h-4 w-4" />
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
+          <div className="space-y-12">
+            {/* Best Sellers Slider */}
+            <ProductSlider 
+              title="Best Sellers" 
+              products={bestSellers} 
+              icon={TrendingUp}
+            />
+
+            {/* Most Popular Slider */}
+            <ProductSlider 
+              title="Most Popular" 
+              products={mostViewed} 
+              icon={Star}
+            />
+
+            {/* Most Added to Cart Slider */}
+            <ProductSlider 
+              title="Most Added to Cart" 
+              products={mostAddedToCart} 
+              icon={ShoppingCart}
+            />
+
+            {/* Most Downloads Slider */}
+            <ProductSlider 
+              title="Most Downloads" 
+              products={mostDownloads} 
+              icon={Download}
+            />
           </div>
         )}
       </div>
@@ -477,7 +395,7 @@ export default function Home() {
               <h5 className="font-semibold mb-4">Quick Links</h5>
               <ul className="space-y-2 text-gray-400">
                 <li><Link href="/" className="hover:text-white">Home</Link></li>
-                <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
+                <li><Link href="/blog" className="hover:text-white">Compare</Link></li>
                 <li><Link href="/resources" className="hover:text-white">Resources</Link></li>
                 <li><Link href="/about" className="hover:text-white">About</Link></li>
               </ul>
@@ -487,9 +405,9 @@ export default function Home() {
               <ul className="space-y-2 text-gray-400">
                 {categories.slice(0, 4).map((cat) => (
                   <li key={cat.id}>
-                    <button onClick={() => setSelectedCategory(cat.slug)} className="hover:text-white">
+                    <Link href={`/blog?category=${cat.slug}`} className="hover:text-white">
                       {cat.name}
-                    </button>
+                    </Link>
                   </li>
                 ))}
               </ul>
