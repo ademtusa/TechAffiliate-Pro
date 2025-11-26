@@ -308,34 +308,54 @@ export default function ProductPage() {
 
                 {/* CTA Buttons */}
                 <div className="space-y-3 pt-2">
-              <Button 
-                size="lg" 
-                className="w-full h-14 text-lg font-semibold bg-blue-600 hover:bg-blue-700 hover:shadow-lg text-white border-2 border-blue-600 hover:border-blue-700 transition-all duration-300"
-                onClick={handleBuyNow}
-              >
-                <ShoppingCart className="mr-2 h-5 w-5" />
-                Buy Now - ${(product.price * quantity).toFixed(2)}
-              </Button>
-              
-              <div className="grid grid-cols-2 gap-3">
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="h-12 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 transition-all duration-300"
-                  onClick={handleAddToCart}
-                >
-                  <Heart className="mr-2 h-4 w-4" />
-                  Add to Cart
-                </Button>
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="h-12 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 transition-all duration-300"
-                  onClick={handleAffiliateClick}
-                >
-                  <ExternalLink className="mr-2 h-4 w-4" />
-                  Official Store
-                </Button>
+                  <Button 
+                    size="lg" 
+                    className="w-full h-14 text-lg font-bold bg-blue-600 hover:bg-blue-700 hover:shadow-xl text-white transition-all duration-300 hover:scale-105"
+                    onClick={handleBuyNow}
+                  >
+                    <ShoppingCart className="mr-2 h-5 w-5" />
+                    Buy Now - ${(product.price * quantity).toFixed(2)}
+                  </Button>
+                  
+                  <Button 
+                    size="lg"
+                    variant="outline"
+                    className="w-full h-12 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 transition-all duration-300"
+                    onClick={handleAddToCart}
+                  >
+                    <Heart className="mr-2 h-4 w-4" />
+                    Add to Cart
+                  </Button>
+
+                  <Button 
+                    size="lg"
+                    variant="outline"
+                    className="w-full h-12 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 transition-all duration-300"
+                    onClick={handleAffiliateClick}
+                  >
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    View on Official Store
+                  </Button>
+                </div>
+
+                {/* Trust Badges */}
+                <div className="pt-4 border-t space-y-2 text-sm text-gray-600">
+                  <div className="flex items-center gap-2">
+                    <Shield className="h-4 w-4 text-green-600" />
+                    <span>Secure Payment</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-green-600" />
+                    <span>30-Day Money Back Guarantee</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Description Below Card */}
+              <div className="mt-6">
+                <p className="text-gray-700 leading-relaxed text-sm">
+                  {product.description}
+                </p>
               </div>
             </div>
           </div>
