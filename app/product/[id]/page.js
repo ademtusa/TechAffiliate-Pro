@@ -279,26 +279,24 @@ export default function ProductPage() {
             </div>
 
             {/* Description */}
-            <Card className="bg-gradient-to-br from-slate-50 to-blue-50">
-              <CardContent className="pt-6">
-                <h3 className="text-2xl font-bold mb-3 flex items-center gap-2">
-                  <span className="text-blue-600">📋</span> What's Included
-                </h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  {product.description}
-                </p>
-                <ul className="grid md:grid-cols-2 gap-3">
-                  {(product.tags || []).map((tag, index) => (
-                    <li key={index} className="flex items-center text-gray-700 bg-white rounded-lg p-2">
-                      <div className="h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3 flex-shrink-0">
-                        <Check className="h-4 w-4 text-green-600" />
-                      </div>
-                      <span className="font-medium">{tag}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+            <div>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                {product.description}
+              </p>
+            </div>
+
+            {/* Key Features */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Key Features</h3>
+              <ul className="space-y-2">
+                {(product.tags || []).map((tag, index) => (
+                  <li key={index} className="flex items-center text-gray-700">
+                    <Check className="h-4 w-4 text-blue-600 mr-2 flex-shrink-0" />
+                    <span>{tag}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             {/* Quantity & Add to Cart */}
             <Card className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-2xl">
