@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Facebook, Twitter, Linkedin, Instagram, Mail, MapPin, Phone, Send } from 'lucide-react'
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Send } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Footer() {
@@ -13,7 +13,6 @@ export default function Footer() {
   const handleSubscribe = async (e) => {
     e.preventDefault()
     if (email) {
-      // Mock subscription - in production, this would send to an API
       setSubscribed(true)
       setTimeout(() => {
         setSubscribed(false)
@@ -23,7 +22,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
+    <footer className="bg-gray-900 text-white border-t border-gray-800">
       {/* Newsletter Section */}
       <div className="border-b border-blue-800/30">
         <div className="container mx-auto px-4 py-12">
