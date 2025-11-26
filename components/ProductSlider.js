@@ -157,11 +157,12 @@ export default function ProductSlider({ title, products, icon: Icon }) {
             WebkitOverflowScrolling: 'touch'
           }}
         >
-          <div className="flex gap-6" style={{ minWidth: 'fit-content' }}>
+          <div className="flex gap-6">
           {filteredProducts.map((product) => (
             <Card
               key={product.id}
-              className="hover:shadow-2xl transition-all duration-300 border-2 hover:border-blue-500"
+              className="flex-shrink-0 hover:shadow-2xl transition-all duration-300 border-2 hover:border-blue-500"
+              style={{ width: 'calc(25% - 18px)' }}
             >
               <CardHeader>
                 <div className="aspect-video relative mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-100">
