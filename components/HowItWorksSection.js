@@ -98,23 +98,84 @@ export default function HowItWorksSection() {
           </p>
         </div>
 
-        {/* Steps - Compact Horizontal */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16 max-w-5xl mx-auto">
+        {/* Steps - Card Style */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 max-w-6xl mx-auto">
           {steps.map((step, idx) => (
-            <div key={idx} className="relative group">
-              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-5 border border-white/60 hover:border-purple-300 transition-all shadow-lg hover:shadow-xl">
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${step.gradient} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
-                  <step.icon className="h-6 w-6 text-white" />
-                </div>
-                <div className="text-xs font-bold text-gray-400 mb-1">{step.number}</div>
-                <h3 className="font-bold text-gray-900 mb-1">{step.title}</h3>
-                <p className="text-sm text-gray-600 leading-snug">{step.description}</p>
-              </div>
-              {idx < 3 && (
-                <div className="hidden lg:block absolute top-1/2 -right-2 transform translate-x-full -translate-y-1/2">
-                  <ArrowRight className="h-4 w-4 text-purple-400" />
-                </div>
-              )}
+            <div key={idx} className="group">
+              <Card className="bg-white border-2 border-gray-100 hover:border-purple-300 transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden h-full">
+                <CardContent className="p-0">
+                  {/* Icon Area - Large */}
+                  <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-8 flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent to-purple-100/20"></div>
+                    <div className={`relative w-24 h-24 rounded-2xl bg-gradient-to-r ${step.gradient} flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl`}>
+                      <step.icon className="h-12 w-12 text-white" />
+                    </div>
+                    {/* Number Badge */}
+                    <div className="absolute top-3 right-3">
+                      <div className={`w-10 h-10 rounded-full bg-gradient-to-r ${step.gradient} flex items-center justify-center text-white font-bold shadow-lg`}>
+                        {step.number}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{step.title}</h3>
+                    <p className="text-gray-600 mb-6 leading-relaxed">{step.description}</p>
+
+                    {/* Features List */}
+                    <ul className="space-y-3 mb-6">
+                      <li className="flex items-start gap-2">
+                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mt-0.5">
+                          <svg className="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                          </svg>
+                        </div>
+                        <span className="text-sm text-gray-700">
+                          {idx === 0 ? 'No credit card required' : 
+                           idx === 1 ? 'Filter by niche & payout' :
+                           idx === 2 ? 'Unique tracking links' :
+                           'Real-time dashboard'}
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mt-0.5">
+                          <svg className="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                          </svg>
+                        </div>
+                        <span className="text-sm text-gray-700">
+                          {idx === 0 ? 'Setup in 60 seconds' : 
+                           idx === 1 ? 'Up to 50% commission' :
+                           idx === 2 ? 'Share anywhere' :
+                           'Monthly payouts'}
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mt-0.5">
+                          <svg className="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                          </svg>
+                        </div>
+                        <span className="text-sm text-gray-700">
+                          {idx === 0 ? 'Free forever' : 
+                           idx === 1 ? '50K+ products' :
+                           idx === 2 ? 'Performance analytics' :
+                           'Multiple payment methods'}
+                        </span>
+                      </li>
+                    </ul>
+
+                    {/* Button */}
+                    <Link href={idx === 0 ? '/' : '/blog'}>
+                      <button className={`w-full bg-gradient-to-r ${step.gradient} text-white py-3 rounded-lg font-semibold hover:shadow-xl transition-all flex items-center justify-center gap-2 group/btn`}>
+                        {idx === 0 ? 'Get Started' : 'Learn More'}
+                        <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                      </button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           ))}
         </div>
