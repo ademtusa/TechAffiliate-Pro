@@ -426,56 +426,94 @@ export default function ProductPage() {
 
                 {/* Action Buttons */}
                 <div className="space-y-3">
-              <div className="grid grid-cols-2 gap-4">
-                <Button 
-                  size="lg" 
-                  variant="outline"
-                  className="h-14 text-lg"
-                  onClick={handleAddToCart}
-                >
-                  <ShoppingCart className="mr-2 h-5 w-5" />
-                  Add to Cart
-                </Button>
-                <Button 
-                  size="lg" 
-                  className="h-14 text-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
-                  onClick={handleBuyNow}
-                >
-                  <CreditCard className="mr-2 h-5 w-5" />
-                  Buy Now
-                </Button>
-              </div>
+              <Button 
+                size="lg" 
+                className="w-full h-16 text-xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
+                onClick={handleBuyNow}
+              >
+                <ShoppingCart className="mr-3 h-6 w-6" />
+                Buy Now - Secure Checkout
+              </Button>
               
               <Button 
                 size="lg" 
                 variant="outline"
-                className="w-full h-14 text-lg border-2 border-blue-600 text-blue-600 hover:bg-blue-50"
-                onClick={handleAffiliateClick}
+                className="w-full h-14 text-lg bg-white/20 border-white/40 hover:bg-white/30"
+                onClick={handleAddToCart}
               >
-                Get from Official Store
-                <ExternalLink className="ml-2 h-5 w-5" />
+                <Heart className="mr-2 h-5 w-5" />
+                Add to Wishlist
               </Button>
-            </div>
 
-            {/* Social Share & Wishlist */}
-            <div className="flex items-center justify-between pt-4 border-t">
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-600">Share:</span>
-                <Button size="sm" variant="ghost" onClick={() => handleShare('facebook')}>
+              <div className="text-center text-sm opacity-90">
+                <p>✓ Instant Access • ✓ 30-Day Money Back • ✓ Secure Payment</p>
+              </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Alternative CTA */}
+            <Card className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200">
+              <CardContent className="pt-6 pb-6">
+                <div className="text-center">
+                  <h4 className="text-xl font-bold mb-2">Prefer to Buy from Official Store?</h4>
+                  <p className="text-gray-600 mb-4">Get the same great deal directly from the provider</p>
+                  <Button 
+                    size="lg" 
+                    variant="outline"
+                    className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 hover:scale-105 transition-transform"
+                    onClick={handleAffiliateClick}
+                  >
+                    Visit Official Store
+                    <ExternalLink className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Social Proof & Share */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-semibold text-gray-700">Share with friends:</span>
+                <Button size="sm" variant="outline" className="rounded-full" onClick={() => handleShare('facebook')}>
                   <Facebook className="h-4 w-4" />
                 </Button>
-                <Button size="sm" variant="ghost" onClick={() => handleShare('twitter')}>
+                <Button size="sm" variant="outline" className="rounded-full" onClick={() => handleShare('twitter')}>
                   <Twitter className="h-4 w-4" />
                 </Button>
-                <Button size="sm" variant="ghost" onClick={() => handleShare('linkedin')}>
+                <Button size="sm" variant="outline" className="rounded-full" onClick={() => handleShare('linkedin')}>
                   <Linkedin className="h-4 w-4" />
                 </Button>
               </div>
-              <Button variant="ghost" size="sm">
-                <Heart className="h-5 w-5 mr-2" />
-                Add to Wishlist
-              </Button>
+              <Badge className="bg-blue-600 text-white px-4 py-2">
+                🎁 Refer & Earn Rewards
+              </Badge>
             </div>
+
+            {/* Customer Testimonial Preview */}
+            <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200">
+              <CardContent className="pt-6">
+                <div className="flex items-start gap-4">
+                  <div className="h-12 w-12 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+                    JD
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="flex">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                      <span className="text-sm font-semibold">Verified Purchase</span>
+                    </div>
+                    <p className="text-gray-700 italic mb-2">
+                      "Best investment I've made this year! The features are incredible and customer support is outstanding."
+                    </p>
+                    <p className="text-sm text-gray-600">- John D., Enterprise Customer</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
 
