@@ -99,7 +99,7 @@ export default function HowItWorksSection() {
         </div>
 
         {/* Steps - Card Style */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {steps.map((step, idx) => (
             <div key={idx} className="group">
               <Card className="bg-white border-2 border-gray-100 hover:border-purple-300 transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden h-full">
