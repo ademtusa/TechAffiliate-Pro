@@ -39,7 +39,18 @@ export default function ComparisonReviewPage() {
       const result = await response.json()
       
       if (result.success) {
-        setProducts(result.data || [])
+        const allProducts = result.data || []
+        setProducts(allProducts)
+        
+        // Set top rated product for Hero
+        if (allProducts.length > 0) {
+          const topRated = [...allProducts].sort((a, b) => (b.rating || 0) - (a.rating || 0))[0]
+          setTopRatedProduct({
+            ...topRated,
+            commission_rate: 15.5,
+            reviews: 1247
+          })
+        }
       }
     } catch (error) {
       console.error('Error fetching products:', error)
