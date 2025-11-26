@@ -1066,9 +1066,8 @@ export default function ProductPage() {
                   </Button>
                 </div>
               </TabsContent>
-            </CardContent>
           </Tabs>
-        </Card>
+        </div>
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (
