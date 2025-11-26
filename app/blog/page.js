@@ -145,31 +145,6 @@ export default function ComparisonReviewPage() {
         </div>
       </nav>
 
-      {/* Old Hero - Removed, now using HeroSection component above */}
-
-      {/* Filters Section */}
-      <section className="py-8 px-4">
-        <div className="container mx-auto">
-          <div className="max-w-2xl mx-auto mb-8">
-            <div className="flex gap-2">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                <Input
-                  type="text"
-                  placeholder="Search products, features, or categories..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 h-14 text-lg bg-white text-gray-900"
-                />
-              </div>
-              <Button size="lg" className="h-14 px-8 bg-white text-blue-600 hover:bg-blue-50">
-                <Filter className="h-5 w-5" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Filters Bar */}
       <div className="bg-white border-b sticky top-[73px] z-10">
         <div className="container mx-auto px-4 py-4">
