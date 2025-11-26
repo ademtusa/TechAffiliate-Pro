@@ -298,128 +298,78 @@ export default function ProductPage() {
               </ul>
             </div>
 
-            {/* Quantity & Add to Cart */}
-            <Card className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-2xl">
-              <CardContent className="pt-6 pb-6">
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <p className="text-sm opacity-90 mb-1">Select Quantity</p>
-                    <div className="flex items-center gap-3">
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                        className="bg-white/20 border-white/30 hover:bg-white/30 text-white"
-                      >
-                        <Minus className="h-5 w-5" />
-                      </Button>
-                      <span className="text-3xl font-bold w-20 text-center">{quantity}</span>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        onClick={() => setQuantity(quantity + 1)}
-                        className="bg-white/20 border-white/30 hover:bg-white/30 text-white"
-                      >
-                        <Plus className="h-5 w-5" />
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-sm opacity-90 mb-1">Total Price</p>
-                    <p className="text-4xl font-bold">${(product.price * quantity).toFixed(2)}</p>
-                  </div>
-                </div>
+            {/* Quantity Selector */}
+            <div className="flex items-center gap-4">
+              <span className="text-sm text-gray-700">Quantity:</span>
+              <div className="flex items-center border border-gray-300 rounded-lg">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  className="h-10 w-10 hover:bg-gray-100"
+                >
+                  <Minus className="h-4 w-4" />
+                </Button>
+                <span className="text-lg font-semibold w-12 text-center">{quantity}</span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setQuantity(quantity + 1)}
+                  className="h-10 w-10 hover:bg-gray-100"
+                >
+                  <Plus className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
 
-                {/* Action Buttons */}
-                <div className="space-y-3">
-                  <Button 
-                    size="lg" 
-                    className="w-full h-16 text-xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-                    onClick={handleBuyNow}
-                  >
-                    <ShoppingCart className="mr-3 h-6 w-6" />
-                    Buy Now - Secure Checkout
-                  </Button>
-                  
-                  <Button 
-                    size="lg" 
-                    variant="outline"
-                    className="w-full h-14 text-lg bg-white/20 border-white/40 hover:bg-white/30"
-                    onClick={handleAddToCart}
-                  >
-                    <Heart className="mr-2 h-5 w-5" />
-                    Add to Wishlist
-                  </Button>
+            {/* CTA Buttons */}
+            <div className="space-y-3">
+              <Button 
+                size="lg" 
+                className="w-full h-14 text-lg font-semibold bg-blue-600 hover:bg-blue-700 text-white"
+                onClick={handleBuyNow}
+              >
+                <ShoppingCart className="mr-2 h-5 w-5" />
+                Buy Now - ${(product.price * quantity).toFixed(2)}
+              </Button>
+              
+              <div className="grid grid-cols-2 gap-3">
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="h-12"
+                  onClick={handleAddToCart}
+                >
+                  <Heart className="mr-2 h-4 w-4" />
+                  Add to Cart
+                </Button>
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="h-12"
+                  onClick={handleAffiliateClick}
+                >
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  Official Store
+                </Button>
+              </div>
+            </div>
 
-                  <div className="text-center text-sm opacity-90">
-                    <p>✓ Instant Access • ✓ 30-Day Money Back • ✓ Secure Payment</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Alternative CTA */}
-            <Card className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200">
-              <CardContent className="pt-6 pb-6">
-                <div className="text-center">
-                  <h4 className="text-xl font-bold mb-2">Prefer to Buy from Official Store?</h4>
-                  <p className="text-gray-600 mb-4">Get the same great deal directly from the provider</p>
-                  <Button 
-                    size="lg" 
-                    variant="outline"
-                    className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 hover:scale-105 transition-transform"
-                    onClick={handleAffiliateClick}
-                  >
-                    Visit Official Store
-                    <ExternalLink className="ml-2 h-5 w-5" />
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Social Proof & Share */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-semibold text-gray-700">Share with friends:</span>
-                <Button size="sm" variant="outline" className="rounded-full" onClick={() => handleShare('facebook')}>
+            {/* Social Share */}
+            <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+              <span className="text-sm text-gray-600">Share:</span>
+              <div className="flex gap-2">
+                <Button size="sm" variant="ghost" className="h-9 w-9 p-0" onClick={() => handleShare('facebook')}>
                   <Facebook className="h-4 w-4" />
                 </Button>
-                <Button size="sm" variant="outline" className="rounded-full" onClick={() => handleShare('twitter')}>
+                <Button size="sm" variant="ghost" className="h-9 w-9 p-0" onClick={() => handleShare('twitter')}>
                   <Twitter className="h-4 w-4" />
                 </Button>
-                <Button size="sm" variant="outline" className="rounded-full" onClick={() => handleShare('linkedin')}>
+                <Button size="sm" variant="ghost" className="h-9 w-9 p-0" onClick={() => handleShare('linkedin')}>
                   <Linkedin className="h-4 w-4" />
                 </Button>
               </div>
-              <Badge className="bg-blue-600 text-white px-4 py-2">
-                🎁 Refer & Earn Rewards
-              </Badge>
             </div>
-
-            {/* Customer Testimonial Preview */}
-            <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
-                    JD
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                        ))}
-                      </div>
-                      <span className="text-sm font-semibold">Verified Purchase</span>
-                    </div>
-                    <p className="text-gray-700 italic mb-2">
-                      "Best investment I've made this year! The features are incredible and customer support is outstanding."
-                    </p>
-                    <p className="text-sm text-gray-600">- John D., Enterprise Customer</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </div>
 
