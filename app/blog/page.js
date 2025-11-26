@@ -182,6 +182,10 @@ export default function ComparisonReviewPage() {
             <Button 
               variant={compareMode ? 'default' : 'outline'}
               onClick={() => setCompareMode(!compareMode)}
+              className={compareMode 
+                ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all' 
+                : 'border-2 border-blue-300 bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 text-blue-700 font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300'
+              }
             >
               {compareMode ? 'Exit Compare Mode' : 'Compare Products'}
             </Button>
