@@ -24,6 +24,7 @@ export default function ComparisonReviewPage() {
   const [compareMode, setCompareMode] = useState(false)
   const [selectedForCompare, setSelectedForCompare] = useState([])
   const [topRatedProduct, setTopRatedProduct] = useState(null)
+  const [viewMode, setViewMode] = useState('list')
 
   useEffect(() => {
     fetchProducts()
