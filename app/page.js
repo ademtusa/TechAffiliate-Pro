@@ -12,11 +12,11 @@ import { Separator } from '@/components/ui/separator'
 import { Search, Star, TrendingUp, Eye, ShoppingCart, Menu, X, User, LogOut, LayoutDashboard, Gift, BookOpen, Facebook, Twitter, Linkedin, Instagram, Youtube, Share2, Download, Home as HomeIcon, FileText, Library, Sparkles, ExternalLink, Shield, Globe } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import StatsSection from '@/components/StatsSection'
 import ProductSlider from '@/components/ProductSlider'
 import TestimonialsSlider from '@/components/TestimonialsSlider'
 import HeroSection from '@/components/HeroSection'
 import Navbar from '@/components/Navbar'
+import HowItWorksSection from '@/components/HowItWorksSection'
 
 export default function Home() {
   const [user, setUser] = useState(null)
