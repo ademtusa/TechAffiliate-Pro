@@ -536,25 +536,14 @@ export default function ProductPage() {
                 </div>
 
                 {/* CTA */}
-                <div className="text-center py-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
-                  <h4 className="text-2xl font-bold mb-3">Ready to Get Started?</h4>
-                  <p className="text-gray-600 mb-6">Join thousands of satisfied customers today</p>
-                  <div className="flex gap-4 justify-center">
-                    <Button 
-                      size="lg" 
-                      className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
-                      onClick={handleAffiliateClick}
-                    >
-                      Get Deal Now <ExternalLink className="ml-2 h-5 w-5" />
-                    </Button>
-                    <Button 
-                      size="lg" 
-                      variant="outline"
-                      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    >
-                      View Pricing
-                    </Button>
-                  </div>
+                <div className="text-center py-6">
+                  <Button 
+                    size="lg" 
+                    className="bg-blue-600 hover:bg-blue-700"
+                    onClick={handleAffiliateClick}
+                  >
+                    Get Started <ExternalLink className="ml-2 h-5 w-5" />
+                  </Button>
                 </div>
               </TabsContent>
 
