@@ -136,7 +136,7 @@ export default function ComparisonReviewPage() {
       />
 
       {/* Filters Bar */}
-      <div className="bg-white border-b sticky top-[73px] z-10">
+      <div className="bg-gradient-to-r from-white via-blue-50/30 to-purple-50/30 border-b border-blue-100 sticky top-[73px] z-10 shadow-md">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-wrap gap-4 items-center">
             <div className="flex-1 min-w-[200px]">
