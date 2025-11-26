@@ -176,88 +176,66 @@ export default function ProductPage() {
       <div className="bg-white">
         <div className="container mx-auto px-4 py-6">
           <div className="grid lg:grid-cols-5 gap-8">
-          {/* LEFT SIDE - Product Images */}
-          <div>
-            {/* Main Image - Reduced Size */}
-            <div className="relative rounded-2xl overflow-hidden bg-white shadow-2xl mb-4" style={{ aspectRatio: '4/3' }}>
-              {productImages[selectedImage] ? (
-                <img
-                  src={productImages[selectedImage]}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-100">
-                  <Package className="h-24 w-24 text-blue-300" />
-                </div>
-              )}
+          {/* LEFT SIDE - Product Images (2 columns) */}
+          <div className="lg:col-span-2">
+            {/* Main Image */}
+            <div className="relative rounded-lg overflow-hidden bg-gray-100 mb-3 border border-gray-200">
+              <div className="aspect-square">
+                {productImages[selectedImage] ? (
+                  <img
+                    src={productImages[selectedImage]}
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <Package className="h-20 w-20 text-gray-300" />
+                  </div>
+                )}
+              </div>
               {product.badge && (
-                <Badge className="absolute top-4 right-4 text-base px-3 py-1 bg-red-500 animate-bounce">
+                <Badge className="absolute top-3 right-3 bg-blue-600 text-white text-xs px-2 py-1">
                   {product.badge}
                 </Badge>
               )}
-              {/* Live viewers indicator */}
-              <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm text-white px-3 py-2 rounded-full text-sm flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                {Math.floor(Math.random() * 20) + 15} people viewing now
-              </div>
             </div>
 
             {/* Thumbnail Images */}
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-4 gap-2 mb-4">
               {productImages.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setSelectedImage(idx)}
-                  className={`aspect-square rounded-lg overflow-hidden border-2 transition-all duration-300 ${
-                    selectedImage === idx ? 'border-blue-600 scale-105 shadow-lg' : 'border-gray-200 hover:border-gray-400 hover:scale-105'
+                  className={`aspect-square rounded-md overflow-hidden border transition ${
+                    selectedImage === idx ? 'border-blue-600 ring-2 ring-blue-100' : 'border-gray-200 hover:border-gray-400'
                   }`}
                 >
                   {img ? (
                     <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover" />
                   ) : (
                     <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-                      <Package className="h-6 w-6 text-gray-400" />
+                      <Package className="h-5 w-5 text-gray-300" />
                     </div>
                   )}
                 </button>
               ))}
             </div>
 
-            {/* Trust Badges */}
-            <div className="mt-6 grid grid-cols-2 gap-3">
-              <div className="bg-green-50 border-2 border-green-200 rounded-lg p-3 text-center">
-                <Shield className="h-6 w-6 text-green-600 mx-auto mb-1" />
-                <p className="text-xs font-semibold text-green-700">30-Day Guarantee</p>
+            {/* Trust Signals - Minimalist */}
+            <div className="space-y-2 text-sm text-gray-700 bg-gray-50 rounded-lg p-4 border border-gray-200">
+              <div className="flex items-center gap-2">
+                <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
+                <span>30-Day Money-Back Guarantee</span>
               </div>
-              <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 text-center">
-                <Check className="h-6 w-6 text-blue-600 mx-auto mb-1" />
-                <p className="text-xs font-semibold text-blue-700">Verified Product</p>
+              <div className="flex items-center gap-2">
+                <Shield className="h-4 w-4 text-blue-600 flex-shrink-0" />
+                <span>Secure Checkout</span>
               </div>
-              <div className="bg-purple-50 border-2 border-purple-200 rounded-lg p-3 text-center">
-                <Shield className="h-6 w-6 text-purple-600 mx-auto mb-1" />
-                <p className="text-xs font-semibold text-purple-700">Secure Payment</p>
-              </div>
-              <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-3 text-center">
-                <TrendingUp className="h-6 w-6 text-orange-600 mx-auto mb-1" />
-                <p className="text-xs font-semibold text-orange-700">Best Price</p>
+              <div className="flex items-center gap-2">
+                <Truck className="h-4 w-4 text-gray-600 flex-shrink-0" />
+                <span>Free Shipping on Orders $50+</span>
               </div>
             </div>
-
-            {/* Recent Activity */}
-            <Card className="mt-6 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200">
-              <CardContent className="pt-4 pb-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <p className="text-sm font-semibold text-green-700">Real-time Activity</p>
-                </div>
-                <div className="space-y-2 text-xs text-gray-700">
-                  <p>✓ <strong>Sarah M.</strong> purchased 3 minutes ago</p>
-                  <p>✓ <strong>John D.</strong> purchased 12 minutes ago</p>
-                  <p>✓ <strong>24 people</strong> added to cart in last hour</p>
-                </div>
-              </CardContent>
-            </Card>
           </div>
 
           {/* RIGHT SIDE - Product Info */}
