@@ -21,18 +21,18 @@ export default function FeaturedProductCard({ product }) {
   const commission = calculateCommission(product.price, product.commission_rate || 15.5)
 
   return (
-    <Card className="relative overflow-hidden border-2 border-purple-200 shadow-2xl hover:shadow-3xl transition-all duration-300 bg-gradient-to-br from-white to-purple-50">
+    <Card className="relative overflow-hidden border-2 border-purple-200 shadow-xl hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-white to-purple-50">
       {/* Featured Badge */}
-      <div className="absolute top-4 right-4 z-10">
-        <Badge className="bg-gradient-to-r from-orange-400 to-yellow-400 text-white font-bold px-4 py-2 text-sm shadow-lg flex items-center gap-2">
-          <TrendingUp className="h-4 w-4" />
-          Featured Product
+      <div className="absolute top-2 right-2 z-10">
+        <Badge className="bg-gradient-to-r from-orange-400 to-yellow-400 text-white font-bold px-2 py-1 text-xs shadow-lg flex items-center gap-1">
+          <TrendingUp className="h-3 w-3" />
+          Featured
         </Badge>
       </div>
 
-      <CardContent className="p-4">
+      <CardContent className="p-3">
         {/* Product Image */}
-        <div className="relative aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl overflow-hidden mb-3 group">
+        <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden mb-2 group">
           {product.image_url ? (
             <img
               src={product.image_url}
