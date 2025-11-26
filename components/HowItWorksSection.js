@@ -183,7 +183,7 @@ export default function HowItWorksSection() {
         </div>
 
         {/* FAQ Section */}
-        <div className="max-w-4xl mx-auto">
+        <div>
           <div className="text-center mb-10">
             <Badge className="mb-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0 text-sm px-4 py-1.5">
               FAQ
