@@ -196,7 +196,7 @@ export default function HowItWorksSection() {
             </p>
           </div>
 
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {faqs.map((faq, idx) => (
               <div
                 key={idx}
