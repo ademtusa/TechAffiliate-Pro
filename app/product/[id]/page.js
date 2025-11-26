@@ -426,28 +426,28 @@ export default function ProductPage() {
 
                 {/* Action Buttons */}
                 <div className="space-y-3">
-              <Button 
-                size="lg" 
-                className="w-full h-16 text-xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-                onClick={handleBuyNow}
-              >
-                <ShoppingCart className="mr-3 h-6 w-6" />
-                Buy Now - Secure Checkout
-              </Button>
-              
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="w-full h-14 text-lg bg-white/20 border-white/40 hover:bg-white/30"
-                onClick={handleAddToCart}
-              >
-                <Heart className="mr-2 h-5 w-5" />
-                Add to Wishlist
-              </Button>
+                  <Button 
+                    size="lg" 
+                    className="w-full h-16 text-xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
+                    onClick={handleBuyNow}
+                  >
+                    <ShoppingCart className="mr-3 h-6 w-6" />
+                    Buy Now - Secure Checkout
+                  </Button>
+                  
+                  <Button 
+                    size="lg" 
+                    variant="outline"
+                    className="w-full h-14 text-lg bg-white/20 border-white/40 hover:bg-white/30"
+                    onClick={handleAddToCart}
+                  >
+                    <Heart className="mr-2 h-5 w-5" />
+                    Add to Wishlist
+                  </Button>
 
-              <div className="text-center text-sm opacity-90">
-                <p>✓ Instant Access • ✓ 30-Day Money Back • ✓ Secure Payment</p>
-              </div>
+                  <div className="text-center text-sm opacity-90">
+                    <p>✓ Instant Access • ✓ 30-Day Money Back • ✓ Secure Payment</p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
