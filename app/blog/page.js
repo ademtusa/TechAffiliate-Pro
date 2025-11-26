@@ -413,6 +413,105 @@ export default function ComparisonReviewPage() {
               </Card>
             ))}
           </div>
+        ) : (
+          /* Grid View */
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredProducts.map((product) => (
+              <Card key={product.id} className={`hover:shadow-xl transition-all duration-300 ${
+                compareMode && selectedForCompare.find(p => p.id === product.id) 
+                  ? 'border-2 border-blue-500' 
+                  : 'border hover:border-gray-300'
+              }`}>
+                <CardContent className="p-0">
+                  {/* Product Image */}
+                  <div className="aspect-square relative bg-gray-100">
+                    {product.image_url ? (
+                      <img
+                        src={product.image_url}
+                        alt={product.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <ShoppingCart className="h-16 w-16 text-gray-300" />
+                      </div>
+                    )}
+                    {product.badge && (
+                      <Badge className="absolute top-3 right-3 bg-red-500 text-white">
+                        {product.badge}
+                      </Badge>
+                    )}
+                    {compareMode && (
+                      <div className="absolute top-3 left-3">
+                        <input
+                          type="checkbox"
+                          checked={selectedForCompare.find(p => p.id === product.id) !== undefined}
+                          onChange={(e) => {
+                            e.stopPropagation()
+                            if (e.target.checked && selectedForCompare.length < 3) {
+                              setSelectedForCompare([...selectedForCompare, product])
+                            } else {
+                              setSelectedForCompare(selectedForCompare.filter(p => p.id !== product.id))
+                            }
+                          }}
+                          className="w-5 h-5 cursor-pointer"
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-4">
+                    <h3 className="font-bold text-lg mb-2 line-clamp-2">{product.name}</h3>
+                    
+                    {/* Rating */}
+                    <div className="flex items-center gap-1 mb-3">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`h-4 w-4 ${
+                            i < Math.floor(product.rating || 4)
+                              ? 'fill-yellow-400 text-yellow-400'
+                              : 'text-gray-300'
+                          }`}
+                        />
+                      ))}
+                      <span className="text-sm text-gray-600 ml-1">
+                        ({product.rating || 4.5})
+                      </span>
+                    </div>
+
+                    {/* Price */}
+                    <div className="mb-4">
+                      <div className="text-2xl font-bold text-blue-600">
+                        ${product.price}
+                      </div>
+                      {product.original_price && (
+                        <div className="text-sm text-gray-400 line-through">
+                          ${product.original_price}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Buttons */}
+                    <div className="space-y-2">
+                      <Link href={`/product/${product.id}`}>
+                        <Button variant="outline" className="w-full">
+                          View Details
+                        </Button>
+                      </Link>
+                      <Button 
+                        className="w-full bg-gradient-to-r from-blue-600 to-indigo-600"
+                        onClick={() => window.open(product.affiliate_url, '_blank')}
+                      >
+                        Get Deal <ExternalLink className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         )}
 
         {/* Comparison Table */}
