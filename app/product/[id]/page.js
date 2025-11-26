@@ -462,7 +462,7 @@ export default function ProductPage() {
                 </div>
 
                 {/* Detailed Rating Breakdown - Compact */}
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+                <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-blue-600 hover:shadow-md transition-all duration-300">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-semibold text-gray-900">Rating Breakdown</h3>
                     <div className="flex items-center gap-2">
