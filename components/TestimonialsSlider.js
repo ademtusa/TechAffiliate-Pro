@@ -256,7 +256,6 @@ export default function TestimonialsSlider() {
             ))}
             </div>
           </div>
-        </div>
 
         {/* Scroll Indicator Dots */}
         <div className="flex justify-center gap-2 mt-8">
