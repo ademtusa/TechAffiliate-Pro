@@ -461,40 +461,30 @@ export default function ProductPage() {
                   </Card>
                 </div>
 
-                {/* Detailed Rating Breakdown - Compact */}
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-blue-600 hover:shadow-md transition-all duration-300">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900">Rating Breakdown</h3>
-                    <div className="flex items-center gap-2">
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-4 w-4 ${i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
-                          />
-                        ))}
-                      </div>
-                      <span className="text-lg font-bold text-gray-900">{product.rating}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-3">
+                {/* Detailed Rating Breakdown - Modern Cards */}
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Expert Rating</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {[
-                      { label: 'Features & Functionality', score: 95 },
-                      { label: 'Ease of Use', score: 88 },
-                      { label: 'Performance & Speed', score: 92 },
-                      { label: 'Customer Support', score: 85 },
-                      { label: 'Documentation', score: 90 },
-                      { label: 'Security & Reliability', score: 97 }
+                      { label: 'Features', score: 95, icon: '⚡' },
+                      { label: 'Ease of Use', score: 88, icon: '✨' },
+                      { label: 'Performance', score: 92, icon: '🚀' },
+                      { label: 'Support', score: 85, icon: '💬' },
+                      { label: 'Documentation', score: 90, icon: '📚' },
+                      { label: 'Security', score: 97, icon: '🔒' }
                     ].map((item, idx) => (
-                      <div key={idx}>
-                        <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-700">{item.label}</span>
-                          <span className="font-semibold text-gray-900">{item.score}%</span>
+                      <div 
+                        key={idx} 
+                        className="bg-white border border-gray-200 rounded-lg p-4 hover:border-blue-500 hover:shadow-md transition-all duration-300"
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-2xl">{item.icon}</span>
+                          <span className="text-2xl font-bold text-blue-600">{item.score}</span>
                         </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
+                        <p className="text-sm font-medium text-gray-700">{item.label}</p>
+                        <div className="mt-2 w-full bg-gray-200 rounded-full h-1.5">
                           <div 
-                            className="bg-blue-600 h-2 rounded-full transition-all duration-500"
+                            className="bg-blue-600 h-1.5 rounded-full transition-all duration-500"
                             style={{ width: `${item.score}%` }}
                           />
                         </div>
