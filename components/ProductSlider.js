@@ -66,11 +66,19 @@ export default function ProductSlider({ title, products, icon: Icon }) {
     return null
   }
 
-  const filteredProducts = selectedFilter === 'all' 
+  const filteredProducts = selectedFilter === 'sort' 
     ? products 
     : selectedFilter === 'popular'
     ? [...products].sort((a, b) => (b.views || 0) - (a.views || 0))
-    : [...products].sort((a, b) => (b.rating || 0) - (a.rating || 0))
+    : selectedFilter === 'rated'
+    ? [...products].sort((a, b) => (b.rating || 0) - (a.rating || 0))
+    : selectedFilter === 'discount'
+    ? [...products].filter(p => p.original_price).sort((a, b) => {
+        const discountA = ((a.original_price - a.price) / a.original_price) * 100
+        const discountB = ((b.original_price - b.price) / b.original_price) * 100
+        return discountB - discountA
+      })
+    : products
 
   return (
     <div className="relative py-8">
