@@ -122,6 +122,14 @@ export default function ComparisonReviewPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      {/* Hero Section */}
+      <HeroSection 
+        title="Product Reviews & Comparisons"
+        subtitle="Find the perfect product with detailed reviews and side-by-side comparisons"
+        featuredProduct={topRatedProduct}
+        featuredType="topRated"
+      />
+
       {/* Navigation */}
       <nav className="bg-white border-b sticky top-0 z-10">
         <div className="container mx-auto px-4 py-4">
@@ -137,16 +145,12 @@ export default function ComparisonReviewPage() {
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white py-16 px-4">
-        <div className="container mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">Product Reviews & Comparisons</h1>
-          <p className="text-xl md:text-2xl text-blue-100 mb-8">
-            Find the perfect product with detailed reviews and side-by-side comparisons
-          </p>
-          
-          {/* Search Bar */}
-          <div className="max-w-2xl mx-auto">
+      {/* Old Hero - Removed, now using HeroSection component above */}
+
+      {/* Filters Section */}
+      <section className="py-8 px-4">
+        <div className="container mx-auto">
+          <div className="max-w-2xl mx-auto mb-8">
             <div className="flex gap-2">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
