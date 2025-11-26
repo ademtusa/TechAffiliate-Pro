@@ -216,7 +216,7 @@ export default function ComparisonReviewPage() {
           <p className="text-gray-600">
             Showing <span className="font-semibold">{filteredProducts.length}</span> products
           </p>
-          <Tabs defaultValue="list">
+          <Tabs value={viewMode} onValueChange={setViewMode}>
             <TabsList>
               <TabsTrigger value="list">List View</TabsTrigger>
               <TabsTrigger value="grid">Grid View</TabsTrigger>
