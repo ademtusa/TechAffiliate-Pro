@@ -141,7 +141,7 @@ export default function ComparisonReviewPage() {
           <div className="flex flex-wrap gap-4 items-center">
             <div className="flex-1 min-w-[200px]">
               <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                <SelectTrigger>
+                <SelectTrigger className="border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 hover:shadow-md transition-all duration-300">
                   <SelectValue placeholder="Category" />
                 </SelectTrigger>
                 <SelectContent>
@@ -154,7 +154,7 @@ export default function ComparisonReviewPage() {
             
             <div className="flex-1 min-w-[200px]">
               <Select value={priceRange} onValueChange={setPriceRange}>
-                <SelectTrigger>
+                <SelectTrigger className="border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 hover:shadow-md transition-all duration-300">
                   <SelectValue placeholder="Price Range" />
                 </SelectTrigger>
                 <SelectContent>
@@ -168,7 +168,7 @@ export default function ComparisonReviewPage() {
 
             <div className="flex-1 min-w-[200px]">
               <Select value={ratingFilter} onValueChange={setRatingFilter}>
-                <SelectTrigger>
+                <SelectTrigger className="border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 hover:shadow-md transition-all duration-300">
                   <SelectValue placeholder="Rating" />
                 </SelectTrigger>
                 <SelectContent>
