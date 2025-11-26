@@ -285,7 +285,7 @@ export default function ProductPage() {
             {/* Quantity Selector */}
             <div className="flex items-center gap-4">
               <span className="text-sm text-gray-700">Quantity:</span>
-              <div className="flex items-center border border-gray-300 rounded-lg">
+              <div className="flex items-center border border-gray-300 rounded-lg hover:border-blue-600 transition-colors duration-300">
                 <Button
                   variant="ghost"
                   size="sm"
