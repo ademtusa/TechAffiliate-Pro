@@ -493,90 +493,47 @@ export default function ProductPage() {
                   </Card>
                 </div>
 
-                {/* Detailed Rating Breakdown */}
-                <Card className="bg-gradient-to-br from-slate-50 to-blue-50 border-2 border-blue-200 shadow-xl">
-                  <CardHeader>
-                    <CardTitle className="text-2xl flex items-center gap-2">
-                      📊 Detailed Rating Breakdown
-                    </CardTitle>
-                    <p className="text-gray-600">Based on comprehensive expert analysis across multiple criteria</p>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-3 gap-8">
-                      {/* Left Column - Product Image */}
-                      <div className="col-span-1">
-                        <div className="sticky top-4">
-                          <div className="aspect-square rounded-2xl overflow-hidden bg-white shadow-lg border-2 border-blue-200">
-                            {productImages[0] ? (
-                              <img
-                                src={productImages[0]}
-                                alt={product.name}
-                                className="w-full h-full object-cover"
-                              />
-                            ) : (
-                              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-100">
-                                <Package className="h-24 w-24 text-blue-300" />
-                              </div>
-                            )}
-                          </div>
-                          <div className="mt-4 text-center bg-white rounded-lg p-4 shadow-md">
-                            <div className="text-4xl font-bold text-blue-600 mb-1">{product.rating}</div>
-                            <div className="flex justify-center mb-2">
-                              {[...Array(5)].map((_, i) => (
-                                <Star
-                                  key={i}
-                                  className={`h-5 w-5 ${i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
-                                />
-                              ))}
-                            </div>
-                            <p className="text-sm text-gray-600">Overall Rating</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Right Column - Rating Bars */}
-                      <div className="col-span-2 space-y-6">
-                        {[
-                          { label: 'Features & Functionality', score: 95, color: 'blue' },
-                          { label: 'Ease of Use', score: 88, color: 'green' },
-                          { label: 'Performance & Speed', score: 92, color: 'purple' },
-                          { label: 'Customer Support', score: 85, color: 'orange' },
-                          { label: 'Documentation & Resources', score: 90, color: 'cyan' },
-                          { label: 'Security & Reliability', score: 97, color: 'red' }
-                        ].map((item, idx) => (
-                          <div key={idx}>
-                            <div className="flex justify-between mb-2">
-                              <span className="font-semibold text-gray-800">{item.label}</span>
-                              <span className="font-bold text-lg" style={{
-                                color: item.color === 'blue' ? '#3B82F6' :
-                                       item.color === 'green' ? '#10B981' :
-                                       item.color === 'purple' ? '#A855F7' :
-                                       item.color === 'orange' ? '#F97316' :
-                                       item.color === 'cyan' ? '#06B6D4' :
-                                       '#EF4444'
-                              }}>
-                                {item.score}%
-                              </span>
-                            </div>
-                            <div className="relative w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                              <div 
-                                className={`bg-gradient-to-r ${
-                                  item.color === 'blue' ? 'from-blue-400 to-blue-600' :
-                                  item.color === 'green' ? 'from-green-400 to-green-600' :
-                                  item.color === 'purple' ? 'from-purple-400 to-purple-600' :
-                                  item.color === 'orange' ? 'from-orange-400 to-orange-600' :
-                                  item.color === 'cyan' ? 'from-cyan-400 to-cyan-600' :
-                                  'from-red-400 to-red-600'
-                                } h-3 rounded-full transition-all duration-1000 ease-out`}
-                                style={{ width: `${item.score}%` }}
-                              />
-                            </div>
-                          </div>
+                {/* Detailed Rating Breakdown - Compact */}
+                <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-lg font-semibold text-gray-900">Rating Breakdown</h3>
+                    <div className="flex items-center gap-2">
+                      <div className="flex">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`h-4 w-4 ${i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
+                          />
                         ))}
                       </div>
+                      <span className="text-lg font-bold text-gray-900">{product.rating}</span>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    {[
+                      { label: 'Features & Functionality', score: 95 },
+                      { label: 'Ease of Use', score: 88 },
+                      { label: 'Performance & Speed', score: 92 },
+                      { label: 'Customer Support', score: 85 },
+                      { label: 'Documentation', score: 90 },
+                      { label: 'Security & Reliability', score: 97 }
+                    ].map((item, idx) => (
+                      <div key={idx}>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span className="text-gray-700">{item.label}</span>
+                          <span className="font-semibold text-gray-900">{item.score}%</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-2">
+                          <div 
+                            className="bg-blue-600 h-2 rounded-full transition-all duration-500"
+                            style={{ width: `${item.score}%` }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
                 {/* CTA */}
                 <div className="text-center py-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
