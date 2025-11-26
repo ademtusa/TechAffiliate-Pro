@@ -372,9 +372,11 @@ export default function ProductPage() {
             </div>
           </div>
         </div>
+        </div>
 
         {/* Comprehensive Review Section */}
-        <div className="border-t border-gray-200 pt-8 mt-8">
+        <div className="container mx-auto px-4">
+          <div className="border-t border-gray-200 pt-8 mt-8">
           <Tabs defaultValue="overview" className="w-full">
             <TabsList className="w-full justify-start border-b border-gray-200 bg-transparent h-auto p-0 rounded-none">
               <TabsTrigger 
