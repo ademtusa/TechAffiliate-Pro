@@ -353,51 +353,79 @@ export default function ProductPage() {
               </CardContent>
             </Card>
 
+            {/* Quick Features Highlight */}
+            <div className="grid grid-cols-3 gap-4">
+              {[
+                { icon: '⚡', title: 'Instant Access', desc: 'Start using immediately' },
+                { icon: '🔒', title: 'Secure & Safe', desc: '256-bit SSL encryption' },
+                { icon: '💎', title: 'Premium Quality', desc: 'Top-rated by experts' }
+              ].map((item, idx) => (
+                <Card key={idx} className="text-center hover:shadow-lg transition-shadow bg-gradient-to-br from-blue-50 to-indigo-50">
+                  <CardContent className="pt-4 pb-4">
+                    <div className="text-3xl mb-2">{item.icon}</div>
+                    <p className="font-semibold text-sm mb-1">{item.title}</p>
+                    <p className="text-xs text-gray-600">{item.desc}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
             {/* Description */}
-            <div>
-              <h3 className="text-xl font-semibold mb-3">Description</h3>
-              <p className="text-gray-700 leading-relaxed">
-                {product.description}
-              </p>
-            </div>
+            <Card className="bg-gradient-to-br from-slate-50 to-blue-50">
+              <CardContent className="pt-6">
+                <h3 className="text-2xl font-bold mb-3 flex items-center gap-2">
+                  <span className="text-blue-600">📋</span> What's Included
+                </h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  {product.description}
+                </p>
+                <ul className="grid md:grid-cols-2 gap-3">
+                  {(product.tags || []).map((tag, index) => (
+                    <li key={index} className="flex items-center text-gray-700 bg-white rounded-lg p-2">
+                      <div className="h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3 flex-shrink-0">
+                        <Check className="h-4 w-4 text-green-600" />
+                      </div>
+                      <span className="font-medium">{tag}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
 
-            {/* Key Features */}
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Key Features</h3>
-              <ul className="space-y-2">
-                {(product.tags || []).map((tag, index) => (
-                  <li key={index} className="flex items-center text-gray-700">
-                    <Check className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                    {tag}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Quantity & Add to Cart */}
+            <Card className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-2xl">
+              <CardContent className="pt-6 pb-6">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <p className="text-sm opacity-90 mb-1">Select Quantity</p>
+                    <div className="flex items-center gap-3">
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                        className="bg-white/20 border-white/30 hover:bg-white/30 text-white"
+                      >
+                        <Minus className="h-5 w-5" />
+                      </Button>
+                      <span className="text-3xl font-bold w-20 text-center">{quantity}</span>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => setQuantity(quantity + 1)}
+                        className="bg-white/20 border-white/30 hover:bg-white/30 text-white"
+                      >
+                        <Plus className="h-5 w-5" />
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm opacity-90 mb-1">Total Price</p>
+                    <p className="text-4xl font-bold">${(product.price * quantity).toFixed(2)}</p>
+                  </div>
+                </div>
 
-            {/* Quantity Selector */}
-            <div>
-              <h3 className="text-lg font-semibold mb-3">Quantity</h3>
-              <div className="flex items-center gap-4">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                >
-                  <Minus className="h-4 w-4" />
-                </Button>
-                <span className="text-2xl font-semibold w-16 text-center">{quantity}</span>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={() => setQuantity(quantity + 1)}
-                >
-                  <Plus className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="space-y-3">
+                {/* Action Buttons */}
+                <div className="space-y-3">
               <div className="grid grid-cols-2 gap-4">
                 <Button 
                   size="lg" 
