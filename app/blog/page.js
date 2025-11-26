@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Star, TrendingUp, Award, DollarSign, Check, X, Search, Filter, ArrowLeft, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react'
 import Link from 'next/link'
 import HeroSection from '@/components/HeroSection'
+import Navbar from '@/components/Navbar'
 
 export default function ComparisonReviewPage() {
   const [products, setProducts] = useState([])
