@@ -246,68 +246,68 @@ export default function ProductPage() {
               </div>
             </div>
 
-            {/* Price */}
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-blue-600 hover:shadow-md transition-all duration-300">
-              <div className="flex items-baseline gap-3 mb-3">
-                <span className="text-4xl font-bold text-gray-900">${product.price}</span>
-                {product.original_price && (
-                  <>
-                    <span className="text-xl text-gray-400 line-through">${product.original_price}</span>
-                    <Badge className="bg-blue-600 text-white">
-                      Save {Math.round(((product.original_price - product.price) / product.original_price) * 100)}%
-                    </Badge>
-                  </>
-                )}
-              </div>
-              <p className="text-sm text-gray-600">Tax included • Free shipping on orders over $50</p>
-            </div>
+            {/* Sticky Purchase Card */}
+            <div className="lg:sticky lg:top-4">
+              <div className="border-2 border-gray-200 rounded-xl p-6 space-y-5 hover:border-blue-500 hover:shadow-xl transition-all duration-300">
+                {/* Price */}
+                <div>
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <span className="text-5xl font-bold text-gray-900">${product.price}</span>
+                    {product.original_price && (
+                      <>
+                        <span className="text-2xl text-gray-400 line-through">${product.original_price}</span>
+                        <Badge className="bg-green-600 text-white text-sm">
+                          -{Math.round(((product.original_price - product.price) / product.original_price) * 100)}%
+                        </Badge>
+                      </>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-600">✓ Tax included • ✓ Free shipping</p>
+                </div>
 
-            {/* Description */}
-            <div>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                {product.description}
-              </p>
-            </div>
+                <Separator />
 
-            {/* Key Features */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Key Features</h3>
-              <ul className="space-y-2">
-                {(product.tags || []).map((tag, index) => (
-                  <li key={index} className="flex items-center text-gray-700">
-                    <Check className="h-4 w-4 text-blue-600 mr-2 flex-shrink-0" />
-                    <span>{tag}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                {/* Key Features - Compact */}
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-2 text-sm">What's Included:</h3>
+                  <ul className="space-y-1.5">
+                    {(product.tags || []).slice(0, 4).map((tag, index) => (
+                      <li key={index} className="flex items-center text-sm text-gray-700">
+                        <Check className="h-3.5 w-3.5 text-green-600 mr-2 flex-shrink-0" />
+                        <span>{tag}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-            {/* Quantity Selector */}
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-700">Quantity:</span>
-              <div className="flex items-center border border-gray-300 rounded-lg hover:border-blue-600 transition-colors duration-300">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="h-10 w-10 hover:bg-gray-100"
-                >
-                  <Minus className="h-4 w-4" />
-                </Button>
-                <span className="text-lg font-semibold w-12 text-center">{quantity}</span>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setQuantity(quantity + 1)}
-                  className="h-10 w-10 hover:bg-gray-100"
-                >
-                  <Plus className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
+                <Separator />
 
-            {/* CTA Buttons */}
-            <div className="space-y-3">
+                {/* Quantity */}
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-gray-700">Quantity:</span>
+                  <div className="flex items-center border-2 border-gray-300 rounded-lg hover:border-blue-600 transition-colors">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      className="h-9 w-9 hover:bg-gray-100 rounded-l-lg"
+                    >
+                      <Minus className="h-4 w-4" />
+                    </Button>
+                    <span className="text-lg font-bold w-10 text-center">{quantity}</span>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setQuantity(quantity + 1)}
+                      className="h-9 w-9 hover:bg-gray-100 rounded-r-lg"
+                    >
+                      <Plus className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="space-y-3 pt-2">
               <Button 
                 size="lg" 
                 className="w-full h-14 text-lg font-semibold bg-blue-600 hover:bg-blue-700 hover:shadow-lg text-white border-2 border-blue-600 hover:border-blue-700 transition-all duration-300"
