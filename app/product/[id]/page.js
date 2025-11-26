@@ -374,48 +374,47 @@ export default function ProductPage() {
         </div>
 
         {/* Comprehensive Review Section */}
-        <Card className="mb-16 shadow-2xl">
+        <div className="border-t border-gray-200 pt-8 mt-8">
           <Tabs defaultValue="overview" className="w-full">
-            <CardHeader className="bg-gradient-to-r from-slate-50 to-blue-50">
-              <TabsList className="grid w-full max-w-5xl grid-cols-6 h-auto bg-transparent gap-2 p-2">
-                <TabsTrigger 
-                  value="overview" 
-                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-lg border-2 border-transparent hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 py-3 font-semibold rounded-lg"
-                >
-                  📊 Overview
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="features"
-                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-600 data-[state=active]:to-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-lg border-2 border-transparent hover:border-green-300 hover:bg-green-50 transition-all duration-300 py-3 font-semibold rounded-lg"
-                >
-                  ⚡ Features
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="proscons"
-                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-pink-600 data-[state=active]:text-white data-[state=active]:shadow-lg border-2 border-transparent hover:border-purple-300 hover:bg-purple-50 transition-all duration-300 py-3 font-semibold rounded-lg"
-                >
-                  ⚖️ Pros & Cons
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="pricing"
-                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-600 data-[state=active]:to-red-600 data-[state=active]:text-white data-[state=active]:shadow-lg border-2 border-transparent hover:border-orange-300 hover:bg-orange-50 transition-all duration-300 py-3 font-semibold rounded-lg"
-                >
-                  💰 Pricing
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="faq"
-                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-600 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg border-2 border-transparent hover:border-cyan-300 hover:bg-cyan-50 transition-all duration-300 py-3 font-semibold rounded-lg"
-                >
-                  ❓ FAQ
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="reviews"
-                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-600 data-[state=active]:to-orange-600 data-[state=active]:text-white data-[state=active]:shadow-lg border-2 border-transparent hover:border-yellow-300 hover:bg-yellow-50 transition-all duration-300 py-3 font-semibold rounded-lg"
-                >
-                  ⭐ Reviews ({reviews.length})
-                </TabsTrigger>
-              </TabsList>
-            </CardHeader>
+            <TabsList className="w-full justify-start border-b border-gray-200 bg-transparent h-auto p-0 rounded-none">
+              <TabsTrigger 
+                value="overview" 
+                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium"
+              >
+                Overview
+              </TabsTrigger>
+              <TabsTrigger 
+                value="features"
+                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium"
+              >
+                Features
+              </TabsTrigger>
+              <TabsTrigger 
+                value="proscons"
+                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium"
+              >
+                Pros & Cons
+              </TabsTrigger>
+              <TabsTrigger 
+                value="pricing"
+                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium"
+              >
+                Pricing
+              </TabsTrigger>
+              <TabsTrigger 
+                value="faq"
+                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium"
+              >
+                FAQ
+              </TabsTrigger>
+              <TabsTrigger 
+                value="reviews"
+                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium"
+              >
+                Reviews ({reviews.length})
+              </TabsTrigger>
+            </TabsList>
+            <div className="py-6">
             <CardContent className="pt-6">
               {/* Overview Tab */}
               <TabsContent value="overview" className="space-y-8">
