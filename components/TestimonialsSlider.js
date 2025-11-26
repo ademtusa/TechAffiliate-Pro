@@ -105,7 +105,10 @@ export default function TestimonialsSlider() {
     const container = scrollContainerRef.current
     if (!container) return
 
-    const scrollAmount = container.clientWidth
+    const cardWidth = 300
+    const gap = 24
+    const scrollAmount = (cardWidth + gap) * 4
+
     const newScrollLeft = direction === 'left' 
       ? container.scrollLeft - scrollAmount 
       : container.scrollLeft + scrollAmount
@@ -180,13 +183,13 @@ export default function TestimonialsSlider() {
               WebkitOverflowScrolling: 'touch'
             }}
           >
-            <div className="grid grid-cols-4 gap-6" style={{ gridAutoColumns: '1fr', width: `${Math.max(100, (testimonials.length / 4) * 100)}%` }}>
+            <div className="flex gap-6">
               {testimonials.map((testimonial) => (
                 <Card
                   key={testimonial.id}
-                  className="bg-white/95 backdrop-blur hover:shadow-2xl transition-all duration-300 border-2 hover:border-white"
+                  className="flex-shrink-0 w-[300px] bg-white/95 backdrop-blur hover:shadow-2xl transition-all duration-300 border-2 hover:border-white"
                 >
-                  <CardContent className="pt-6">
+                  <CardContent className="p-6">
                     <div className="mb-4">
                       <Quote className="h-10 w-10 text-blue-600 opacity-30" />
                     </div>
@@ -195,7 +198,7 @@ export default function TestimonialsSlider() {
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className={`h-5 w-5 ${
+                          className={`h-4 w-4 ${
                             i < testimonial.rating
                               ? 'fill-yellow-400 text-yellow-400'
                               : 'text-gray-300'
@@ -204,12 +207,12 @@ export default function TestimonialsSlider() {
                       ))}
                     </div>
 
-                    <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                    <p className="text-gray-700 text-base leading-relaxed mb-6 line-clamp-4 min-h-[6rem]">
                       "{testimonial.text}"
                     </p>
 
                     <div className="mb-6">
-                      <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
+                      <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 text-xs">
                         Used: {testimonial.productUsed}
                       </Badge>
                     </div>
@@ -218,18 +221,18 @@ export default function TestimonialsSlider() {
                       <img
                         src={testimonial.avatar}
                         alt={testimonial.name}
-                        className="w-14 h-14 rounded-full border-2 border-blue-200"
+                        className="w-12 h-12 rounded-full border-2 border-blue-200"
                       />
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <p className="font-bold text-gray-900">{testimonial.name}</p>
+                          <p className="font-bold text-gray-900 text-sm">{testimonial.name}</p>
                           {testimonial.verified && (
                             <Badge className="bg-green-100 text-green-800 text-xs px-2 py-0">
-                              ✓ Verified
+                              ✓
                             </Badge>
                           )}
                         </div>
-                        <p className="text-sm text-gray-600">{testimonial.role}</p>
+                        <p className="text-xs text-gray-600">{testimonial.role}</p>
                         <p className="text-xs text-gray-500 mt-1">
                           {new Date(testimonial.date).toLocaleDateString('en-US', { 
                             month: 'short', 
