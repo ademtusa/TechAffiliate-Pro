@@ -17,6 +17,7 @@ import TestimonialsSlider from '@/components/TestimonialsSlider'
 import HeroSection from '@/components/HeroSection'
 import Navbar from '@/components/Navbar'
 import HowItWorksSection from '@/components/HowItWorksSection'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   const [user, setUser] = useState(null)
