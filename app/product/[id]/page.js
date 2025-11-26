@@ -247,7 +247,7 @@ export default function ProductPage() {
             </div>
 
             {/* Price */}
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 hover:border-blue-600 hover:shadow-md transition-all duration-300">
               <div className="flex items-baseline gap-3 mb-3">
                 <span className="text-4xl font-bold text-gray-900">${product.price}</span>
                 {product.original_price && (
