@@ -43,7 +43,7 @@ After running the script, verify that tables were created:
 
 ### **Step 4: Test the Website**
 
-1. Visit your website: **https://promo-funnel.preview.emergentagent.com**
+1. Visit your website: **https://reviewhub-21.preview.emergentagent.com**
 2. You should see:
    - ✅ Products displayed on the homepage
    - ✅ Categories working
