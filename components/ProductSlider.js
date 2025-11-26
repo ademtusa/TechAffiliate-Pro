@@ -122,10 +122,10 @@ export default function ProductSlider({ title, products, icon: Icon }) {
         </div>
       </div>
 
-      {/* Products Grid with Slider - Show 4 columns, rest in slider */}
-      <div className="relative group">
+      {/* Products Slider - Show 4 products, rest scrollable */}
+      <div className="relative">
         {/* Left Arrow */}
-        {showLeftArrow && (
+        {showLeftArrow && filteredProducts.length > 4 && (
           <button
             onClick={() => scroll('left')}
             className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all"
@@ -136,7 +136,7 @@ export default function ProductSlider({ title, products, icon: Icon }) {
         )}
 
         {/* Right Arrow */}
-        {showRightArrow && (
+        {showRightArrow && filteredProducts.length > 4 && (
           <button
             onClick={() => scroll('right')}
             className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all"
@@ -146,19 +146,18 @@ export default function ProductSlider({ title, products, icon: Icon }) {
           </button>
         )}
 
-        {/* Products Scroll Container */}
+        {/* Products Container */}
         <div
           ref={scrollContainerRef}
           onScroll={updateArrowVisibility}
-          className="grid grid-cols-4 gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+          className="overflow-x-auto scrollbar-hide scroll-smooth pb-4"
           style={{
-            gridAutoFlow: 'column',
-            gridAutoColumns: 'minmax(0, 1fr)',
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
             WebkitOverflowScrolling: 'touch'
           }}
         >
+          <div className="flex gap-6" style={{ minWidth: 'fit-content' }}>
           {filteredProducts.map((product) => (
             <Card
               key={product.id}
