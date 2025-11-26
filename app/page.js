@@ -265,12 +265,24 @@ export default function Home() {
 
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="md:hidden pt-4 pb-2 space-y-2">
-              <Link href="/" className="block py-2 text-gray-700 hover:text-blue-600">Home</Link>
-              <Link href="/blog" className="block py-2 text-gray-700 hover:text-blue-600">Compare</Link>
-              <Link href="/resources" className="block py-2 text-gray-700 hover:text-blue-600">Resources</Link>
+            <div className="md:hidden pt-4 pb-2 space-y-2 bg-white/80 rounded-lg mt-2 p-3">
+              <Link href="/" className="flex items-center gap-2 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded px-3 transition-all">
+                <HomeIcon className="h-4 w-4" />
+                Home
+              </Link>
+              <Link href="/blog" className="flex items-center gap-2 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded px-3 transition-all">
+                <FileText className="h-4 w-4" />
+                Review
+              </Link>
+              <Link href="/resources" className="flex items-center gap-2 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded px-3 transition-all">
+                <Library className="h-4 w-4" />
+                Resources
+              </Link>
               {user && (
-                <Link href="/dashboard" className="block py-2 text-gray-700 hover:text-blue-600">Dashboard</Link>
+                <Link href="/dashboard" className="flex items-center gap-2 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded px-3 transition-all">
+                  <LayoutDashboard className="h-4 w-4" />
+                  Dashboard
+                </Link>
               )}
             </div>
           )}
