@@ -151,7 +151,7 @@ export default function ProductSlider({ title, products, icon: Icon }) {
         <div
           ref={scrollContainerRef}
           onScroll={updateArrowVisibility}
-          className="overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+          className="overflow-x-hidden scrollbar-hide scroll-smooth pb-4"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
@@ -162,7 +162,8 @@ export default function ProductSlider({ title, products, icon: Icon }) {
             {filteredProducts.map((product) => (
               <Card
                 key={product.id}
-                className="flex-shrink-0 w-[300px] hover:shadow-xl transition-all duration-300 border overflow-hidden"
+                className="flex-shrink-0 hover:shadow-xl transition-all duration-300 border overflow-hidden"
+                style={{ width: 'calc((100% - 72px) / 4)' }}
               >
                 {/* Product Image with Badge */}
                 <div className="relative aspect-square bg-gradient-to-br from-gray-100 to-gray-200">
