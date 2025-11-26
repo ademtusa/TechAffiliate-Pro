@@ -238,40 +238,27 @@ export default function ProductPage() {
             </div>
           </div>
 
-          {/* RIGHT SIDE - Product Info */}
-          <div className="space-y-6">
+          {/* RIGHT SIDE - Product Info (3 columns) */}
+          <div className="lg:col-span-3 space-y-5">
             {/* Title & Rating */}
             <div>
-              <div className="flex items-center gap-3 mb-3">
-                <Badge className="text-sm px-3 py-1" variant="secondary">{product.category}</Badge>
-                <Badge className="text-sm px-3 py-1 bg-blue-600">⭐ Best Seller</Badge>
-                <Badge className="text-sm px-3 py-1 bg-green-600">✓ Verified</Badge>
-              </div>
-              <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{product.name}</h1>
+              <Badge variant="secondary" className="mb-2">{product.category}</Badge>
+              <h1 className="text-3xl font-bold text-gray-900 mb-3">{product.name}</h1>
               
-              <div className="flex items-center gap-6 mb-4 flex-wrap">
-                <div className="flex items-center gap-2">
-                  <div className="flex items-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`h-6 w-6 ${i < (product.rating || 4) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
-                      />
-                    ))}
-                  </div>
-                  <span className="text-xl font-bold">{product.rating || 4.5}</span>
-                  <span className="text-gray-600">({reviews.length} reviews)</span>
+              <div className="flex items-center gap-4 mb-2">
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className={`h-5 w-5 ${i < (product.rating || 4) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
+                    />
+                  ))}
+                  <span className="ml-2 text-lg font-semibold text-gray-900">{product.rating || 4.5}</span>
                 </div>
-                <Separator orientation="vertical" className="h-8" />
-                <div className="flex items-center gap-2 text-green-600">
-                  <Check className="h-5 w-5" />
-                  <span className="font-semibold">{product.sales_count}+ Happy Customers</span>
-                </div>
-                <Separator orientation="vertical" className="h-8" />
-                <div className="flex items-center gap-2 text-blue-600">
-                  <TrendingUp className="h-5 w-5" />
-                  <span className="font-semibold">{product.views} views</span>
-                </div>
+                <span className="text-gray-500">•</span>
+                <span className="text-sm text-gray-600">{reviews.length} reviews</span>
+                <span className="text-gray-500">•</span>
+                <span className="text-sm text-gray-600">{product.sales_count}+ sold</span>
               </div>
             </div>
 
