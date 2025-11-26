@@ -1112,7 +1112,6 @@ export default function ProductPage() {
           </div>
         )}
       </div>
-      </div>
 
       {/* Checkout Dialog */}
       <Dialog open={checkoutOpen} onOpenChange={setCheckoutOpen}>
