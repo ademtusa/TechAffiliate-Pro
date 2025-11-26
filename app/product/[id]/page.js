@@ -884,7 +884,7 @@ export default function ProductPage() {
                       a: 'Absolutely. We use bank-level encryption (256-bit SSL) to protect your data. All information is stored in secure data centers with regular backups and strict access controls. We are fully compliant with GDPR and other data protection regulations.'
                     }
                   ].map((faq, idx) => (
-                    <Card key={idx} className="hover:shadow-md transition-shadow">
+                    <Card key={idx} className="hover:shadow-md hover:border-blue-500 transition-all duration-300 border border-gray-200">
                       <CardHeader>
                         <CardTitle className="text-lg">{faq.q}</CardTitle>
                       </CardHeader>
