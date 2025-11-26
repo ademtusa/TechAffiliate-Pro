@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { ChevronLeft, ChevronRight, Star, Eye, ExternalLink, ShoppingCart } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Star, Eye, ExternalLink, ShoppingCart, Heart, Scale, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 
 export default function ProductSlider({ title, products, icon: Icon }) {
@@ -12,12 +12,13 @@ export default function ProductSlider({ title, products, icon: Icon }) {
   const [showLeftArrow, setShowLeftArrow] = useState(false)
   const [showRightArrow, setShowRightArrow] = useState(true)
   const [selectedFilter, setSelectedFilter] = useState('all')
+  const [categoryDropdownOpen, setCategoryDropdownOpen] = useState(false)
 
   const scroll = (direction) => {
     const container = scrollContainerRef.current
     if (!container) return
 
-    const scrollAmount = container.clientWidth
+    const scrollAmount = 400
     const newScrollLeft = direction === 'left' 
       ? container.scrollLeft - scrollAmount 
       : container.scrollLeft + scrollAmount
@@ -36,26 +37,18 @@ export default function ProductSlider({ title, products, icon: Icon }) {
     const container = scrollContainerRef.current
     if (!container) return
 
-    setShowLeftArrow(container.scrollLeft > 10)
+    setShowLeftArrow(container.scrollLeft > 0)
     setShowRightArrow(
       container.scrollLeft < container.scrollWidth - container.clientWidth - 10
     )
   }
 
-  useEffect(() => {
-    updateArrowVisibility()
-  }, [selectedFilter])
-
   const handleAffiliateClick = async (product) => {
-    try {
-      await fetch('/api/track-click', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productId: product.id })
-      })
-    } catch (error) {
-      console.log('Track click failed:', error)
-    }
+    await fetch('/api/track-click', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ productId: product.id })
+    })
     window.open(product.affiliate_url, '_blank')
   }
 
@@ -114,7 +107,11 @@ export default function ProductSlider({ title, products, icon: Icon }) {
 
         {/* Category Dropdown & All Products Button */}
         <div className="flex items-center gap-3">
-          <Button variant="outline" className="border-gray-300">
+          <Button 
+            variant="outline"
+            className="border-gray-300"
+            onClick={() => setCategoryDropdownOpen(!categoryDropdownOpen)}
+          >
             Choose category +
           </Button>
           <Link href="/blog">
@@ -126,7 +123,7 @@ export default function ProductSlider({ title, products, icon: Icon }) {
       </div>
 
       {/* Products Slider - Show 4 products, rest scrollable */}
-      <div className="relative group">
+      <div className="relative">
         {/* Left Arrow */}
         {showLeftArrow && filteredProducts.length > 4 && (
           <button
@@ -160,89 +157,90 @@ export default function ProductSlider({ title, products, icon: Icon }) {
             WebkitOverflowScrolling: 'touch'
           }}
         >
-          <div className="grid grid-cols-4 gap-6" style={{ gridAutoColumns: '1fr', width: `${Math.max(100, (filteredProducts.length / 4) * 100)}%` }}>
-            {filteredProducts.map((product) => (
-              <Card
-                key={product.id}
-                className="hover:shadow-2xl transition-all duration-300 border-2 hover:border-blue-500"
-              >
-                <CardHeader>
-                  <div className="aspect-video relative mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-100">
-                    {product.image_url ? (
-                      <img
-                        src={product.image_url}
-                        alt={product.name}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+          <div className="flex gap-6">
+          {filteredProducts.map((product) => (
+            <Card
+              key={product.id}
+              className="flex-shrink-0 hover:shadow-2xl transition-all duration-300 border-2 hover:border-blue-500"
+              style={{ width: 'calc(25% - 18px)' }}
+            >
+              <CardHeader>
+                <div className="aspect-video relative mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-100">
+                  {product.image_url ? (
+                    <img
+                      src={product.image_url}
+                      alt={product.name}
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <ShoppingCart className="h-16 w-16 text-blue-300" />
+                    </div>
+                  )}
+                  {product.badge && (
+                    <Badge className="absolute top-2 right-2 bg-red-500">
+                      {product.badge}
+                    </Badge>
+                  )}
+                </div>
+                <CardTitle className="line-clamp-2 hover:text-blue-600 transition">
+                  {product.name}
+                </CardTitle>
+                <CardDescription className="line-clamp-2">
+                  {product.description}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center space-x-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`h-4 w-4 ${
+                          i < (product.rating || 4)
+                            ? 'fill-yellow-400 text-yellow-400'
+                            : 'text-gray-300'
+                        }`}
                       />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <ShoppingCart className="h-16 w-16 text-blue-300" />
-                      </div>
-                    )}
-                    {product.badge && (
-                      <Badge className="absolute top-2 right-2 bg-red-500">
-                        {product.badge}
-                      </Badge>
-                    )}
+                    ))}
+                    <span className="text-sm text-gray-600 ml-2">
+                      ({product.rating || 4.5})
+                    </span>
                   </div>
-                  <CardTitle className="line-clamp-2 hover:text-blue-600 transition">
-                    {product.name}
-                  </CardTitle>
-                  <CardDescription className="line-clamp-2">
-                    {product.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`h-4 w-4 ${
-                            i < (product.rating || 4)
-                              ? 'fill-yellow-400 text-yellow-400'
-                              : 'text-gray-300'
-                          }`}
-                        />
-                      ))}
-                      <span className="text-sm text-gray-600 ml-2">
-                        ({product.rating || 4.5})
-                      </span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-500">
-                      <Eye className="h-4 w-4 mr-1" />
-                      {product.views || 0}
-                    </div>
+                  <div className="flex items-center text-sm text-gray-500">
+                    <Eye className="h-4 w-4 mr-1" />
+                    {product.views || 0}
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-2xl font-bold text-blue-600">
-                        ${product.price}
+                </div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-2xl font-bold text-blue-600">
+                      ${product.price}
+                    </p>
+                    {product.original_price && (
+                      <p className="text-sm text-gray-500 line-through">
+                        ${product.original_price}
                       </p>
-                      {product.original_price && (
-                        <p className="text-sm text-gray-500 line-through">
-                          ${product.original_price}
-                        </p>
-                      )}
-                    </div>
-                    <Badge variant="secondary">{product.category}</Badge>
+                    )}
                   </div>
-                </CardContent>
-                <CardFooter className="flex gap-2">
-                  <Link href={`/product/${product.id}`} className="flex-1">
-                    <Button variant="outline" className="w-full">
-                      View Details
-                    </Button>
-                  </Link>
-                  <Button
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
-                    onClick={() => handleAffiliateClick(product)}
-                  >
-                    Get Deal <ExternalLink className="ml-2 h-4 w-4" />
+                  <Badge variant="secondary">{product.category}</Badge>
+                </div>
+              </CardContent>
+              <CardFooter className="flex gap-2">
+                <Link href={`/product/${product.id}`} className="flex-1">
+                  <Button variant="outline" className="w-full">
+                    View Details
                   </Button>
-                </CardFooter>
-              </Card>
-            ))}
+                </Link>
+                <Button
+                  className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
+                  onClick={() => handleAffiliateClick(product)}
+                >
+                  Get Deal <ExternalLink className="ml-2 h-4 w-4" />
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
           </div>
         </div>
       </div>
