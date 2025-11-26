@@ -105,17 +105,17 @@ export default function HowItWorksSection() {
               <Card className="bg-white border-2 border-gray-100 hover:border-purple-300 transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden h-full">
                 <CardContent className="p-0">
                   {/* Icon Area */}
-                  <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-8 flex items-center justify-center relative">
+                  <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-8 pt-12 flex items-center justify-center relative">
                     <div className="absolute inset-0 bg-gradient-to-br from-transparent to-purple-100/20"></div>
                     <div className="relative">
-                      <div className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${step.gradient} flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl`}>
-                        <step.icon className="h-9 w-9 text-white" />
-                      </div>
-                      {/* Number Badge - Half Outside, Half Inside */}
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      {/* Number Badge - Half Outside, positioned higher */}
+                      <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-10">
                         <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${step.gradient} flex items-center justify-center text-white font-bold text-lg shadow-2xl border-4 border-white`}>
                           {step.number}
                         </div>
+                      </div>
+                      <div className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${step.gradient} flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl`}>
+                        <step.icon className="h-9 w-9 text-white" />
                       </div>
                     </div>
                   </div>
