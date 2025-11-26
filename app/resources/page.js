@@ -8,11 +8,13 @@ import { Badge } from '@/components/ui/badge'
 import { Gift, Download, Video, FileText, Lock, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import HeroSection from '@/components/HeroSection'
 
 export default function ResourcesPage() {
   const [resources, setResources] = useState([])
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [mostDownloadedProduct, setMostDownloadedProduct] = useState(null)
   const router = useRouter()
 
   useEffect(() => {
