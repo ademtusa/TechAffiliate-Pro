@@ -1,10 +1,10 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { ChevronLeft, ChevronRight, Star, Eye, ExternalLink, ShoppingCart } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Star, Eye, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
 
 export default function ProductSlider({ title, products, icon: Icon }) {
@@ -17,7 +17,10 @@ export default function ProductSlider({ title, products, icon: Icon }) {
     const container = scrollContainerRef.current
     if (!container) return
 
-    const scrollAmount = container.clientWidth
+    const cardWidth = 300
+    const gap = 24
+    const scrollAmount = (cardWidth + gap) * 4
+
     const newScrollLeft = direction === 'left' 
       ? container.scrollLeft - scrollAmount 
       : container.scrollLeft + scrollAmount
@@ -63,7 +66,6 @@ export default function ProductSlider({ title, products, icon: Icon }) {
     return null
   }
 
-  // Filter products based on selected filter
   const filteredProducts = selectedFilter === 'all' 
     ? products 
     : selectedFilter === 'popular'
@@ -112,7 +114,6 @@ export default function ProductSlider({ title, products, icon: Icon }) {
           </div>
         </div>
 
-        {/* Category Dropdown & All Products Button */}
         <div className="flex items-center gap-3">
           <Button variant="outline" className="border-gray-300">
             Choose category +
@@ -125,31 +126,28 @@ export default function ProductSlider({ title, products, icon: Icon }) {
         </div>
       </div>
 
-      {/* Products Slider - Show 4 products, rest scrollable */}
+      {/* Products Slider */}
       <div className="relative group">
-        {/* Left Arrow */}
         {showLeftArrow && filteredProducts.length > 4 && (
           <button
             onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all -ml-4"
             aria-label="Scroll left"
           >
             <ChevronLeft className="h-6 w-6 text-gray-700" />
           </button>
         )}
 
-        {/* Right Arrow */}
         {showRightArrow && filteredProducts.length > 4 && (
           <button
             onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all -mr-4"
             aria-label="Scroll right"
           >
             <ChevronRight className="h-6 w-6 text-gray-700" />
           </button>
         )}
 
-        {/* Products Container */}
         <div
           ref={scrollContainerRef}
           onScroll={updateArrowVisibility}
@@ -160,94 +158,117 @@ export default function ProductSlider({ title, products, icon: Icon }) {
             WebkitOverflowScrolling: 'touch'
           }}
         >
-          <div className="grid grid-cols-4 gap-6" style={{ gridAutoColumns: '1fr', width: `${Math.max(100, (filteredProducts.length / 4) * 100)}%` }}>
+          <div className="flex gap-6">
             {filteredProducts.map((product) => (
               <Card
                 key={product.id}
-                className="hover:shadow-2xl transition-all duration-300 border-2 hover:border-blue-500"
+                className="flex-shrink-0 w-[300px] hover:shadow-xl transition-all duration-300 border overflow-hidden"
               >
-                <CardHeader>
-                  <div className="aspect-video relative mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-100">
-                    {product.image_url ? (
-                      <img
-                        src={product.image_url}
-                        alt={product.name}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <ShoppingCart className="h-16 w-16 text-blue-300" />
-                      </div>
-                    )}
-                    {product.badge && (
-                      <Badge className="absolute top-2 right-2 bg-red-500">
-                        {product.badge}
-                      </Badge>
-                    )}
-                  </div>
-                  <CardTitle className="line-clamp-2 hover:text-blue-600 transition">
+                {/* Product Image with Badge */}
+                <div className="relative aspect-square bg-gradient-to-br from-gray-100 to-gray-200">
+                  {product.image_url ? (
+                    <img
+                      src={product.image_url}
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <div className="text-gray-400 text-6xl">📦</div>
+                    </div>
+                  )}
+                  
+                  {/* Badge - Top Right */}
+                  {product.badge && (
+                    <Badge className="absolute top-3 right-3 bg-red-500 text-white font-bold px-3 py-1 text-xs">
+                      {product.badge}
+                    </Badge>
+                  )}
+                  
+                  {/* Popular Badge */}
+                  {(product.views || 0) > 1000 && (
+                    <Badge className="absolute top-3 right-3 bg-red-500 text-white font-bold px-3 py-1 text-xs">
+                      POPULAR
+                    </Badge>
+                  )}
+                </div>
+
+                <CardContent className="p-4">
+                  {/* Product Title */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-1">
                     {product.name}
-                  </CardTitle>
-                  <CardDescription className="line-clamp-2">
-                    {product.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
+                  </h3>
+
+                  {/* Product Description */}
+                  <p className="text-sm text-gray-600 mb-4 line-clamp-2 min-h-[2.5rem]">
+                    {product.description || 'High-quality product with amazing features and benefits.'}
+                  </p>
+
+                  {/* Rating and Views */}
                   <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-1">
+                    <div className="flex items-center gap-1">
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
                           className={`h-4 w-4 ${
-                            i < (product.rating || 4)
+                            i < Math.floor(product.rating || 4)
                               ? 'fill-yellow-400 text-yellow-400'
                               : 'text-gray-300'
                           }`}
                         />
                       ))}
-                      <span className="text-sm text-gray-600 ml-2">
-                        ({product.rating || 4.5})
+                      <span className="text-sm text-gray-600 ml-1">
+                        ({product.rating || 4.9})
                       </span>
                     </div>
-                    <div className="flex items-center text-sm text-gray-500">
-                      <Eye className="h-4 w-4 mr-1" />
-                      {product.views || 0}
+                    <div className="flex items-center gap-1 text-gray-500">
+                      <Eye className="h-4 w-4" />
+                      <span className="text-sm">{product.views || 2450}</span>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-2xl font-bold text-blue-600">
+
+                  {/* Price Section */}
+                  <div className="flex items-end justify-between mb-4">
+                    <div className="flex flex-col">
+                      <div className="text-3xl font-bold text-blue-600">
                         ${product.price}
-                      </p>
+                      </div>
                       {product.original_price && (
-                        <p className="text-sm text-gray-500 line-through">
+                        <div className="text-sm text-gray-400 line-through">
                           ${product.original_price}
-                        </p>
+                        </div>
                       )}
                     </div>
-                    <Badge variant="secondary">{product.category}</Badge>
+                    <div className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
+                      {product.category || 'general'}
+                    </div>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex gap-2">
+                    <Link href={`/product/${product.id}`} className="flex-1">
+                      <Button 
+                        variant="outline" 
+                        className="w-full border-2 border-gray-300 hover:bg-gray-50"
+                      >
+                        View Details
+                      </Button>
+                    </Link>
+                    <Button
+                      className="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white"
+                      onClick={() => handleAffiliateClick(product)}
+                    >
+                      Get Deal
+                      <ExternalLink className="ml-2 h-4 w-4" />
+                    </Button>
                   </div>
                 </CardContent>
-                <CardFooter className="flex gap-2">
-                  <Link href={`/product/${product.id}`} className="flex-1">
-                    <Button variant="outline" className="w-full">
-                      View Details
-                    </Button>
-                  </Link>
-                  <Button
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
-                    onClick={() => handleAffiliateClick(product)}
-                  >
-                    Get Deal <ExternalLink className="ml-2 h-4 w-4" />
-                  </Button>
-                </CardFooter>
               </Card>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Hide scrollbar CSS */}
       <style jsx>{`
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
