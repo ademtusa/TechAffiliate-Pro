@@ -173,17 +173,9 @@ export default function ProductPage() {
       </nav>
 
       {/* Product Details Section */}
-      <div className="container mx-auto px-4 py-8">
-        {/* Urgency Banner */}
-        <div className="mb-6 bg-gradient-to-r from-red-500 via-orange-500 to-red-500 text-white p-4 rounded-lg shadow-lg animate-pulse">
-          <div className="flex items-center justify-center gap-4 flex-wrap text-center">
-            <TrendingUp className="h-5 w-5" />
-            <p className="font-bold">🔥 Limited Time Offer - {Math.round(((product.original_price - product.price) / product.original_price) * 100)}% OFF Today! Only 7 spots left at this price</p>
-            <TrendingUp className="h-5 w-5" />
-          </div>
-        </div>
-
-        <div className="grid lg:grid-cols-5 gap-8 mb-12">
+      <div className="bg-white">
+        <div className="container mx-auto px-4 py-8">
+          <div className="grid lg:grid-cols-2 gap-10 mb-8">
           {/* LEFT SIDE - Product Images (Smaller, 2 columns) */}
           <div className="lg:col-span-2">
             {/* Main Image - Reduced Size */}
