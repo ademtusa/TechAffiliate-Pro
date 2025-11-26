@@ -36,6 +36,18 @@ export default function ResourcesPage() {
       if (result.success) {
         setResources(result.data || [])
       }
+
+      // Fetch most downloaded/viewed product
+      const productsRes = await fetch('/api/products?sort=mostviewed')
+      const productsResult = await productsRes.json()
+      
+      if (productsResult.success && productsResult.data && productsResult.data.length > 0) {
+        setMostDownloadedProduct({
+          ...productsResult.data[0],
+          commission_rate: 15.5,
+          reviews: 1247
+        })
+      }
     } catch (error) {
       console.error('Error fetching resources:', error)
     } finally {
