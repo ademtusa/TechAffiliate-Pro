@@ -1134,7 +1134,7 @@ export default function ProductPage() {
             </div>
           </div>
         </DialogContent>
-        </Dialog>
+      </Dialog>
 
       {/* Footer */}
       <Footer />
