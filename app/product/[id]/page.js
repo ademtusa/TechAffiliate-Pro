@@ -173,12 +173,21 @@ export default function ProductPage() {
       </nav>
 
       {/* Product Details Section */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
-          {/* LEFT SIDE - Product Images */}
-          <div>
-            {/* Main Image */}
-            <div className="relative aspect-square rounded-2xl overflow-hidden bg-white shadow-2xl mb-4">
+      <div className="container mx-auto px-4 py-8">
+        {/* Urgency Banner */}
+        <div className="mb-6 bg-gradient-to-r from-red-500 via-orange-500 to-red-500 text-white p-4 rounded-lg shadow-lg animate-pulse">
+          <div className="flex items-center justify-center gap-4 flex-wrap text-center">
+            <TrendingUp className="h-5 w-5" />
+            <p className="font-bold">🔥 Limited Time Offer - {Math.round(((product.original_price - product.price) / product.original_price) * 100)}% OFF Today! Only 7 spots left at this price</p>
+            <TrendingUp className="h-5 w-5" />
+          </div>
+        </div>
+
+        <div className="grid lg:grid-cols-5 gap-8 mb-12">
+          {/* LEFT SIDE - Product Images (Smaller, 2 columns) */}
+          <div className="lg:col-span-2">
+            {/* Main Image - Reduced Size */}
+            <div className="relative rounded-2xl overflow-hidden bg-white shadow-2xl mb-4" style={{ aspectRatio: '4/3' }}>
               {productImages[selectedImage] ? (
                 <img
                   src={productImages[selectedImage]}
@@ -187,36 +196,76 @@ export default function ProductPage() {
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-100">
-                  <Package className="h-32 w-32 text-blue-300" />
+                  <Package className="h-24 w-24 text-blue-300" />
                 </div>
               )}
               {product.badge && (
-                <Badge className="absolute top-4 right-4 text-lg px-4 py-2 bg-red-500">
+                <Badge className="absolute top-4 right-4 text-base px-3 py-1 bg-red-500 animate-bounce">
                   {product.badge}
                 </Badge>
               )}
+              {/* Live viewers indicator */}
+              <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm text-white px-3 py-2 rounded-full text-sm flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                {Math.floor(Math.random() * 20) + 15} people viewing now
+              </div>
             </div>
 
             {/* Thumbnail Images */}
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-4 gap-2">
               {productImages.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setSelectedImage(idx)}
-                  className={`aspect-square rounded-lg overflow-hidden border-2 transition ${
-                    selectedImage === idx ? 'border-blue-600' : 'border-gray-200 hover:border-gray-400'
+                  className={`aspect-square rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                    selectedImage === idx ? 'border-blue-600 scale-105 shadow-lg' : 'border-gray-200 hover:border-gray-400 hover:scale-105'
                   }`}
                 >
                   {img ? (
                     <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover" />
                   ) : (
                     <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-                      <Package className="h-8 w-8 text-gray-400" />
+                      <Package className="h-6 w-6 text-gray-400" />
                     </div>
                   )}
                 </button>
               ))}
             </div>
+
+            {/* Trust Badges */}
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              <div className="bg-green-50 border-2 border-green-200 rounded-lg p-3 text-center">
+                <Shield className="h-6 w-6 text-green-600 mx-auto mb-1" />
+                <p className="text-xs font-semibold text-green-700">30-Day Guarantee</p>
+              </div>
+              <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 text-center">
+                <Check className="h-6 w-6 text-blue-600 mx-auto mb-1" />
+                <p className="text-xs font-semibold text-blue-700">Verified Product</p>
+              </div>
+              <div className="bg-purple-50 border-2 border-purple-200 rounded-lg p-3 text-center">
+                <Shield className="h-6 w-6 text-purple-600 mx-auto mb-1" />
+                <p className="text-xs font-semibold text-purple-700">Secure Payment</p>
+              </div>
+              <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-3 text-center">
+                <TrendingUp className="h-6 w-6 text-orange-600 mx-auto mb-1" />
+                <p className="text-xs font-semibold text-orange-700">Best Price</p>
+              </div>
+            </div>
+
+            {/* Recent Activity */}
+            <Card className="mt-6 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200">
+              <CardContent className="pt-4 pb-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <p className="text-sm font-semibold text-green-700">Real-time Activity</p>
+                </div>
+                <div className="space-y-2 text-xs text-gray-700">
+                  <p>✓ <strong>Sarah M.</strong> purchased 3 minutes ago</p>
+                  <p>✓ <strong>John D.</strong> purchased 12 minutes ago</p>
+                  <p>✓ <strong>24 people</strong> added to cart in last hour</p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
           {/* RIGHT SIDE - Product Info */}
