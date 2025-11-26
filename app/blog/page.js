@@ -243,7 +243,7 @@ export default function ComparisonReviewPage() {
               </Button>
             </CardContent>
           </Card>
-        ) : (
+        ) : viewMode === 'list' ? (
           <div className="space-y-6">
             {filteredProducts.map((product, index) => (
               <Card key={product.id} className={`overflow-hidden transition-all duration-300 ${
