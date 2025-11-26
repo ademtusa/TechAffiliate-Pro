@@ -4,13 +4,17 @@ import { useState, useRef } from 'react'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { ChevronLeft, ChevronRight, Star, Eye, ExternalLink, ShoppingCart } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Star, Eye, ExternalLink, ShoppingCart, Heart, Scale, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
+import { useCartStore } from '@/lib/cartStore'
 
 export default function ProductSlider({ title, products, icon: Icon }) {
   const scrollContainerRef = useRef(null)
   const [showLeftArrow, setShowLeftArrow] = useState(false)
   const [showRightArrow, setShowRightArrow] = useState(true)
+  const [selectedFilter, setSelectedFilter] = useState('all')
+  const [categoryDropdownOpen, setCategoryDropdownOpen] = useState(false)
+  const addToCart = useCartStore((state) => state.addItem)
 
   const scroll = (direction) => {
     const container = scrollContainerRef.current
@@ -26,7 +30,6 @@ export default function ProductSlider({ title, products, icon: Icon }) {
       behavior: 'smooth'
     })
 
-    // Update arrow visibility after scroll
     setTimeout(() => {
       updateArrowVisibility()
     }, 300)
@@ -55,17 +58,70 @@ export default function ProductSlider({ title, products, icon: Icon }) {
     return null
   }
 
+  // Filter products based on selected filter
+  const filteredProducts = selectedFilter === 'all' 
+    ? products 
+    : selectedFilter === 'popular'
+    ? [...products].sort((a, b) => (b.views || 0) - (a.views || 0))
+    : [...products].sort((a, b) => (b.rating || 0) - (a.rating || 0))
+
   return (
     <div className="relative py-8">
-      {/* Section Header */}
+      {/* Section Header with Filters */}
       <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-3">
-          {Icon && <Icon className="h-8 w-8 text-blue-600" />}
-          <h2 className="text-3xl font-bold">{title}</h2>
+        <div className="flex items-center gap-6">
+          <h2 className="text-3xl font-bold text-gray-900">{title}</h2>
+          
+          {/* Filter Buttons */}
+          <div className="flex items-center gap-1">
+            <button
+              onClick={() => setSelectedFilter('all')}
+              className={`px-4 py-2 text-sm font-medium transition-all ${
+                selectedFilter === 'all'
+                  ? 'text-purple-600 border-b-2 border-purple-600'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Show all
+            </button>
+            <button
+              onClick={() => setSelectedFilter('popular')}
+              className={`px-4 py-2 text-sm font-medium transition-all ${
+                selectedFilter === 'popular'
+                  ? 'text-purple-600 border-b-2 border-purple-600'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Popular
+            </button>
+            <button
+              onClick={() => setSelectedFilter('rated')}
+              className={`px-4 py-2 text-sm font-medium transition-all ${
+                selectedFilter === 'rated'
+                  ? 'text-purple-600 border-b-2 border-purple-600'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Best rated
+            </button>
+          </div>
         </div>
-        <Badge className="bg-blue-600 text-white px-4 py-1">
-          {products.length} Products
-        </Badge>
+
+        {/* Category Dropdown & All Products Button */}
+        <div className="flex items-center gap-3">
+          <Button 
+            variant="outline"
+            className="border-gray-300"
+            onClick={() => setCategoryDropdownOpen(!categoryDropdownOpen)}
+          >
+            Choose category +
+          </Button>
+          <Link href="/blog">
+            <Button variant="outline" className="border-gray-300">
+              All Products
+            </Button>
+          </Link>
+        </div>
       </div>
 
       {/* Slider Container */}
