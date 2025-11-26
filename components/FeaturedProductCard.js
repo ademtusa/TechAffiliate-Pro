@@ -32,7 +32,7 @@ export default function FeaturedProductCard({ product }) {
 
       <CardContent className="p-3">
         {/* Product Image */}
-        <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden mb-2 group">
+        <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden mb-2 group">
           {product.image_url ? (
             <img
               src={product.image_url}
