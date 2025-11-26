@@ -13,7 +13,6 @@ export default function ProductSlider({ title, products, icon: Icon }) {
   const [showRightArrow, setShowRightArrow] = useState(true)
   const [selectedFilter, setSelectedFilter] = useState('all')
   const [categoryDropdownOpen, setCategoryDropdownOpen] = useState(false)
-  const addToCart = useCartStore((state) => state.addItem)
 
   const scroll = (direction) => {
     const container = scrollContainerRef.current
