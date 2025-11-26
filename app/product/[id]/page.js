@@ -638,29 +638,68 @@ export default function ProductPage() {
                 </div>
 
                 {/* Detailed Rating Breakdown */}
-                <Card className="bg-gradient-to-br from-slate-50 to-blue-50">
+                <Card className="bg-gradient-to-br from-slate-50 to-blue-50 border-2 border-blue-200 shadow-xl">
                   <CardHeader>
-                    <CardTitle>Detailed Rating Breakdown</CardTitle>
+                    <CardTitle className="text-2xl flex items-center gap-2">
+                      📊 Detailed Rating Breakdown
+                    </CardTitle>
+                    <p className="text-gray-600">Based on comprehensive expert analysis across multiple criteria</p>
                   </CardHeader>
-                  <CardContent className="space-y-4">
+                  <CardContent className="space-y-5">
                     {[
-                      { label: 'Features & Functionality', score: 95 },
-                      { label: 'Ease of Use', score: 88 },
-                      { label: 'Performance & Speed', score: 92 },
-                      { label: 'Customer Support', score: 85 },
-                      { label: 'Documentation & Resources', score: 90 },
-                      { label: 'Security & Reliability', score: 97 }
+                      { label: 'Features & Functionality', score: 95, color: 'blue', icon: '⚡' },
+                      { label: 'Ease of Use', score: 88, color: 'green', icon: '✨' },
+                      { label: 'Performance & Speed', score: 92, color: 'purple', icon: '🚀' },
+                      { label: 'Customer Support', score: 85, color: 'orange', icon: '💬' },
+                      { label: 'Documentation & Resources', score: 90, color: 'cyan', icon: '📚' },
+                      { label: 'Security & Reliability', score: 97, color: 'red', icon: '🔒' }
                     ].map((item, idx) => (
-                      <div key={idx}>
-                        <div className="flex justify-between mb-2">
-                          <span className="font-medium">{item.label}</span>
-                          <span className="font-bold text-blue-600">{item.score}%</span>
+                      <div key={idx} className="flex items-center gap-4">
+                        {/* Score Box */}
+                        <div className={`flex-shrink-0 w-20 h-20 rounded-xl bg-gradient-to-br ${
+                          item.color === 'blue' ? 'from-blue-500 to-indigo-600' :
+                          item.color === 'green' ? 'from-green-500 to-emerald-600' :
+                          item.color === 'purple' ? 'from-purple-500 to-pink-600' :
+                          item.color === 'orange' ? 'from-orange-500 to-red-600' :
+                          item.color === 'cyan' ? 'from-cyan-500 to-blue-600' :
+                          'from-red-500 to-pink-600'
+                        } shadow-lg flex flex-col items-center justify-center text-white transform hover:scale-110 transition-transform`}>
+                          <div className="text-2xl mb-1">{item.icon}</div>
+                          <div className="text-2xl font-bold">{item.score}</div>
+                          <div className="text-xs opacity-90">/ 100</div>
                         </div>
-                        <div className="w-full bg-gray-200 rounded-full h-3">
-                          <div 
-                            className="bg-gradient-to-r from-blue-500 to-indigo-600 h-3 rounded-full transition-all duration-500"
-                            style={{ width: `${item.score}%` }}
-                          />
+
+                        {/* Progress Bar */}
+                        <div className="flex-1">
+                          <div className="flex justify-between mb-2">
+                            <span className="font-semibold text-gray-800">{item.label}</span>
+                            <Badge className={`${
+                              item.score >= 95 ? 'bg-green-600' :
+                              item.score >= 90 ? 'bg-blue-600' :
+                              item.score >= 85 ? 'bg-orange-600' :
+                              'bg-gray-600'
+                            }`}>
+                              {item.score >= 95 ? 'Excellent' :
+                               item.score >= 90 ? 'Very Good' :
+                               item.score >= 85 ? 'Good' :
+                               'Fair'}
+                            </Badge>
+                          </div>
+                          <div className="relative w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+                            <div 
+                              className={`bg-gradient-to-r ${
+                                item.color === 'blue' ? 'from-blue-500 to-indigo-600' :
+                                item.color === 'green' ? 'from-green-500 to-emerald-600' :
+                                item.color === 'purple' ? 'from-purple-500 to-pink-600' :
+                                item.color === 'orange' ? 'from-orange-500 to-red-600' :
+                                item.color === 'cyan' ? 'from-cyan-500 to-blue-600' :
+                                'from-red-500 to-pink-600'
+                              } h-4 rounded-full transition-all duration-1000 ease-out shadow-md`}
+                              style={{ width: `${item.score}%` }}
+                            >
+                              <div className="h-full w-full bg-gradient-to-r from-white/20 to-transparent"></div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     ))}
