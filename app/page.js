@@ -364,30 +364,14 @@ export default function Home() {
             {/* Right Side - Featured Product */}
             <div className="flex justify-center lg:justify-end">
               {featuredProduct ? (
-                <div className="w-full max-w-sm">
+                <div className="w-full max-w-md">
                   <FeaturedProductCard product={featuredProduct} />
                 </div>
               ) : (
-                <div className="w-full max-w-sm h-[400px] bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+                <div className="w-full max-w-md h-[400px] bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center">
                   <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white"></div>
                 </div>
               )}
-            </div>
-          </div>
-
-          {/* Bottom Stats */}
-          <div className="flex justify-center gap-8 mt-6 pt-4 border-t border-white/20">
-            <div className="flex items-center gap-2 text-white">
-              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-              <span className="text-sm font-semibold">50K+ Products</span>
-            </div>
-            <div className="flex items-center gap-2 text-white">
-              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-              <span className="text-sm font-semibold">1M+ Users</span>
-            </div>
-            <div className="flex items-center gap-2 text-white">
-              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-              <span className="text-sm font-semibold">7 Languages</span>
             </div>
           </div>
         </div>
