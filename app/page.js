@@ -353,10 +353,10 @@ export default function Home() {
               </form>
 
               {/* CTA Buttons & Rating */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-stretch gap-4">
                 {/* CTA Buttons */}
                 <Link href="/blog">
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 shadow-xl hover:shadow-2xl transition-all px-8 py-6 text-base">
+                  <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 shadow-xl hover:shadow-2xl transition-all px-8 py-6 text-base h-full">
                     Explore Products
                     <ExternalLink className="ml-2 h-5 w-5" />
                   </Button>
@@ -365,16 +365,12 @@ export default function Home() {
                   Start Earning Now
                 </Button>
 
-                {/* Rating Badge - Same Height as Buttons */}
-                <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-md rounded-xl px-6 py-6 border border-white/20 shadow-xl hover:shadow-2xl transition-all">
-                  <div className="flex items-center gap-3">
-                    <div className="bg-yellow-400/20 rounded-lg p-2">
-                      <Star className="h-6 w-6 text-yellow-300 fill-yellow-300" />
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-white">4.9/5</div>
-                      <div className="text-xs text-blue-100">Average Rating</div>
-                    </div>
+                {/* Rating Badge - Same Size as Buttons */}
+                <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-md rounded-lg px-8 py-6 border border-white/20 shadow-xl hover:shadow-2xl transition-all flex items-center gap-3">
+                  <Star className="h-5 w-5 text-yellow-300 fill-yellow-300" />
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-base font-bold text-white">4.9/5</span>
+                    <span className="text-sm text-blue-100">Rating</span>
                   </div>
                 </div>
               </div>
