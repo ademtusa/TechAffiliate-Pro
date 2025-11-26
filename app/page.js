@@ -303,7 +303,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section 
-        className="relative py-16 px-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white overflow-hidden"
+        className="relative py-8 px-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white overflow-hidden"
         style={{
           backgroundImage: 'url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200)',
           backgroundSize: 'cover',
@@ -313,106 +313,81 @@ export default function Home() {
       >
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/90 via-indigo-600/90 to-purple-600/90"></div>
         <div className="container mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
             {/* Left Side - Content */}
             <div>
               {/* Trust Badge */}
-              <Badge className="mb-4 bg-white/20 text-white border-white/30 px-4 py-2">
-                <Sparkles className="h-4 w-4 mr-2" />
+              <Badge className="mb-3 bg-white/20 text-white border-white/30 px-3 py-1 text-xs">
+                <Sparkles className="h-3 w-3 mr-1" />
                 Trusted by 100K+ Affiliates Worldwide
               </Badge>
 
-              <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              <h2 className="text-3xl md:text-4xl font-bold mb-3 leading-tight">
                 Discover the Best Products{' '}
                 <span className="text-yellow-300">Worldwide</span>
               </h2>
               
-              <p className="text-xl mb-8 text-blue-100">
+              <p className="text-base mb-4 text-blue-100">
                 Compare, review, and find the perfect products with our global affiliate platform
               </p>
               
               {/* Search Bar */}
-              <form onSubmit={handleSearch} className="mb-8">
+              <form onSubmit={handleSearch} className="mb-4">
                 <div className="flex gap-2">
                   <Input
                     type="text"
                     placeholder="Search for products, tools, or services..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="flex-1 h-14 text-lg bg-white text-gray-900 border-2 border-white/20"
+                    className="flex-1 h-11 text-base bg-white text-gray-900 border-2 border-white/20"
                   />
-                  <Button type="submit" size="lg" className="h-14 px-8 bg-white text-blue-600 hover:bg-blue-50">
-                    <Search className="h-5 w-5" />
+                  <Button type="submit" size="sm" className="h-11 px-6 bg-white text-blue-600 hover:bg-blue-50">
+                    <Search className="h-4 w-4" />
                   </Button>
                 </div>
               </form>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4 mb-8">
+              <div className="flex flex-wrap gap-3">
                 <Link href="/blog">
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 shadow-lg">
+                  <Button size="default" className="bg-white text-blue-600 hover:bg-blue-50 shadow-lg">
                     Explore Products
-                    <ExternalLink className="ml-2 h-5 w-5" />
+                    <ExternalLink className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
-                <Button size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-white/30">
+                <Button size="default" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-white/30">
                   Start Earning Now
                 </Button>
-              </div>
-
-              {/* Features */}
-              <div className="grid grid-cols-3 gap-6">
-                <div className="flex flex-col items-center text-center">
-                  <div className="bg-white/10 rounded-full p-3 mb-2">
-                    <TrendingUp className="h-6 w-6" />
-                  </div>
-                  <h4 className="font-semibold mb-1">High Commission Rates</h4>
-                  <p className="text-sm text-blue-100">Earn up to 50% commission on premium products</p>
-                </div>
-                <div className="flex flex-col items-center text-center">
-                  <div className="bg-white/10 rounded-full p-3 mb-2">
-                    <Shield className="h-6 w-6" />
-                  </div>
-                  <h4 className="font-semibold mb-1">Trusted Brands</h4>
-                  <p className="text-sm text-blue-100">Partner with world-renowned companies</p>
-                </div>
-                <div className="flex flex-col items-center text-center">
-                  <div className="bg-white/10 rounded-full p-3 mb-2">
-                    <Globe className="h-6 w-6" />
-                  </div>
-                  <h4 className="font-semibold mb-1">Global Network</h4>
-                  <p className="text-sm text-blue-100">Join 100K+ affiliates worldwide</p>
-                </div>
               </div>
             </div>
 
             {/* Right Side - Featured Product */}
             <div className="flex justify-center lg:justify-end">
               {featuredProduct ? (
-                <div className="w-full max-w-md">
+                <div className="w-full max-w-sm">
                   <FeaturedProductCard product={featuredProduct} />
                 </div>
               ) : (
-                <div className="w-full max-w-md h-[600px] bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+                <div className="w-full max-w-sm h-[400px] bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white"></div>
                 </div>
               )}
             </div>
           </div>
 
           {/* Bottom Stats */}
-          <div className="flex justify-center gap-12 mt-12 pt-8 border-t border-white/20">
+          <div className="flex justify-center gap-8 mt-6 pt-4 border-t border-white/20">
             <div className="flex items-center gap-2 text-white">
               <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-              <span className="font-semibold">50K+ Products</span>
+              <span className="text-sm font-semibold">50K+ Products</span>
             </div>
             <div className="flex items-center gap-2 text-white">
               <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-              <span className="font-semibold">1M+ Users</span>
+              <span className="text-sm font-semibold">1M+ Users</span>
             </div>
             <div className="flex items-center gap-2 text-white">
               <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-              <span className="font-semibold">7 Languages</span>
+              <span className="text-sm font-semibold">7 Languages</span>
             </div>
           </div>
         </div>
