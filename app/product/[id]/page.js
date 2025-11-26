@@ -247,9 +247,8 @@ export default function ProductPage() {
               </div>
             </div>
 
-            {/* Sticky Purchase Card */}
-            <div className="lg:sticky lg:top-4">
-              <div className="border-2 border-gray-200 rounded-xl p-6 space-y-5 hover:border-blue-500 hover:shadow-xl transition-all duration-300">
+            {/* Purchase Card */}
+            <div className="border-2 border-gray-200 rounded-xl p-6 space-y-5 hover:border-blue-500 hover:shadow-lg transition-all duration-300">
                 {/* Price */}
                 <div>
                   <div className="flex items-baseline gap-3 mb-2">
