@@ -124,124 +124,184 @@ export default function ProductSlider({ title, products, icon: Icon }) {
         </div>
       </div>
 
-      {/* Slider Container */}
+      {/* Products Grid/Slider Container */}
       <div className="relative group">
-        {/* Left Arrow */}
-        {showLeftArrow && (
-          <button
-            onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all opacity-0 group-hover:opacity-100"
-            aria-label="Scroll left"
-          >
-            <ChevronLeft className="h-6 w-6 text-gray-700" />
-          </button>
-        )}
-
-        {/* Right Arrow */}
-        {showRightArrow && (
-          <button
-            onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all opacity-0 group-hover:opacity-100"
-            aria-label="Scroll right"
-          >
-            <ChevronRight className="h-6 w-6 text-gray-700" />
-          </button>
-        )}
-
-        {/* Products Scroll Container */}
-        <div
-          ref={scrollContainerRef}
-          onScroll={updateArrowVisibility}
-          className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
-          style={{
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-            WebkitOverflowScrolling: 'touch'
-          }}
-        >
-          {products.map((product) => (
-            <Card
-              key={product.id}
-              className="flex-shrink-0 w-[300px] hover:shadow-2xl transition-all duration-300 border-2 hover:border-blue-500"
-            >
-              <CardHeader>
-                <div className="aspect-video relative mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-100">
-                  {product.image_url ? (
-                    <img
-                      src={product.image_url}
-                      alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <ShoppingCart className="h-16 w-16 text-blue-300" />
-                    </div>
-                  )}
-                  {product.badge && (
-                    <Badge className="absolute top-2 right-2 bg-red-500">
-                      {product.badge}
-                    </Badge>
-                  )}
-                </div>
-                <CardTitle className="line-clamp-2 hover:text-blue-600 transition">
-                  {product.name}
-                </CardTitle>
-                <CardDescription className="line-clamp-2">
-                  {product.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`h-4 w-4 ${
-                          i < (product.rating || 4)
-                            ? 'fill-yellow-400 text-yellow-400'
-                            : 'text-gray-300'
-                        }`}
+        {/* Conditional Rendering: Grid for 4 or fewer products, Slider for more */}
+        {filteredProducts.length <= 4 ? (
+          /* Grid Layout */
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {filteredProducts.map((product) => (
+              <Card
+                key={product.id}
+                className="hover:shadow-xl transition-all duration-300 border hover:border-gray-300"
+              >
+                <CardHeader className="p-0">
+                  <div className="aspect-square relative rounded-t-lg overflow-hidden bg-gray-100">
+                    {product.image_url ? (
+                      <img
+                        src={product.image_url}
+                        alt={product.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                       />
-                    ))}
-                    <span className="text-sm text-gray-600 ml-2">
-                      ({product.rating || 4.5})
-                    </span>
-                  </div>
-                  <div className="flex items-center text-sm text-gray-500">
-                    <Eye className="h-4 w-4 mr-1" />
-                    {product.views || 0}
-                  </div>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-2xl font-bold text-blue-600">
-                      ${product.price}
-                    </p>
-                    {product.original_price && (
-                      <p className="text-sm text-gray-500 line-through">
-                        ${product.original_price}
-                      </p>
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <ShoppingCart className="h-16 w-16 text-gray-300" />
+                      </div>
+                    )}
+                    {product.badge && (
+                      <Badge className="absolute top-3 right-3 bg-yellow-400 text-black font-bold px-3 py-1 rotate-12 shadow-lg">
+                        {product.badge}
+                      </Badge>
+                    )}
+                    {(product.rating || 4) >= 4.5 && (
+                      <Badge className="absolute top-3 left-3 bg-green-500 text-white rounded-full px-3 py-1">
+                        {product.rating || 4.5}
+                      </Badge>
                     )}
                   </div>
-                  <Badge variant="secondary">{product.category}</Badge>
-                </div>
-              </CardContent>
-              <CardFooter className="flex gap-2">
-                <Link href={`/product/${product.id}`} className="flex-1">
-                  <Button variant="outline" className="w-full">
-                    View Details
-                  </Button>
-                </Link>
-                <Button
-                  className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
-                  onClick={() => handleAffiliateClick(product)}
+                </CardHeader>
+                <CardContent className="p-4">
+                  <h3 className="font-semibold text-lg mb-2 line-clamp-2 min-h-[3.5rem]">
+                    {product.name}
+                  </h3>
+                  
+                  {/* Price Section */}
+                  <div className="mb-3">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-2xl font-bold text-red-600">
+                        ${product.price}
+                      </span>
+                      {product.original_price && (
+                        <span className="text-sm text-gray-400 line-through">
+                          ${product.original_price}
+                        </span>
+                      )}
+                    </div>
+                    {product.original_price && (
+                      <span className="text-xs text-green-600 font-semibold">
+                        ↓ {Math.round(((product.original_price - product.price) / product.original_price) * 100)}%
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Action Icons */}
+                  <div className="flex items-center gap-2">
+                    <button className="p-2 hover:bg-gray-100 rounded transition">
+                      <Heart className="h-5 w-5 text-gray-400 hover:text-red-500" />
+                    </button>
+                    <button className="p-2 hover:bg-gray-100 rounded transition">
+                      <Scale className="h-5 w-5 text-gray-400 hover:text-blue-500" />
+                    </button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        ) : (
+          /* Slider Layout for more than 4 products */
+          <>
+            {/* Left Arrow */}
+            {showLeftArrow && (
+              <button
+                onClick={() => scroll('left')}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-100 shadow-lg rounded-full p-3 transition-all"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft className="h-6 w-6 text-gray-700" />
+              </button>
+            )}
+
+            {/* Right Arrow */}
+            {showRightArrow && (
+              <button
+                onClick={() => scroll('right')}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-100 shadow-lg rounded-full p-3 transition-all"
+                aria-label="Scroll right"
+              >
+                <ChevronRight className="h-6 w-6 text-gray-700" />
+              </button>
+            )}
+
+            {/* Products Scroll Container */}
+            <div
+              ref={scrollContainerRef}
+              onScroll={updateArrowVisibility}
+              className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+              style={{
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
+                WebkitOverflowScrolling: 'touch'
+              }}
+            >
+              {filteredProducts.map((product) => (
+                <Card
+                  key={product.id}
+                  className="flex-shrink-0 w-[280px] hover:shadow-xl transition-all duration-300 border hover:border-gray-300"
                 >
-                  Get Deal <ExternalLink className="ml-2 h-4 w-4" />
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
+                  <CardHeader className="p-0">
+                    <div className="aspect-square relative rounded-t-lg overflow-hidden bg-gray-100">
+                      {product.image_url ? (
+                        <img
+                          src={product.image_url}
+                          alt={product.name}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <ShoppingCart className="h-16 w-16 text-gray-300" />
+                        </div>
+                      )}
+                      {product.badge && (
+                        <Badge className="absolute top-3 right-3 bg-yellow-400 text-black font-bold px-3 py-1 rotate-12 shadow-lg">
+                          {product.badge}
+                        </Badge>
+                      )}
+                      {(product.rating || 4) >= 4.5 && (
+                        <Badge className="absolute top-3 left-3 bg-green-500 text-white rounded-full px-3 py-1">
+                          {product.rating || 4.5}
+                        </Badge>
+                      )}
+                    </div>
+                  </CardHeader>
+                  <CardContent className="p-4">
+                    <h3 className="font-semibold text-lg mb-2 line-clamp-2 min-h-[3.5rem]">
+                      {product.name}
+                    </h3>
+                    
+                    {/* Price Section */}
+                    <div className="mb-3">
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-2xl font-bold text-red-600">
+                          ${product.price}
+                        </span>
+                        {product.original_price && (
+                          <span className="text-sm text-gray-400 line-through">
+                            ${product.original_price}
+                          </span>
+                        )}
+                      </div>
+                      {product.original_price && (
+                        <span className="text-xs text-green-600 font-semibold">
+                          ↓ {Math.round(((product.original_price - product.price) / product.original_price) * 100)}%
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Action Icons */}
+                    <div className="flex items-center gap-2">
+                      <button className="p-2 hover:bg-gray-100 rounded transition">
+                        <Heart className="h-5 w-5 text-gray-400 hover:text-red-500" />
+                      </button>
+                      <button className="p-2 hover:bg-gray-100 rounded transition">
+                        <Scale className="h-5 w-5 text-gray-400 hover:text-blue-500" />
+                      </button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </>
+        )}
       </div>
 
       {/* Hide scrollbar CSS */}
