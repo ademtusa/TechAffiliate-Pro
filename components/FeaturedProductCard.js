@@ -30,9 +30,9 @@ export default function FeaturedProductCard({ product }) {
         </Badge>
       </div>
 
-      <CardContent className="p-6">
+      <CardContent className="p-4">
         {/* Product Image */}
-        <div className="relative aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden mb-6 group">
+        <div className="relative aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl overflow-hidden mb-3 group">
           {product.image_url ? (
             <img
               src={product.image_url}
@@ -41,33 +41,33 @@ export default function FeaturedProductCard({ product }) {
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <ShoppingCart className="h-24 w-24 text-gray-400" />
+              <ShoppingCart className="h-16 w-16 text-gray-400" />
             </div>
           )}
           
           {/* Eye Icon for Quick View */}
-          <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
-            <Eye className="h-5 w-5 text-gray-700" />
+          <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+            <Eye className="h-4 w-4 text-gray-700" />
           </div>
         </div>
 
         {/* Product Title */}
-        <h3 className="text-2xl font-bold text-gray-900 mb-3 line-clamp-2">
+        <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-1">
           {product.name}
         </h3>
 
         {/* Product Description */}
-        <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed">
+        <p className="text-sm text-gray-600 mb-3 line-clamp-2 leading-relaxed">
           {product.description || 'High-quality product with amazing features and exclusive benefits for our affiliates.'}
         </p>
 
         {/* Rating & Reviews */}
-        <div className="flex items-center gap-2 mb-6">
+        <div className="flex items-center gap-2 mb-3">
           <div className="flex items-center">
             {[...Array(5)].map((_, i) => (
               <Star
                 key={i}
-                className={`h-5 w-5 ${
+                className={`h-4 w-4 ${
                   i < Math.floor(product.rating || 4.5)
                     ? 'fill-yellow-400 text-yellow-400'
                     : 'text-gray-300'
@@ -75,46 +75,46 @@ export default function FeaturedProductCard({ product }) {
               />
             ))}
           </div>
-          <span className="text-sm text-gray-600 font-medium">
+          <span className="text-xs text-gray-600 font-medium">
             ({product.reviews || 1247} reviews)
           </span>
         </div>
 
         {/* Price Section */}
-        <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4 mb-4">
+        <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-3 mb-3">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-4xl font-bold text-purple-600">
+              <div className="text-2xl font-bold text-purple-600">
                 ${product.price}
               </div>
               {product.original_price && (
-                <div className="text-lg text-gray-400 line-through">
+                <div className="text-sm text-gray-400 line-through">
                   ${product.original_price}
                 </div>
               )}
             </div>
             <div className="text-right">
-              <div className="text-3xl font-bold text-green-600">
+              <div className="text-2xl font-bold text-green-600">
                 {product.commission_rate || 15.5}%
               </div>
-              <div className="text-sm text-gray-600">Commission</div>
+              <div className="text-xs text-gray-600">Commission</div>
             </div>
           </div>
         </div>
 
         {/* Commission Earnings */}
-        <div className="bg-green-50 border-2 border-green-200 rounded-lg px-4 py-3 mb-6">
-          <p className="text-center text-green-700 font-semibold">
+        <div className="bg-green-50 border-2 border-green-200 rounded-lg px-3 py-2 mb-3">
+          <p className="text-center text-sm text-green-700 font-semibold">
             💰 Earn ${commission} per sale
           </p>
         </div>
 
         {/* CTA Button */}
         <Link href={`/product/${product.id}`}>
-          <Button className="w-full h-14 text-lg font-bold bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white shadow-lg hover:shadow-xl transition-all">
-            <ShoppingCart className="h-5 w-5 mr-2" />
+          <Button className="w-full h-11 text-sm font-bold bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white shadow-lg hover:shadow-xl transition-all">
+            <ShoppingCart className="h-4 w-4 mr-2" />
             View Product & Earn {product.commission_rate || 15.5}%
-            <ExternalLink className="h-5 w-5 ml-2" />
+            <ExternalLink className="h-4 w-4 ml-2" />
           </Button>
         </Link>
       </CardContent>
