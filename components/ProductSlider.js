@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { ChevronLeft, ChevronRight, Star, Eye, ExternalLink, ShoppingCart, Heart, Scale, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
-import { useCartStore } from '@/lib/cartStore'
 
 export default function ProductSlider({ title, products, icon: Icon }) {
   const scrollContainerRef = useRef(null)
