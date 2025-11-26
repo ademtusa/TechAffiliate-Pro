@@ -353,23 +353,6 @@ export default function ProductPage() {
               </CardContent>
             </Card>
 
-            {/* Quick Features Highlight */}
-            <div className="grid grid-cols-3 gap-4">
-              {[
-                { icon: '⚡', title: 'Instant Access', desc: 'Start using immediately' },
-                { icon: '🔒', title: 'Secure & Safe', desc: '256-bit SSL encryption' },
-                { icon: '💎', title: 'Premium Quality', desc: 'Top-rated by experts' }
-              ].map((item, idx) => (
-                <Card key={idx} className="text-center hover:shadow-lg transition-shadow bg-gradient-to-br from-blue-50 to-indigo-50">
-                  <CardContent className="pt-4 pb-4">
-                    <div className="text-3xl mb-2">{item.icon}</div>
-                    <p className="font-semibold text-sm mb-1">{item.title}</p>
-                    <p className="text-xs text-gray-600">{item.desc}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
             {/* Description */}
             <Card className="bg-gradient-to-br from-slate-50 to-blue-50">
               <CardContent className="pt-6">
