@@ -1066,7 +1066,8 @@ export default function ProductPage() {
                   </Button>
                 </div>
               </TabsContent>
-          </Tabs>
+            </Tabs>
+          </div>
         </div>
 
         {/* Related Products */}
