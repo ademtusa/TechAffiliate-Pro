@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { UserPlus, Search, Share2, DollarSign, ChevronDown, TrendingUp, Clock, CreditCard, Users, BarChart3, Zap, CheckCircle2, ArrowRight } from 'lucide-react'
+import { UserPlus, Search, Share2, DollarSign, ChevronDown, ChevronUp, TrendingUp, Clock, CreditCard, Users, BarChart3, Zap, CheckCircle2, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 export default function HowItWorksSection() {
