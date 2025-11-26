@@ -353,8 +353,8 @@ export default function Home() {
       {/* Testimonials Section */}
       <TestimonialsSlider />
 
-      {/* Stats Section */}
-      <StatsSection />
+      {/* How It Works + FAQ Section */}
+      <HowItWorksSection />
 
       {/* Member Benefits Section */}
       <section className="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-16 px-4">
