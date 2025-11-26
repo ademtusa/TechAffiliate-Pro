@@ -82,14 +82,24 @@ export default function ProductSlider({ title, products, icon: Icon }) {
           {/* Filter Buttons */}
           <div className="flex items-center gap-1">
             <button
-              onClick={() => setSelectedFilter('all')}
+              onClick={() => setSelectedFilter('sort')}
               className={`px-4 py-2 text-sm font-medium transition-all ${
-                selectedFilter === 'all'
+                selectedFilter === 'sort'
                   ? 'text-purple-600 border-b-2 border-purple-600'
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Show all
+              Sırala
+            </button>
+            <button
+              onClick={() => setSelectedFilter('rated')}
+              className={`px-4 py-2 text-sm font-medium transition-all ${
+                selectedFilter === 'rated'
+                  ? 'text-purple-600 border-b-2 border-purple-600'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Best Rated
             </button>
             <button
               onClick={() => setSelectedFilter('popular')}
@@ -102,14 +112,14 @@ export default function ProductSlider({ title, products, icon: Icon }) {
               Popular
             </button>
             <button
-              onClick={() => setSelectedFilter('rated')}
+              onClick={() => setSelectedFilter('discount')}
               className={`px-4 py-2 text-sm font-medium transition-all ${
-                selectedFilter === 'rated'
+                selectedFilter === 'discount'
                   ? 'text-purple-600 border-b-2 border-purple-600'
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Best rated
+              Discount
             </button>
           </div>
         </div>
