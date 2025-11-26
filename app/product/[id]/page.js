@@ -359,8 +359,9 @@ export default function ProductPage() {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Comprehensive Review Section */}
+      {/* Comprehensive Review Section */}
         <div className="container mx-auto px-4">
           <div className="border-t border-gray-200 pt-8 mt-8">
           <Tabs defaultValue="overview" className="w-full">
