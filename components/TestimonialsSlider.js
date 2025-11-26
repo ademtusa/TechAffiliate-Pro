@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react'
 
@@ -11,7 +10,6 @@ export default function TestimonialsSlider() {
   const [showLeftArrow, setShowLeftArrow] = useState(false)
   const [showRightArrow, setShowRightArrow] = useState(true)
 
-  // Mock testimonials data - sorted by most recent
   const testimonials = [
     {
       id: 1,
@@ -107,7 +105,7 @@ export default function TestimonialsSlider() {
     const container = scrollContainerRef.current
     if (!container) return
 
-    const scrollAmount = 420
+    const scrollAmount = container.clientWidth
     const newScrollLeft = direction === 'left' 
       ? container.scrollLeft - scrollAmount 
       : container.scrollLeft + scrollAmount
@@ -126,7 +124,7 @@ export default function TestimonialsSlider() {
     const container = scrollContainerRef.current
     if (!container) return
 
-    setShowLeftArrow(container.scrollLeft > 0)
+    setShowLeftArrow(container.scrollLeft > 10)
     setShowRightArrow(
       container.scrollLeft < container.scrollWidth - container.clientWidth - 10
     )
@@ -139,7 +137,6 @@ export default function TestimonialsSlider() {
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600">
       <div className="container mx-auto">
-        {/* Section Header */}
         <div className="text-center mb-12">
           <Badge className="mb-4 bg-white/20 text-white text-sm px-4 py-1 border-white/30">
             Customer Reviews
@@ -152,31 +149,27 @@ export default function TestimonialsSlider() {
           </p>
         </div>
 
-        {/* Testimonials Slider */}
         <div className="relative group">
-          {/* Left Arrow */}
-          {showLeftArrow && (
+          {showLeftArrow && testimonials.length > 4 && (
             <button
               onClick={() => scroll('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-2xl rounded-full p-4 transition-all opacity-0 group-hover:opacity-100 -ml-4"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-2xl rounded-full p-4 transition-all -ml-4"
               aria-label="Previous testimonials"
             >
               <ChevronLeft className="h-6 w-6 text-gray-700" />
             </button>
           )}
 
-          {/* Right Arrow */}
-          {showRightArrow && (
+          {showRightArrow && testimonials.length > 4 && (
             <button
               onClick={() => scroll('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-2xl rounded-full p-4 transition-all opacity-0 group-hover:opacity-100 -mr-4"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-2xl rounded-full p-4 transition-all -mr-4"
               aria-label="Next testimonials"
             >
               <ChevronRight className="h-6 w-6 text-gray-700" />
             </button>
           )}
 
-          {/* Testimonials Container - 4 columns with slider */}
           <div
             ref={scrollContainerRef}
             onScroll={updateArrowVisibility}
@@ -188,96 +181,72 @@ export default function TestimonialsSlider() {
             }}
           >
             <div className="grid grid-cols-4 gap-6" style={{ gridAutoColumns: '1fr', width: `${Math.max(100, (testimonials.length / 4) * 100)}%` }}>
-            {testimonials.map((testimonial) => (
-              <Card
-                key={testimonial.id}
-                className="bg-white/95 backdrop-blur hover:shadow-2xl transition-all duration-300 border-2 hover:border-white"
-              >
-                <CardContent className="pt-6">
-                  {/* Quote Icon */}
-                  <div className="mb-4">
-                    <Quote className="h-10 w-10 text-blue-600 opacity-30" />
-                  </div>
-
-                  {/* Rating */}
-                  <div className="flex items-center mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`h-5 w-5 ${
-                          i < testimonial.rating
-                            ? 'fill-yellow-400 text-yellow-400'
-                            : 'text-gray-300'
-                        }`}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Testimonial Text */}
-                  <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                    "{testimonial.text}"
-                  </p>
-
-                  {/* Product Used */}
-                  <div className="mb-6">
-                    <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
-                      Used: {testimonial.productUsed}
-                    </Badge>
-                  </div>
-
-                  {/* Author Info */}
-                  <div className="flex items-center gap-4 pt-4 border-t">
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      className="w-14 h-14 rounded-full border-2 border-blue-200"
-                    />
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2">
-                        <p className="font-bold text-gray-900">{testimonial.name}</p>
-                        {testimonial.verified && (
-                          <Badge className="bg-green-100 text-green-800 text-xs px-2 py-0">
-                            ✓ Verified
-                          </Badge>
-                        )}
-                      </div>
-                      <p className="text-sm text-gray-600">{testimonial.role}</p>
-                      <p className="text-xs text-gray-500 mt-1">
-                        {new Date(testimonial.date).toLocaleDateString('en-US', { 
-                          month: 'short', 
-                          day: 'numeric', 
-                          year: 'numeric' 
-                        })}
-                      </p>
+              {testimonials.map((testimonial) => (
+                <Card
+                  key={testimonial.id}
+                  className="bg-white/95 backdrop-blur hover:shadow-2xl transition-all duration-300 border-2 hover:border-white"
+                >
+                  <CardContent className="pt-6">
+                    <div className="mb-4">
+                      <Quote className="h-10 w-10 text-blue-600 opacity-30" />
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+
+                    <div className="flex items-center mb-4">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`h-5 w-5 ${
+                            i < testimonial.rating
+                              ? 'fill-yellow-400 text-yellow-400'
+                              : 'text-gray-300'
+                          }`}
+                        />
+                      ))}
+                    </div>
+
+                    <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                      "{testimonial.text}"
+                    </p>
+
+                    <div className="mb-6">
+                      <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
+                        Used: {testimonial.productUsed}
+                      </Badge>
+                    </div>
+
+                    <div className="flex items-center gap-4 pt-4 border-t">
+                      <img
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        className="w-14 h-14 rounded-full border-2 border-blue-200"
+                      />
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <p className="font-bold text-gray-900">{testimonial.name}</p>
+                          {testimonial.verified && (
+                            <Badge className="bg-green-100 text-green-800 text-xs px-2 py-0">
+                              ✓ Verified
+                            </Badge>
+                          )}
+                        </div>
+                        <p className="text-sm text-gray-600">{testimonial.role}</p>
+                        <p className="text-xs text-gray-500 mt-1">
+                          {new Date(testimonial.date).toLocaleDateString('en-US', { 
+                            month: 'short', 
+                            day: 'numeric', 
+                            year: 'numeric' 
+                          })}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
-
-        {/* Scroll Indicator Dots */}
-        <div className="flex justify-center gap-2 mt-8">
-          {[...Array(Math.ceil(testimonials.length / 3))].map((_, idx) => (
-            <div
-              key={idx}
-              className="h-2 w-2 rounded-full bg-white/40 hover:bg-white/80 transition cursor-pointer"
-              onClick={() => {
-                const container = scrollContainerRef.current
-                if (container) {
-                  container.scrollTo({
-                    left: idx * 1200,
-                    behavior: 'smooth'
-                  })
-                }
-              }}
-            />
-          ))}
         </div>
       </div>
 
-      {/* Hide scrollbar CSS */}
       <style jsx>{`
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
