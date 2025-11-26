@@ -220,22 +220,6 @@ export default function ProductPage() {
                 </button>
               ))}
             </div>
-
-            {/* Trust Signals - Minimalist */}
-            <div className="space-y-2 text-sm text-gray-700 bg-gray-50 rounded-lg p-4 border border-gray-200">
-              <div className="flex items-center gap-2">
-                <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
-                <span>30-Day Money-Back Guarantee</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Shield className="h-4 w-4 text-blue-600 flex-shrink-0" />
-                <span>Secure Checkout</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Truck className="h-4 w-4 text-gray-600 flex-shrink-0" />
-                <span>Free Shipping on Orders $50+</span>
-              </div>
-            </div>
           </div>
 
           {/* RIGHT SIDE - Product Info (3 columns) */}
