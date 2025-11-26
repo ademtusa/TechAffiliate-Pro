@@ -268,45 +268,88 @@ export default function ProductPage() {
             </Card>
           </div>
 
-          {/* RIGHT SIDE - Product Info */}
-          <div className="space-y-6">
+          {/* RIGHT SIDE - Product Info (Larger, 3 columns) */}
+          <div className="lg:col-span-3 space-y-6">
             {/* Title & Rating */}
             <div>
-              <Badge className="mb-3" variant="secondary">{product.category}</Badge>
-              <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
+              <div className="flex items-center gap-3 mb-3">
+                <Badge className="text-sm px-3 py-1" variant="secondary">{product.category}</Badge>
+                <Badge className="text-sm px-3 py-1 bg-blue-600">⭐ Best Seller</Badge>
+                <Badge className="text-sm px-3 py-1 bg-green-600">✓ Verified</Badge>
+              </div>
+              <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{product.name}</h1>
               
-              <div className="flex items-center gap-4 mb-4">
-                <div className="flex items-center">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-5 w-5 ${i < (product.rating || 4) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
-                    />
-                  ))}
-                  <span className="ml-2 text-lg font-semibold">{product.rating || 4.5}</span>
+              <div className="flex items-center gap-6 mb-4 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`h-6 w-6 ${i < (product.rating || 4) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-xl font-bold">{product.rating || 4.5}</span>
+                  <span className="text-gray-600">({reviews.length} reviews)</span>
                 </div>
-                <Separator orientation="vertical" className="h-6" />
-                <span className="text-gray-600">{reviews.length} reviews</span>
-                <Separator orientation="vertical" className="h-6" />
-                <span className="text-gray-600">{product.views} views</span>
+                <Separator orientation="vertical" className="h-8" />
+                <div className="flex items-center gap-2 text-green-600">
+                  <Check className="h-5 w-5" />
+                  <span className="font-semibold">{product.sales_count}+ Happy Customers</span>
+                </div>
+                <Separator orientation="vertical" className="h-8" />
+                <div className="flex items-center gap-2 text-blue-600">
+                  <TrendingUp className="h-5 w-5" />
+                  <span className="font-semibold">{product.views} views</span>
+                </div>
               </div>
             </div>
 
-            {/* Price */}
-            <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200">
+            {/* Price with Countdown */}
+            <Card className="bg-gradient-to-r from-orange-50 via-red-50 to-orange-50 border-4 border-red-300 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-500 to-red-500"></div>
               <CardContent className="pt-6">
-                <div className="flex items-baseline gap-4 mb-2">
-                  <span className="text-5xl font-bold text-blue-600">${product.price}</span>
-                  {product.original_price && (
-                    <>
-                      <span className="text-2xl text-gray-500 line-through">${product.original_price}</span>
-                      <Badge className="bg-green-500 text-lg px-3 py-1">
-                        Save {Math.round(((product.original_price - product.price) / product.original_price) * 100)}%
-                      </Badge>
-                    </>
-                  )}
+                <div className="mb-4">
+                  <p className="text-sm font-semibold text-red-600 uppercase tracking-wider mb-2">⏰ Limited Time Offer Expires Soon</p>
+                  <div className="flex items-baseline gap-4 mb-3">
+                    <span className="text-6xl font-bold text-red-600">${product.price}</span>
+                    {product.original_price && (
+                      <>
+                        <span className="text-3xl text-gray-500 line-through">${product.original_price}</span>
+                        <div className="flex flex-col">
+                          <Badge className="bg-green-500 text-xl px-4 py-2 mb-1">
+                            Save {Math.round(((product.original_price - product.price) / product.original_price) * 100)}%
+                          </Badge>
+                          <span className="text-sm text-gray-600">You save ${(product.original_price - product.price).toFixed(2)}</span>
+                        </div>
+                      </>
+                    )}
+                  </div>
                 </div>
-                <p className="text-sm text-gray-600">Tax included. Shipping calculated at checkout.</p>
+
+                {/* Payment Options */}
+                <div className="bg-white rounded-lg p-4 mb-4">
+                  <p className="text-sm text-gray-600 mb-2">Or pay in installments:</p>
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl font-bold text-blue-600">${(product.price / 4).toFixed(2)}</span>
+                    <span className="text-gray-600">x 4 interest-free payments</span>
+                  </div>
+                </div>
+
+                {/* Stock Indicator */}
+                <div className="bg-orange-100 border-2 border-orange-300 rounded-lg p-3 mb-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-semibold text-orange-800">🔥 High Demand</span>
+                    <span className="text-sm font-bold text-orange-600">Only 7 left!</span>
+                  </div>
+                  <div className="w-full bg-orange-200 rounded-full h-2">
+                    <div className="bg-orange-600 h-2 rounded-full" style={{ width: '23%' }}></div>
+                  </div>
+                </div>
+
+                <p className="text-sm text-gray-600">
+                  ✓ Tax included • ✓ Free shipping • ✓ 30-day returns
+                </p>
               </CardContent>
             </Card>
 
