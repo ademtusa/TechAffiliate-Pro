@@ -262,53 +262,21 @@ export default function ProductPage() {
               </div>
             </div>
 
-            {/* Price with Countdown */}
-            <Card className="bg-gradient-to-r from-orange-50 via-red-50 to-orange-50 border-4 border-red-300 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-500 to-red-500"></div>
-              <CardContent className="pt-6">
-                <div className="mb-4">
-                  <p className="text-sm font-semibold text-red-600 uppercase tracking-wider mb-2">⏰ Limited Time Offer Expires Soon</p>
-                  <div className="flex items-baseline gap-4 mb-3">
-                    <span className="text-6xl font-bold text-red-600">${product.price}</span>
-                    {product.original_price && (
-                      <>
-                        <span className="text-3xl text-gray-500 line-through">${product.original_price}</span>
-                        <div className="flex flex-col">
-                          <Badge className="bg-green-500 text-xl px-4 py-2 mb-1">
-                            Save {Math.round(((product.original_price - product.price) / product.original_price) * 100)}%
-                          </Badge>
-                          <span className="text-sm text-gray-600">You save ${(product.original_price - product.price).toFixed(2)}</span>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </div>
-
-                {/* Payment Options */}
-                <div className="bg-white rounded-lg p-4 mb-4">
-                  <p className="text-sm text-gray-600 mb-2">Or pay in installments:</p>
-                  <div className="flex items-center gap-2">
-                    <span className="text-2xl font-bold text-blue-600">${(product.price / 4).toFixed(2)}</span>
-                    <span className="text-gray-600">x 4 interest-free payments</span>
-                  </div>
-                </div>
-
-                {/* Stock Indicator */}
-                <div className="bg-orange-100 border-2 border-orange-300 rounded-lg p-3 mb-3">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-semibold text-orange-800">🔥 High Demand</span>
-                    <span className="text-sm font-bold text-orange-600">Only 7 left!</span>
-                  </div>
-                  <div className="w-full bg-orange-200 rounded-full h-2">
-                    <div className="bg-orange-600 h-2 rounded-full" style={{ width: '23%' }}></div>
-                  </div>
-                </div>
-
-                <p className="text-sm text-gray-600">
-                  ✓ Tax included • ✓ Free shipping • ✓ 30-day returns
-                </p>
-              </CardContent>
-            </Card>
+            {/* Price */}
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+              <div className="flex items-baseline gap-3 mb-3">
+                <span className="text-4xl font-bold text-gray-900">${product.price}</span>
+                {product.original_price && (
+                  <>
+                    <span className="text-xl text-gray-400 line-through">${product.original_price}</span>
+                    <Badge className="bg-blue-600 text-white">
+                      Save {Math.round(((product.original_price - product.price) / product.original_price) * 100)}%
+                    </Badge>
+                  </>
+                )}
+              </div>
+              <p className="text-sm text-gray-600">Tax included • Free shipping on orders over $50</p>
+            </div>
 
             {/* Description */}
             <Card className="bg-gradient-to-br from-slate-50 to-blue-50">
