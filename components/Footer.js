@@ -33,20 +33,20 @@ export default function Footer() {
               Your trusted source for tech product reviews and deals.
             </p>
             
-            {/* Newsletter */}
-            <form onSubmit={handleSubscribe} className="flex gap-2 mb-4">
+            {/* Newsletter - Compact */}
+            <form onSubmit={handleSubscribe} className="flex gap-2 mb-4 max-w-xs">
               <Input
                 type="email"
                 placeholder="Your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="h-10 bg-gray-800 border-gray-700 text-white text-sm"
+                className="h-9 bg-gray-800 border-gray-700 text-white text-sm flex-1"
               />
               <Button 
                 type="submit"
                 size="sm"
-                className="bg-blue-600 hover:bg-blue-700"
+                className="bg-blue-600 hover:bg-blue-700 h-9 w-9 p-0"
               >
                 <Send className="h-4 w-4" />
               </Button>
