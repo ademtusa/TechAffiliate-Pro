@@ -176,12 +176,14 @@ export default function TestimonialsSlider() {
             </button>
           )}
 
-          {/* Testimonials Container */}
+          {/* Testimonials Container - 4 columns with slider */}
           <div
             ref={scrollContainerRef}
             onScroll={updateArrowVisibility}
-            className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+            className="grid grid-cols-4 gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
             style={{
+              gridAutoFlow: 'column',
+              gridAutoColumns: 'minmax(0, 1fr)',
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
               WebkitOverflowScrolling: 'touch'
@@ -190,7 +192,7 @@ export default function TestimonialsSlider() {
             {testimonials.map((testimonial) => (
               <Card
                 key={testimonial.id}
-                className="flex-shrink-0 w-[400px] bg-white/95 backdrop-blur hover:shadow-2xl transition-all duration-300 border-2 hover:border-white"
+                className="bg-white/95 backdrop-blur hover:shadow-2xl transition-all duration-300 border-2 hover:border-white"
               >
                 <CardContent className="pt-6">
                   {/* Quote Icon */}
