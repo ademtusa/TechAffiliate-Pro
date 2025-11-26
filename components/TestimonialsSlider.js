@@ -176,7 +176,7 @@ export default function TestimonialsSlider() {
           <div
             ref={scrollContainerRef}
             onScroll={updateArrowVisibility}
-            className="overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+            className="overflow-x-hidden scrollbar-hide scroll-smooth pb-4"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
@@ -187,7 +187,8 @@ export default function TestimonialsSlider() {
               {testimonials.map((testimonial) => (
                 <Card
                   key={testimonial.id}
-                  className="flex-shrink-0 w-[300px] bg-white/95 backdrop-blur hover:shadow-2xl transition-all duration-300 border-2 hover:border-white"
+                  className="flex-shrink-0 bg-white/95 backdrop-blur hover:shadow-2xl transition-all duration-300 border-2 hover:border-white"
+                  style={{ width: 'calc((100% - 72px) / 4)' }}
                 >
                   <CardContent className="p-6">
                     <div className="mb-4">
