@@ -14,6 +14,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import StatsSection from '@/components/StatsSection'
 import ProductSlider from '@/components/ProductSlider'
+import TestimonialsSlider from '@/components/TestimonialsSlider'
 
 export default function Home() {
   const [user, setUser] = useState(null)
