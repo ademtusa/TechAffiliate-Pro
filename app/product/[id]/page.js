@@ -929,7 +929,7 @@ export default function ProductPage() {
                 {reviews.length > 0 ? (
                   <div className="space-y-6">
                     {reviews.map((review) => (
-                      <Card key={review.id} className="hover:shadow-md transition-shadow">
+                      <Card key={review.id} className="hover:shadow-md hover:border-blue-500 transition-all duration-300 border border-gray-200">
                         <CardContent className="pt-6">
                           <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center gap-4">
