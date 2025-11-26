@@ -254,6 +254,7 @@ export default function TestimonialsSlider() {
                 </CardContent>
               </Card>
             ))}
+            </div>
           </div>
         </div>
 
