@@ -241,6 +241,7 @@ export default function ProductSlider({ title, products, icon: Icon }) {
               </CardFooter>
             </Card>
           ))}
+          </div>
         </div>
       </div>
 
