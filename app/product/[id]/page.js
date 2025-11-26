@@ -414,10 +414,9 @@ export default function ProductPage() {
                 Reviews ({reviews.length})
               </TabsTrigger>
             </TabsList>
-            <div className="py-6">
-            <CardContent className="pt-6">
-              {/* Overview Tab */}
-              <TabsContent value="overview" className="space-y-8">
+            
+            {/* Overview Tab */}
+            <TabsContent value="overview" className="mt-6 space-y-6">
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Comprehensive Review to Help You Make an Informed Decision</h3>
                   <p className="text-gray-700 leading-relaxed mb-6">
