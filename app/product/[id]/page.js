@@ -310,7 +310,7 @@ export default function ProductPage() {
             <div className="space-y-3">
               <Button 
                 size="lg" 
-                className="w-full h-14 text-lg font-semibold bg-blue-600 hover:bg-blue-700 text-white"
+                className="w-full h-14 text-lg font-semibold bg-blue-600 hover:bg-blue-700 hover:shadow-lg text-white border-2 border-blue-600 hover:border-blue-700 transition-all duration-300"
                 onClick={handleBuyNow}
               >
                 <ShoppingCart className="mr-2 h-5 w-5" />
@@ -321,7 +321,7 @@ export default function ProductPage() {
                 <Button 
                   size="lg"
                   variant="outline"
-                  className="h-12"
+                  className="h-12 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 transition-all duration-300"
                   onClick={handleAddToCart}
                 >
                   <Heart className="mr-2 h-4 w-4" />
@@ -330,7 +330,7 @@ export default function ProductPage() {
                 <Button 
                   size="lg"
                   variant="outline"
-                  className="h-12"
+                  className="h-12 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 transition-all duration-300"
                   onClick={handleAffiliateClick}
                 >
                   <ExternalLink className="mr-2 h-4 w-4" />
