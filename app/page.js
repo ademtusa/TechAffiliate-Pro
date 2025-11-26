@@ -368,7 +368,7 @@ export default function Home() {
                 </Button>
 
                 {/* Rating Badge - Same height as Search, extends to Featured Product */}
-                <div className="flex-1 h-12 bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-md rounded-lg px-6 border border-white/20 shadow-xl hover:shadow-2xl transition-all flex items-center gap-3">
+                <div className="flex-1 h-12 bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-md rounded-lg px-6 border border-white/20 shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-3">
                   <Star className="h-5 w-5 text-yellow-300 fill-yellow-300" />
                   <div className="flex items-baseline gap-1">
                     <span className="text-lg font-bold text-white">4.9/5</span>
