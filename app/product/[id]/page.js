@@ -260,8 +260,8 @@ export default function ProductPage() {
             </Card>
           </div>
 
-          {/* RIGHT SIDE - Product Info (Larger, 3 columns) */}
-          <div className="lg:col-span-3 space-y-6">
+          {/* RIGHT SIDE - Product Info */}
+          <div className="space-y-6">
             {/* Title & Rating */}
             <div>
               <div className="flex items-center gap-3 mb-3">
