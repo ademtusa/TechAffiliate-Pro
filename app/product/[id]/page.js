@@ -338,22 +338,6 @@ export default function ProductPage() {
                 </Button>
               </div>
             </div>
-
-            {/* Social Share */}
-            <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-              <span className="text-sm text-gray-600">Share:</span>
-              <div className="flex gap-2">
-                <Button size="sm" variant="ghost" className="h-9 w-9 p-0" onClick={() => handleShare('facebook')}>
-                  <Facebook className="h-4 w-4" />
-                </Button>
-                <Button size="sm" variant="ghost" className="h-9 w-9 p-0" onClick={() => handleShare('twitter')}>
-                  <Twitter className="h-4 w-4" />
-                </Button>
-                <Button size="sm" variant="ghost" className="h-9 w-9 p-0" onClick={() => handleShare('linkedin')}>
-                  <Linkedin className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
           </div>
         </div>
         </div>
