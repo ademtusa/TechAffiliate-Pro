@@ -180,15 +180,14 @@ export default function TestimonialsSlider() {
           <div
             ref={scrollContainerRef}
             onScroll={updateArrowVisibility}
-            className="grid grid-cols-4 gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+            className="overflow-x-auto scrollbar-hide scroll-smooth pb-4"
             style={{
-              gridAutoFlow: 'column',
-              gridAutoColumns: 'minmax(0, 1fr)',
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
               WebkitOverflowScrolling: 'touch'
             }}
           >
+            <div className="grid grid-cols-4 gap-6" style={{ gridAutoColumns: '1fr', width: `${Math.max(100, (testimonials.length / 4) * 100)}%` }}>
             {testimonials.map((testimonial) => (
               <Card
                 key={testimonial.id}
