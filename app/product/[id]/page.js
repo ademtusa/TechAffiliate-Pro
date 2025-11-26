@@ -176,8 +176,8 @@ export default function ProductPage() {
       <div className="bg-white">
         <div className="container mx-auto px-4 py-8">
           <div className="grid lg:grid-cols-2 gap-10 mb-8">
-          {/* LEFT SIDE - Product Images (Smaller, 2 columns) */}
-          <div className="lg:col-span-2">
+          {/* LEFT SIDE - Product Images */}
+          <div>
             {/* Main Image - Reduced Size */}
             <div className="relative rounded-2xl overflow-hidden bg-white shadow-2xl mb-4" style={{ aspectRatio: '4/3' }}>
               {productImages[selectedImage] ? (
