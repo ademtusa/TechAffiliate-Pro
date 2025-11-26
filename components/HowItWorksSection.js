@@ -11,32 +11,36 @@ export default function HowItWorksSection() {
 
   const steps = [
     {
-      number: '1',
+      number: '01',
       icon: UserPlus,
       title: 'Sign Up Free',
-      description: 'Create your affiliate account in 60 seconds. No credit card required.',
-      color: 'from-blue-500 to-blue-600'
+      description: 'Create your affiliate account in 60 seconds',
+      color: 'from-blue-500 to-cyan-500',
+      bgColor: 'bg-blue-500/10'
     },
     {
-      number: '2',
+      number: '02',
       icon: Search,
       title: 'Choose Products',
-      description: 'Browse 50K+ products with commissions up to 50%. Filter by niche & payout.',
-      color: 'from-purple-500 to-purple-600'
+      description: 'Browse 50K+ products with up to 50% commission',
+      color: 'from-purple-500 to-pink-500',
+      bgColor: 'bg-purple-500/10'
     },
     {
-      number: '3',
+      number: '03',
       icon: Share2,
       title: 'Share Your Links',
-      description: 'Get unique tracking links. Share on blog, social media, or email campaigns.',
-      color: 'from-pink-500 to-pink-600'
+      description: 'Share on blog, social media, or email',
+      color: 'from-orange-500 to-red-500',
+      bgColor: 'bg-orange-500/10'
     },
     {
-      number: '4',
+      number: '04',
       icon: DollarSign,
       title: 'Earn Commission',
-      description: 'Get paid monthly via PayPal, bank transfer, or crypto. Track earnings in real-time.',
-      color: 'from-green-500 to-green-600'
+      description: 'Get paid monthly. Track earnings in real-time',
+      color: 'from-green-500 to-emerald-500',
+      bgColor: 'bg-green-500/10'
     }
   ]
 
