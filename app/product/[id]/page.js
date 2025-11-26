@@ -179,7 +179,7 @@ export default function ProductPage() {
           {/* LEFT SIDE - Product Images (2 columns) */}
           <div className="lg:col-span-2">
             {/* Main Image */}
-            <div className="relative rounded-lg overflow-hidden bg-gray-100 mb-3 border border-gray-200">
+            <div className="relative rounded-lg overflow-hidden bg-gray-100 mb-3 border border-gray-200 hover:border-blue-600 transition-colors duration-300 cursor-pointer">
               <div className="aspect-square">
                 {productImages[selectedImage] ? (
                   <img
