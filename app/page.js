@@ -364,6 +364,62 @@ export default function Home() {
                   Start Earning Now
                 </Button>
               </div>
+
+              {/* Social Proof & Social Media */}
+              <div className="flex items-center justify-between bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-lg">
+                {/* Live Stats */}
+                <div className="flex items-center gap-6">
+                  <div className="flex items-center gap-2">
+                    <div className="relative">
+                      <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                      <div className="absolute inset-0 w-3 h-3 bg-green-400 rounded-full animate-ping"></div>
+                    </div>
+                    <span className="text-sm font-semibold text-white">2,847 online</span>
+                  </div>
+                  <div className="h-8 w-px bg-white/20"></div>
+                  <div className="flex items-center gap-2">
+                    <Star className="h-4 w-4 text-yellow-300 fill-yellow-300" />
+                    <span className="text-sm font-semibold text-white">50K+ Products</span>
+                  </div>
+                </div>
+
+                {/* Social Media Icons */}
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-blue-100 mr-2">Follow us:</span>
+                  <a 
+                    href="https://twitter.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
+                  >
+                    <Twitter className="h-4 w-4 text-white" />
+                  </a>
+                  <a 
+                    href="https://linkedin.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
+                  >
+                    <Linkedin className="h-4 w-4 text-white" />
+                  </a>
+                  <a 
+                    href="https://facebook.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
+                  >
+                    <Facebook className="h-4 w-4 text-white" />
+                  </a>
+                  <a 
+                    href="https://instagram.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
+                  >
+                    <Instagram className="h-4 w-4 text-white" />
+                  </a>
+                </div>
+              </div>
             </div>
 
             {/* Right Side - Featured Product */}
