@@ -349,6 +349,9 @@ export default function Home() {
         )}
       </div>
 
+      {/* Testimonials Section */}
+      <TestimonialsSlider />
+
       {/* Stats Section */}
       <StatsSection />
 
