@@ -176,8 +176,8 @@ export default function ProductPage() {
       <div className="bg-white">
         <div className="container mx-auto px-4 py-8">
           <div className="grid lg:grid-cols-2 gap-10 max-w-7xl mx-auto">
-          {/* LEFT SIDE - Product Images (2 columns) */}
-          <div className="lg:col-span-2">
+          {/* LEFT SIDE - Product Images */}
+          <div>
             {/* Main Image */}
             <div className="relative rounded-lg overflow-hidden bg-gray-100 mb-3 border border-gray-200 hover:border-blue-600 transition-colors duration-300 cursor-pointer">
               <div className="aspect-square">
