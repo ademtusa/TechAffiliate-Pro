@@ -68,8 +68,16 @@ export default function ResourcesPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      {/* Hero Section */}
+      <HeroSection 
+        title="Free Resources & Downloads"
+        subtitle="Exclusive guides, tutorials, and bonuses for our affiliates"
+        featuredProduct={mostDownloadedProduct}
+        featuredType="mostDownloaded"
+      />
+
       {/* Navigation */}
-      <nav className="bg-white border-b">
+      <nav className="bg-white border-b sticky top-0 z-10">
         <div className="container mx-auto px-4 py-4">
           <Link href="/">
             <Button variant="ghost">
@@ -79,24 +87,6 @@ export default function ResourcesPage() {
           </Link>
         </div>
       </nav>
-
-      {/* Hero */}
-      <section className="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-16 px-4">
-        <div className="container mx-auto text-center">
-          <Gift className="h-16 w-16 mx-auto mb-4" />
-          <h1 className="text-5xl font-bold mb-4">Free Member Resources</h1>
-          <p className="text-xl text-purple-100">
-            Exclusive guides, tutorials, and bonuses for our members
-          </p>
-          {!user && (
-            <div className="mt-8">
-              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
-                <Link href="/">Sign Up to Access</Link>
-              </Button>
-            </div>
-          )}
-        </div>
-      </section>
 
       {/* Resources Grid */}
       <div className="container mx-auto px-4 py-12">
