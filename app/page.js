@@ -353,23 +353,25 @@ export default function Home() {
               </form>
 
               {/* CTA Buttons & Rating */}
-              <div className="flex items-stretch gap-4">
-                {/* CTA Buttons */}
+              <div className="flex items-center gap-4">
+                {/* Explore Products - Same height as Search */}
                 <Link href="/blog">
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 shadow-xl hover:shadow-2xl transition-all px-8 py-6 text-base h-full">
+                  <Button className="h-12 bg-white text-blue-600 hover:bg-blue-50 shadow-xl hover:shadow-2xl transition-all px-6 text-base">
                     Explore Products
-                    <ExternalLink className="ml-2 h-5 w-5" />
+                    <ExternalLink className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
-                <Button size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/40 backdrop-blur-sm shadow-xl px-8 py-6 text-base">
+                
+                {/* Start Earning Now - Same height as Search */}
+                <Button variant="outline" className="h-12 bg-white/10 hover:bg-white/20 text-white border-2 border-white/40 backdrop-blur-sm shadow-xl px-6 text-base">
                   Start Earning Now
                 </Button>
 
-                {/* Rating Badge - Same Size as Buttons */}
-                <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-md rounded-lg px-8 py-6 border border-white/20 shadow-xl hover:shadow-2xl transition-all flex items-center gap-3">
+                {/* Rating Badge - Same height as Search, extends to Featured Product */}
+                <div className="flex-1 h-12 bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-md rounded-lg px-6 border border-white/20 shadow-xl hover:shadow-2xl transition-all flex items-center gap-3">
                   <Star className="h-5 w-5 text-yellow-300 fill-yellow-300" />
                   <div className="flex items-baseline gap-1">
-                    <span className="text-base font-bold text-white">4.9/5</span>
+                    <span className="text-lg font-bold text-white">4.9/5</span>
                     <span className="text-sm text-blue-100">Rating</span>
                   </div>
                 </div>
