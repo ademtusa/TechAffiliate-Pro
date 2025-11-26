@@ -123,6 +123,9 @@ export default function ComparisonReviewPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      {/* Navbar */}
+      <Navbar />
+
       {/* Hero Section */}
       <HeroSection 
         title="Product Reviews & Comparisons"
@@ -130,21 +133,6 @@ export default function ComparisonReviewPage() {
         featuredProduct={topRatedProduct}
         featuredType="topRated"
       />
-
-      {/* Navigation */}
-      <nav className="bg-white border-b sticky top-0 z-10">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/">
-              <Button variant="ghost">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Home
-              </Button>
-            </Link>
-            <Badge className="bg-blue-600">Product Reviews & Comparisons</Badge>
-          </div>
-        </div>
-      </nav>
 
       {/* Filters Bar */}
       <div className="bg-white border-b sticky top-[73px] z-10">
