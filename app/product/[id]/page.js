@@ -526,7 +526,7 @@ export default function ProductPage() {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   {(product.tags || ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5', 'Feature 6']).map((tag, index) => (
-                    <Card key={index} className="hover:shadow-lg transition-shadow">
+                    <Card key={index} className="hover:shadow-lg hover:border-blue-500 transition-all duration-300 border border-gray-200">
                       <CardContent className="pt-6">
                         <div className="flex items-start gap-4">
                           <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center flex-shrink-0">
