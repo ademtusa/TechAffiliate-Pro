@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Star, TrendingUp, Award, DollarSign, Check, X, Search, Filter, ArrowLeft, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react'
 import Link from 'next/link'
+import HeroSection from '@/components/HeroSection'
 
 export default function ComparisonReviewPage() {
   const [products, setProducts] = useState([])
@@ -21,6 +22,7 @@ export default function ComparisonReviewPage() {
   const [expandedProduct, setExpandedProduct] = useState(null)
   const [compareMode, setCompareMode] = useState(false)
   const [selectedForCompare, setSelectedForCompare] = useState([])
+  const [topRatedProduct, setTopRatedProduct] = useState(null)
 
   useEffect(() => {
     fetchProducts()
