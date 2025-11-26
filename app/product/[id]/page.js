@@ -993,8 +993,10 @@ export default function ProductPage() {
             </Tabs>
           </div>
         </div>
+      </div>
 
-        {/* Related Products */}
+      {/* Related Products */}
+      <div className="container mx-auto px-4 py-12">
         {relatedProducts.length > 0 && (
           <div>
             <h2 className="text-3xl font-bold mb-8 text-center">
