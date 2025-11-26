@@ -359,7 +359,6 @@ export default function ProductPage() {
             </div>
           </div>
         </div>
-        </div>
 
         {/* Comprehensive Review Section */}
         <div className="container mx-auto px-4">
