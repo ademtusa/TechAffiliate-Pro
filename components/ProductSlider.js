@@ -90,16 +90,6 @@ export default function ProductSlider({ title, products, icon: Icon }) {
           {/* Filter Buttons */}
           <div className="flex items-center gap-1">
             <button
-              onClick={() => setSelectedFilter('sort')}
-              className={`px-4 py-2 text-sm font-medium transition-all ${
-                selectedFilter === 'sort'
-                  ? 'text-purple-600 border-b-2 border-purple-600'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Sırala
-            </button>
-            <button
               onClick={() => setSelectedFilter('rated')}
               className={`px-4 py-2 text-sm font-medium transition-all ${
                 selectedFilter === 'rated'
