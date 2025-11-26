@@ -352,71 +352,69 @@ export default function Home() {
                 </div>
               </form>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4">
-                <Link href="/blog">
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 shadow-xl hover:shadow-2xl transition-all px-8 py-6 text-base">
-                    Explore Products
-                    <ExternalLink className="ml-2 h-5 w-5" />
+              {/* CTA Buttons & Trust Badges */}
+              <div className="flex items-center justify-between gap-6">
+                {/* CTA Buttons */}
+                <div className="flex flex-wrap gap-4">
+                  <Link href="/blog">
+                    <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 shadow-xl hover:shadow-2xl transition-all px-8 py-6 text-base">
+                      Explore Products
+                      <ExternalLink className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                  <Button size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/40 backdrop-blur-sm shadow-xl px-8 py-6 text-base">
+                    Start Earning Now
                   </Button>
-                </Link>
-                <Button size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/40 backdrop-blur-sm shadow-xl px-8 py-6 text-base">
-                  Start Earning Now
-                </Button>
-              </div>
-
-              {/* Social Proof & Social Media */}
-              <div className="flex items-center justify-between bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-lg">
-                {/* Live Stats */}
-                <div className="flex items-center gap-6">
-                  <div className="flex items-center gap-2">
-                    <div className="relative">
-                      <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                      <div className="absolute inset-0 w-3 h-3 bg-green-400 rounded-full animate-ping"></div>
-                    </div>
-                    <span className="text-sm font-semibold text-white">2,847 online</span>
-                  </div>
-                  <div className="h-8 w-px bg-white/20"></div>
-                  <div className="flex items-center gap-2">
-                    <Star className="h-4 w-4 text-yellow-300 fill-yellow-300" />
-                    <span className="text-sm font-semibold text-white">50K+ Products</span>
-                  </div>
                 </div>
 
-                {/* Social Media Icons */}
+                {/* Trust Badges - Right Side */}
+                <div className="hidden lg:flex flex-col gap-2">
+                  <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20">
+                    <Shield className="h-5 w-5 text-green-300" />
+                    <span className="text-sm font-semibold text-white">Verified Partners</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20">
+                    <TrendingUp className="h-5 w-5 text-yellow-300" />
+                    <span className="text-sm font-semibold text-white">High Commission</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Social Media Only */}
+              <div className="flex items-center justify-between bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-lg">
+                <span className="text-sm text-blue-100 font-medium">Follow us:</span>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-blue-100 mr-2">Follow us:</span>
                   <a 
                     href="https://twitter.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-9 h-9 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
+                    className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
                   >
-                    <Twitter className="h-4 w-4 text-white" />
+                    <Twitter className="h-5 w-5 text-white" />
                   </a>
                   <a 
                     href="https://linkedin.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-9 h-9 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
+                    className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
                   >
-                    <Linkedin className="h-4 w-4 text-white" />
+                    <Linkedin className="h-5 w-5 text-white" />
                   </a>
                   <a 
                     href="https://facebook.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-9 h-9 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
+                    className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
                   >
-                    <Facebook className="h-4 w-4 text-white" />
+                    <Facebook className="h-5 w-5 text-white" />
                   </a>
                   <a 
                     href="https://instagram.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-9 h-9 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
+                    className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
                   >
-                    <Instagram className="h-4 w-4 text-white" />
+                    <Instagram className="h-5 w-5 text-white" />
                   </a>
                 </div>
               </div>
