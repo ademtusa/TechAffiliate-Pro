@@ -9,6 +9,7 @@ import { Gift, Download, Video, FileText, Lock, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import HeroSection from '@/components/HeroSection'
+import Navbar from '@/components/Navbar'
 
 export default function ResourcesPage() {
   const [resources, setResources] = useState([])
