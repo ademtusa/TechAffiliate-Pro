@@ -93,6 +93,16 @@ export default function Home() {
         // Most Downloads (using views as proxy for digital downloads)
         const downloads = [...allProducts].sort((a, b) => (b.views || 0) - (a.views || 0))
         setMostDownloads(downloads)
+
+        // Featured Product (highest rated product)
+        if (allProducts.length > 0) {
+          const featured = [...allProducts].sort((a, b) => (b.rating || 0) - (a.rating || 0))[0]
+          setFeaturedProduct({
+            ...featured,
+            commission_rate: 15.5,
+            reviews: 1247
+          })
+        }
       }
     } catch (error) {
       console.error('Error fetching products:', error)
