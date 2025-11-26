@@ -380,42 +380,42 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Social Media Only */}
-              <div className="flex items-center justify-between bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-lg">
-                <span className="text-sm text-blue-100 font-medium">Follow us:</span>
-                <div className="flex items-center gap-2">
-                  <a 
-                    href="https://twitter.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
-                  >
-                    <Twitter className="h-5 w-5 text-white" />
-                  </a>
-                  <a 
-                    href="https://linkedin.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
-                  >
-                    <Linkedin className="h-5 w-5 text-white" />
-                  </a>
-                  <a 
-                    href="https://facebook.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
-                  >
-                    <Facebook className="h-5 w-5 text-white" />
-                  </a>
-                  <a 
-                    href="https://instagram.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-white/20"
-                  >
-                    <Instagram className="h-5 w-5 text-white" />
-                  </a>
+              {/* Platform Statistics */}
+              <div className="grid grid-cols-3 gap-4">
+                <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-lg hover:shadow-xl transition-all">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-green-400/20 rounded-lg p-2">
+                      <TrendingUp className="h-6 w-6 text-green-300" />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-white">$2.4M+</div>
+                      <div className="text-xs text-blue-100">Paid to Affiliates</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-lg hover:shadow-xl transition-all">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-purple-400/20 rounded-lg p-2">
+                      <ShoppingCart className="h-6 w-6 text-purple-300" />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-white">50K+</div>
+                      <div className="text-xs text-blue-100">Products Listed</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-lg hover:shadow-xl transition-all">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-yellow-400/20 rounded-lg p-2">
+                      <Star className="h-6 w-6 text-yellow-300 fill-yellow-300" />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-white">4.9/5</div>
+                      <div className="text-xs text-blue-100">Average Rating</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
