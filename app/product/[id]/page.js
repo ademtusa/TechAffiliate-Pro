@@ -349,37 +349,37 @@ export default function ProductPage() {
             <TabsList className="w-full justify-start border-b border-gray-200 bg-transparent h-auto p-0 rounded-none">
               <TabsTrigger 
                 value="overview" 
-                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"
+                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium hover:text-blue-600 hover:bg-blue-50 hover:border hover:border-blue-500 hover:rounded-md transition-all duration-300"
               >
                 Overview
               </TabsTrigger>
               <TabsTrigger 
                 value="features"
-                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"
+                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium hover:text-blue-600 hover:bg-blue-50 hover:border hover:border-blue-500 hover:rounded-md transition-all duration-300"
               >
                 Features
               </TabsTrigger>
               <TabsTrigger 
                 value="proscons"
-                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"
+                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium hover:text-blue-600 hover:bg-blue-50 hover:border hover:border-blue-500 hover:rounded-md transition-all duration-300"
               >
                 Pros & Cons
               </TabsTrigger>
               <TabsTrigger 
                 value="pricing"
-                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"
+                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium hover:text-blue-600 hover:bg-blue-50 hover:border hover:border-blue-500 hover:rounded-md transition-all duration-300"
               >
                 Pricing
               </TabsTrigger>
               <TabsTrigger 
                 value="faq"
-                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"
+                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium hover:text-blue-600 hover:bg-blue-50 hover:border hover:border-blue-500 hover:rounded-md transition-all duration-300"
               >
                 FAQ
               </TabsTrigger>
               <TabsTrigger 
                 value="reviews"
-                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"
+                className="data-[state=active]:bg-transparent data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 border-b-2 border-transparent rounded-none px-6 py-3 font-medium hover:text-blue-600 hover:bg-blue-50 hover:border hover:border-blue-500 hover:rounded-md transition-all duration-300"
               >
                 Reviews ({reviews.length})
               </TabsTrigger>
