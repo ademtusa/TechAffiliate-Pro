@@ -139,19 +139,38 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Sticky Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b shadow-sm">
+      <nav className="sticky top-0 z-50 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 backdrop-blur-md border-b border-blue-100 shadow-lg">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-8">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                TechAffiliate Pro
-              </h1>
-              <div className="hidden md:flex space-x-6">
-                <Link href="/" className="text-gray-700 hover:text-blue-600 transition">Home</Link>
-                <Link href="/blog" className="text-gray-700 hover:text-blue-600 transition">Compare</Link>
-                <Link href="/resources" className="text-gray-700 hover:text-blue-600 transition">Resources</Link>
+              <Link href="/" className="flex items-center gap-2 group">
+                <Sparkles className="h-6 w-6 text-blue-600 group-hover:text-indigo-600 transition-colors" />
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                  TechAffiliate Pro
+                </h1>
+              </Link>
+              <div className="hidden md:flex space-x-2">
+                <Link href="/" className="group relative px-4 py-2 flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-all rounded-lg hover:bg-white/60">
+                  <HomeIcon className="h-4 w-4" />
+                  <span className="font-medium">Home</span>
+                  <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
+                </Link>
+                <Link href="/blog" className="group relative px-4 py-2 flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-all rounded-lg hover:bg-white/60">
+                  <FileText className="h-4 w-4" />
+                  <span className="font-medium">Review</span>
+                  <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
+                </Link>
+                <Link href="/resources" className="group relative px-4 py-2 flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-all rounded-lg hover:bg-white/60">
+                  <Library className="h-4 w-4" />
+                  <span className="font-medium">Resources</span>
+                  <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
+                </Link>
                 {user && (
-                  <Link href="/dashboard" className="text-gray-700 hover:text-blue-600 transition">Dashboard</Link>
+                  <Link href="/dashboard" className="group relative px-4 py-2 flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-all rounded-lg hover:bg-white/60">
+                    <LayoutDashboard className="h-4 w-4" />
+                    <span className="font-medium">Dashboard</span>
+                    <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
+                  </Link>
                 )}
               </div>
             </div>
@@ -160,12 +179,12 @@ export default function Home() {
               {user ? (
                 <div className="flex items-center space-x-3">
                   <Link href="/dashboard">
-                    <Button variant="ghost" size="sm">
+                    <Button variant="ghost" size="sm" className="hover:bg-white/60">
                       <LayoutDashboard className="h-4 w-4 mr-2" />
                       Dashboard
                     </Button>
                   </Link>
-                  <Button variant="ghost" size="sm" onClick={handleSignOut}>
+                  <Button variant="ghost" size="sm" onClick={handleSignOut} className="hover:bg-white/60">
                     <LogOut className="h-4 w-4 mr-2" />
                     Sign Out
                   </Button>
@@ -173,7 +192,7 @@ export default function Home() {
               ) : (
                 <Dialog open={authOpen} onOpenChange={setAuthOpen}>
                   <DialogTrigger asChild>
-                    <Button variant="default">
+                    <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all">
                       <User className="h-4 w-4 mr-2" />
                       Sign In
                     </Button>
