@@ -57,24 +57,39 @@ export default function HowItWorksSection() {
       icon: Clock
     },
     {
-      q: 'Do you need a website to start affiliate marketing successfully?',
-      a: "Not required but recommended. Alternatives: Social media (Instagram, TikTok, YouTube), email marketing with lead magnets, Pinterest for passive traffic, review platforms. However, 78% of top earners own websites for SEO control and asset building.",
+      q: 'What are the best niches for affiliate marketing with high conversion rates in 2025?',
+      a: "Top converting niches: (1) Tech & Software - 3-8% conversion, $50-$500 commissions, (2) Finance & Credit Cards - 2-5% conversion, $50-$200 payouts, (3) Health & Fitness - 1-4% conversion, recurring subscriptions, (4) Make Money Online - 5-10% conversion, $30-$300, (5) Business Tools - 4-7% conversion, recurring SaaS. Focus on problems people actively want to solve and have budget for.",
       icon: BarChart3
     },
     {
-      q: 'How do affiliate marketers get paid?',
+      q: 'Do you need a website to start affiliate marketing successfully?',
+      a: "Not required but recommended. Alternatives: Social media (Instagram, TikTok, YouTube), email marketing with lead magnets, Pinterest for passive traffic, review platforms. However, 78% of top earners own websites for SEO control and asset building.",
+      icon: Users
+    },
+    {
+      q: 'How do affiliate marketers get paid and what are payment terms?',
       a: "Payment models: (1) Pay-Per-Sale (PPS) - 5-50% per purchase ($20-$500), (2) Recurring - monthly for subscriptions ($30/month SaaS), (3) Pay-Per-Lead (PPL) - $1-$50 per signup, (4) Pay-Per-Click (PPC) - $0.10-$1/click. Most pay monthly via PayPal, bank, or crypto. Threshold: $50-$100. Timing: Net-30 to Net-60.",
       icon: CreditCard
     },
     {
-      q: 'Can you succeed without social media followers?',
-      a: "Yes! Methods: SEO content targeting buyer keywords, paid ads for instant traffic, review sites with comparisons, YouTube product tutorials (rank without subscribers), niche communities (Reddit, Quora). 43% of successful affiliates started with <1,000 followers.",
-      icon: Users
+      q: 'Can you build passive income with affiliate marketing or does it require constant work?',
+      a: "Yes, passive income is possible but requires upfront work. Build assets: SEO blog posts (rank for months/years), YouTube evergreen videos, email automation sequences, comparison sites. Initial 3-6 months: active content creation. After: 80% passive with 20% maintenance (updates, new products). Top affiliates earn 60-80% passive income after 12-18 months of consistent effort.",
+      icon: TrendingUp
     },
     {
-      q: 'How to increase affiliate conversion rates quickly?',
-      a: "Proven tactics: Comparison tables (+35% conversions), urgency/scarcity (+40% sales), real screenshots (+25% clicks), buyer keywords ('best', 'review', 'vs' = 3x higher), exclusive bonuses (+50% conversion), A/B test CTAs, retargeting pixels (recover 20-30%). Average: 1-3% cold, 5-15% warm traffic.",
+      q: 'What are the biggest mistakes beginners make in affiliate marketing?',
+      a: "Common mistakes: (1) Promoting too many products at once - focus on 3-5 max, (2) Not building an email list - 40% of revenue comes from email, (3) Choosing wrong products - prioritize quality over commission rate, (4) No transparency - always disclose affiliate links, (5) Ignoring analytics - track what converts, (6) Giving up too early - most quit before 6 months. Success requires patience, testing, and optimization.",
       icon: Zap
+    },
+    {
+      q: 'How to choose the right affiliate products to promote for maximum earnings?',
+      a: "Selection criteria: (1) Commission rate - aim for $50+ per sale or 20%+ recurring, (2) Cookie duration - 30+ days preferred, (3) Conversion rate - ask for program stats (2-5% is good), (4) Product quality - only promote what you'd use, (5) Target audience alignment - match your niche, (6) Vendor reputation - check reviews and payment history, (7) Recurring vs one-time - recurring builds predictable income. Test 3-5 products, double down on winners.",
+      icon: Search
+    },
+    {
+      q: 'Can you succeed in affiliate marketing without social media followers or audience?',
+      a: "Absolutely! Methods: SEO content targeting buyer keywords ('best X for Y 2025'), paid ads (Google, Facebook) for instant traffic, review sites with product comparisons, YouTube product tutorials (rank without subscribers), niche communities (Reddit, Quora, forums), guest posting on established sites. 43% of successful affiliates started with <1,000 followers. Focus on solving specific problems rather than building audience first.",
+      icon: Users
     }
   ]
 
