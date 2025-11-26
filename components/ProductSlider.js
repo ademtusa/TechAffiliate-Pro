@@ -66,9 +66,7 @@ export default function ProductSlider({ title, products, icon: Icon }) {
     return null
   }
 
-  const filteredProducts = selectedFilter === 'sort' 
-    ? products 
-    : selectedFilter === 'popular'
+  const filteredProducts = selectedFilter === 'popular'
     ? [...products].sort((a, b) => (b.views || 0) - (a.views || 0))
     : selectedFilter === 'rated'
     ? [...products].sort((a, b) => (b.rating || 0) - (a.rating || 0))
