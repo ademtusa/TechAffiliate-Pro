@@ -174,8 +174,8 @@ export default function ProductPage() {
 
       {/* Product Details Section */}
       <div className="bg-white">
-        <div className="container mx-auto px-4 py-6">
-          <div className="grid lg:grid-cols-5 gap-8">
+        <div className="container mx-auto px-4 py-8">
+          <div className="grid lg:grid-cols-2 gap-10 max-w-7xl mx-auto">
           {/* LEFT SIDE - Product Images (2 columns) */}
           <div className="lg:col-span-2">
             {/* Main Image */}
