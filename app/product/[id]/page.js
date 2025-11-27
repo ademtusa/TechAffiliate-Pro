@@ -367,7 +367,7 @@ export default function ProductPage() {
               <Button 
                 size="lg" 
                 variant="outline"
-                className="w-full h-14 text-lg border-2 border-blue-600 text-blue-600 hover:bg-blue-50"
+                className="w-full h-14 text-lg btn-affiliate text-blue-600 hover:bg-blue-50"
                 onClick={handleAffiliateClick}
               >
                 Get from Official Store
