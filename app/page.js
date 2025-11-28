@@ -3,14 +3,13 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
-import { Star, TrendingUp, Gift, BookOpen, Facebook, Twitter, Linkedin, Instagram, Youtube, Share2, Download, ShoppingCart } from 'lucide-react'
-import Link from 'next/link'
+import { Star, TrendingUp, Gift, BookOpen, Download, ShoppingCart } from 'lucide-react'
 import ProductSlider from '@/components/ProductSlider'
 import TestimonialsSlider from '@/components/TestimonialsSlider'
 import HeroSection from '@/components/HeroSection'
 import Navbar from '@/components/Navbar'
 import HowItWorksSection from '@/components/HowItWorksSection'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   const [user, setUser] = useState(null)
@@ -18,7 +17,6 @@ export default function Home() {
   const [loading, setLoading] = useState(true)
   const [authOpen, setAuthOpen] = useState(false)
 
-  // Product lists for sliders
   const [bestSellers, setBestSellers] = useState([])
   const [mostViewed, setMostViewed] = useState([])
   const [mostAddedToCart, setMostAddedToCart] = useState([])
@@ -91,10 +89,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      {/* Navbar Component */}
       <Navbar />
 
-      {/* Hero Section */}
       <HeroSection 
         title="Discover the Best Products"
         subtitle="Compare, review, and find the perfect products with our global affiliate platform"
@@ -102,7 +98,6 @@ export default function Home() {
         featuredType="bestseller"
       />
 
-      {/* Main Content - Product Sliders */}
       <div className="container mx-auto px-4 py-12">
         {loading ? (
           <div className="text-center py-12">
@@ -138,13 +133,10 @@ export default function Home() {
         )}
       </div>
 
-      {/* Testimonials Section */}
       <TestimonialsSlider />
 
-      {/* How It Works + FAQ Section */}
       <HowItWorksSection />
 
-      {/* Member Benefits Section */}
       <section className="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-16 px-4">
         <div className="container mx-auto text-center">
           <Gift className="h-16 w-16 mx-auto mb-4" />
@@ -176,53 +168,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-4">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <h4 className="text-xl font-bold mb-4">TechAffiliate Pro</h4>
-              <p className="text-gray-400">Your trusted source for the best tech deals and reviews.</p>
-            </div>
-            <div>
-              <h5 className="font-semibold mb-4">Quick Links</h5>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/" className="hover:text-white">Home</Link></li>
-                <li><Link href="/blog" className="hover:text-white">Review</Link></li>
-                <li><Link href="/resources" className="hover:text-white">Resources</Link></li>
-                <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="font-semibold mb-4">Categories</h5>
-              <ul className="space-y-2 text-gray-400">
-                {categories.slice(0, 4).map((cat) => (
-                  <li key={cat.id}>
-                    <Link href={`/blog?category=${cat.slug}`} className="hover:text-white">
-                      {cat.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h5 className="font-semibold mb-4">Follow Us</h5>
-              <div className="flex space-x-4">
-                <Facebook className="h-6 w-6 cursor-pointer hover:text-blue-400" />
-                <Twitter className="h-6 w-6 cursor-pointer hover:text-blue-300" />
-                <Linkedin className="h-6 w-6 cursor-pointer hover:text-blue-500" />
-                <Instagram className="h-6 w-6 cursor-pointer hover:text-pink-400" />
-                <Youtube className="h-6 w-6 cursor-pointer hover:text-red-500" />
-                <Share2 className="h-6 w-6 cursor-pointer hover:text-purple-400" />
-              </div>
-            </div>
-          </div>
-          <Separator className="my-8 bg-gray-700" />
-          <p className="text-center text-gray-400">
-            © 2025 TechAffiliate Pro. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer categories={categories} />
     </div>
   )
 }
