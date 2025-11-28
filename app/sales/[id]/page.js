@@ -447,7 +447,7 @@ export default function SalesPage() {
                   {[
                     { q: 'What payment methods do you accept?', a: 'We accept all major payment methods including Credit/Debit Cards, PayPal, Stripe, and Bank Transfer. All payments are securely processed with SSL encryption.' },
                     { q: 'Is there a money-back guarantee?', a: 'Yes! We offer a 30-day money-back guarantee. If you&apos;re not satisfied, contact our support team within 30 days for a full refund.' },
-                    { q: 'How quickly will I receive access?', a: 'Access is instant! Once your payment is confirmed, you\'ll receive an email with your credentials within minutes.' },
+                    { q: 'How quickly will I receive access?', a: 'Access is instant! Once your payment is confirmed, you&apos;ll receive an email with your credentials within minutes.' },
                     { q: 'Do you offer customer support?', a: 'Absolutely! Our support team is available 24/7 via email and live chat.' },
                     { q: 'Can I upgrade or cancel?', a: 'This is a one-time purchase with lifetime access - no subscription! You can upgrade to premium features anytime.' },
                   ].map((faq, i) => (
