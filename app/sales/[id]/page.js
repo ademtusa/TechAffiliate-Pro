@@ -359,39 +359,80 @@ export default function SalesPage() {
                   Our experts thoroughly tested this product across multiple dimensions.
                 </p>
                 <div className="space-y-3">
-                  {[
-                    { label: 'Value for Money', score: 9.2, color: 'blue', icon: TrendingUp },
-                    { label: 'Ease of Use', score: 8.8, color: 'green', icon: Smile },
-                    { label: 'Customer Support', score: 9.0, color: 'purple', icon: Users },
-                    { label: 'Features', score: 9.5, color: 'orange', icon: Layers },
-                    { label: 'Performance', score: 8.5, color: 'pink', icon: Zap },
-                  ].map((item) => {
-                    const Icon = item.icon
-                    return (
-                      <div key={item.label}>
-                        <div className="flex items-center justify-between mb-1.5">
-                          <div className="flex items-center gap-2">
-                            <Icon className={`h-4 w-4 text-${item.color}-600`} />
-                            <span className="font-semibold text-gray-900 text-sm">{item.label}</span>
-                          </div>
-                          <span className={`text-${item.color}-600 font-bold text-sm`}>{item.score}/10</span>
-                        </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div className={`bg-${item.color}-600 h-2 rounded-full transition-all`} style={{width: `${item.score * 10}%`}}></div>
-                        </div>
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <div className="flex items-center gap-2">
+                        <TrendingUp className="h-4 w-4 text-blue-600" />
+                        <span className="font-semibold text-gray-900 text-sm">Value for Money</span>
                       </div>
-                    )
-                  })}
+                      <span className="text-blue-600 font-bold text-sm">9.2/10</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-blue-600 h-2 rounded-full transition-all" style={{width: '92%'}}></div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <div className="flex items-center gap-2">
+                        <Smile className="h-4 w-4 text-green-600" />
+                        <span className="font-semibold text-gray-900 text-sm">Ease of Use</span>
+                      </div>
+                      <span className="text-green-600 font-bold text-sm">8.8/10</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-green-600 h-2 rounded-full transition-all" style={{width: '88%'}}></div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <div className="flex items-center gap-2">
+                        <Users className="h-4 w-4 text-purple-600" />
+                        <span className="font-semibold text-gray-900 text-sm">Customer Support</span>
+                      </div>
+                      <span className="text-purple-600 font-bold text-sm">9.0/10</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-purple-600 h-2 rounded-full transition-all" style={{width: '90%'}}></div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <div className="flex items-center gap-2">
+                        <Layers className="h-4 w-4 text-orange-600" />
+                        <span className="font-semibold text-gray-900 text-sm">Features</span>
+                      </div>
+                      <span className="text-orange-600 font-bold text-sm">9.5/10</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-orange-600 h-2 rounded-full transition-all" style={{width: '95%'}}></div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <div className="flex items-center gap-2">
+                        <Zap className="h-4 w-4 text-pink-600" />
+                        <span className="font-semibold text-gray-900 text-sm">Performance</span>
+                      </div>
+                      <span className="text-pink-600 font-bold text-sm">8.5/10</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-pink-600 h-2 rounded-full transition-all" style={{width: '85%'}}></div>
+                    </div>
+                  </div>
                 </div>
                 <Separator className="my-5" />
-                <div className="text-center">
-                  <div className="text-5xl font-bold text-blue-600 mb-2">4.6/5</div>
-                  <div className="flex items-center justify-center gap-0.5 mb-1">
+                <div className="flex items-center justify-center gap-3">
+                  <div className="text-3xl font-bold text-blue-600">4.6/5</div>
+                  <div className="flex items-center gap-0.5">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
+                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <div className="text-gray-600 font-semibold">Overall Rating</div>
+                  <div className="text-gray-600 font-semibold text-sm">Overall Rating</div>
                 </div>
               </CardContent>
             </Card>
