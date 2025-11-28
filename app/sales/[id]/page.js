@@ -493,22 +493,6 @@ export default function SalesPage() {
             </div>
           </div>
         </div>
-
-        {/* CTA Section - Compact */}
-        <Card className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white border-2 shadow-2xl mt-8">
-          <CardContent className="p-8 text-center">
-            <div className="h-16 w-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
-              <Zap className="h-8 w-8 text-white" />
-            </div>
-            <h2 className="text-3xl font-bold mb-3">Ready to Get Started?</h2>
-            <p className="text-lg text-blue-100 mb-6 max-w-2xl mx-auto">
-              Join thousands of satisfied customers. Special pricing won't last!
-            </p>
-            <Button size="lg" className="h-14 px-10 text-lg bg-white text-blue-600 hover:bg-gray-100 font-bold shadow-2xl border-2 border-transparent hover:border-blue-300 transition-all">
-              Get Instant Access Now
-            </Button>
-          </CardContent>
-        </Card>
       </div>
 
       <Footer />
