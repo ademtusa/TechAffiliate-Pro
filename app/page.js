@@ -37,7 +37,6 @@ export default function Home() {
       const { data: { user } } = await supabase.auth.getUser()
       setUser(user)
     } catch (error) {
-      console.log('Auth check skipped - Supabase not available')
       setUser(null)
     }
   }
@@ -50,7 +49,6 @@ export default function Home() {
         setCategories(result.data)
       }
     } catch (error) {
-      console.log('Categories fetch skipped')
       setCategories([])
     }
   }
