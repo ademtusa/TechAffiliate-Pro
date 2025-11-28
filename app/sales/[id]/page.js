@@ -630,6 +630,57 @@ export default function SalesPage() {
       </div>
 
       <Footer />
+
+      {/* Redirect Modal */}
+      <Dialog open={redirectModal} onOpenChange={setRedirectModal}>
+        <DialogContent className="sm:max-w-md bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border-2 border-blue-300">
+          <DialogHeader className="space-y-4">
+            <div className="mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg animate-pulse">
+              <ExternalLink className="h-10 w-10 text-white" />
+            </div>
+            <DialogTitle className="text-2xl text-center bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              Resmi Satış Sayfasına Yönlendiriliyorsunuz
+            </DialogTitle>
+            <DialogDescription className="text-center text-gray-700 text-base">
+              <span className="font-semibold text-gray-900">{product?.name}</span> ürününü satın almak için resmi satış ortağı sayfasına yönlendirileceksiniz.
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="space-y-4 mt-4">
+            <div className="bg-white/60 rounded-lg p-4 border-2 border-blue-200">
+              <div className="flex items-center justify-center gap-3">
+                <div className="text-5xl font-bold text-blue-600">{countdown}</div>
+                <div className="text-sm text-gray-600">
+                  saniye içinde<br />yönlendirileceksiniz...
+                </div>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <Button 
+                onClick={handleManualRedirect}
+                className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold shadow-lg"
+              >
+                Hemen Git
+              </Button>
+              <Button 
+                variant="outline"
+                onClick={() => {
+                  setRedirectModal(false)
+                  setCountdown(3)
+                }}
+                className="flex-1 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold"
+              >
+                İptal
+              </Button>
+            </div>
+
+            <p className="text-xs text-center text-gray-500">
+              🔒 Güvenli bağlantı • SSL korumalı
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
