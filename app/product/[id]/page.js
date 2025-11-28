@@ -451,7 +451,7 @@ export default function ProductPage() {
               {relatedProducts.map((relatedProduct) => (
                 <Card key={relatedProduct.id} className="hover:shadow-xl transition-shadow">
                   <CardHeader>
-                    <div className="aspect-video relative mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-100">
+                    <div className="aspect-video relative mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-100">
                       {relatedProduct.image_url && (
                         <img
                           src={relatedProduct.image_url}
