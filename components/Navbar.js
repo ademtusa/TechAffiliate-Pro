@@ -18,9 +18,18 @@ export default function Navbar() {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [authError, setAuthError] = useState('')
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     checkUser()
+    
+    // Scroll listener
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+    
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const checkUser = async () => {
