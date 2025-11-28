@@ -199,7 +199,7 @@ export default function ProductSlider({ title, products, icon: Icon }) {
                 style={{ width: 'calc((100% - 72px) / 4)' }}
               >
                 {/* Product Image with Badge */}
-                <div className="relative aspect-square bg-gradient-to-br from-gray-100 to-gray-200">
+                <div className="relative aspect-square bg-gradient-to-br from-gray-100 to-gray-200 group">
                   {product.image_url ? (
                     <img
                       src={product.image_url}
@@ -220,11 +220,46 @@ export default function ProductSlider({ title, products, icon: Icon }) {
                   )}
                   
                   {/* Popular Badge */}
-                  {(product.views || 0) > 1000 && (
+                  {(product.views || 0) > 1000 && !product.badge && (
                     <Badge className="absolute top-3 right-3 bg-red-500 text-white font-bold px-3 py-1 text-xs">
                       POPULAR
                     </Badge>
                   )}
+
+                  {/* Like & Compare Icons - Top Left */}
+                  <div className="absolute top-3 left-3 flex flex-col gap-2">
+                    {/* Like/Heart Button */}
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault()
+                        toggleLike(product)
+                      }}
+                      className={`p-2 rounded-full transition-all shadow-lg ${
+                        likedProducts.includes(product.id)
+                          ? 'bg-red-500 text-white'
+                          : 'bg-white/90 text-gray-700 hover:bg-red-50'
+                      }`}
+                      title="Beğen"
+                    >
+                      <Heart className={`h-4 w-4 ${likedProducts.includes(product.id) ? 'fill-current' : ''}`} />
+                    </button>
+
+                    {/* Compare Button */}
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault()
+                        toggleCompare(product)
+                      }}
+                      className={`p-2 rounded-full transition-all shadow-lg ${
+                        compareProducts.find(p => p.id === product.id)
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-white/90 text-gray-700 hover:bg-blue-50'
+                      }`}
+                      title="Karşılaştır"
+                    >
+                      <Check className={`h-4 w-4 ${compareProducts.find(p => p.id === product.id) ? 'font-bold' : ''}`} />
+                    </button>
+                  </div>
                 </div>
 
                 <CardContent className="p-4">
