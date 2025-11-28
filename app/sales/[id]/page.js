@@ -213,7 +213,7 @@ export default function SalesPage() {
                       Buy Now - ${(salePrice * quantity).toFixed(2)}
                     </Button>
                     
-                    <Button size="lg" variant="outline" className="w-full h-12 border-2 border-white text-white hover:bg-white/10 font-semibold hover:border-blue-200 transition-all">
+                    <Button size="lg" className="w-full h-12 bg-white/10 border-2 border-white text-white hover:bg-white/20 font-semibold hover:border-blue-100 transition-all">
                       <ExternalLink className="mr-2 h-4 w-4" />
                       Visit Official Store
                     </Button>
