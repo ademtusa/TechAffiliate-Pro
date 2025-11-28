@@ -19,16 +19,16 @@ export default function CartPage() {
   const [paymentMethod, setPaymentMethod] = useState('card')
   const router = useRouter()
 
-  useEffect(() => {
-    loadCart()
-  }, [])
-
   const loadCart = () => {
     setLoading(true)
     const cart = CartStore.getCart()
     setCartItems(cart)
     setLoading(false)
   }
+
+  useEffect(() => {
+    loadCart()
+  }, [])
 
   const updateQuantity = (productId, newQuantity) => {
     if (newQuantity < 1) return
