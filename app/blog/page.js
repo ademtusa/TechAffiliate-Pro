@@ -495,14 +495,14 @@ export default function ComparisonReviewPage() {
                     </div>
 
                     {/* Buttons */}
-                    <div className="space-y-2">
-                      <Link href={`/sales/${product.id}`}>
+                    <div className="flex gap-2">
+                      <Link href={`/sales/${product.id}`} className="flex-1">
                         <Button variant="outline" className="w-full">
                           View Details
                         </Button>
                       </Link>
                       <Button 
-                        className="w-full bg-gradient-to-r from-blue-600 to-indigo-600"
+                        className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600"
                         onClick={() => window.open(product.affiliate_url, '_blank')}
                       >
                         Get Deal <ExternalLink className="ml-2 h-4 w-4" />
