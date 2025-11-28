@@ -253,18 +253,24 @@ export default function SalesPage() {
 
             {/* Stats Cards - Compact */}
             <div className="grid md:grid-cols-3 gap-4">
-              {[
-                { value: '4,615.0', label: 'User Rating', color: 'blue' },
-                { value: '756+', label: 'Active Users', color: 'green' },
-                { value: 'Instant', label: 'Setup Time', color: 'pink' },
-              ].map((stat) => (
-                <Card key={stat.label} className={`bg-gradient-to-br from-${stat.color}-500 to-${stat.color}-600 text-white border-2 border-${stat.color}-400 shadow-lg hover:shadow-xl transition-all hover:scale-105`}>
-                  <CardContent className="p-4 text-center">
-                    <div className="text-4xl font-bold mb-1">{stat.value}</div>
-                    <div className={`text-${stat.color}-100 text-sm font-medium`}>{stat.label}</div>
-                  </CardContent>
-                </Card>
-              ))}
+              <Card className="bg-gradient-to-br from-blue-500 to-blue-600 text-white border-2 border-blue-400 shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                <CardContent className="p-4 text-center">
+                  <div className="text-4xl font-bold mb-1 text-white">4,615.0</div>
+                  <div className="text-blue-50 text-sm font-medium">User Rating</div>
+                </CardContent>
+              </Card>
+              <Card className="bg-gradient-to-br from-green-500 to-green-600 text-white border-2 border-green-400 shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                <CardContent className="p-4 text-center">
+                  <div className="text-4xl font-bold mb-1 text-white">756+</div>
+                  <div className="text-green-50 text-sm font-medium">Active Users</div>
+                </CardContent>
+              </Card>
+              <Card className="bg-gradient-to-br from-pink-500 to-pink-600 text-white border-2 border-pink-400 shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                <CardContent className="p-4 text-center">
+                  <div className="text-4xl font-bold mb-1 text-white">Instant</div>
+                  <div className="text-pink-50 text-sm font-medium">Setup Time</div>
+                </CardContent>
+              </Card>
             </div>
 
             {/* Key Features - Compact */}
