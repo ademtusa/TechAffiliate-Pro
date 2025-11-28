@@ -201,9 +201,9 @@ export default function ProductPage() {
                   }`}
                 >
                   {img ? (
-                    <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover" />
+                    <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover rounded-lg" />
                   ) : (
-                    <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+                    <div className="w-full h-full bg-gray-100 flex items-center justify-center rounded-lg">
                       <Package className="h-8 w-8 text-gray-400" />
                     </div>
                   )}
