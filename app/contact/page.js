@@ -66,7 +66,7 @@ export default function ContactPage() {
       {/* Hero Section with Featured Product */}
       <HeroSection 
         title="Get In Touch"
-        subtitle="Have questions or need support? We're here to help! Send us a message and check out our featured deal before you go."
+        subtitle="Have questions or need support? We're here to help! Send us a message and don't forget — Take a Look at This Product Before You Leave!"
         featuredProduct={featuredProduct}
         featuredType="specialDeal"
       />
