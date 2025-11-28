@@ -55,21 +55,41 @@ export default function SalesPage() {
 
   const handleBuyNow = () => {
     // TODO: Admin panelinden affiliate link yönetimi eklenecek
-    // Şimdilik ürünün affiliate linkine veya demo linkine yönlendirme
-    const affiliateLink = product?.affiliate_link || product?.link || '#'
+    // Şimdilik ürünün affiliate linkine yönlendirme
+    const affiliateLink = product?.affiliate_url || product?.link || '#'
     
     if (affiliateLink && affiliateLink !== '#') {
+      // Track click event
+      fetch('/api/track-click', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          product_id: product.id,
+          action: 'buy_now'
+        })
+      }).catch(err => console.error('Track error:', err))
+      
+      // Open affiliate link
       window.open(affiliateLink, '_blank')
     } else {
-      // Eğer link yoksa kullanıcıyı bilgilendir
       alert('This product will be available soon! Please check back later.')
     }
   }
 
   const handleVisitStore = () => {
-    const storeLink = product?.official_link || product?.link || product?.affiliate_link || '#'
+    const storeLink = product?.affiliate_url || product?.link || '#'
     
     if (storeLink && storeLink !== '#') {
+      // Track click event
+      fetch('/api/track-click', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          product_id: product.id,
+          action: 'visit_store'
+        })
+      }).catch(err => console.error('Track error:', err))
+      
       window.open(storeLink, '_blank')
     }
   }
