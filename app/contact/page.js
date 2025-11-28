@@ -21,10 +21,6 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
   const [featuredProduct, setFeaturedProduct] = useState(null)
 
-  useEffect(() => {
-    fetchFeaturedProduct()
-  }, [])
-
   const fetchFeaturedProduct = async () => {
     try {
       const response = await fetch('/api/products')
@@ -43,6 +39,10 @@ export default function ContactPage() {
       console.error('Error fetching featured product:', error)
     }
   }
+
+  useEffect(() => {
+    fetchFeaturedProduct()
+  }, [])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
