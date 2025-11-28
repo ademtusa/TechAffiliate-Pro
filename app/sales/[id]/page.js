@@ -133,20 +133,20 @@ export default function SalesPage() {
                             <Star key={i} className={`h-5 w-5 ${i < Math.floor(product.rating || 4.8) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} />
                           ))}
                         </div>
-                        <span className=\"text-xl font-bold text-gray-900\">{product.rating || 4.8}</span>
-                        <span className=\"text-gray-600\">Average Review</span>
+                        <span className="text-xl font-bold text-gray-900">{product.rating || 4.8}</span>
+                        <span className="text-gray-600">Average Review</span>
                       </div>
                     </div>
 
-                    <div className=\"grid grid-cols-2 gap-2.5\">
+                    <div className="grid grid-cols-2 gap-2.5">
                       {[
                         { label: 'AI Powered', icon: '🤖', color: 'green' },
                         { label: 'Productivity', icon: '⚡', color: 'blue' },
                         { label: 'Content Creation', icon: '✍️', color: 'purple' },
                         { label: 'Coding Assistant', icon: '💻', color: 'orange' },
                       ].map((badge) => (
-                        <Badge key={badge.label} variant=\"outline\" className={`justify-start px-3 py-2 text-sm border-2 border-${badge.color}-300 text-${badge.color}-700 hover:bg-${badge.color}-50 transition-colors font-medium`}>
-                          <span className=\"mr-1.5\">{badge.icon}</span>
+                        <Badge key={badge.label} variant="outline" className={`justify-start px-3 py-2 text-sm border-2 border-${badge.color}-300 text-${badge.color}-700 hover:bg-${badge.color}-50 transition-colors font-medium`}>
+                          <span className="mr-1.5">{badge.icon}</span>
                           {badge.label}
                         </Badge>
                       ))}
@@ -154,7 +154,7 @@ export default function SalesPage() {
 
                     <Separator />
 
-                    <p className=\"text-gray-700 leading-relaxed\">
+                    <p className="text-gray-700 leading-relaxed">
                       {product.description || 'Transform your workflow with cutting-edge AI technology. Perfect for professionals, creators, and developers looking to boost productivity and creativity.'}
                     </p>
                   </div>
