@@ -456,7 +456,7 @@ export default function ComparisonReviewPage() {
               }`}>
                 <CardContent className="p-0">
                   {/* Product Image */}
-                  <div className="aspect-square relative bg-gray-100 rounded-t-xl overflow-hidden">
+                  <div className="aspect-square relative bg-gray-100 rounded-t-xl overflow-hidden group">
                     {product.image_url ? (
                       <img
                         src={product.image_url}
@@ -473,8 +473,44 @@ export default function ComparisonReviewPage() {
                         {product.badge}
                       </Badge>
                     )}
+
+                    {/* Like & Compare Icons - Top Left */}
+                    <div className="absolute top-3 left-3 flex flex-col gap-2">
+                      {/* Like/Heart Button */}
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault()
+                          toggleLike(product)
+                        }}
+                        className={`p-2 rounded-full transition-all shadow-lg ${
+                          likedProducts.includes(product.id)
+                            ? 'bg-red-500 text-white'
+                            : 'bg-white/90 text-gray-700 hover:bg-red-50'
+                        }`}
+                        title="Beğen"
+                      >
+                        <Heart className={`h-4 w-4 ${likedProducts.includes(product.id) ? 'fill-current' : ''}`} />
+                      </button>
+
+                      {/* Compare Button */}
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault()
+                          toggleCompareNew(product)
+                        }}
+                        className={`p-2 rounded-full transition-all shadow-lg ${
+                          selectedForCompare.find(p => p.id === product.id)
+                            ? 'bg-blue-500 text-white'
+                            : 'bg-white/90 text-gray-700 hover:bg-blue-50'
+                        }`}
+                        title="Karşılaştır"
+                      >
+                        <Check className={`h-4 w-4 ${selectedForCompare.find(p => p.id === product.id) ? 'font-bold' : ''}`} />
+                      </button>
+                    </div>
+
                     {compareMode && (
-                      <div className="absolute top-3 left-3">
+                      <div className="absolute top-3 right-3">
                         <input
                           type="checkbox"
                           checked={selectedForCompare.find(p => p.id === product.id) !== undefined}
