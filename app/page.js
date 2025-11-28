@@ -22,6 +22,7 @@ export default function Home() {
   const [mostAddedToCart, setMostAddedToCart] = useState([])
   const [mostDownloads, setMostDownloads] = useState([])
   const [featuredProduct, setFeaturedProduct] = useState(null)
+  const [compareProducts, setCompareProducts] = useState([])
 
   useEffect(() => {
     checkUser()
