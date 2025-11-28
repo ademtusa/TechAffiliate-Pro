@@ -535,10 +535,19 @@ export default function SalesPage() {
                   </div>
                   
                   <div className="space-y-2">
-                    <Button size="lg" className="w-full h-12 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold shadow-lg border-2 border-transparent hover:border-blue-300 transition-all">
+                    <Button 
+                      size="lg" 
+                      onClick={handleBuyNow}
+                      className="w-full h-12 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold shadow-lg border-2 border-transparent hover:border-blue-300 transition-all"
+                    >
                       Get Instant Access
                     </Button>
-                    <Button size="lg" variant="outline" className="w-full h-10 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold text-sm hover:border-blue-700 transition-all">
+                    <Button 
+                      size="lg" 
+                      variant="outline" 
+                      onClick={handleVisitStore}
+                      className="w-full h-10 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold text-sm hover:border-blue-700 transition-all"
+                    >
                       Visit Official Site
                     </Button>
                   </div>
