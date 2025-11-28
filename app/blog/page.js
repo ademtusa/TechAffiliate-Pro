@@ -219,8 +219,8 @@ export default function ComparisonReviewPage() {
           </p>
           <Tabs value={viewMode} onValueChange={setViewMode}>
             <TabsList>
-              <TabsTrigger value="list">List View</TabsTrigger>
               <TabsTrigger value="grid">Grid View</TabsTrigger>
+              <TabsTrigger value="list">List View</TabsTrigger>
             </TabsList>
           </Tabs>
         </div>
