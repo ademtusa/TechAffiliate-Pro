@@ -3,7 +3,9 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { ArrowLeft } from 'lucide-react'
+import { Card, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { ArrowLeft, Star, Package } from 'lucide-react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -66,28 +68,91 @@ export default function SalesPage() {
       {/* Back Navigation */}
       <div className="container mx-auto px-4 py-4">
         <Link href="/blog">
-          <Button variant="ghost" className="gap-2">
+          <Button variant="ghost" className="gap-2 hover:bg-white/60">
             <ArrowLeft className="h-4 w-4" />
             Back to Products
           </Button>
         </Link>
       </div>
 
-      {/* Test Content */}
+      {/* Hero Product Section */}
       <div className="container mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow-lg p-8 border-2 border-blue-200">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            🎉 Sales Page Working! 
-          </h1>
-          <p className="text-xl text-gray-600 mb-4">
-            Product ID: {params.id}
-          </p>
-          <p className="text-lg text-gray-700 mb-4">
-            Product Name: <strong>{product.name}</strong>
-          </p>
-          <p className="text-gray-600">
-            ✅ Route çalışıyor! Şimdi adım adım tasarımı ekleyeceğiz.
-          </p>
+        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          {/* Left - Product Image */}
+          <div className="relative">
+            <Card className="overflow-hidden border-2 shadow-2xl">
+              <div className="relative aspect-square bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100">
+                {product.image_url ? (
+                  <img
+                    src={product.image_url}
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <Package className="h-32 w-32 text-blue-300" />
+                  </div>
+                )}
+                {/* Category Badge - Top Right */}
+                <Badge className="absolute top-4 right-4 bg-blue-600 text-white text-sm px-4 py-2">
+                  {product.category || 'AI-SaaS'}
+                </Badge>
+              </div>
+            </Card>
+          </div>
+
+          {/* Right - Product Info */}
+          <div className="space-y-6">
+            {/* Product Title */}
+            <div>
+              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                {product.name}
+              </h1>
+              
+              {/* Rating */}
+              <div className="flex items-center gap-4 mb-4">
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className={`h-5 w-5 ${
+                        i < Math.floor(product.rating || 4.8)
+                          ? 'fill-yellow-400 text-yellow-400'
+                          : 'text-gray-300'
+                      }`}
+                    />
+                  ))}
+                </div>
+                <span className="text-xl font-semibold text-gray-900">
+                  {product.rating || 4.8}
+                </span>
+                <span className="text-gray-600">Average Review</span>
+              </div>
+            </div>
+
+            {/* Feature Badges */}
+            <div className="flex flex-wrap gap-3">
+              <Badge variant="outline" className="px-4 py-2 text-sm border-2 border-blue-500 text-blue-700 hover:bg-blue-50">
+                🤖 AI Powered
+              </Badge>
+              <Badge variant="outline" className="px-4 py-2 text-sm border-2 border-green-500 text-green-700 hover:bg-green-50">
+                ⚡ Productivity
+              </Badge>
+              <Badge variant="outline" className="px-4 py-2 text-sm border-2 border-purple-500 text-purple-700 hover:bg-purple-50">
+                ✍️ Content Creation
+              </Badge>
+              <Badge variant="outline" className="px-4 py-2 text-sm border-2 border-orange-500 text-orange-700 hover:bg-orange-50">
+                💻 Coding Assistant
+              </Badge>
+            </div>
+
+            {/* Short Description */}
+            <div className="bg-white rounded-lg p-6 border-2 border-gray-200 shadow-sm">
+              <p className="text-gray-700 leading-relaxed">
+                {product.description || 'Transform your workflow with cutting-edge AI technology. Perfect for professionals, creators, and developers looking to boost productivity and creativity.'}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
