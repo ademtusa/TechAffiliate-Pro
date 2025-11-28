@@ -56,9 +56,25 @@ export default function SalesPage() {
     window.open(shareUrls[platform], '_blank', 'width=600,height=400')
   }
 
+  useEffect(() => {
+    if (redirectModal && countdown > 0) {
+      const timer = setTimeout(() => {
+        setCountdown(countdown - 1)
+      }, 1000)
+      return () => clearTimeout(timer)
+    } else if (redirectModal && countdown === 0) {
+      // Yönlendirme zamanı
+      const affiliateLink = product?.affiliate_url || product?.link
+      if (affiliateLink) {
+        window.open(affiliateLink, '_blank')
+      }
+      setRedirectModal(false)
+      setCountdown(3) // Reset
+    }
+  }, [redirectModal, countdown, product])
+
   const handleBuyNow = () => {
     // TODO: Admin panelinden affiliate link yönetimi eklenecek
-    // Şimdilik ürünün affiliate linkine yönlendirme
     const affiliateLink = product?.affiliate_url || product?.link || '#'
     
     if (affiliateLink && affiliateLink !== '#') {
@@ -72,8 +88,9 @@ export default function SalesPage() {
         })
       }).catch(err => console.error('Track error:', err))
       
-      // Open affiliate link
-      window.open(affiliateLink, '_blank')
+      // Ara bilgilendirme modal'ını aç
+      setRedirectModal(true)
+      setCountdown(3)
     } else {
       alert('This product will be available soon! Please check back later.')
     }
@@ -93,8 +110,19 @@ export default function SalesPage() {
         })
       }).catch(err => console.error('Track error:', err))
       
-      window.open(storeLink, '_blank')
+      // Ara bilgilendirme modal'ını aç
+      setRedirectModal(true)
+      setCountdown(3)
     }
+  }
+
+  const handleManualRedirect = () => {
+    const affiliateLink = product?.affiliate_url || product?.link
+    if (affiliateLink) {
+      window.open(affiliateLink, '_blank')
+    }
+    setRedirectModal(false)
+    setCountdown(3)
   }
 
   if (loading) {
