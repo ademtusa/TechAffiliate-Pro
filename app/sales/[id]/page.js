@@ -18,6 +18,8 @@ export default function SalesPage() {
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
   const [quantity, setQuantity] = useState(1)
+  const [redirectModal, setRedirectModal] = useState(false)
+  const [countdown, setCountdown] = useState(3)
 
   useEffect(() => {
     if (params.id) {
