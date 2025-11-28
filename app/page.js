@@ -28,6 +28,25 @@ export default function Home() {
     checkUser()
     fetchCategories()
     fetchProductSliders()
+    
+    // Listen to localStorage changes for compare products
+    const handleStorageChange = () => {
+      const compare = JSON.parse(localStorage.getItem('compareProducts') || '[]')
+      setCompareProducts(compare)
+    }
+    
+    // Initial load
+    handleStorageChange()
+    
+    // Listen for changes
+    window.addEventListener('storage', handleStorageChange)
+    // Also check periodically (for same-tab updates)
+    const interval = setInterval(handleStorageChange, 500)
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+      clearInterval(interval)
+    }
   }, [])
 
   const checkUser = async () => {
