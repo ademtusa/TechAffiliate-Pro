@@ -236,7 +236,7 @@ export default function BlogPostPage() {
                       <span className="text-2xl font-bold text-blue-600">${product.price}</span>
                       <Badge variant="secondary">{product.category}</Badge>
                     </div>
-                    <Link href={`/product/${product.id}`}>
+                    <Link href={`/sales/${product.id}`}>
                       <Button className="w-full">View Details</Button>
                     </Link>
                   </CardContent>
