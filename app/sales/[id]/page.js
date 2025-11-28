@@ -100,63 +100,53 @@ export default function SalesPage() {
         <div className="grid lg:grid-cols-3 gap-5">
           {/* Left Column - Main Content (2/3) */}
           <div className="lg:col-span-2 space-y-5">
-            {/* Hero Product Card - Like Image */}
+            {/* Hero Product Card - Compact */}
             <Card className="border-2 shadow-xl hover:shadow-2xl transition-shadow hover:border-blue-300">
-              <div className="p-6">
-                <div className="grid md:grid-cols-5 gap-6">
-                  {/* Product Image - Left (2 cols) */}
-                  <div className="md:col-span-2">
-                    <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg bg-gradient-to-br from-blue-100 to-indigo-100">
-                      {product.image_url ? (
-                        <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                          <Package className="h-32 w-32 text-blue-300" />
-                        </div>
-                      )}
-                      <Badge className="absolute top-3 right-3 bg-blue-600 text-white font-semibold px-3 py-1.5 text-sm">
-                        {product.category || 'AI-SaaS'}
-                      </Badge>
-                    </div>
-                  </div>
-
-                  {/* Product Info - Right (3 cols) */}
-                  <div className="md:col-span-3 space-y-4">
-                    <div>
-                      <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-3">
-                        {product.name}
-                      </h1>
-                      
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="flex items-center gap-0.5">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className={`h-5 w-5 ${i < Math.floor(product.rating || 4.8) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} />
-                          ))}
-                        </div>
-                        <span className="text-xl font-bold text-gray-900">{product.rating || 4.8}</span>
-                        <span className="text-gray-600">Average Review</span>
+              <div className="grid md:grid-cols-2 gap-4 p-5">
+                {/* Product Image */}
+                <div className="relative">
+                  <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg bg-gradient-to-br from-blue-100 to-indigo-100">
+                    {product.image_url ? (
+                      <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <Package className="h-24 w-24 text-blue-300" />
                       </div>
-                    </div>
+                    )}
+                    <Badge className="absolute top-3 right-3 bg-blue-600 text-white font-semibold px-3 py-1 text-xs">
+                      {product.category || 'AI-SaaS'}
+                    </Badge>
+                  </div>
+                </div>
 
-                    <div className="grid grid-cols-2 gap-2.5">
-                      {[
-                        { label: 'AI Powered', icon: '🤖', color: 'green' },
-                        { label: 'Productivity', icon: '⚡', color: 'blue' },
-                        { label: 'Content Creation', icon: '✍️', color: 'purple' },
-                        { label: 'Coding Assistant', icon: '💻', color: 'orange' },
-                      ].map((badge) => (
-                        <Badge key={badge.label} variant="outline" className={`justify-start px-3 py-2 text-sm border-2 border-${badge.color}-300 text-${badge.color}-700 hover:bg-${badge.color}-50 transition-colors font-medium`}>
-                          <span className="mr-1.5">{badge.icon}</span>
-                          {badge.label}
-                        </Badge>
+                {/* Product Info */}
+                <div className="space-y-3">
+                  <h1 className="text-3xl font-bold text-gray-900 leading-tight">
+                    {product.name}
+                  </h1>
+                  
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className={`h-4 w-4 ${i < Math.floor(product.rating || 4.8) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} />
                       ))}
                     </div>
+                    <span className="text-lg font-bold text-gray-900">{product.rating || 4.8}</span>
+                    <span className="text-gray-600 text-sm">Average Review</span>
+                  </div>
 
-                    <Separator />
-
-                    <p className="text-gray-700 leading-relaxed">
-                      {product.description || 'Transform your workflow with cutting-edge AI technology. Perfect for professionals, creators, and developers looking to boost productivity and creativity.'}
-                    </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {[
+                      { label: 'AI', icon: '🤖', color: 'green' },
+                      { label: 'Productivity', icon: '⚡', color: 'blue' },
+                      { label: 'Content', icon: '✍️', color: 'purple' },
+                      { label: 'Coding', icon: '💻', color: 'orange' },
+                    ].map((badge) => (
+                      <Badge key={badge.label} variant="outline" className={`justify-start px-2 py-1.5 text-xs border-2 border-${badge.color}-300 text-${badge.color}-700 hover:bg-${badge.color}-50 transition-colors`}>
+                        <span className="mr-1">{badge.icon}</span>
+                        {badge.label}
+                      </Badge>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -493,6 +483,22 @@ export default function SalesPage() {
             </div>
           </div>
         </div>
+
+        {/* CTA Section - Compact */}
+        <Card className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white border-2 shadow-2xl mt-8">
+          <CardContent className="p-8 text-center">
+            <div className="h-16 w-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
+              <Zap className="h-8 w-8 text-white" />
+            </div>
+            <h2 className="text-3xl font-bold mb-3">Ready to Get Started?</h2>
+            <p className="text-lg text-blue-100 mb-6 max-w-2xl mx-auto">
+              Join thousands of satisfied customers. Special pricing won't last!
+            </p>
+            <Button size="lg" className="h-14 px-10 text-lg bg-white text-blue-600 hover:bg-gray-100 font-bold shadow-2xl border-2 border-transparent hover:border-blue-300 transition-all">
+              Get Instant Access Now
+            </Button>
+          </CardContent>
+        </Card>
       </div>
 
       <Footer />
