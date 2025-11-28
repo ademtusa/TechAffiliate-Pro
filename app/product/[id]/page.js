@@ -209,44 +209,6 @@ export default function ProductPage() {
                 </button>
               ))}
             </div>
-
-            {/* Digital Product Benefits */}
-            <Card className="mt-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200">
-              <CardHeader>
-                <CardTitle className="text-lg">Why Choose This?</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
-                    <Check className="h-5 w-5 text-green-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Instant Access</p>
-                    <p className="text-sm text-gray-600">Get started immediately</p>
-                  </div>
-                </div>
-                <Separator />
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
-                    <Shield className="h-5 w-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Verified Deal</p>
-                    <p className="text-sm text-gray-600">Trusted affiliate partner</p>
-                  </div>
-                </div>
-                <Separator />
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
-                    <ExternalLink className="h-5 w-5 text-purple-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Direct Access</p>
-                    <p className="text-sm text-gray-600">Quick redirect to provider</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
           </div>
 
           {/* RIGHT SIDE - Product Info */}
