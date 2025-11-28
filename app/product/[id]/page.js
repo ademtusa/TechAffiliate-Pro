@@ -1,21 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { supabase } from '@/lib/supabase'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
-import { Star, ExternalLink, ArrowLeft, Heart, Share2, Facebook, Twitter, Linkedin, Check, TrendingUp, ShoppingCart, CreditCard, Package, Shield, Truck, RotateCcw, Plus, Minus } from 'lucide-react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { CartStore } from '@/lib/cartStore'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 
+// Bu sayfa artık kullanılmıyor. Tüm ürünler /sales/[id] sayfasına yönlendiriliyor.
 export default function ProductPage() {
   const params = useParams()
   const router = useRouter()
