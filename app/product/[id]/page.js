@@ -299,6 +299,15 @@ export default function ProductPage() {
 
             {/* Action Buttons */}
             <div className="space-y-3">
+              <Link href={`/sales/${product.id}`}>
+                <Button 
+                  size="lg" 
+                  className="w-full h-16 text-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-lg font-bold animate-pulse"
+                >
+                  🔥 View Special Sales Page
+                </Button>
+              </Link>
+              
               <div className="grid grid-cols-2 gap-4">
                 <Button 
                   size="lg" 
