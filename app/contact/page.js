@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, CheckCircle, MessageSquare } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
@@ -17,9 +17,7 @@ export default function ContactPage() {
     subject: '',
     message: ''
   })
-  const [subscribeEmail, setSubscribeEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
-  const [subscribed, setSubscribed] = useState(false)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -28,7 +26,6 @@ export default function ContactPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // Mock form submission
     console.log('Contact form submitted:', formData)
     setSubmitted(true)
     setTimeout(() => {
@@ -37,77 +34,68 @@ export default function ContactPage() {
     }, 3000)
   }
 
-  const handleSubscribe = async (e) => {
-    e.preventDefault()
-    // Mock subscription
-    console.log('Subscription:', subscribeEmail)
-    setSubscribed(true)
-    setTimeout(() => {
-      setSubscribed(false)
-      setSubscribeEmail('')
-    }, 3000)
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      {/* Navbar */}
       <Navbar />
 
-      {/* Header */}
-      <section className="relative py-16 px-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white">
+      {/* Hero Section */}
+      <section className="relative py-12 px-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white">
         <div className="container mx-auto text-center">
+          <MessageSquare className="h-16 w-16 mx-auto mb-4" />
           <h1 className="text-5xl font-bold mb-4">Get In Touch</h1>
           <p className="text-xl text-blue-50 max-w-2xl mx-auto">
-            Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            Questions? We're here to help. Send us a message and we'll respond promptly.
           </p>
         </div>
       </section>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <Card className="shadow-2xl border-2">
-            <CardHeader>
-              <CardTitle className="text-3xl">Send Us a Message</CardTitle>
-              <CardDescription className="text-base">
-                Fill out the form below and we'll get back to you within 24 hours.
-              </CardDescription>
+      {/* Contact Content - Compact Layout */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Contact Form - Takes 2 columns */}
+          <Card className="lg:col-span-2 shadow-2xl border-2">
+            <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
+              <CardTitle className="text-2xl flex items-center gap-3">
+                <Send className="h-6 w-6 text-blue-600" />
+                Send Us a Message
+              </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-6">
               {submitted ? (
                 <div className="text-center py-12">
                   <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-green-600 mb-2">Message Sent!</h3>
-                  <p className="text-gray-600">Thank you for contacting us. We'll respond soon.</p>
+                  <p className="text-gray-600">Thank you for contacting us. We'll respond within 24 hours.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      placeholder="John Doe"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="h-12"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="john@example.com"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="h-12"
-                    />
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="name">Full Name</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="John Doe"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        className="h-11"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="email">Email Address</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="john@example.com"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="h-11"
+                      />
+                    </div>
                   </div>
                   <div>
                     <Label htmlFor="subject">Subject</Label>
@@ -119,7 +107,7 @@ export default function ContactPage() {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      className="h-12"
+                      className="h-11"
                     />
                   </div>
                   <div>
@@ -131,7 +119,7 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleInputChange}
                       required
-                      rows={6}
+                      rows={5}
                       className="resize-none"
                     />
                   </div>
@@ -144,120 +132,88 @@ export default function ContactPage() {
             </CardContent>
           </Card>
 
-          {/* Contact Info & Newsletter */}
-          <div className="space-y-8">
+          {/* Contact Info Sidebar - Takes 1 column */}
+          <div className="space-y-6">
             {/* Contact Information */}
             <Card className="shadow-xl border-2">
-              <CardHeader>
-                <CardTitle className="text-2xl">Contact Information</CardTitle>
-                <CardDescription>
-                  Reach us through any of these channels
-                </CardDescription>
+              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
+                <CardTitle className="text-xl">Contact Info</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-                    <Mail className="h-6 w-6 text-blue-600" />
+              <CardContent className="pt-6 space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                    <Mail className="h-5 w-5 text-blue-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-lg mb-1">Email</h4>
-                    <p className="text-gray-600">support@techaffiliate.pro</p>
-                    <p className="text-gray-600">info@techaffiliate.pro</p>
+                    <h4 className="font-semibold text-sm mb-1">Email</h4>
+                    <p className="text-sm text-gray-600">support@techaffiliate.pro</p>
+                    <p className="text-sm text-gray-600">info@techaffiliate.pro</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                    <Phone className="h-6 w-6 text-green-600" />
+                <div className="flex items-start gap-3">
+                  <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                    <Phone className="h-5 w-5 text-green-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-lg mb-1">Phone</h4>
-                    <p className="text-gray-600">+1 (555) 123-4567</p>
-                    <p className="text-gray-600">Mon-Fri, 9AM - 6PM EST</p>
+                    <h4 className="font-semibold text-sm mb-1">Phone</h4>
+                    <p className="text-sm text-gray-600">+1 (555) 123-4567</p>
+                    <p className="text-sm text-gray-600">Mon-Fri, 9AM - 6PM EST</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="h-6 w-6 text-purple-600" />
+                <div className="flex items-start gap-3">
+                  <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="h-5 w-5 text-purple-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-lg mb-1">Office</h4>
-                    <p className="text-gray-600">123 Tech Street</p>
-                    <p className="text-gray-600">San Francisco, CA 94105</p>
+                    <h4 className="font-semibold text-sm mb-1">Office</h4>
+                    <p className="text-sm text-gray-600">123 Tech Street</p>
+                    <p className="text-sm text-gray-600">San Francisco, CA 94105</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Newsletter Subscription */}
+            {/* Quick Links */}
             <Card className="shadow-xl border-2 bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200">
               <CardHeader>
-                <CardTitle className="text-2xl">Subscribe to Newsletter</CardTitle>
-                <CardDescription>
-                  Get exclusive deals, updates, and free resources delivered to your inbox
-                </CardDescription>
+                <CardTitle className="text-xl">Quick Links</CardTitle>
               </CardHeader>
-              <CardContent>
-                {subscribed ? (
-                  <div className="text-center py-8">
-                    <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-3" />
-                    <h4 className="text-xl font-bold text-green-600 mb-2">Subscribed!</h4>
-                    <p className="text-gray-600">Thank you for subscribing to our newsletter.</p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubscribe} className="space-y-4">
-                    <div>
-                      <Label htmlFor="subscribe-email">Email Address</Label>
-                      <Input
-                        id="subscribe-email"
-                        type="email"
-                        placeholder="your@email.com"
-                        value={subscribeEmail}
-                        onChange={(e) => setSubscribeEmail(e.target.value)}
-                        required
-                        className="h-12"
-                      />
-                    </div>
-                    <Button type="submit" size="lg" className="w-full h-12 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
-                      Subscribe Now
-                    </Button>
-                    <p className="text-xs text-gray-500 text-center">
-                      By subscribing, you agree to receive marketing emails. You can unsubscribe at any time.
-                    </p>
-                  </form>
-                )}
+              <CardContent className="space-y-3">
+                <a href="/" className="flex items-center text-gray-700 hover:text-blue-600 transition-colors">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                  <span className="text-sm font-medium">Browse Products</span>
+                </a>
+                <a href="/blog" className="flex items-center text-gray-700 hover:text-blue-600 transition-colors">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                  <span className="text-sm font-medium">Read Reviews</span>
+                </a>
+                <a href="/resources" className="flex items-center text-gray-700 hover:text-blue-600 transition-colors">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                  <span className="text-sm font-medium">Free Resources</span>
+                </a>
               </CardContent>
             </Card>
 
-            {/* Membership CTA */}
+            {/* Support Hours */}
             <Card className="shadow-xl border-2 bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200">
               <CardHeader>
-                <CardTitle className="text-2xl">Become a Member</CardTitle>
-                <CardDescription>
-                  Join our affiliate community and start earning today
-                </CardDescription>
+                <CardTitle className="text-xl">Support Hours</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="space-y-2 mb-4">
-                  <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                    Access to exclusive deals and promotions
-                  </li>
-                  <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                    Free e-books and premium resources
-                  </li>
-                  <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                    Weekly bonuses and discount codes
-                  </li>
-                  <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                    Priority customer support
-                  </li>
-                </ul>
-                <Button size="lg" className="w-full h-12 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
-                  Join Free Now
-                </Button>
+              <CardContent>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="font-medium">Monday - Friday</span>
+                    <span className="text-gray-600">9AM - 6PM EST</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-medium">Saturday</span>
+                    <span className="text-gray-600">10AM - 4PM EST</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-medium">Sunday</span>
+                    <span className="text-gray-600">Closed</span>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
