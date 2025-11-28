@@ -161,17 +161,8 @@ export default function ProductPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      {/* Navigation */}
-      <nav className="bg-white border-b">
-        <div className="container mx-auto px-4 py-4">
-          <Link href="/">
-            <Button variant="ghost">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Products
-            </Button>
-          </Link>
-        </div>
-      </nav>
+      {/* Navbar */}
+      <Navbar />
 
       {/* Product Details Section */}
       <div className="container mx-auto px-4 py-12">
