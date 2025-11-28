@@ -53,6 +53,27 @@ export default function SalesPage() {
     window.open(shareUrls[platform], '_blank', 'width=600,height=400')
   }
 
+  const handleBuyNow = () => {
+    // TODO: Admin panelinden affiliate link yönetimi eklenecek
+    // Şimdilik ürünün affiliate linkine veya demo linkine yönlendirme
+    const affiliateLink = product?.affiliate_link || product?.link || '#'
+    
+    if (affiliateLink && affiliateLink !== '#') {
+      window.open(affiliateLink, '_blank')
+    } else {
+      // Eğer link yoksa kullanıcıyı bilgilendir
+      alert('This product will be available soon! Please check back later.')
+    }
+  }
+
+  const handleVisitStore = () => {
+    const storeLink = product?.official_link || product?.link || product?.affiliate_link || '#'
+    
+    if (storeLink && storeLink !== '#') {
+      window.open(storeLink, '_blank')
+    }
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center">
