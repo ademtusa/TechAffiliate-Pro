@@ -474,9 +474,9 @@ export default function ComparisonReviewPage() {
                       </Badge>
                     )}
 
-                    {/* Like & Compare Icons - Top Left */}
-                    <div className="absolute top-3 left-3 flex flex-col gap-2">
-                      {/* Like/Heart Button */}
+                    {/* Like & Compare Icons - Bottom Left */}
+                    <div className="absolute bottom-3 left-3 flex gap-2">
+                      {/* Like/Heart Button - 1st */}
                       <button
                         onClick={(e) => {
                           e.preventDefault()
@@ -485,14 +485,14 @@ export default function ComparisonReviewPage() {
                         className={`p-2 rounded-full transition-all shadow-lg ${
                           likedProducts.includes(product.id)
                             ? 'bg-red-500 text-white'
-                            : 'bg-white/90 text-gray-700 hover:bg-red-50'
+                            : 'bg-white/90 text-red-500 hover:bg-red-50'
                         }`}
                         title="Beğen"
                       >
-                        <Heart className={`h-4 w-4 ${likedProducts.includes(product.id) ? 'fill-current' : ''}`} />
+                        <Heart className={`h-5 w-5 ${likedProducts.includes(product.id) ? 'fill-current' : ''}`} />
                       </button>
 
-                      {/* Compare Button */}
+                      {/* Compare Button - 2nd */}
                       <button
                         onClick={(e) => {
                           e.preventDefault()
@@ -501,11 +501,11 @@ export default function ComparisonReviewPage() {
                         className={`p-2 rounded-full transition-all shadow-lg ${
                           selectedForCompare.find(p => p.id === product.id)
                             ? 'bg-blue-500 text-white'
-                            : 'bg-white/90 text-gray-700 hover:bg-blue-50'
+                            : 'bg-white/90 text-blue-600 hover:bg-blue-50'
                         }`}
                         title="Karşılaştır"
                       >
-                        <Check className={`h-4 w-4 ${selectedForCompare.find(p => p.id === product.id) ? 'font-bold' : ''}`} />
+                        <ArrowLeftRight className={`h-5 w-5`} />
                       </button>
                     </div>
 
