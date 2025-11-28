@@ -49,7 +49,35 @@ export default function ProductSlider({ title, products, icon: Icon }) {
 
   useEffect(() => {
     updateArrowVisibility()
+    // Load liked and compare from localStorage
+    const liked = JSON.parse(localStorage.getItem('likedProducts') || '[]')
+    const compare = JSON.parse(localStorage.getItem('compareProducts') || '[]')
+    setLikedProducts(liked)
+    setCompareProducts(compare)
   }, [selectedFilter])
+
+  const toggleLike = (product) => {
+    const newLiked = likedProducts.includes(product.id)
+      ? likedProducts.filter(id => id !== product.id)
+      : [...likedProducts, product.id]
+    setLikedProducts(newLiked)
+    localStorage.setItem('likedProducts', JSON.stringify(newLiked))
+  }
+
+  const toggleCompare = (product) => {
+    const isInCompare = compareProducts.find(p => p.id === product.id)
+    let newCompare
+    if (isInCompare) {
+      newCompare = compareProducts.filter(p => p.id !== product.id)
+    } else if (compareProducts.length < 3) {
+      newCompare = [...compareProducts, product]
+    } else {
+      alert('En fazla 3 ürün karşılaştırabilirsiniz!')
+      return
+    }
+    setCompareProducts(newCompare)
+    localStorage.setItem('compareProducts', JSON.stringify(newCompare))
+  }
 
   const handleAffiliateClick = async (product) => {
     try {
