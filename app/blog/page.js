@@ -425,7 +425,7 @@ export default function ComparisonReviewPage() {
               }`}>
                 <CardContent className="p-0">
                   {/* Product Image */}
-                  <div className="aspect-square relative bg-gray-100">
+                  <div className="aspect-square relative bg-gray-100 rounded-t-xl overflow-hidden">
                     {product.image_url ? (
                       <img
                         src={product.image_url}
