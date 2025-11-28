@@ -167,6 +167,8 @@ export default function ResourcesPage() {
           </div>
         )}
       </div>
+
+      <Footer />
     </div>
   )
 }
