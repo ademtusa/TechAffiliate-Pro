@@ -100,7 +100,7 @@ export default function Navbar() {
               </Link>
               <Link href="/blog" className="group relative px-4 py-2 flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-all rounded-lg hover:bg-white/60">
                 <FileText className="h-4 w-4" />
-                <span className="font-medium">Review</span>
+                <span className="font-medium">Products</span>
                 <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
               </Link>
               <Link href="/resources" className="group relative px-4 py-2 flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-all rounded-lg hover:bg-white/60">
