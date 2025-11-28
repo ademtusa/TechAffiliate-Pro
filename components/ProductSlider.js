@@ -12,6 +12,8 @@ export default function ProductSlider({ title, products, icon: Icon }) {
   const [showLeftArrow, setShowLeftArrow] = useState(false)
   const [showRightArrow, setShowRightArrow] = useState(true)
   const [selectedFilter, setSelectedFilter] = useState('rated')
+  const [likedProducts, setLikedProducts] = useState([])
+  const [compareProducts, setCompareProducts] = useState([])
 
   const scroll = (direction) => {
     const container = scrollContainerRef.current
