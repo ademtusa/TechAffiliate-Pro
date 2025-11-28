@@ -189,6 +189,60 @@ export default function Home() {
       </section>
 
       <Footer categories={categories} />
+
+      {/* Floating Compare Bar */}
+      {compareProducts.length > 0 && (
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-2xl border-t-4 border-blue-400">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="bg-white text-blue-600 rounded-full w-8 h-8 flex items-center justify-center font-bold">
+                    {compareProducts.length}
+                  </div>
+                  <span className="font-semibold">Ürün Karşılaştırmaya Eklendi</span>
+                </div>
+                <div className="flex gap-2">
+                  {compareProducts.map(product => (
+                    <div key={product.id} className="bg-white/20 px-3 py-1 rounded-lg text-sm flex items-center gap-2">
+                      <span>{product.name}</span>
+                      <button
+                        onClick={() => {
+                          const newCompare = compareProducts.filter(p => p.id !== product.id)
+                          setCompareProducts(newCompare)
+                          localStorage.setItem('compareProducts', JSON.stringify(newCompare))
+                        }}
+                        className="hover:bg-white/30 rounded-full p-1"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                {compareProducts.length >= 2 && (
+                  <a href="/blog#comparison-table">
+                    <Button className="bg-white text-blue-600 hover:bg-gray-100 font-semibold">
+                      Karşılaştır ({compareProducts.length})
+                    </Button>
+                  </a>
+                )}
+                <Button
+                  variant="ghost"
+                  className="text-white hover:bg-white/20"
+                  onClick={() => {
+                    setCompareProducts([])
+                    localStorage.removeItem('compareProducts')
+                  }}
+                >
+                  Temizle
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
