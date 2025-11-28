@@ -249,22 +249,29 @@ export default function ProductSlider({ title, products, icon: Icon }) {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-2">
-                    <Link href={`/product/${product.id}`} className="flex-1">
-                      <Button 
-                        variant="outline" 
-                        className="w-full border-2 border-gray-300 hover:bg-gray-50"
-                      >
-                        View Details
+                  <div className="space-y-2">
+                    <Link href={`/sales/${product.id}`} className="block">
+                      <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 font-semibold">
+                        🔥 Sales Page
                       </Button>
                     </Link>
-                    <Button
-                      className="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white"
-                      onClick={() => handleAffiliateClick(product)}
-                    >
-                      Get Deal
-                      <ExternalLink className="ml-2 h-4 w-4" />
-                    </Button>
+                    <div className="flex gap-2">
+                      <Link href={`/product/${product.id}`} className="flex-1">
+                        <Button 
+                          variant="outline" 
+                          className="w-full border-2 border-gray-300 hover:bg-gray-50"
+                        >
+                          Details
+                        </Button>
+                      </Link>
+                      <Button
+                        className="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white"
+                        onClick={() => handleAffiliateClick(product)}
+                      >
+                        Get Deal
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
