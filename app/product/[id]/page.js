@@ -582,6 +582,8 @@ export default function ProductPage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <Footer />
     </div>
   )
 }
