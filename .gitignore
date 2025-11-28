@@ -115,3 +115,5 @@ node_modules/@next/swc-linux-arm64-gnu/next-swc.linux-arm64-gnu.node
 # Environment files
 *.env
 *.env.*
+backup_safe/BEFORE_AUTH_REDESIGN_20251128_174028/node_modules/@next/swc-linux-arm64-gnu/next-swc.linux-arm64-gnu.node
+backup_safe/BEFORE_AUTH_REDESIGN_20251128_174028/node_modules/@next/swc-linux-arm64-musl/next-swc.linux-arm64-musl.node
