@@ -145,79 +145,138 @@ export default function Navbar() {
                     Sign In
                   </Button>
                 </DialogTrigger>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>Welcome Back</DialogTitle>
-                    <DialogDescription>
-                      Sign in to your account or create a new one
+                <DialogContent className="sm:max-w-md bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border-2 border-blue-200">
+                  <DialogHeader className="space-y-3">
+                    <div className="mx-auto w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg">
+                      <User className="h-8 w-8 text-white" />
+                    </div>
+                    <DialogTitle className="text-2xl text-center bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                      Welcome to TechAffiliate Pro
+                    </DialogTitle>
+                    <DialogDescription className="text-center text-gray-600">
+                      Sign in to access exclusive deals and reviews
                     </DialogDescription>
                   </DialogHeader>
                   
-                  <Tabs defaultValue="signin" className="w-full">
-                    <TabsList className="grid w-full grid-cols-2">
-                      <TabsTrigger value="signin">Sign In</TabsTrigger>
-                      <TabsTrigger value="signup">Sign Up</TabsTrigger>
+                  <Tabs defaultValue="signin" className="w-full mt-4">
+                    <TabsList className="grid w-full grid-cols-2 bg-white/60 p-1">
+                      <TabsTrigger 
+                        value="signin" 
+                        className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all"
+                      >
+                        Sign In
+                      </TabsTrigger>
+                      <TabsTrigger 
+                        value="signup"
+                        className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all"
+                      >
+                        Sign Up
+                      </TabsTrigger>
                     </TabsList>
                     
-                    <TabsContent value="signin">
-                      <form onSubmit={handleSignIn} className="space-y-4">
-                        <div>
-                          <Label htmlFor="email">Email</Label>
+                    <TabsContent value="signin" className="mt-6">
+                      <form onSubmit={handleSignIn} className="space-y-5">
+                        <div className="space-y-2">
+                          <Label htmlFor="email" className="text-gray-700 font-medium">Email Address</Label>
                           <Input
                             id="email"
                             type="email"
+                            placeholder="you@example.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            className="h-12 bg-white/80 border-2 border-blue-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                             required
                           />
                         </div>
-                        <div>
-                          <Label htmlFor="password">Password</Label>
+                        <div className="space-y-2">
+                          <Label htmlFor="password" className="text-gray-700 font-medium">Password</Label>
                           <Input
                             id="password"
                             type="password"
+                            placeholder="••••••••"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            className="h-12 bg-white/80 border-2 border-blue-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                             required
                           />
                         </div>
                         {authError && (
-                          <p className="text-sm text-red-600">{authError}</p>
+                          <div className="p-3 rounded-lg bg-red-50 border-2 border-red-200">
+                            <p className="text-sm text-red-600 flex items-center gap-2">
+                              <span className="text-red-500">⚠</span>
+                              {authError}
+                            </p>
+                          </div>
                         )}
-                        <Button type="submit" className="w-full" disabled={loading}>
-                          {loading ? 'Signing in...' : 'Sign In'}
+                        <Button 
+                          type="submit" 
+                          className="w-full h-12 text-base bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all font-semibold" 
+                          disabled={loading}
+                        >
+                          {loading ? (
+                            <span className="flex items-center gap-2">
+                              <span className="animate-spin">⏳</span>
+                              Signing in...
+                            </span>
+                          ) : (
+                            'Sign In'
+                          )}
                         </Button>
                       </form>
                     </TabsContent>
                     
-                    <TabsContent value="signup">
-                      <form onSubmit={handleSignUp} className="space-y-4">
-                        <div>
-                          <Label htmlFor="signup-email">Email</Label>
+                    <TabsContent value="signup" className="mt-6">
+                      <form onSubmit={handleSignUp} className="space-y-5">
+                        <div className="space-y-2">
+                          <Label htmlFor="signup-email" className="text-gray-700 font-medium">Email Address</Label>
                           <Input
                             id="signup-email"
                             type="email"
+                            placeholder="you@example.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            className="h-12 bg-white/80 border-2 border-blue-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                             required
                           />
                         </div>
-                        <div>
-                          <Label htmlFor="signup-password">Password</Label>
+                        <div className="space-y-2">
+                          <Label htmlFor="signup-password" className="text-gray-700 font-medium">Password</Label>
                           <Input
                             id="signup-password"
                             type="password"
+                            placeholder="••••••••"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            className="h-12 bg-white/80 border-2 border-blue-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                             required
                           />
+                          <p className="text-xs text-gray-500">Minimum 6 characters required</p>
                         </div>
                         {authError && (
-                          <p className="text-sm text-red-600">{authError}</p>
+                          <div className="p-3 rounded-lg bg-red-50 border-2 border-red-200">
+                            <p className="text-sm text-red-600 flex items-center gap-2">
+                              <span className="text-red-500">⚠</span>
+                              {authError}
+                            </p>
+                          </div>
                         )}
-                        <Button type="submit" className="w-full" disabled={loading}>
-                          {loading ? 'Creating account...' : 'Sign Up'}
+                        <Button 
+                          type="submit" 
+                          className="w-full h-12 text-base bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all font-semibold" 
+                          disabled={loading}
+                        >
+                          {loading ? (
+                            <span className="flex items-center gap-2">
+                              <span className="animate-spin">⏳</span>
+                              Creating account...
+                            </span>
+                          ) : (
+                            'Create Account'
+                          )}
                         </Button>
+                        <p className="text-xs text-center text-gray-500">
+                          By signing up, you agree to our Terms of Service
+                        </p>
                       </form>
                     </TabsContent>
                   </Tabs>
