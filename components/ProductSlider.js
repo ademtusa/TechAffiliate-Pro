@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { ChevronLeft, ChevronRight, Star, Eye, ExternalLink } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Star, Eye, ExternalLink, Heart, Check } from 'lucide-react'
 import Link from 'next/link'
 
 export default function ProductSlider({ title, products, icon: Icon }) {
