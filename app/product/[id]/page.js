@@ -13,6 +13,7 @@ import { Star, ExternalLink, ArrowLeft, Heart, Share2, Facebook, Twitter, Linked
 import Link from 'next/link'
 import Image from 'next/image'
 import { CartStore } from '@/lib/cartStore'
+import Navbar from '@/components/Navbar'
 
 export default function ProductPage() {
   const params = useParams()
