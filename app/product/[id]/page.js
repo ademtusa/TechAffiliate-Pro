@@ -176,10 +176,10 @@ export default function ProductPage() {
                 <img
                   src={productImages[selectedImage]}
                   alt={product.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-2xl"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-100">
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl">
                   <Package className="h-32 w-32 text-blue-300" />
                 </div>
               )}
