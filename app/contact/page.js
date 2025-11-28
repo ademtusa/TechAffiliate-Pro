@@ -1,13 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { Mail, Phone, MapPin, Send, CheckCircle, MessageSquare } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
 import Navbar from '@/components/Navbar'
+import HeroSection from '@/components/HeroSection'
 import Footer from '@/components/Footer'
 
 export default function ContactPage() {
@@ -18,6 +19,30 @@ export default function ContactPage() {
     message: ''
   })
   const [submitted, setSubmitted] = useState(false)
+  const [featuredProduct, setFeaturedProduct] = useState(null)
+
+  useEffect(() => {
+    fetchFeaturedProduct()
+  }, [])
+
+  const fetchFeaturedProduct = async () => {
+    try {
+      const response = await fetch('/api/products')
+      const result = await response.json()
+      
+      if (result.success && result.data && result.data.length > 0) {
+        // Get a random featured product
+        const randomIndex = Math.floor(Math.random() * result.data.length)
+        setFeaturedProduct({
+          ...result.data[randomIndex],
+          commission_rate: 15.5,
+          reviews: 1247
+        })
+      }
+    } catch (error) {
+      console.error('Error fetching featured product:', error)
+    }
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -38,16 +63,13 @@ export default function ContactPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative py-12 px-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white">
-        <div className="container mx-auto text-center">
-          <MessageSquare className="h-16 w-16 mx-auto mb-4" />
-          <h1 className="text-5xl font-bold mb-4">Get In Touch</h1>
-          <p className="text-xl text-blue-50 max-w-2xl mx-auto">
-            Questions? We're here to help. Send us a message and we'll respond promptly.
-          </p>
-        </div>
-      </section>
+      {/* Hero Section with Featured Product */}
+      <HeroSection 
+        title="Get In Touch"
+        subtitle="Have questions or need support? We're here to help! Send us a message and check out our featured deal before you go."
+        featuredProduct={featuredProduct}
+        featuredType="specialDeal"
+      />
 
       {/* Contact Content - Compact Layout */}
       <div className="container mx-auto px-4 py-12">
