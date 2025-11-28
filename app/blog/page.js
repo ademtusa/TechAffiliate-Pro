@@ -30,11 +30,41 @@ export default function ComparisonReviewPage() {
 
   useEffect(() => {
     fetchProducts()
+    // Load liked and compare from localStorage
+    const liked = JSON.parse(localStorage.getItem('likedProducts') || '[]')
+    const compare = JSON.parse(localStorage.getItem('compareProducts') || '[]')
+    setLikedProducts(liked)
+    if (compare.length > 0) {
+      setSelectedForCompare(compare)
+    }
   }, [])
 
   useEffect(() => {
     filterProducts()
   }, [products, selectedCategory, priceRange, ratingFilter, searchQuery])
+
+  const toggleLike = (product) => {
+    const newLiked = likedProducts.includes(product.id)
+      ? likedProducts.filter(id => id !== product.id)
+      : [...likedProducts, product.id]
+    setLikedProducts(newLiked)
+    localStorage.setItem('likedProducts', JSON.stringify(newLiked))
+  }
+
+  const toggleCompareNew = (product) => {
+    const isInCompare = selectedForCompare.find(p => p.id === product.id)
+    let newCompare
+    if (isInCompare) {
+      newCompare = selectedForCompare.filter(p => p.id !== product.id)
+    } else if (selectedForCompare.length < 3) {
+      newCompare = [...selectedForCompare, product]
+    } else {
+      alert('En fazla 3 ürün karşılaştırabilirsiniz!')
+      return
+    }
+    setSelectedForCompare(newCompare)
+    localStorage.setItem('compareProducts', JSON.stringify(newCompare))
+  }
 
   const fetchProducts = async () => {
     setLoading(true)
