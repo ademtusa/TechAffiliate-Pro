@@ -11,6 +11,7 @@ import { Star, TrendingUp, Award, DollarSign, Check, X, Search, Filter, ArrowLef
 import Link from 'next/link'
 import HeroSection from '@/components/HeroSection'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 export default function ComparisonReviewPage() {
   const [products, setProducts] = useState([])
