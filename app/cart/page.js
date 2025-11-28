@@ -139,7 +139,7 @@ export default function CartPage() {
                   <CardContent className="p-6">
                     <div className="flex gap-6">
                       {/* Product Image */}
-                      <Link href={`/product/${item.id}`}>
+                      <Link href={`/sales/${item.id}`}>
                         <div className="w-32 h-32 flex-shrink-0 rounded-lg overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-100 cursor-pointer hover:opacity-80 transition">
                           {item.image_url ? (
                             <img src={item.image_url} alt={item.name} className="w-full h-full object-cover" />
@@ -155,7 +155,7 @@ export default function CartPage() {
                       <div className="flex-1">
                         <div className="flex items-start justify-between mb-2">
                           <div>
-                            <Link href={`/product/${item.id}`}>
+                            <Link href={`/sales/${item.id}`}>
                               <h3 className="text-xl font-bold hover:text-blue-600 transition cursor-pointer">{item.name}</h3>
                             </Link>
                             <Badge variant="secondary" className="mt-1">{item.category}</Badge>
