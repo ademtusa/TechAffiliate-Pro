@@ -229,12 +229,20 @@ export default function SalesPage() {
 
                   {/* Right - Actions */}
                   <div className="space-y-3 flex flex-col justify-center">
-                    <Button size="lg" className="w-full h-14 text-lg bg-white text-blue-600 hover:bg-gray-100 font-bold shadow-xl border-2 border-transparent hover:border-blue-300 transition-all">
+                    <Button 
+                      size="lg" 
+                      onClick={handleBuyNow}
+                      className="w-full h-14 text-lg bg-white text-blue-600 hover:bg-gray-100 font-bold shadow-xl border-2 border-transparent hover:border-blue-300 transition-all"
+                    >
                       <CreditCard className="mr-2 h-5 w-5" />
                       Buy Now - ${(salePrice * quantity).toFixed(2)}
                     </Button>
                     
-                    <Button size="lg" className="w-full h-12 bg-white/10 border-2 border-white text-white hover:bg-white/20 font-semibold hover:border-blue-100 transition-all">
+                    <Button 
+                      size="lg" 
+                      onClick={handleVisitStore}
+                      className="w-full h-12 bg-white/10 border-2 border-white text-white hover:bg-white/20 font-semibold hover:border-blue-100 transition-all"
+                    >
                       <ExternalLink className="mr-2 h-4 w-4" />
                       Visit Official Store
                     </Button>
