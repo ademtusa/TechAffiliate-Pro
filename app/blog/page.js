@@ -596,6 +596,8 @@ export default function ComparisonReviewPage() {
           </Card>
         )}
       </div>
+
+      <Footer />
     </div>
   )
 }
