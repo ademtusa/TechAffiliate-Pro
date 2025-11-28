@@ -405,7 +405,7 @@ export default function ComparisonReviewPage() {
                         </div>
                         <div className="flex items-center justify-center gap-2">
                           <Award className="h-3 w-3 text-yellow-600" />
-                          <span className="text-gray-600">Editor's Choice</span>
+                          <span className="text-gray-600">Editor&apos;s Choice</span>
                         </div>
                       </div>
                     </div>
