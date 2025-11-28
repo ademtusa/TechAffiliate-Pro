@@ -245,7 +245,7 @@ export default function SalesPage() {
                   Unbiased Review
                 </h2>
                 <p className="text-gray-700 leading-relaxed">
-                  After extensive testing, we've found this product exceptional in its category. It delivers on promises 
+                  After extensive testing, we&apos;ve found this product exceptional in its category. It delivers on promises 
                   and provides genuine value. Our team assessed all aspects including performance, ease of use, and support quality.
                 </p>
               </CardContent>
