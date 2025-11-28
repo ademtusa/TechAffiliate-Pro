@@ -3,15 +3,10 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
-import { Label } from '@/components/ui/label'
+import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { Search, Star, TrendingUp, Eye, ShoppingCart, Menu, X, User, LogOut, LayoutDashboard, Gift, BookOpen, Facebook, Twitter, Linkedin, Instagram, Youtube, Share2, Download, Home as HomeIcon, FileText, Library, Sparkles, ExternalLink, Shield, Globe } from 'lucide-react'
+import { Star, TrendingUp, Gift, BookOpen, Facebook, Twitter, Linkedin, Instagram, Youtube, Share2, Download, ShoppingCart } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import ProductSlider from '@/components/ProductSlider'
 import TestimonialsSlider from '@/components/TestimonialsSlider'
 import HeroSection from '@/components/HeroSection'
@@ -20,18 +15,9 @@ import HowItWorksSection from '@/components/HowItWorksSection'
 
 export default function Home() {
   const [user, setUser] = useState(null)
-  const [products, setProducts] = useState([])
   const [categories, setCategories] = useState([])
-  const [selectedCategory, setSelectedCategory] = useState('all')
-  const [searchQuery, setSearchQuery] = useState('')
   const [loading, setLoading] = useState(true)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [authMode, setAuthMode] = useState('login')
   const [authOpen, setAuthOpen] = useState(false)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [name, setName] = useState('')
-  const router = useRouter()
 
   // Product lists for sliders
   const [bestSellers, setBestSellers] = useState([])
