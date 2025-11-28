@@ -383,7 +383,7 @@ export default function ComparisonReviewPage() {
                         </div>
 
                         <div className="space-y-2">
-                          <Link href={`/product/${product.id}`} className="block">
+                          <Link href={`/sales/${product.id}`} className="block">
                             <Button className="w-full" variant="outline">
                               Full Review
                             </Button>
