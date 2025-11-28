@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { Star, TrendingUp, Gift, BookOpen, Facebook, Twitter, Linkedin, Instagram, Youtube, Share2, Download, ShoppingCart } from 'lucide-react'
 import Link from 'next/link'
@@ -56,30 +55,24 @@ export default function Home() {
   const fetchProductSliders = async () => {
     setLoading(true)
     try {
-      // Fetch all products
       const response = await fetch('/api/products')
       const result = await response.json()
       
       if (result.success && result.data) {
         const allProducts = result.data
         
-        // Best Sellers (sorted by sales_count)
         const bestsellers = [...allProducts].sort((a, b) => (b.sales_count || 0) - (a.sales_count || 0))
         setBestSellers(bestsellers)
         
-        // Most Viewed (sorted by views)
         const viewed = [...allProducts].sort((a, b) => (b.views || 0) - (a.views || 0))
         setMostViewed(viewed)
         
-        // Most Added to Cart (using sales_count as proxy)
         const cart = [...allProducts].sort((a, b) => (b.sales_count || 0) - (a.sales_count || 0))
         setMostAddedToCart(cart)
         
-        // Most Downloads (using views as proxy for digital downloads)
         const downloads = [...allProducts].sort((a, b) => (b.views || 0) - (a.views || 0))
         setMostDownloads(downloads)
 
-        // Featured Product (highest rated product)
         if (allProducts.length > 0) {
           const featured = [...allProducts].sort((a, b) => (b.rating || 0) - (a.rating || 0))[0]
           setFeaturedProduct({
@@ -96,49 +89,12 @@ export default function Home() {
     }
   }
 
-  const handleAuth = async (e) => {
-    e.preventDefault()
-    try {
-      if (authMode === 'login') {
-        const { data, error } = await supabase.auth.signInWithPassword({ email, password })
-        if (error) throw error
-        setUser(data.user)
-        setAuthOpen(false)
-      } else {
-        const { data, error } = await supabase.auth.signUp({ 
-          email, 
-          password,
-          options: {
-            data: { name }
-          }
-        })
-        if (error) throw error
-        alert('Check your email for the confirmation link!')
-        setAuthOpen(false)
-      }
-    } catch (error) {
-      alert(error.message)
-    }
-  }
-
-  const handleSignOut = async () => {
-    await supabase.auth.signOut()
-    setUser(null)
-  }
-
-  const handleSearch = (e) => {
-    e.preventDefault()
-    if (searchQuery) {
-      router.push(`/blog?search=${searchQuery}`)
-    }
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Navbar Component */}
       <Navbar />
 
-      {/* Hero Section - Using Component */}
+      {/* Hero Section */}
       <HeroSection 
         title="Discover the Best Products"
         subtitle="Compare, review, and find the perfect products with our global affiliate platform"
@@ -155,28 +111,24 @@ export default function Home() {
           </div>
         ) : (
           <div className="space-y-12">
-            {/* Best Sellers Slider */}
             <ProductSlider 
               title="Best Sellers" 
               products={bestSellers} 
               icon={TrendingUp}
             />
 
-            {/* Most Popular Slider */}
             <ProductSlider 
               title="Most Popular" 
               products={mostViewed} 
               icon={Star}
             />
 
-            {/* Most Added to Cart Slider */}
             <ProductSlider 
               title="Most Added to Cart" 
               products={mostAddedToCart} 
               icon={ShoppingCart}
             />
 
-            {/* Most Downloads Slider */}
             <ProductSlider 
               title="Most Downloads" 
               products={mostDownloads} 
@@ -236,9 +188,9 @@ export default function Home() {
               <h5 className="font-semibold mb-4">Quick Links</h5>
               <ul className="space-y-2 text-gray-400">
                 <li><Link href="/" className="hover:text-white">Home</Link></li>
-                <li><Link href="/blog" className="hover:text-white">Compare</Link></li>
+                <li><Link href="/blog" className="hover:text-white">Review</Link></li>
                 <li><Link href="/resources" className="hover:text-white">Resources</Link></li>
-                <li><Link href="/about" className="hover:text-white">About</Link></li>
+                <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
               </ul>
             </div>
             <div>
