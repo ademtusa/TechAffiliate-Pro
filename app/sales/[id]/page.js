@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
-import { ArrowLeft, Star, Package, Check, X, Shield, Zap, Users, Clock, Share2, Heart, Facebook, Twitter, Linkedin, Minus, Plus, ExternalLink, CreditCard, Award } from 'lucide-react'
+import { ArrowLeft, Star, Package, Check, X, Shield, Zap, Users, Clock, Share2, Heart, Facebook, Twitter, Linkedin, Minus, Plus, ExternalLink, CreditCard, Award, TrendingUp, Smile, Wrench, Layers } from 'lucide-react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -86,189 +86,141 @@ export default function SalesPage() {
       <Navbar />
 
       {/* Back Navigation */}
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-3">
         <Link href="/blog">
-          <Button variant="ghost" className="gap-2 hover:bg-white/60">
+          <Button variant="ghost" className="gap-2 hover:bg-white/60 border border-transparent hover:border-blue-300 transition-all">
             <ArrowLeft className="h-4 w-4" />
             Back to Products
           </Button>
         </Link>
       </div>
 
-      {/* Hero Section - Compact with Sidebar */}
-      <div className="container mx-auto px-4 pb-8">
-        <div className="grid lg:grid-cols-3 gap-6">
-          {/* Left Column - Product Info + Pricing (2/3) */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Product Card */}
-            <Card className="border-2 shadow-2xl overflow-hidden">
-              <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-8">
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Product Image */}
-                  <div className="relative">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-blue-100 to-indigo-100">
-                      {product.image_url ? (
-                        <img
-                          src={product.image_url}
-                          alt={product.name}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                          <Package className="h-32 w-32 text-blue-300" />
-                        </div>
-                      )}
-                      <Badge className="absolute top-4 right-4 bg-blue-600 text-white font-bold px-4 py-2 text-sm">
-                        {product.category || 'AI-SaaS'}
-                      </Badge>
+      {/* Main Content */}
+      <div className="container mx-auto px-4 pb-6">
+        <div className="grid lg:grid-cols-3 gap-5">
+          {/* Left Column - Main Content (2/3) */}
+          <div className="lg:col-span-2 space-y-5">
+            {/* Hero Product Card - Compact */}
+            <Card className="border-2 shadow-xl hover:shadow-2xl transition-shadow hover:border-blue-300">
+              <div className="grid md:grid-cols-2 gap-4 p-5">
+                {/* Product Image */}
+                <div className="relative">
+                  <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg bg-gradient-to-br from-blue-100 to-indigo-100">
+                    {product.image_url ? (
+                      <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <Package className="h-24 w-24 text-blue-300" />
+                      </div>
+                    )}
+                    <Badge className="absolute top-3 right-3 bg-blue-600 text-white font-semibold px-3 py-1 text-xs">
+                      {product.category || 'AI-SaaS'}
+                    </Badge>
+                  </div>
+                </div>
+
+                {/* Product Info */}
+                <div className="space-y-3">
+                  <h1 className="text-3xl font-bold text-gray-900 leading-tight">
+                    {product.name}
+                  </h1>
+                  
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className={`h-4 w-4 ${i < Math.floor(product.rating || 4.8) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} />
+                      ))}
                     </div>
+                    <span className="text-lg font-bold text-gray-900">{product.rating || 4.8}</span>
+                    <span className="text-gray-600 text-sm">Average Review</span>
                   </div>
 
-                  {/* Product Info */}
-                  <div className="space-y-4">
-                    <h1 className="text-3xl lg:text-4xl font-bold text-gray-900">
-                      {product.name}
-                    </h1>
-                    
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-5 w-5 ${
-                              i < Math.floor(product.rating || 4.8)
-                                ? 'fill-yellow-400 text-yellow-400'
-                                : 'text-gray-300'
-                            }`}
-                          />
-                        ))}
-                      </div>
-                      <span className="text-xl font-bold text-gray-900">
-                        {product.rating || 4.8}
-                      </span>
-                      <span className="text-gray-600 text-sm">Average Review</span>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="flex items-center gap-2 bg-white rounded-lg p-3 border-2 border-green-200">
-                        <Check className="h-5 w-5 text-green-600" />
-                        <span className="text-sm font-semibold">AI</span>
-                      </div>
-                      <div className="flex items-center gap-2 bg-white rounded-lg p-3 border-2 border-blue-200">
-                        <Check className="h-5 w-5 text-blue-600" />
-                        <span className="text-sm font-semibold">Productivity</span>
-                      </div>
-                      <div className="flex items-center gap-2 bg-white rounded-lg p-3 border-2 border-purple-200">
-                        <Check className="h-5 w-5 text-purple-600" />
-                        <span className="text-sm font-semibold">Content Creation</span>
-                      </div>
-                      <div className="flex items-center gap-2 bg-white rounded-lg p-3 border-2 border-orange-200">
-                        <Check className="h-5 w-5 text-orange-600" />
-                        <span className="text-sm font-semibold">Coding Assistant</span>
-                      </div>
-                    </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    {[
+                      { label: 'AI', icon: '🤖', color: 'green' },
+                      { label: 'Productivity', icon: '⚡', color: 'blue' },
+                      { label: 'Content', icon: '✍️', color: 'purple' },
+                      { label: 'Coding', icon: '💻', color: 'orange' },
+                    ].map((badge) => (
+                      <Badge key={badge.label} variant="outline" className={`justify-start px-2 py-1.5 text-xs border-2 border-${badge.color}-300 text-${badge.color}-700 hover:bg-${badge.color}-50 transition-colors`}>
+                        <span className="mr-1">{badge.icon}</span>
+                        {badge.label}
+                      </Badge>
+                    ))}
                   </div>
                 </div>
               </div>
             </Card>
 
-            {/* Pricing Box - Big Blue */}
-            <Card className="border-2 shadow-2xl overflow-hidden">
-              <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 text-white">
-                <div className="grid md:grid-cols-2 gap-6 p-8">
-                  {/* Left Side - Price Info */}
-                  <div className="space-y-6">
-                    <div>
-                      <p className="text-blue-100 text-sm font-semibold mb-2">Special Launch Price</p>
-                      <div className="flex items-baseline gap-4">
-                        <span className="text-6xl font-bold">${salePrice}</span>
-                        <div>
-                          <span className="text-2xl line-through opacity-75">${originalPrice}</span>
-                          <Badge className="ml-2 bg-yellow-400 text-yellow-900 font-bold px-3 py-1.5">
-                            Save {discount}%
-                          </Badge>
-                        </div>
+            {/* Pricing Box - Compact */}
+            <Card className="border-2 shadow-xl hover:shadow-2xl transition-shadow hover:border-blue-300">
+              <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+                <div className="grid md:grid-cols-2 gap-5 p-6">
+                  {/* Left - Price */}
+                  <div className="space-y-4">
+                    <p className="text-blue-100 text-xs font-semibold uppercase tracking-wide">Special Launch Price</p>
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-5xl font-bold">${salePrice}</span>
+                      <div>
+                        <span className="text-xl line-through opacity-70">${originalPrice}</span>
+                        <Badge className="ml-2 bg-yellow-400 text-yellow-900 font-bold px-2 py-0.5 text-xs">
+                          {discount}% OFF
+                        </Badge>
                       </div>
                     </div>
-
-                    <p className="text-lg text-blue-100">
-                      One-time payment • Lifetime access
-                    </p>
-
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center">
-                          <Check className="h-5 w-5" />
+                    <p className="text-sm text-blue-100">One-time payment • Lifetime access</p>
+                    
+                    <div className="space-y-2">
+                      {[
+                        'Instant digital delivery',
+                        '30-day money-back guarantee',
+                        'Secure checkout process'
+                      ].map((item) => (
+                        <div key={item} className="flex items-center gap-2 text-sm">
+                          <Check className="h-4 w-4" />
+                          <span>{item}</span>
                         </div>
-                        <span>Instant digital delivery</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center">
-                          <Check className="h-5 w-5" />
-                        </div>
-                        <span>30-day money-back guarantee</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center">
-                          <Check className="h-5 w-5" />
-                        </div>
-                        <span>Secure checkout process</span>
-                      </div>
+                      ))}
                     </div>
 
                     {/* Quantity */}
                     <div>
-                      <label className="block text-sm font-semibold mb-2">Quantity</label>
-                      <div className="flex items-center gap-3 bg-white/10 rounded-lg p-1 w-fit">
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                          className="text-white hover:bg-white/20 h-10 w-10"
-                        >
-                          <Minus className="h-5 w-5" />
+                      <label className="block text-xs font-semibold mb-1.5">Quantity</label>
+                      <div className="flex items-center gap-2 bg-white/10 rounded-lg p-0.5 w-fit">
+                        <Button variant="ghost" size="icon" onClick={() => setQuantity(Math.max(1, quantity - 1))} className="text-white hover:bg-white/20 h-8 w-8">
+                          <Minus className="h-4 w-4" />
                         </Button>
-                        <span className="text-3xl font-bold w-16 text-center">{quantity}</span>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={() => setQuantity(quantity + 1)}
-                          className="text-white hover:bg-white/20 h-10 w-10"
-                        >
-                          <Plus className="h-5 w-5" />
+                        <span className="text-2xl font-bold w-12 text-center">{quantity}</span>
+                        <Button variant="ghost" size="icon" onClick={() => setQuantity(quantity + 1)} className="text-white hover:bg-white/20 h-8 w-8">
+                          <Plus className="h-4 w-4" />
                         </Button>
                       </div>
                     </div>
                   </div>
 
-                  {/* Right Side - Action Buttons */}
-                  <div className="space-y-4 flex flex-col justify-center">
-                    <Button size="lg" className="w-full h-16 text-xl bg-white text-blue-600 hover:bg-gray-100 font-bold shadow-2xl">
-                      <CreditCard className="mr-3 h-6 w-6" />
+                  {/* Right - Actions */}
+                  <div className="space-y-3 flex flex-col justify-center">
+                    <Button size="lg" className="w-full h-14 text-lg bg-white text-blue-600 hover:bg-gray-100 font-bold shadow-xl border-2 border-transparent hover:border-blue-300 transition-all">
+                      <CreditCard className="mr-2 h-5 w-5" />
                       Buy Now - ${(salePrice * quantity).toFixed(2)}
                     </Button>
                     
-                    <Button size="lg" variant="outline" className="w-full h-14 text-lg border-2 border-white text-white hover:bg-white/10">
-                      <ExternalLink className="mr-2 h-5 w-5" />
+                    <Button size="lg" variant="outline" className="w-full h-12 border-2 border-white text-white hover:bg-white/10 font-semibold hover:border-blue-200 transition-all">
+                      <ExternalLink className="mr-2 h-4 w-4" />
                       Visit Official Store
                     </Button>
 
-                    {/* Share & Save */}
-                    <div className="flex items-center justify-between pt-4">
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm">Share:</span>
-                        <Button size="icon" variant="ghost" onClick={() => handleShare('facebook')} className="text-white hover:bg-white/20 h-9 w-9">
-                          <Facebook className="h-4 w-4" />
-                        </Button>
-                        <Button size="icon" variant="ghost" onClick={() => handleShare('twitter')} className="text-white hover:bg-white/20 h-9 w-9">
-                          <Twitter className="h-4 w-4" />
-                        </Button>
-                        <Button size="icon" variant="ghost" onClick={() => handleShare('linkedin')} className="text-white hover:bg-white/20 h-9 w-9">
-                          <Linkedin className="h-4 w-4" />
-                        </Button>
+                    <div className="flex items-center justify-between pt-2">
+                      <div className="flex items-center gap-1">
+                        <span className="text-xs">Share:</span>
+                        {[{ icon: Facebook, platform: 'facebook' }, { icon: Twitter, platform: 'twitter' }, { icon: Linkedin, platform: 'linkedin' }].map(({ icon: Icon, platform }) => (
+                          <Button key={platform} size="icon" variant="ghost" onClick={() => handleShare(platform)} className="text-white hover:bg-white/20 h-8 w-8 border border-transparent hover:border-white/30 transition-all">
+                            <Icon className="h-3.5 w-3.5" />
+                          </Button>
+                        ))}
                       </div>
-                      <Button size="sm" variant="ghost" className="text-white hover:bg-white/20">
-                        <Heart className="h-5 w-5 mr-2" />
+                      <Button size="sm" variant="ghost" className="text-white hover:bg-white/20 text-xs border border-transparent hover:border-white/30 transition-all">
+                        <Heart className="h-4 w-4 mr-1" />
                         Save
                       </Button>
                     </div>
@@ -277,64 +229,56 @@ export default function SalesPage() {
               </div>
             </Card>
 
-            {/* Unbiased Review */}
-            <Card className="border-2 shadow-lg">
-              <CardContent className="p-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                  <Award className="h-8 w-8 text-blue-600" />
-                  Unbiased Review to Help You Make Informed Decisions
+            {/* Unbiased Review - Minimal */}
+            <Card className="border-2 shadow-lg hover:shadow-xl transition-shadow hover:border-blue-300">
+              <CardContent className="p-5">
+                <h2 className="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                  <Award className="h-6 w-6 text-blue-600" />
+                  Unbiased Review
                 </h2>
-                <p className="text-gray-700 leading-relaxed text-lg">
-                  After extensive testing and evaluation, we've found this product to be exceptional in its category. 
-                  It delivers on its promises and provides genuine value for money. Our team has thoroughly assessed 
-                  all aspects including performance, ease of use, support quality, and overall user experience. This is 
-                  a comprehensive solution that stands out from competitors.
+                <p className="text-gray-700 leading-relaxed">
+                  After extensive testing, we've found this product exceptional in its category. It delivers on promises 
+                  and provides genuine value. Our team assessed all aspects including performance, ease of use, and support quality.
                 </p>
               </CardContent>
             </Card>
 
-            {/* Stats Cards */}
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="bg-gradient-to-br from-blue-500 to-blue-600 text-white border-2 border-blue-400 shadow-xl">
-                <CardContent className="p-6 text-center">
-                  <div className="text-5xl font-bold mb-2">4,615.0</div>
-                  <div className="text-blue-100 font-semibold">User Rating</div>
-                </CardContent>
-              </Card>
-              <Card className="bg-gradient-to-br from-green-500 to-green-600 text-white border-2 border-green-400 shadow-xl">
-                <CardContent className="p-6 text-center">
-                  <div className="text-5xl font-bold mb-2">756+</div>
-                  <div className="text-green-100 font-semibold">Active Users</div>
-                </CardContent>
-              </Card>
-              <Card className="bg-gradient-to-br from-pink-500 to-pink-600 text-white border-2 border-pink-400 shadow-xl">
-                <CardContent className="p-6 text-center">
-                  <div className="text-5xl font-bold mb-2">Instant</div>
-                  <div className="text-pink-100 font-semibold">Setup Time</div>
-                </CardContent>
-              </Card>
+            {/* Stats Cards - Compact */}
+            <div className="grid md:grid-cols-3 gap-4">
+              {[
+                { value: '4,615.0', label: 'User Rating', color: 'blue' },
+                { value: '756+', label: 'Active Users', color: 'green' },
+                { value: 'Instant', label: 'Setup Time', color: 'pink' },
+              ].map((stat) => (
+                <Card key={stat.label} className={`bg-gradient-to-br from-${stat.color}-500 to-${stat.color}-600 text-white border-2 border-${stat.color}-400 shadow-lg hover:shadow-xl transition-all hover:scale-105`}>
+                  <CardContent className="p-4 text-center">
+                    <div className="text-4xl font-bold mb-1">{stat.value}</div>
+                    <div className={`text-${stat.color}-100 text-sm font-medium`}>{stat.label}</div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
 
-            {/* Key Features & Benefits */}
-            <Card className="border-2 shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
-                <CardTitle className="text-3xl">Key Features & Benefits</CardTitle>
+            {/* Key Features - Compact */}
+            <Card className="border-2 shadow-lg hover:shadow-xl transition-shadow hover:border-blue-300">
+              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 pb-3">
+                <CardTitle className="text-2xl">Key Features & Benefits</CardTitle>
               </CardHeader>
-              <CardContent className="p-6">
-                <div className="grid md:grid-cols-2 gap-6">
+              <CardContent className="p-5">
+                <div className="grid md:grid-cols-2 gap-4">
                   {[
-                    { num: 1, title: 'Powerful Automation', desc: 'Automate repetitive tasks and save hours every week with intelligent AI-powered workflows.', color: 'blue' },
-                    { num: 2, title: 'Seamless Workflow', desc: 'Integrate smoothly with your existing tools and processes for maximum efficiency.', color: 'green' },
-                    { num: 3, title: 'Easy Integration', desc: 'Connect with popular platforms and services in just a few clicks.', color: 'purple' },
-                    { num: 4, title: 'No-Code Solution', desc: 'Get started immediately without any technical knowledge or coding skills required.', color: 'orange' },
+                    { num: 1, title: 'Powerful Automation', desc: 'Automate repetitive tasks and save hours with AI workflows.', color: 'blue' },
+                    { num: 2, title: 'Seamless Workflow', desc: 'Integrate smoothly with your existing tools.', color: 'green' },
+                    { num: 3, title: 'Easy Integration', desc: 'Connect with popular platforms in just clicks.', color: 'purple' },
+                    { num: 4, title: 'No-Code Solution', desc: 'Get started without any coding skills.', color: 'orange' },
                   ].map((feature) => (
-                    <div key={feature.num} className="flex items-start gap-4 p-4 bg-white rounded-lg border-2 hover:shadow-lg transition-shadow">
-                      <div className={`h-12 w-12 rounded-full bg-${feature.color}-100 flex items-center justify-center flex-shrink-0`}>
-                        <span className={`text-2xl font-bold text-${feature.color}-600`}>{feature.num}</span>
+                    <div key={feature.num} className="flex items-start gap-3 p-3 bg-white rounded-lg border-2 hover:shadow-md transition-all hover:border-blue-300">
+                      <div className={`h-10 w-10 rounded-full bg-${feature.color}-100 flex items-center justify-center flex-shrink-0`}>
+                        <span className={`text-xl font-bold text-${feature.color}-600`}>{feature.num}</span>
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                        <p className="text-gray-600">{feature.desc}</p>
+                        <h3 className="font-bold text-gray-900 mb-1">{feature.title}</h3>
+                        <p className="text-gray-600 text-sm">{feature.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -342,46 +286,46 @@ export default function SalesPage() {
               </CardContent>
             </Card>
 
-            {/* Pros & Cons */}
-            <Card className="border-2 shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-green-50 to-red-50">
-                <CardTitle className="text-3xl">Pros & Cons</CardTitle>
+            {/* Pros & Cons - Compact */}
+            <Card className="border-2 shadow-lg hover:shadow-xl transition-shadow hover:border-blue-300">
+              <CardHeader className="bg-gradient-to-r from-green-50 to-red-50 pb-3">
+                <CardTitle className="text-2xl">Pros & Cons</CardTitle>
               </CardHeader>
-              <CardContent className="p-6">
-                <div className="grid md:grid-cols-2 gap-8">
+              <CardContent className="p-5">
+                <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h3 className="text-xl font-bold text-green-600 mb-4 flex items-center gap-2">
-                      <Check className="h-6 w-6" />
+                    <h3 className="font-bold text-green-600 mb-3 flex items-center gap-2">
+                      <Check className="h-5 w-5" />
                       Pros
                     </h3>
-                    <ul className="space-y-3">
+                    <ul className="space-y-2">
                       {[
-                        'Exceptional AI capabilities and accuracy',
-                        'User-friendly interface and easy to navigate',
-                        'Excellent customer support and documentation',
-                        'Regular updates and new features',
+                        'Exceptional AI capabilities',
+                        'User-friendly interface',
+                        'Excellent support',
+                        'Regular updates',
                         'Great value for money'
                       ].map((pro, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <Check className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                        <li key={i} className="flex items-start gap-2 text-sm">
+                          <Check className="h-4 w-4 text-green-500 flex-shrink-0 mt-0.5" />
                           <span className="text-gray-700">{pro}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-red-600 mb-4 flex items-center gap-2">
-                      <X className="h-6 w-6" />
+                    <h3 className="font-bold text-red-600 mb-3 flex items-center gap-2">
+                      <X className="h-5 w-5" />
                       Cons
                     </h3>
-                    <ul className="space-y-3">
+                    <ul className="space-y-2">
                       {[
                         'Learning curve for advanced features',
                         'Requires internet connection',
                         'Limited offline functionality'
                       ].map((con, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <X className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
+                        <li key={i} className="flex items-start gap-2 text-sm">
+                          <X className="h-4 w-4 text-red-500 flex-shrink-0 mt-0.5" />
                           <span className="text-gray-700">{con}</span>
                         </li>
                       ))}
@@ -391,66 +335,72 @@ export default function SalesPage() {
               </CardContent>
             </Card>
 
-            {/* Expert Review */}
-            <Card className="border-2 shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50">
-                <CardTitle className="text-3xl">Our Expert Review</CardTitle>
+            {/* Expert Review - With Icons */}
+            <Card className="border-2 shadow-lg hover:shadow-xl transition-shadow hover:border-blue-300">
+              <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50 pb-3">
+                <CardTitle className="text-2xl">Our Expert Review</CardTitle>
               </CardHeader>
-              <CardContent className="p-6">
-                <p className="text-gray-700 mb-6 leading-relaxed text-lg">
-                  Our team of experts has thoroughly tested and evaluated this product across multiple dimensions.
+              <CardContent className="p-5">
+                <p className="text-gray-700 mb-5 text-sm leading-relaxed">
+                  Our experts thoroughly tested this product across multiple dimensions.
                 </p>
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {[
-                    { label: 'Value for Money', score: 9.2, color: 'blue' },
-                    { label: 'Ease of Use', score: 8.8, color: 'green' },
-                    { label: 'Customer Support', score: 9.0, color: 'purple' },
-                    { label: 'Features & Functionality', score: 9.5, color: 'orange' },
-                    { label: 'Performance', score: 8.5, color: 'pink' },
-                  ].map((item) => (
-                    <div key={item.label}>
-                      <div className="flex justify-between mb-2">
-                        <span className="font-semibold text-gray-900">{item.label}</span>
-                        <span className={`text-${item.color}-600 font-bold`}>{item.score}/10</span>
+                    { label: 'Value for Money', score: 9.2, color: 'blue', icon: TrendingUp },
+                    { label: 'Ease of Use', score: 8.8, color: 'green', icon: Smile },
+                    { label: 'Customer Support', score: 9.0, color: 'purple', icon: Users },
+                    { label: 'Features', score: 9.5, color: 'orange', icon: Layers },
+                    { label: 'Performance', score: 8.5, color: 'pink', icon: Zap },
+                  ].map((item) => {
+                    const Icon = item.icon
+                    return (
+                      <div key={item.label}>
+                        <div className="flex items-center justify-between mb-1.5">
+                          <div className="flex items-center gap-2">
+                            <Icon className={`h-4 w-4 text-${item.color}-600`} />
+                            <span className="font-semibold text-gray-900 text-sm">{item.label}</span>
+                          </div>
+                          <span className={`text-${item.color}-600 font-bold text-sm`}>{item.score}/10</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-2">
+                          <div className={`bg-${item.color}-600 h-2 rounded-full transition-all`} style={{width: `${item.score * 10}%`}}></div>
+                        </div>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-3">
-                        <div className={`bg-${item.color}-600 h-3 rounded-full transition-all`} style={{width: `${item.score * 10}%`}}></div>
-                      </div>
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
-                <Separator className="my-6" />
+                <Separator className="my-5" />
                 <div className="text-center">
-                  <div className="text-6xl font-bold text-blue-600 mb-3">4.6/5</div>
-                  <div className="flex items-center justify-center gap-1 mb-2">
+                  <div className="text-5xl font-bold text-blue-600 mb-2">4.6/5</div>
+                  <div className="flex items-center justify-center gap-0.5 mb-1">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-7 w-7 fill-yellow-400 text-yellow-400" />
+                      <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <div className="text-gray-600 font-semibold text-lg">Overall Rating</div>
+                  <div className="text-gray-600 font-semibold">Overall Rating</div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* FAQ */}
-            <Card className="border-2 shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-indigo-50 to-purple-50">
-                <CardTitle className="text-3xl">Frequently Asked Questions</CardTitle>
+            {/* FAQ - Compact */}
+            <Card className="border-2 shadow-lg hover:shadow-xl transition-shadow hover:border-blue-300">
+              <CardHeader className="bg-gradient-to-r from-indigo-50 to-purple-50 pb-3">
+                <CardTitle className="text-2xl">Frequently Asked Questions</CardTitle>
               </CardHeader>
-              <CardContent className="p-6">
-                <Accordion type="single" collapsible className="space-y-4">
+              <CardContent className="p-5">
+                <Accordion type="single" collapsible className="space-y-3">
                   {[
-                    { q: 'What payment methods do you accept?', a: 'We accept all major payment methods including Credit/Debit Cards (Visa, Mastercard, American Express), PayPal, Stripe, and Bank Transfer. All payments are processed securely with SSL encryption.' },
-                    { q: 'Is there a money-back guarantee?', a: 'Yes! We offer a 30-day money-back guarantee. If you\'re not satisfied with your purchase for any reason, contact our support team within 30 days for a full refund.' },
-                    { q: 'How quickly will I receive access?', a: 'Access is instant! Once your payment is confirmed, you\'ll receive an email with your login credentials and access instructions within minutes.' },
-                    { q: 'Do you offer customer support?', a: 'Absolutely! Our dedicated support team is available 24/7 via email and live chat to help you with any questions or issues you may have.' },
-                    { q: 'Can I upgrade or cancel my subscription?', a: 'This is a one-time purchase with lifetime access - no subscription required! You can upgrade to premium features at any time with a simple one-click process.' },
+                    { q: 'What payment methods do you accept?', a: 'We accept all major payment methods including Credit/Debit Cards, PayPal, Stripe, and Bank Transfer. All payments are securely processed with SSL encryption.' },
+                    { q: 'Is there a money-back guarantee?', a: 'Yes! We offer a 30-day money-back guarantee. If you\'re not satisfied, contact our support team within 30 days for a full refund.' },
+                    { q: 'How quickly will I receive access?', a: 'Access is instant! Once your payment is confirmed, you\'ll receive an email with your credentials within minutes.' },
+                    { q: 'Do you offer customer support?', a: 'Absolutely! Our support team is available 24/7 via email and live chat.' },
+                    { q: 'Can I upgrade or cancel?', a: 'This is a one-time purchase with lifetime access - no subscription! You can upgrade to premium features anytime.' },
                   ].map((faq, i) => (
-                    <AccordionItem key={i} value={`item-${i}`} className="bg-white border-2 rounded-lg px-6">
-                      <AccordionTrigger className="text-left font-semibold text-lg hover:text-blue-600">
+                    <AccordionItem key={i} value={`item-${i}`} className="bg-white border-2 rounded-lg px-4 hover:border-blue-300 transition-colors">
+                      <AccordionTrigger className="text-left font-semibold hover:text-blue-600 text-sm py-3">
                         {faq.q}
                       </AccordionTrigger>
-                      <AccordionContent className="text-gray-600 text-base">
+                      <AccordionContent className="text-gray-600 text-sm pb-3">
                         {faq.a}
                       </AccordionContent>
                     </AccordionItem>
@@ -462,84 +412,70 @@ export default function SalesPage() {
 
           {/* Right Column - Sticky Sidebar (1/3) */}
           <div className="lg:col-span-1">
-            <div className="sticky top-4 space-y-6">
-              {/* Special Offer Card */}
-              <Card className="border-2 border-red-300 shadow-2xl">
-                <CardContent className="p-0">
-                  <div className="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 text-center">
-                    <Badge className="bg-white text-red-600 font-bold px-4 py-1.5 text-sm">
-                      HOT DEAL
-                    </Badge>
+            <div className="sticky top-4 space-y-5">
+              {/* Special Offer Card - Compact */}
+              <Card className="border-2 border-red-300 shadow-xl hover:shadow-2xl transition-all hover:border-red-400">
+                <div className="bg-gradient-to-r from-red-500 to-red-600 text-white px-3 py-2 text-center">
+                  <Badge className="bg-white text-red-600 font-bold px-3 py-1 text-xs">
+                    🔥 HOT DEAL
+                  </Badge>
+                </div>
+                <CardContent className="p-4">
+                  <p className="text-center text-xs font-semibold text-gray-600 mb-2">Special Offer</p>
+                  <div className="text-center mb-3">
+                    <div className="text-4xl font-bold text-blue-600 mb-1">${salePrice}</div>
+                    <div className="flex items-center justify-center gap-2">
+                      <span className="text-lg line-through text-gray-400">${originalPrice}</span>
+                      <Badge className="bg-green-500 text-white font-bold text-xs">Save {discount}%</Badge>
+                    </div>
                   </div>
-                  <div className="p-6">
-                    <p className="text-center text-sm font-semibold text-gray-600 mb-3">Special Offer</p>
-                    <div className="text-center mb-4">
-                      <div className="text-5xl font-bold text-blue-600 mb-2">${salePrice}</div>
-                      <div className="flex items-center justify-center gap-2 mb-2">
-                        <span className="text-xl line-through text-gray-400">${originalPrice}</span>
-                        <Badge className="bg-green-500 text-white font-bold">Save {discount}%</Badge>
-                      </div>
-                    </div>
-                    
-                    <Separator className="my-4" />
-                    
-                    <div className="space-y-3 mb-6">
-                      <div className="flex items-center gap-3 text-sm">
-                        <div className="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center">
-                          <Zap className="h-4 w-4 text-green-600" />
+                  
+                  <Separator className="my-3" />
+                  
+                  <div className="space-y-2 mb-4">
+                    {[
+                      { icon: Zap, title: 'Instant Access', desc: 'Start immediately', color: 'green' },
+                      { icon: Shield, title: '30-Day Guarantee', desc: 'Risk-free', color: 'blue' },
+                      { icon: Users, title: '24/7 Support', desc: 'Always here', color: 'purple' },
+                    ].map(({ icon: Icon, title, desc, color }) => (
+                      <div key={title} className="flex items-center gap-2 text-xs">
+                        <div className={`h-7 w-7 rounded-full bg-${color}-100 flex items-center justify-center flex-shrink-0`}>
+                          <Icon className={`h-3.5 w-3.5 text-${color}-600`} />
                         </div>
                         <div>
-                          <div className="font-semibold">Instant Access</div>
-                          <div className="text-gray-500 text-xs">Start immediately</div>
+                          <div className="font-semibold text-gray-900">{title}</div>
+                          <div className="text-gray-500 text-xs">{desc}</div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-3 text-sm">
-                        <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center">
-                          <Shield className="h-4 w-4 text-blue-600" />
-                        </div>
-                        <div>
-                          <div className="font-semibold">30-Day Guarantee</div>
-                          <div className="text-gray-500 text-xs">Risk-free purchase</div>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3 text-sm">
-                        <div className="h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center">
-                          <Users className="h-4 w-4 text-purple-600" />
-                        </div>
-                        <div>
-                          <div className="font-semibold">24/7 Support</div>
-                          <div className="text-gray-500 text-xs">Always here to help</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="space-y-3">
-                      <Button size="lg" className="w-full h-14 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold shadow-lg">
-                        Get Instant Access
-                      </Button>
-                      <Button size="lg" variant="outline" className="w-full h-12 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold">
-                        Visit Official Site
-                      </Button>
-                    </div>
-                    
-                    <p className="text-xs text-center text-gray-500 mt-4">
-                      🔒 Secure checkout • Terms & Conditions Apply
-                    </p>
+                    ))}
                   </div>
+                  
+                  <div className="space-y-2">
+                    <Button size="lg" className="w-full h-12 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold shadow-lg border-2 border-transparent hover:border-blue-300 transition-all">
+                      Get Instant Access
+                    </Button>
+                    <Button size="lg" variant="outline" className="w-full h-10 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold text-sm hover:border-blue-700 transition-all">
+                      Visit Official Site
+                    </Button>
+                  </div>
+                  
+                  <p className="text-xs text-center text-gray-500 mt-3">
+                    🔒 Secure checkout • SSL encrypted
+                  </p>
                 </CardContent>
               </Card>
 
-              {/* Verified & Trusted */}
-              <Card className="border-2 bg-gradient-to-br from-green-50 to-green-100 border-green-300 shadow-xl">
-                <CardContent className="p-6 text-center">
-                  <div className="h-20 w-20 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-4">
-                    <Shield className="h-10 w-10 text-white" />
+              {/* Verified & Trusted - Compact */}
+              <Card className="border-2 bg-gradient-to-br from-green-50 to-green-100 border-green-300 shadow-xl hover:shadow-2xl transition-all hover:border-green-400">
+                <CardContent className="p-4 text-center">
+                  <div className="h-16 w-16 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-3">
+                    <Shield className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="font-bold text-xl text-gray-900 mb-2">Verified & Trusted</h3>
-                  <p className="text-sm text-gray-700 mb-3">Recommended by 1,250+ users worldwide</p>
-                  <div className="flex items-center justify-center gap-1">
+                  <h3 className="font-bold text-lg text-gray-900 mb-1">Verified & Trusted</h3>
+                  <p className="text-xs text-gray-700 mb-2">Recommended by 1,250+ users</p>
+                  <div className="flex items-center justify-center gap-0.5">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
+                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
                 </CardContent>
@@ -548,18 +484,17 @@ export default function SalesPage() {
           </div>
         </div>
 
-        {/* CTA Section */}
-        <Card className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white border-2 shadow-2xl mt-12">
-          <CardContent className="p-12 text-center">
-            <div className="h-20 w-20 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-6">
-              <Zap className="h-10 w-10 text-white" />
+        {/* CTA Section - Compact */}
+        <Card className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white border-2 shadow-2xl mt-8">
+          <CardContent className="p-8 text-center">
+            <div className="h-16 w-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
+              <Zap className="h-8 w-8 text-white" />
             </div>
-            <h2 className="text-4xl font-bold mb-4">Ready to Get Started?</h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Join thousands of satisfied customers and transform your workflow today. 
-              Special launch pricing won't last forever!
+            <h2 className="text-3xl font-bold mb-3">Ready to Get Started?</h2>
+            <p className="text-lg text-blue-100 mb-6 max-w-2xl mx-auto">
+              Join thousands of satisfied customers. Special pricing won't last!
             </p>
-            <Button size="lg" className="h-16 px-12 text-xl bg-white text-blue-600 hover:bg-gray-100 font-bold shadow-2xl">
+            <Button size="lg" className="h-14 px-10 text-lg bg-white text-blue-600 hover:bg-gray-100 font-bold shadow-2xl border-2 border-transparent hover:border-blue-300 transition-all">
               Get Instant Access Now
             </Button>
           </CardContent>
