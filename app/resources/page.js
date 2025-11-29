@@ -167,6 +167,16 @@ export default function ResourcesPage() {
             </Card>
           </div>
         )}
+        
+        {/* AdSense at Bottom of Resources */}
+        <div className="mt-12 max-w-4xl mx-auto">
+          <AdSense 
+            adSlot="0987654321"
+            adFormat="horizontal"
+            style={{ display: 'block', minHeight: '90px', textAlign: 'center' }}
+            className="my-6"
+          />
+        </div>
       </div>
 
       <Footer />
