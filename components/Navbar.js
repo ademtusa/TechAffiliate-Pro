@@ -93,7 +93,7 @@ export default function Navbar() {
   return (
     <nav className={`sticky top-0 z-50 border-b transition-all duration-500 ${
       scrolled 
-        ? 'bg-white/5 backdrop-blur-xl border-white/20 shadow-2xl' 
+        ? 'bg-white/30 backdrop-blur-2xl border-white/30 shadow-2xl' 
         : 'bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 border-blue-100 shadow-lg'
     }`}>
       <div className="container mx-auto px-4 py-4">
