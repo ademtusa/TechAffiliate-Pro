@@ -7,7 +7,7 @@ export default function BlogPage() {
   const router = useRouter()
 
   useEffect(() => {
-    router.push('/')
+    router.push('/products')
   }, [router])
 
   return null
