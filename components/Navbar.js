@@ -100,34 +100,34 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-8">
             <Link href="/" className="flex items-center gap-2 group">
-              <Sparkles className="h-6 w-6 text-blue-600 group-hover:text-indigo-600 transition-colors" />
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              <Sparkles className={`h-6 w-6 transition-colors ${scrolled ? 'text-blue-600 drop-shadow-[0_2px_4px_rgba(37,99,235,0.5)]' : 'text-blue-600'} group-hover:text-indigo-600`} />
+              <h1 className={`text-2xl font-bold ${scrolled ? 'text-blue-700 drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]' : 'bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent'}`}>
                 TechAffiliate Pro
               </h1>
             </Link>
             <div className="hidden md:flex space-x-2">
-              <Link href="/" className="group relative px-4 py-2 flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-all rounded-lg hover:bg-white/60">
+              <Link href="/" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]' : 'text-gray-700 hover:text-blue-600'}`}>
                 <HomeIcon className="h-4 w-4" />
                 <span className="font-medium">Home</span>
                 <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
               </Link>
-              <Link href="/blog" className="group relative px-4 py-2 flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-all rounded-lg hover:bg-white/60">
+              <Link href="/blog" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]' : 'text-gray-700 hover:text-blue-600'}`}>
                 <FileText className="h-4 w-4" />
                 <span className="font-medium">Products</span>
                 <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
               </Link>
-              <Link href="/resources" className="group relative px-4 py-2 flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-all rounded-lg hover:bg-white/60">
+              <Link href="/resources" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]' : 'text-gray-700 hover:text-blue-600'}`}>
                 <Library className="h-4 w-4" />
                 <span className="font-medium">Resources</span>
                 <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
               </Link>
-              <Link href="/contact" className="group relative px-4 py-2 flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-all rounded-lg hover:bg-white/60">
+              <Link href="/contact" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]' : 'text-gray-700 hover:text-blue-600'}`}>
                 <User className="h-4 w-4" />
                 <span className="font-medium">Contact</span>
                 <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
               </Link>
               {user && (
-                <Link href="/dashboard" className="group relative px-4 py-2 flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-all rounded-lg hover:bg-white/60">
+                <Link href="/dashboard" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]' : 'text-gray-700 hover:text-blue-600'}`}>
                   <LayoutDashboard className="h-4 w-4" />
                   <span className="font-medium">Dashboard</span>
                   <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
