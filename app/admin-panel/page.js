@@ -45,10 +45,10 @@ export default function AdminPanelPage() {
   return (
     <div className="space-y-6">
       {/* Welcome Banner */}
-      <Card className="border-purple-500/30 bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-2xl">
+      <Card className="border-slate-700 bg-gradient-to-r from-slate-800 to-slate-700 text-white shadow-2xl">
         <CardHeader>
           <CardTitle className="text-3xl">Hoş Geldiniz, {session?.user?.name}! 🛡️</CardTitle>
-          <CardDescription className="text-purple-100">
+          <CardDescription className="text-slate-300">
             Usefulio Admin Paneli - Tüm site yönetimi burada
           </CardDescription>
         </CardHeader>
