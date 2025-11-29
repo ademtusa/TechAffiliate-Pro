@@ -114,14 +114,14 @@ export default function DashboardSidebar({ isAdmin = false, isOpen, setIsOpen })
       </nav>
 
       {/* Bottom Actions */}
-      <div className="border-t border-purple-700/50 p-4 space-y-2 backdrop-blur-sm">
+      <div className="border-t border-slate-700/50 p-4 space-y-2 backdrop-blur-sm">
         <Link href="/">
           <Button
             variant="ghost"
             size="sm"
             className={`w-full ${
               isOpen ? 'justify-start' : 'justify-center'
-            } text-purple-200 hover:text-white hover:bg-purple-700/50`}
+            } text-slate-300 hover:text-white hover:bg-slate-700/50`}
           >
             <Home className="h-5 w-5" />
             {isOpen && <span className="ml-3">Ana Sayfa</span>}
@@ -133,7 +133,7 @@ export default function DashboardSidebar({ isAdmin = false, isOpen, setIsOpen })
           onClick={handleSignOut}
           className={`w-full ${
             isOpen ? 'justify-start' : 'justify-center'
-          } text-pink-300 hover:text-white hover:bg-red-500/50`}
+          } text-red-400 hover:text-white hover:bg-red-600/50`}
         >
           <LogOut className="h-5 w-5" />
           {isOpen && <span className="ml-3">Çıkış Yap</span>}
