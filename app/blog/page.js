@@ -12,6 +12,7 @@ import Link from 'next/link'
 import HeroSection from '@/components/HeroSection'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import AdSense from '@/components/AdSense'
 
 export default function ComparisonReviewPage() {
   const [products, setProducts] = useState([])
