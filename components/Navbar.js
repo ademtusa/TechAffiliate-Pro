@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { HomeIcon, FileText, Library, Sparkles, User, LogOut, LayoutDashboard, Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
+import UsefulioLogo from '@/components/UsefulioLogo'
 
 export default function Navbar() {
   const [user, setUser] = useState(null)
