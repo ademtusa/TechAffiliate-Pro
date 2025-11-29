@@ -1,39 +1,58 @@
+import { Toaster } from 'sonner'
 import './globals.css'
-import Script from 'next/script'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 export const metadata = {
-  title: 'Usefulio - Find What\'s Actually Useful',
-  description: 'Discover genuinely useful products with expert reviews and comparisons. Make smarter buying decisions with Usefulio - your trusted guide to products that actually work.',
-  keywords: 'useful products, product reviews, product comparisons, best products, buying guide, trusted reviews, product recommendations',
-  authors: [{ name: 'Usefulio' }],
+  metadataBase: new URL('https://ui-glassmorphism.preview.emergentagent.com'),
+  title: {
+    default: 'Usefulio - Find What\'s Actually Useful',
+    template: '%s | Usefulio'
+  },
+  description: 'Discover trusted, useful products and resources. Expert reviews, comparisons, and recommendations for AI tools, hosting, VPNs, and more. Find what\'s actually useful.',
+  keywords: [
+    'useful products',
+    'product reviews',
+    'AI tools',
+    'SaaS tools',
+    'web hosting',
+    'VPN services',
+    'product comparison',
+    'tech recommendations',
+    'usefulio',
+    'best tools',
+    'software reviews'
+  ],
+  authors: [{ name: 'Usefulio Team' }],
   creator: 'Usefulio',
   publisher: 'Usefulio',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://usefulio.com'),
-  alternates: {
-    canonical: '/',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
   openGraph: {
-    title: 'Usefulio - Find What\'s Actually Useful',
-    description: 'Discover genuinely useful products with expert reviews and comparisons. Make smarter buying decisions.',
-    url: '/',
-    siteName: 'Usefulio',
-    locale: 'en_US',
     type: 'website',
+    locale: 'en_US',
+    url: 'https://ui-glassmorphism.preview.emergentagent.com',
+    siteName: 'Usefulio',
+    title: 'Usefulio - Find What\'s Actually Useful',
+    description: 'Discover trusted, useful products and resources. Expert reviews and comparisons.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Usefulio - Your Guide to Useful Products',
+        alt: 'Usefulio - Find What\'s Actually Useful',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Usefulio - Find What\'s Actually Useful',
-    description: 'Discover genuinely useful products with expert reviews and comparisons.',
+    description: 'Discover trusted, useful products and resources.',
+    images: ['/og-image.jpg'],
     creator: '@usefulio',
-    images: ['/twitter-image.jpg'],
   },
   robots: {
     index: true,
@@ -55,58 +74,51 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Google Analytics - UPDATE GA_MEASUREMENT_ID */}
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX`}
+        {/* Google Analytics - Replace GA_TRACKING_ID with your actual tracking ID */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID`}
         />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-XXXXXXXXXX', {
-                page_path: window.location.pathname,
-              });
+              gtag('config', 'GA_TRACKING_ID');
             `,
           }}
         />
         
-        {/* Google AdSense - UPDATE PUBLISHER_ID */}
-        <Script
+        {/* Google AdSense - Replace ADSENSE_CLIENT_ID with your actual client ID */}
+        <script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ADSENSE_CLIENT_ID"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
         />
-        
-        {/* JSON-LD Schema for SEO */}
-        <Script
-          id="schema-org"
+
+        {/* JSON-LD Schema */}
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'WebSite',
               name: 'Usefulio',
-              description: 'Discover genuinely useful products with expert reviews and comparisons.',
-              url: process.env.NEXT_PUBLIC_BASE_URL || 'https://usefulio.com',
+              alternateName: 'Find What\'s Actually Useful',
+              url: 'https://ui-glassmorphism.preview.emergentagent.com',
+              description: 'Discover trusted, useful products and resources',
               potentialAction: {
                 '@type': 'SearchAction',
-                target: {
-                  '@type': 'EntryPoint',
-                  urlTemplate: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://usefulio.com'}/blog?search={search_term_string}`,
-                },
+                target: 'https://ui-glassmorphism.preview.emergentagent.com/products?search={search_term_string}',
                 'query-input': 'required name=search_term_string',
               },
             }),
           }}
         />
       </head>
-      <body>
+      <body className="antialiased">
+        <Toaster position="top-right" richColors />
         {children}
       </body>
     </html>
