@@ -124,7 +124,7 @@ export default function DashboardSidebar({ isAdmin = false, isOpen, setIsOpen })
             } text-slate-300 hover:text-white hover:bg-slate-700/50`}
           >
             <Home className="h-5 w-5" />
-            {isOpen && <span className="ml-3">Ana Sayfa</span>}
+            {isOpen && <span className="ml-3">Home</span>}
           </Button>
         </Link>
         <Button
