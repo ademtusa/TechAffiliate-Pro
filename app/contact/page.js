@@ -181,7 +181,7 @@ export default function ContactPage() {
                   <div>
                     <h4 className="font-semibold text-sm mb-1">Email</h4>
                     <p className="text-sm text-gray-600">support@usefulio.com</p>
-                    <p className="text-sm text-gray-600">hello@usefulio.com</p>
+                    <p className="text-sm text-gray-600">useful@usefulio.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
