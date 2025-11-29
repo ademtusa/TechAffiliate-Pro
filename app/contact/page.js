@@ -10,6 +10,7 @@ import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import HeroSection from '@/components/HeroSection'
 import Footer from '@/components/Footer'
+import AdSense from '@/components/AdSense'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
