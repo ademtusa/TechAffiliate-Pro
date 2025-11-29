@@ -64,6 +64,16 @@ export default function ComparisonReviewPage() {
     }
     setSelectedForCompare(newCompare)
     localStorage.setItem('compareProducts', JSON.stringify(newCompare))
+    
+    // Auto scroll to comparison table if we have 2+ products
+    if (newCompare.length >= 2) {
+      setTimeout(() => {
+        const comparisonTable = document.getElementById('comparison-table')
+        if (comparisonTable) {
+          comparisonTable.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100)
+    }
   }
 
   const fetchProducts = async () => {
