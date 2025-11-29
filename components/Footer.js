@@ -173,7 +173,7 @@ export default function Footer({ categories = [] }) {
           {/* Copyright */}
           <div className="text-center text-gray-400">
             <p className="text-sm">
-              © {new Date().getFullYear()} TechAffiliate Pro. All rights reserved. Made with ❤️ for affiliates worldwide.
+              © {new Date().getFullYear()} Usefulio. All rights reserved. Find what's actually useful.
             </p>
           </div>
         </div>
