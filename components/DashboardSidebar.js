@@ -136,7 +136,7 @@ export default function DashboardSidebar({ isAdmin = false, isOpen, setIsOpen })
           } text-red-400 hover:text-white hover:bg-red-600/50`}
         >
           <LogOut className="h-5 w-5" />
-          {isOpen && <span className="ml-3">Çıkış Yap</span>}
+          {isOpen && <span className="ml-3">Sign Out</span>}
         </Button>
       </div>
     </aside>
