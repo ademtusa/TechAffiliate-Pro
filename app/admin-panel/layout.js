@@ -51,23 +51,23 @@ export default function AdminPanelLayout({ children }) {
   }
 
   return (
-    <div className="flex h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
+    <div className="flex h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
       <DashboardSidebar isAdmin={true} isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
       
       <main className="flex-1 overflow-y-auto">
         {/* Header */}
-        <header className="h-16 bg-gray-800/50 backdrop-blur-xl border-b border-purple-500/30 flex items-center justify-between px-6 shadow-lg">
+        <header className="h-16 bg-slate-800/50 backdrop-blur-xl border-b border-slate-700/50 flex items-center justify-between px-6 shadow-lg">
           <div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold text-white">
               Admin Paneli
             </h1>
-            <p className="text-sm text-gray-400">{session?.user?.name}</p>
+            <p className="text-sm text-slate-400">{session?.user?.name}</p>
           </div>
           <div className="flex items-center space-x-4">
-            <Badge className="bg-gradient-to-r from-red-500 to-pink-500 text-white">
+            <Badge className="bg-red-600 text-white">
               Yönetici
             </Badge>
-            <span className="text-sm text-gray-400">{session?.user?.email}</span>
+            <span className="text-sm text-slate-400">{session?.user?.email}</span>
           </div>
         </header>
 
