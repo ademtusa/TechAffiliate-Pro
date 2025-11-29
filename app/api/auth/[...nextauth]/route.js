@@ -18,8 +18,8 @@ const handler = NextAuth({
             throw new Error('Invalid credentials')
           }
           
-          // Check if user is approved
-          if (user.status !== 'approved' && user.role !== 'admin') {
+          // Admin always allowed, regular users need approval
+          if (user.role !== 'admin' && user.status !== 'approved') {
             throw new Error('Your account is pending approval')
           }
           
