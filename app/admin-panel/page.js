@@ -56,51 +56,51 @@ export default function AdminPanelPage() {
 
       {/* Stats Grid */}
       <div className="grid md:grid-cols-4 gap-6">
-        <Card className="border-purple-500/30 bg-gray-800/50 backdrop-blur-sm hover:shadow-xl hover:shadow-purple-500/20 transition-all">
+        <Card className="border-slate-700 bg-slate-800/70 backdrop-blur-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Toplam Ürün</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-300">Toplam Ürün</CardTitle>
             <Package className="h-5 w-5 text-blue-400" />
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-white">{stats.totalProducts}</div>
-            <p className="text-xs text-gray-400 mt-1">
+            <p className="text-xs text-slate-400 mt-1">
               <span className="text-green-400">{stats.activeProducts} aktif</span>
             </p>
           </CardContent>
         </Card>
 
-        <Card className="border-purple-500/30 bg-gray-800/50 backdrop-blur-sm hover:shadow-xl hover:shadow-purple-500/20 transition-all">
+        <Card className="border-slate-700 bg-slate-800/70 backdrop-blur-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Toplam Kullanıcı</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-300">Toplam Kullanıcı</CardTitle>
             <Users className="h-5 w-5 text-green-400" />
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-white">{stats.totalUsers}</div>
-            <p className="text-xs text-gray-400 mt-1">
+            <p className="text-xs text-slate-400 mt-1">
               <span className="text-yellow-400">{stats.pendingUsers} onay bekliyor</span>
             </p>
           </CardContent>
         </Card>
 
-        <Card className="border-purple-500/30 bg-gray-800/50 backdrop-blur-sm hover:shadow-xl hover:shadow-purple-500/20 transition-all">
+        <Card className="border-slate-700 bg-slate-800/70 backdrop-blur-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Toplam Görüntüleme</CardTitle>
-            <Eye className="h-5 w-5 text-purple-400" />
+            <CardTitle className="text-sm font-medium text-slate-300">Toplam Görüntüleme</CardTitle>
+            <Eye className="h-5 w-5 text-cyan-400" />
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-white">{stats.totalViews}</div>
-            <p className="text-xs text-gray-400 mt-1">Sayfa görüntüleme</p>
+            <p className="text-xs text-slate-400 mt-1">Sayfa görüntüleme</p>
           </CardContent>
         </Card>
 
-        <Card className="border-purple-500/30 bg-gray-800/50 backdrop-blur-sm hover:shadow-xl hover:shadow-purple-500/20 transition-all">
+        <Card className="border-slate-700 bg-slate-800/70 backdrop-blur-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Toplam Yorum</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-300">Toplam Yorum</CardTitle>
             <Star className="h-5 w-5 text-yellow-400" />
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-white">{stats.totalReviews}</div>
-            <p className="text-xs text-gray-400 mt-1">Ürün yorumu</p>
+            <p className="text-xs text-slate-400 mt-1">Ürün yorumu</p>
           </CardContent>
         </Card>
       </div>
