@@ -1,0 +1,144 @@
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { Button } from '@/components/ui/button'
+import { 
+  ChevronLeft, 
+  ChevronRight, 
+  LayoutDashboard,
+  Package,
+  Users,
+  FileText,
+  Settings,
+  Heart,
+  GitCompare,
+  BookOpen,
+  Bell,
+  User,
+  Home,
+  LogOut,
+  Shield,
+  Menu,
+  Image as ImageIcon,
+  List,
+  MessageSquare,
+  BarChart3
+} from 'lucide-react'
+import { signOut } from 'next-auth/react'
+
+export default function DashboardSidebar({ isAdmin = false, isOpen, setIsOpen }) {
+  const pathname = usePathname()
+
+  const userMenuItems = [
+    { id: 'overview', icon: LayoutDashboard, label: 'Dashboard', href: '/dashboard' },
+    { id: 'favorites', icon: Heart, label: 'Favorilerim', href: '/dashboard/favorites' },
+    { id: 'comparisons', icon: GitCompare, label: 'Karşılaştırmalar', href: '/dashboard/comparisons' },
+    { id: 'resources', icon: BookOpen, label: 'Kaynaklarım', href: '/dashboard/resources' },
+    { id: 'notifications', icon: Bell, label: 'Bildirimler', href: '/dashboard/notifications' },
+    { id: 'profile', icon: User, label: 'Profil Ayarları', href: '/dashboard/profile' },
+  ]
+
+  const adminMenuItems = [
+    { id: 'overview', icon: BarChart3, label: 'Genel Bakış', href: '/admin-panel' },
+    { id: 'products', icon: Package, label: 'Ürün Yönetimi', href: '/admin-panel/products' },
+    { id: 'users', icon: Users, label: 'Kullanıcılar', href: '/admin-panel/users' },
+    { id: 'blog', icon: FileText, label: 'Blog Yönetimi', href: '/admin-panel/blog' },
+    { id: 'resources', icon: BookOpen, label: 'Kaynak Yönetimi', href: '/admin-panel/resources' },
+    { id: 'messages', icon: MessageSquare, label: 'Mesajlar', href: '/admin-panel/messages' },
+    { id: 'media', icon: ImageIcon, label: 'Medya', href: '/admin-panel/media' },
+    { id: 'menus', icon: List, label: 'Menü Yönetimi', href: '/admin-panel/menus' },
+    { id: 'settings', icon: Settings, label: 'Site Ayarları', href: '/admin-panel/settings' },
+  ]
+
+  const menuItems = isAdmin ? adminMenuItems : userMenuItems
+
+  const handleSignOut = async () => {
+    await signOut({ callbackUrl: '/login' })
+  }
+
+  return (
+    <aside 
+      className={`${
+        isOpen ? 'w-64' : 'w-20'
+      } bg-gradient-to-b from-purple-900 via-purple-800 to-pink-900 text-white transition-all duration-300 flex flex-col shadow-2xl`}
+    >
+      {/* Header */}
+      <div className="h-16 flex items-center justify-between px-4 border-b border-purple-700/50 backdrop-blur-sm">
+        {isOpen && (
+          <div className="flex items-center space-x-2">
+            <Shield className="h-6 w-6 text-pink-300" />
+            <span className="font-bold text-lg">
+              {isAdmin ? 'Admin Panel' : 'Dashboard'}
+            </span>
+          </div>
+        )}
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setIsOpen(!isOpen)}
+          className="text-pink-200 hover:text-white hover:bg-purple-700/50"
+        >
+          {isOpen ? <ChevronLeft className="h-5 w-5" /> : <ChevronRight className="h-5 w-5" />}
+        </Button>
+      </div>
+
+      {/* Navigation */}
+      <nav className="flex-1 py-4 overflow-y-auto">
+        {menuItems.map((item) => {
+          const Icon = item.icon
+          const isActive = pathname === item.href || pathname?.startsWith(item.href + '/')
+          
+          return (
+            <Link key={item.id} href={item.href}>
+              <button
+                className={`w-full flex items-center ${
+                  isOpen ? 'px-4' : 'px-6'
+                } py-3 space-x-3 transition-all group ${
+                  isActive
+                    ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white border-r-4 border-pink-300 shadow-lg'
+                    : 'text-purple-200 hover:bg-purple-700/50 hover:text-white'
+                }`}
+              >
+                <Icon className={`h-5 w-5 ${
+                  isActive ? 'scale-110' : 'group-hover:scale-110'
+                } transition-transform`} />
+                {isOpen && (
+                  <span className="font-medium">{item.label}</span>
+                )}
+              </button>
+            </Link>
+          )
+        })}
+      </nav>
+
+      {/* Bottom Actions */}
+      <div className="border-t border-purple-700/50 p-4 space-y-2 backdrop-blur-sm">
+        <Link href="/">
+          <Button
+            variant="ghost"
+            size="sm"
+            className={`w-full ${
+              isOpen ? 'justify-start' : 'justify-center'
+            } text-purple-200 hover:text-white hover:bg-purple-700/50`}
+          >
+            <Home className="h-5 w-5" />
+            {isOpen && <span className="ml-3">Ana Sayfa</span>}
+          </Button>
+        </Link>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={handleSignOut}
+          className={`w-full ${
+            isOpen ? 'justify-start' : 'justify-center'
+          } text-pink-300 hover:text-white hover:bg-red-500/50`}
+        >
+          <LogOut className="h-5 w-5" />
+          {isOpen && <span className="ml-3">Çıkış Yap</span>}
+        </Button>
+      </div>
+    </aside>
+  )
+}
