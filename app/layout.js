@@ -117,8 +117,10 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="antialiased">
-        <Toaster position="top-right" richColors />
-        {children}
+        <Providers>
+          <Toaster position="top-right" richColors />
+          {children}
+        </Providers>
       </body>
     </html>
   )
