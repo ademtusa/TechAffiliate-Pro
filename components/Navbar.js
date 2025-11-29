@@ -164,10 +164,10 @@ export default function Navbar() {
                       <User className="h-8 w-8 text-white" />
                     </div>
                     <DialogTitle className="text-2xl text-center bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                      Welcome to TechAffiliate Pro
+                      Welcome to Usefulio
                     </DialogTitle>
                     <DialogDescription className="text-center text-gray-600">
-                      Sign in to access exclusive deals and reviews
+                      Sign in to access useful product reviews and comparisons
                     </DialogDescription>
                   </DialogHeader>
                   
