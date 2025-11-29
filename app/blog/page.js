@@ -1,18 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Input } from '@/components/ui/input'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Star, TrendingUp, Award, DollarSign, Check, X, Search, Filter, ArrowLeft, ExternalLink, ChevronDown, ChevronUp, ShoppingCart, Heart, ArrowLeftRight } from 'lucide-react'
-import Link from 'next/link'
-import HeroSection from '@/components/HeroSection'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
-import AdSense from '@/components/AdSense'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function ComparisonReviewPage() {
   const [products, setProducts] = useState([])
