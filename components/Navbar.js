@@ -153,7 +153,7 @@ export default function Navbar() {
             ) : (
               <Dialog open={authOpen} onOpenChange={setAuthOpen}>
                 <DialogTrigger asChild>
-                  <Button className="hidden md:flex bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all">
+                  <Button className={`hidden md:flex bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all ${scrolled ? 'drop-shadow-[0_2px_8px_rgba(37,99,235,0.6)]' : ''}`}>
                     <User className="h-4 w-4 mr-2" />
                     Sign In
                   </Button>
