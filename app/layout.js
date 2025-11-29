@@ -1,7 +1,6 @@
 import { Toaster } from 'sonner'
+import { Providers } from './providers'
 import './globals.css'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 
 export const metadata = {
   metadataBase: new URL('https://ui-glassmorphism.preview.emergentagent.com'),
