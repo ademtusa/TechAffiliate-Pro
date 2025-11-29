@@ -71,9 +71,9 @@ export default function LoginPage() {
         {/* Login Card */}
         <Card className="border-transparent shadow-2xl bg-white/80 backdrop-blur-xl">
           <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl font-bold text-center">Giriş Yap</CardTitle>
+            <CardTitle className="text-2xl font-bold text-center">Sign In</CardTitle>
             <CardDescription className="text-center">
-              Hesabınıza giriş yapın
+              Sign in to your account
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -86,11 +86,11 @@ export default function LoginPage() {
               )}
 
               <div className="space-y-2">
-                <Label htmlFor="email">E-posta</Label>
+                <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="ornek@email.com"
+                  placeholder="example@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -99,7 +99,7 @@ export default function LoginPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password">Şifre</Label>
+                <Label htmlFor="password">Password</Label>
                 <Input
                   id="password"
                   type="password"
@@ -119,12 +119,12 @@ export default function LoginPage() {
                 {loading ? (
                   <div className="flex items-center space-x-2">
                     <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    <span>Giriş Yapılıyor...</span>
+                    <span>Signing In...</span>
                   </div>
                 ) : (
                   <div className="flex items-center space-x-2">
                     <LogIn className="h-4 w-4" />
-                    <span>Giriş Yap</span>
+                    <span>Sign In</span>
                   </div>
                 )}
               </Button>
@@ -132,16 +132,16 @@ export default function LoginPage() {
 
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
-                Hesabınız yok mu?{' '}
+                Don't have an account?{' '}
                 <Link href="/register" className="text-purple-600 hover:text-purple-700 font-semibold">
-                  Kayıt Ol
+                  Sign Up
                 </Link>
               </p>
             </div>
 
             <div className="mt-4 text-center">
               <Link href="/" className="text-sm text-gray-500 hover:text-gray-700">
-                ← Ana Sayfaya Dön
+                ← Back to Home
               </Link>
             </div>
           </CardContent>
