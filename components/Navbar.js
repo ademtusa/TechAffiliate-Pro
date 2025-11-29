@@ -111,7 +111,7 @@ export default function Navbar() {
                 <span className="font-medium">Home</span>
                 <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
               </Link>
-              <Link href="/blog" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]' : 'text-gray-700 hover:text-blue-600'}`}>
+              <Link href="/products" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]' : 'text-gray-700 hover:text-blue-600'}`}>
                 <FileText className="h-4 w-4" />
                 <span className="font-medium">Products</span>
                 <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
