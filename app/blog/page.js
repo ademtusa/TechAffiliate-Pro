@@ -243,6 +243,113 @@ export default function ComparisonReviewPage() {
       </div>
 
       <div className="container mx-auto px-4 py-12">
+        {/* Comparison Table - MOVED TO TOP */}
+        {selectedForCompare.length >= 2 && (
+          <Card id="comparison-table" className="mb-12 border-4 border-blue-500 shadow-2xl">
+            <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50">
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="text-3xl flex items-center gap-2">
+                    <ArrowLeftRight className="h-8 w-8 text-blue-600" />
+                    Karşılaştırma Tablosu
+                  </CardTitle>
+                  <CardDescription className="text-lg mt-2">
+                    Seçtiğiniz {selectedForCompare.length} ürünü karşılaştırın
+                  </CardDescription>
+                </div>
+                <Button 
+                  variant="outline" 
+                  onClick={() => setSelectedForCompare([])}
+                  className="border-2 border-red-300 hover:bg-red-50"
+                >
+                  Temizle
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent className="p-6">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b-2 border-blue-200">
+                      <th className="text-left p-4 font-semibold bg-blue-50">Özellik</th>
+                      {selectedForCompare.map(product => (
+                        <th key={product.id} className="p-4 bg-gradient-to-b from-blue-50 to-purple-50">
+                          <div className="text-center">
+                            <img src={product.image_url} alt={product.name} className="w-24 h-24 object-cover rounded-lg mx-auto mb-2 shadow-md" />
+                            <p className="font-semibold text-lg">{product.name}</p>
+                            <Badge className="mt-1" variant="secondary">{product.category}</Badge>
+                          </div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b hover:bg-blue-50/50 transition-colors">
+                      <td className="p-4 font-medium">Fiyat</td>
+                      {selectedForCompare.map(product => (
+                        <td key={product.id} className="p-4 text-center">
+                          <p className="text-2xl font-bold text-blue-600">${product.price}</p>
+                          {product.original_price && (
+                            <>
+                              <p className="text-sm text-gray-500 line-through">${product.original_price}</p>
+                              <Badge className="bg-green-500 mt-1">
+                                %{Math.round(((product.original_price - product.price) / product.original_price) * 100)} indirim
+                              </Badge>
+                            </>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                    <tr className="border-b hover:bg-blue-50/50 transition-colors">
+                      <td className="p-4 font-medium">Puan</td>
+                      {selectedForCompare.map(product => (
+                        <td key={product.id} className="p-4 text-center">
+                          <div className="flex items-center justify-center">
+                            {[...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className={`h-5 w-5 ${i < (product.rating || 4) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
+                              />
+                            ))}
+                          </div>
+                          <p className="text-lg font-semibold mt-1">{product.rating}</p>
+                        </td>
+                      ))}
+                    </tr>
+                    <tr className="border-b hover:bg-blue-50/50 transition-colors">
+                      <td className="p-4 font-medium">Popülerlik</td>
+                      {selectedForCompare.map(product => (
+                        <td key={product.id} className="p-4 text-center">
+                          <p className="text-sm font-medium">{product.views} görüntülenme</p>
+                          <p className="text-sm font-medium text-green-600">{product.sales_count} satış</p>
+                        </td>
+                      ))}
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-medium">İşlem</td>
+                      {selectedForCompare.map(product => (
+                        <td key={product.id} className="p-4 text-center space-y-2">
+                          <Link href={`/sales/${product.id}`}>
+                            <Button variant="outline" className="w-full">
+                              Detayları Gör
+                            </Button>
+                          </Link>
+                          <Button 
+                            className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
+                            onClick={() => window.open(product.affiliate_url, '_blank')}
+                          >
+                            Satın Al <ExternalLink className="ml-2 h-4 w-4" />
+                          </Button>
+                        </td>
+                      ))}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         {/* Results Info */}
         <div className="mb-8 flex items-center justify-between">
           <p className="text-gray-600">
