@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation'
 import HeroSection from '@/components/HeroSection'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import AdSense from '@/components/AdSense'
 
 export default function ResourcesPage() {
   const [resources, setResources] = useState([])
