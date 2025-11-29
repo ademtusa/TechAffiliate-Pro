@@ -33,23 +33,23 @@ export default function DashboardSidebar({ isAdmin = false, isOpen, setIsOpen })
 
   const userMenuItems = [
     { id: 'overview', icon: LayoutDashboard, label: 'Dashboard', href: '/dashboard' },
-    { id: 'favorites', icon: Heart, label: 'Favorilerim', href: '/dashboard/favorites' },
-    { id: 'comparisons', icon: GitCompare, label: 'Karşılaştırmalar', href: '/dashboard/comparisons' },
-    { id: 'resources', icon: BookOpen, label: 'Kaynaklarım', href: '/dashboard/resources' },
-    { id: 'notifications', icon: Bell, label: 'Bildirimler', href: '/dashboard/notifications' },
-    { id: 'profile', icon: User, label: 'Profil Ayarları', href: '/dashboard/profile' },
+    { id: 'favorites', icon: Heart, label: 'My Favorites', href: '/dashboard/favorites' },
+    { id: 'comparisons', icon: GitCompare, label: 'Comparisons', href: '/dashboard/comparisons' },
+    { id: 'resources', icon: BookOpen, label: 'My Resources', href: '/dashboard/resources' },
+    { id: 'notifications', icon: Bell, label: 'Notifications', href: '/dashboard/notifications' },
+    { id: 'profile', icon: User, label: 'Profile Settings', href: '/dashboard/profile' },
   ]
 
   const adminMenuItems = [
-    { id: 'overview', icon: BarChart3, label: 'Genel Bakış', href: '/admin-panel' },
-    { id: 'products', icon: Package, label: 'Ürün Yönetimi', href: '/admin-panel/products' },
-    { id: 'users', icon: Users, label: 'Kullanıcılar', href: '/admin-panel/users' },
-    { id: 'blog', icon: FileText, label: 'Blog Yönetimi', href: '/admin-panel/blog' },
-    { id: 'resources', icon: BookOpen, label: 'Kaynak Yönetimi', href: '/admin-panel/resources' },
-    { id: 'messages', icon: MessageSquare, label: 'Mesajlar', href: '/admin-panel/messages' },
-    { id: 'media', icon: ImageIcon, label: 'Medya', href: '/admin-panel/media' },
-    { id: 'menus', icon: List, label: 'Menü Yönetimi', href: '/admin-panel/menus' },
-    { id: 'settings', icon: Settings, label: 'Site Ayarları', href: '/admin-panel/settings' },
+    { id: 'overview', icon: BarChart3, label: 'Overview', href: '/admin-panel' },
+    { id: 'products', icon: Package, label: 'Products', href: '/admin-panel/products' },
+    { id: 'users', icon: Users, label: 'Users', href: '/admin-panel/users' },
+    { id: 'blog', icon: FileText, label: 'Blog', href: '/admin-panel/blog' },
+    { id: 'resources', icon: BookOpen, label: 'Resources', href: '/admin-panel/resources' },
+    { id: 'messages', icon: MessageSquare, label: 'Messages', href: '/admin-panel/messages' },
+    { id: 'media', icon: ImageIcon, label: 'Media', href: '/admin-panel/media' },
+    { id: 'menus', icon: List, label: 'Menus', href: '/admin-panel/menus' },
+    { id: 'settings', icon: Settings, label: 'Settings', href: '/admin-panel/settings' },
   ]
 
   const menuItems = isAdmin ? adminMenuItems : userMenuItems
