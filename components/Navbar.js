@@ -2,28 +2,17 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { HomeIcon, FileText, Library, Sparkles, User, LogOut, LayoutDashboard, Menu, X } from 'lucide-react'
+import { HomeIcon, FileText, Library, Sparkles, User, LogOut, LayoutDashboard, Menu, X, Shield } from 'lucide-react'
 import Link from 'next/link'
-import { supabase } from '@/lib/supabase'
+import { useSession, signOut } from 'next-auth/react'
 import UsefulioLogo from '@/components/UsefulioLogo'
 
 export default function Navbar() {
-  const [user, setUser] = useState(null)
-  const [authOpen, setAuthOpen] = useState(false)
+  const { data: session, status } = useSession()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [authError, setAuthError] = useState('')
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    checkUser()
-    
     // Scroll listener
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
@@ -32,11 +21,6 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  const checkUser = async () => {
-    const { data: { user } } = await supabase.auth.getUser()
-    setUser(user)
-  }
 
   const handleSignIn = async (e) => {
     e.preventDefault()
