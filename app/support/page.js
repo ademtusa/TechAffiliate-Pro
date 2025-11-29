@@ -187,7 +187,7 @@ export default function SupportPage() {
         </Card>
 
         {/* Contact Information */}
-        <Card className="shadow-2xl border-2 mb-12 hover:shadow-3xl transition-shadow duration-300">
+        <Card className="shadow-2xl border-2 border-purple-200 hover:border-purple-400 mb-12 hover:shadow-3xl transition-all duration-300">
           <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
             <CardTitle className="text-2xl flex items-center gap-3">
               <Mail className="h-8 w-8 text-purple-600" />
@@ -196,7 +196,7 @@ export default function SupportPage() {
           </CardHeader>
           <CardContent className="pt-6">
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl border-2 border-blue-200 hover:border-blue-500 hover:shadow-lg transition-all duration-300">
                 <h3 className="font-bold text-lg mb-3 text-blue-900">General Inquiries</h3>
                 <p className="text-gray-700 mb-2">
                   <strong>Email:</strong> useful@usefulio.com
@@ -206,7 +206,7 @@ export default function SupportPage() {
                 </p>
               </div>
 
-              <div className="p-6 bg-gradient-to-br from-green-50 to-teal-50 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="p-6 bg-gradient-to-br from-green-50 to-teal-50 rounded-xl border-2 border-green-200 hover:border-green-500 hover:shadow-lg transition-all duration-300">
                 <h3 className="font-bold text-lg mb-3 text-green-900">Technical Support</h3>
                 <p className="text-gray-700 mb-2">
                   <strong>Email:</strong> support@usefulio.com
