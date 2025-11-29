@@ -142,7 +142,7 @@ export default function SupportPage() {
               <p className="text-gray-700 mb-4">
                 Chat with us in real-time (Coming Soon)
               </p>
-              <Button disabled className="w-full bg-gray-300 cursor-not-allowed">
+              <Button disabled className="w-full bg-gray-400 text-gray-700 font-semibold cursor-not-allowed border-2 border-gray-500">
                 Coming Soon
               </Button>
             </CardContent>
