@@ -220,7 +220,7 @@ export default function SupportPage() {
         </Card>
 
         {/* Additional Resources */}
-        <Card className="shadow-2xl border-2 bg-gradient-to-br from-blue-50 to-purple-50 hover:shadow-3xl transition-shadow duration-300">
+        <Card className="shadow-2xl border-2 border-indigo-200 hover:border-indigo-400 bg-gradient-to-br from-blue-50 to-purple-50 hover:shadow-3xl transition-all duration-300">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-3">
               <Video className="h-8 w-8 text-blue-600" />
@@ -229,22 +229,22 @@ export default function SupportPage() {
           </CardHeader>
           <CardContent className="pt-6">
             <div className="grid md:grid-cols-2 gap-4">
-              <Link href="/about" className="p-4 bg-white rounded-lg border-2 border-blue-200 hover:shadow-lg hover:scale-105 transition-all duration-300">
+              <Link href="/about" className="p-4 bg-white rounded-lg border-2 border-blue-200 hover:border-blue-500 hover:shadow-lg hover:scale-105 transition-all duration-300">
                 <h4 className="font-bold mb-2 text-blue-900">About Usefulio</h4>
                 <p className="text-gray-700 text-sm">Learn more about our mission and values</p>
               </Link>
 
-              <Link href="/privacy" className="p-4 bg-white rounded-lg border-2 border-purple-200 hover:shadow-lg hover:scale-105 transition-all duration-300">
+              <Link href="/privacy" className="p-4 bg-white rounded-lg border-2 border-purple-200 hover:border-purple-500 hover:shadow-lg hover:scale-105 transition-all duration-300">
                 <h4 className="font-bold mb-2 text-purple-900">Privacy Policy</h4>
                 <p className="text-gray-700 text-sm">How we handle your personal information</p>
               </Link>
 
-              <Link href="/terms" className="p-4 bg-white rounded-lg border-2 border-green-200 hover:shadow-lg hover:scale-105 transition-all duration-300">
+              <Link href="/terms" className="p-4 bg-white rounded-lg border-2 border-green-200 hover:border-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300">
                 <h4 className="font-bold mb-2 text-green-900">Terms of Service</h4>
                 <p className="text-gray-700 text-sm">Our terms and conditions</p>
               </Link>
 
-              <Link href="/blog" className="p-4 bg-white rounded-lg border-2 border-pink-200 hover:shadow-lg hover:scale-105 transition-all duration-300">
+              <Link href="/blog" className="p-4 bg-white rounded-lg border-2 border-pink-200 hover:border-pink-500 hover:shadow-lg hover:scale-105 transition-all duration-300">
                 <h4 className="font-bold mb-2 text-pink-900">Browse Products</h4>
                 <p className="text-gray-700 text-sm">Explore our product reviews and guides</p>
               </Link>
