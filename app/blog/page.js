@@ -699,6 +699,16 @@ export default function ComparisonReviewPage() {
             ))}
           </div>
         )}
+        
+        {/* AdSense After Products List */}
+        <div className="mt-12">
+          <AdSense 
+            adSlot="1122334455"
+            adFormat="horizontal"
+            style={{ display: 'block', minHeight: '90px', textAlign: 'center' }}
+            className="my-6"
+          />
+        </div>
       </div>
 
       <Footer />
