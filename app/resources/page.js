@@ -173,7 +173,7 @@ export default function ResourcesPage() {
                   </li>
                 </ul>
                 <Link href="/">
-                  <Button size="lg" className="w-full bg-gradient-to-r from-purple-600 to-pink-600">
+                  <Button size="lg" className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 border-2 border-transparent hover:border-purple-300 transition-all duration-300 shadow-lg hover:shadow-2xl">
                     Join Free Now
                   </Button>
                 </Link>
