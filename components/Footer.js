@@ -73,9 +73,9 @@ export default function Footer({ categories = [] }) {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             {/* About Section */}
             <div>
-              <h4 className="text-xl font-bold mb-4 text-white">TechAffiliate Pro</h4>
+              <h4 className="text-xl font-bold mb-4 text-white">Usefulio</h4>
               <p className="text-gray-400 leading-relaxed mb-4">
-                Your trusted source for the best tech deals and reviews. We help you make informed decisions.
+                Find what's actually useful. Your trusted guide for product reviews and comparisons that help you make smarter buying decisions.
               </p>
               <div className="flex space-x-3">
                 <Facebook className="h-6 w-6 cursor-pointer hover:text-blue-400 transition-colors" />
