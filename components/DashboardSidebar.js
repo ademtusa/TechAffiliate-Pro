@@ -62,13 +62,13 @@ export default function DashboardSidebar({ isAdmin = false, isOpen, setIsOpen })
     <aside 
       className={`${
         isOpen ? 'w-64' : 'w-20'
-      } bg-gradient-to-b from-purple-900 via-purple-800 to-pink-900 text-white transition-all duration-300 flex flex-col shadow-2xl`}
+      } bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white transition-all duration-300 flex flex-col shadow-2xl border-r border-slate-700`}
     >
       {/* Header */}
-      <div className="h-16 flex items-center justify-between px-4 border-b border-purple-700/50 backdrop-blur-sm">
+      <div className="h-16 flex items-center justify-between px-4 border-b border-slate-700/50 backdrop-blur-sm">
         {isOpen && (
           <div className="flex items-center space-x-2">
-            <Shield className="h-6 w-6 text-pink-300" />
+            <Shield className="h-6 w-6 text-blue-400" />
             <span className="font-bold text-lg">
               {isAdmin ? 'Admin Panel' : 'Dashboard'}
             </span>
@@ -78,7 +78,7 @@ export default function DashboardSidebar({ isAdmin = false, isOpen, setIsOpen })
           variant="ghost"
           size="sm"
           onClick={() => setIsOpen(!isOpen)}
-          className="text-pink-200 hover:text-white hover:bg-purple-700/50"
+          className="text-slate-400 hover:text-white hover:bg-slate-700/50"
         >
           {isOpen ? <ChevronLeft className="h-5 w-5" /> : <ChevronRight className="h-5 w-5" />}
         </Button>
