@@ -33,8 +33,16 @@ export default function LoginPage() {
       if (result?.error) {
         setError(result.error)
       } else {
-        // Redirect based on role (we'll fetch from session)
-        router.push('/dashboard')
+        // Fetch session to check user role
+        const sessionResponse = await fetch('/api/auth/session')
+        const session = await sessionResponse.json()
+        
+        // Redirect based on role
+        if (session?.user?.role === 'admin') {
+          router.push('/admin-panel')
+        } else {
+          router.push('/dashboard')
+        }
         router.refresh()
       }
     } catch (error) {
