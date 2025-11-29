@@ -102,7 +102,7 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-2 group">
               <Sparkles className={`h-6 w-6 transition-colors ${scrolled ? 'text-blue-600 drop-shadow-[0_2px_4px_rgba(37,99,235,0.5)]' : 'text-blue-600'} group-hover:text-indigo-600`} />
               <h1 className={`text-2xl font-bold ${scrolled ? 'text-blue-700 drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]' : 'bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent'}`}>
-                TechAffiliate Pro
+                Usefulio
               </h1>
             </Link>
             <div className="hidden md:flex space-x-2">
