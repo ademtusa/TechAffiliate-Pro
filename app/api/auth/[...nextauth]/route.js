@@ -12,7 +12,10 @@ const handler = NextAuth({
       },
       async authorize(credentials) {
         try {
+          console.log('🔐 Login attempt:', credentials?.email)
           const user = await verifyUser(credentials.email, credentials.password)
+          
+          console.log('👤 User found:', user ? 'Yes' : 'No')
           
           if (!user) {
             throw new Error('Invalid credentials')
@@ -23,9 +26,10 @@ const handler = NextAuth({
             throw new Error('Your account is pending approval')
           }
           
+          console.log('✅ Auth successful:', user.email, user.role)
           return user
         } catch (error) {
-          console.error('Auth error:', error)
+          console.error('❌ Auth error:', error.message)
           throw error
         }
       }
