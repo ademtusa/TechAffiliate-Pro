@@ -97,8 +97,8 @@ export default function DashboardSidebar({ isAdmin = false, isOpen, setIsOpen })
                   isOpen ? 'px-4' : 'px-6'
                 } py-3 space-x-3 transition-all group ${
                   isActive
-                    ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white border-r-4 border-pink-300 shadow-lg'
-                    : 'text-purple-200 hover:bg-purple-700/50 hover:text-white'
+                    ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white border-r-4 border-blue-400 shadow-lg'
+                    : 'text-slate-300 hover:bg-slate-700/70 hover:text-white'
                 }`}
               >
                 <Icon className={`h-5 w-5 ${
