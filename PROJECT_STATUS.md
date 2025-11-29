@@ -65,6 +65,10 @@
   - Products page (after listings)
 - ✅ "Buy Now" buttons with modal
 - ✅ Affiliate disclosure
+- ✅ Members Only badges (Resources page)
+  - Animate-pulse effect
+  - Premium yellow-orange gradient
+  - Membership conversion optimization
 
 ### **7. ROUTING STRUCTURE**
 ```
