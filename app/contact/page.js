@@ -152,6 +152,17 @@ export default function ContactPage() {
                   </Button>
                 </form>
               )}
+              
+              {/* AdSense Below Form */}
+              {!submitted && (
+                <div className="mt-6 pt-6 border-t border-gray-200">
+                  <AdSense 
+                    adSlot="1234567890"
+                    style={{ display: 'block', minHeight: '280px' }}
+                    className="my-4"
+                  />
+                </div>
+              )}
             </CardContent>
           </Card>
 
