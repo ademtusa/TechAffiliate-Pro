@@ -107,13 +107,13 @@ export default function AdminPanelPage() {
 
       {/* Recent Activity */}
       <div className="grid md:grid-cols-2 gap-6">
-        <Card className="border-purple-500/30 bg-gray-800/50 backdrop-blur-sm">
+        <Card className="border-slate-700 bg-slate-800/70 backdrop-blur-sm">
           <CardHeader>
             <CardTitle className="text-white flex items-center">
-              <Clock className="h-5 w-5 mr-2 text-purple-400" />
+              <Clock className="h-5 w-5 mr-2 text-blue-400" />
               Son Aktiviteler
             </CardTitle>
-            <CardDescription className="text-gray-400">Site üzerindeki son hareketler</CardDescription>
+            <CardDescription className="text-slate-400">Site üzerindeki son hareketler</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
