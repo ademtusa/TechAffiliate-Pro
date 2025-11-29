@@ -109,8 +109,8 @@ export default function Footer({ categories = [] }) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog" className="hover:text-white transition-colors hover:pl-2 inline-block transition-all">
-                    Review
+                  <Link href="/products" className="hover:text-white transition-colors hover:pl-2 inline-block transition-all">
+                    Reviews
                   </Link>
                 </li>
                 <li>
