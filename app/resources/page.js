@@ -96,7 +96,17 @@ export default function ResourcesPage() {
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {resources.map((resource) => (
-              <Card key={resource.id} className="hover:shadow-2xl transition-all duration-300 border-2 hover:border-purple-500">
+              <Card key={resource.id} className="hover:shadow-2xl transition-all duration-300 border-2 border-purple-200 hover:border-purple-500 relative">
+                {/* Members Only Badge - Prominent */}
+                {resource.members_only && !user && (
+                  <div className="absolute top-4 right-4 z-10">
+                    <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-bold px-3 py-1 text-sm shadow-lg animate-pulse">
+                      <Lock className="h-3 w-3 mr-1 inline" />
+                      MEMBERS ONLY
+                    </Badge>
+                  </div>
+                )}
+                
                 <CardHeader>
                   <div className="flex justify-center mb-4">
                     {getIcon(resource.type)}
@@ -112,12 +122,16 @@ export default function ResourcesPage() {
                   </Badge>
                   <div className="mt-4">
                     {resource.members_only && !user ? (
-                      <Button variant="outline" className="w-full" disabled>
+                      <Button 
+                        variant="outline" 
+                        className="w-full border-2 border-orange-400 text-orange-700 bg-orange-50 hover:bg-orange-100 hover:border-orange-500 font-semibold transition-all duration-300" 
+                        disabled
+                      >
                         <Lock className="h-4 w-4 mr-2" />
-                        Members Only
+                        Members Only - Sign In to Access
                       </Button>
                     ) : (
-                      <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600">
+                      <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 border-2 border-transparent hover:border-purple-300 transition-all duration-300">
                         <Download className="h-4 w-4 mr-2" />
                         Download Now
                       </Button>
