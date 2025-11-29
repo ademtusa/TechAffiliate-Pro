@@ -91,7 +91,7 @@ export default function SupportPage() {
         {/* Quick Help Options */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {/* Contact Support */}
-          <Card className="shadow-2xl border-2 hover:shadow-3xl hover:scale-105 transition-all duration-300">
+          <Card className="shadow-2xl border-2 border-blue-200 hover:border-blue-500 hover:shadow-3xl hover:scale-105 transition-all duration-300">
             <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
               <div className="h-16 w-16 rounded-full bg-blue-600 flex items-center justify-center mx-auto mb-4">
                 <Mail className="h-8 w-8 text-white" />
@@ -103,7 +103,7 @@ export default function SupportPage() {
                 Get personalized help from our support team
               </p>
               <Link href="/contact">
-                <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 border-2 border-transparent hover:border-blue-300 transition-all">
                   Send Message
                 </Button>
               </Link>
@@ -111,7 +111,7 @@ export default function SupportPage() {
           </Card>
 
           {/* Browse Resources */}
-          <Card className="shadow-2xl border-2 hover:shadow-3xl hover:scale-105 transition-all duration-300">
+          <Card className="shadow-2xl border-2 border-purple-200 hover:border-purple-500 hover:shadow-3xl hover:scale-105 transition-all duration-300">
             <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
               <div className="h-16 w-16 rounded-full bg-purple-600 flex items-center justify-center mx-auto mb-4">
                 <Book className="h-8 w-8 text-white" />
@@ -123,7 +123,7 @@ export default function SupportPage() {
                 Access guides, tips, and helpful articles
               </p>
               <Link href="/resources">
-                <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
+                <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 border-2 border-transparent hover:border-purple-300 transition-all">
                   View Resources
                 </Button>
               </Link>
@@ -131,7 +131,7 @@ export default function SupportPage() {
           </Card>
 
           {/* Community Chat */}
-          <Card className="shadow-2xl border-2 hover:shadow-3xl hover:scale-105 transition-all duration-300">
+          <Card className="shadow-2xl border-2 border-green-200 hover:border-green-500 hover:shadow-3xl hover:scale-105 transition-all duration-300">
             <CardHeader className="bg-gradient-to-r from-green-50 to-teal-50">
               <div className="h-16 w-16 rounded-full bg-green-600 flex items-center justify-center mx-auto mb-4">
                 <MessageCircle className="h-8 w-8 text-white" />
@@ -142,7 +142,7 @@ export default function SupportPage() {
               <p className="text-gray-700 mb-4">
                 Chat with us in real-time (Coming Soon)
               </p>
-              <Button disabled className="w-full bg-gray-400 text-gray-700 font-semibold cursor-not-allowed border-2 border-gray-500">
+              <Button disabled className="w-full bg-gray-400 text-gray-700 font-semibold cursor-not-allowed border-2 border-gray-500 hover:border-gray-600">
                 Coming Soon
               </Button>
             </CardContent>
