@@ -125,3 +125,7 @@ backup_safe/BEFORE_COMPARISON_FIX_20251129_091535/node_modules/@next/swc-linux-a
 backup_safe/BEFORE_COMPARISON_FIX_20251129_091535/node_modules/@next/swc-linux-arm64-musl/next-swc.linux-arm64-musl.node
 backup_safe/BEFORE_COMPARISON_FIX_20251129_091535/backup_safe/BEFORE_AUTH_REDESIGN_20251128_174028/node_modules/@next/swc-linux-arm64-gnu/next-swc.linux-arm64-gnu.node
 backup_safe/BEFORE_COMPARISON_FIX_20251129_091535/backup_safe/BEFORE_AUTH_REDESIGN_20251128_174028/node_modules/@next/swc-linux-arm64-musl/next-swc.linux-arm64-musl.node
+-e 
+# Environment files
+*.env
+*.env.*
