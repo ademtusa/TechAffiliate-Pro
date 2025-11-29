@@ -160,7 +160,7 @@ export default function Footer({ categories = [] }) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="hover:text-white transition-colors hover:pl-2 inline-block transition-all">
+                  <Link href="/support" className="hover:text-white transition-colors hover:pl-2 inline-block transition-all">
                     Support
                   </Link>
                 </li>
