@@ -150,7 +150,7 @@ export default function SupportPage() {
         </div>
 
         {/* FAQ Section */}
-        <Card className="shadow-2xl border-2 mb-12">
+        <Card className="shadow-2xl border-2 border-blue-200 hover:border-blue-400 mb-12 transition-all duration-300">
           <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
             <CardTitle className="text-3xl flex items-center gap-3">
               <HelpCircle className="h-10 w-10" />
@@ -162,7 +162,7 @@ export default function SupportPage() {
               {faqs.map((faq, index) => (
                 <div 
                   key={index} 
-                  className="border-2 border-blue-200 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300"
+                  className="border-2 border-blue-200 hover:border-blue-500 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300"
                 >
                   <button
                     onClick={() => toggleFaq(index)}
