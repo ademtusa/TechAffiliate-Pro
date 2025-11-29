@@ -244,7 +244,7 @@ export default function SupportPage() {
                 <p className="text-gray-700 text-sm">Our terms and conditions</p>
               </Link>
 
-              <Link href="/blog" className="p-4 bg-white rounded-lg border-2 border-pink-200 hover:border-pink-500 hover:shadow-lg hover:scale-105 transition-all duration-300">
+              <Link href="/products" className="p-4 bg-white rounded-lg border-2 border-pink-200 hover:border-pink-500 hover:shadow-lg hover:scale-105 transition-all duration-300">
                 <h4 className="font-bold mb-2 text-pink-900">Browse Products</h4>
                 <p className="text-gray-700 text-sm">Explore our product reviews and guides</p>
               </Link>
