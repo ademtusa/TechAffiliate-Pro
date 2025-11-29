@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
-import { HomeIcon, FileText, Library, Sparkles, User, LogOut, LayoutDashboard, Menu, X, Shield } from 'lucide-react'
+import { HomeIcon, FileText, Library, User, LogOut, LayoutDashboard, Menu, X, Shield } from 'lucide-react'
 import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
 import UsefulioLogo from '@/components/UsefulioLogo'
@@ -13,7 +13,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    // Scroll listener
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
     }
@@ -22,109 +21,67 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleSignIn = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setAuthError('')
-    
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      })
-      
-      if (error) throw error
-      
-      setUser(data.user)
-      setAuthOpen(false)
-      setEmail('')
-      setPassword('')
-    } catch (error) {
-      setAuthError(error.message)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const handleSignUp = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setAuthError('')
-    
-    try {
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-      })
-      
-      if (error) throw error
-      
-      alert('Check your email for the confirmation link!')
-      setAuthOpen(false)
-      setEmail('')
-      setPassword('')
-    } catch (error) {
-      setAuthError(error.message)
-    } finally {
-      setLoading(false)
-    }
-  }
-
   const handleSignOut = async () => {
-    await supabase.auth.signOut()
-    setUser(null)
+    await signOut({ callbackUrl: '/' })
   }
+
+  const isAdmin = session?.user?.role === 'admin'
 
   return (
     <nav className={`sticky top-0 z-50 border-b transition-all duration-500 ${
       scrolled 
-        ? 'bg-white/30 backdrop-blur-2xl border-white/30 shadow-2xl' 
+        ? 'bg-white/80 backdrop-blur-2xl border-blue-100 shadow-lg' 
         : 'bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 border-blue-100 shadow-lg'
     }`}>
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
+          {/* Logo */}
           <div className="flex items-center space-x-8">
             <Link href="/" className="flex items-center gap-3 group">
-              <UsefulioLogo className={`h-9 w-9 transition-all duration-300 ${scrolled ? 'drop-shadow-[0_2px_8px_rgba(59,130,246,0.6)]' : ''} group-hover:scale-110 group-hover:rotate-6`} />
-              <h1 className={`text-2xl font-bold ${scrolled ? 'text-blue-700 drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]' : 'bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent'}`}>
+              <UsefulioLogo />
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 Usefulio
               </h1>
             </Link>
+
+            {/* Desktop Menu */}
             <div className="hidden md:flex space-x-2">
-              <Link href="/" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]' : 'text-gray-700 hover:text-blue-600'}`}>
+              <Link href="/" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700' : 'text-gray-700 hover:text-blue-600'}`}>
                 <HomeIcon className="h-4 w-4" />
                 <span className="font-medium">Home</span>
                 <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
               </Link>
-              <Link href="/products" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]' : 'text-gray-700 hover:text-blue-600'}`}>
+              <Link href="/products" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700' : 'text-gray-700 hover:text-blue-600'}`}>
                 <FileText className="h-4 w-4" />
                 <span className="font-medium">Products</span>
                 <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
               </Link>
-              <Link href="/resources" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]' : 'text-gray-700 hover:text-blue-600'}`}>
+              <Link href="/resources" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700' : 'text-gray-700 hover:text-blue-600'}`}>
                 <Library className="h-4 w-4" />
                 <span className="font-medium">Resources</span>
                 <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
               </Link>
-              <Link href="/contact" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]' : 'text-gray-700 hover:text-blue-600'}`}>
+              <Link href="/contact" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700' : 'text-gray-700 hover:text-blue-600'}`}>
                 <User className="h-4 w-4" />
                 <span className="font-medium">Contact</span>
                 <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
               </Link>
-              {user && (
-                <Link href="/dashboard" className={`group relative px-4 py-2 flex items-center gap-2 transition-all rounded-lg hover:bg-white/60 ${scrolled ? 'text-gray-800 hover:text-blue-700 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]' : 'text-gray-700 hover:text-blue-600'}`}>
-                  <LayoutDashboard className="h-4 w-4" />
-                  <span className="font-medium">Dashboard</span>
-                  <span className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all"></span>
-                </Link>
-              )}
             </div>
           </div>
 
+          {/* Right Side - Auth Buttons */}
           <div className="flex items-center space-x-4">
-            {user ? (
+            {status === 'authenticated' ? (
               <div className="hidden md:flex items-center space-x-3">
-                <Link href="/dashboard">
+                {isAdmin && (
+                  <Link href="/admin-panel">
+                    <Button variant="outline" size="sm" className="border-red-300 text-red-600 hover:bg-red-50">
+                      <Shield className="h-4 w-4 mr-2" />
+                      Admin Panel
+                    </Button>
+                  </Link>
+                )}
+                <Link href={isAdmin ? '/admin-panel' : '/dashboard'}>
                   <Button variant="ghost" size="sm" className="hover:bg-white/60">
                     <LayoutDashboard className="h-4 w-4 mr-2" />
                     Dashboard
@@ -132,160 +89,29 @@ export default function Navbar() {
                 </Link>
                 <Button variant="ghost" size="sm" onClick={handleSignOut} className="hover:bg-white/60">
                   <LogOut className="h-4 w-4 mr-2" />
-                  Sign Out
+                  Çıkış Yap
                 </Button>
               </div>
             ) : (
-              <Dialog open={authOpen} onOpenChange={setAuthOpen}>
-                <DialogTrigger asChild>
-                  <Button className={`hidden md:flex bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all ${scrolled ? 'drop-shadow-[0_2px_8px_rgba(37,99,235,0.6)]' : ''}`}>
+              <div className="hidden md:flex space-x-2">
+                <Link href="/login">
+                  <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all">
                     <User className="h-4 w-4 mr-2" />
-                    Sign In
+                    Giriş Yap
                   </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-md bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border-2 border-blue-200">
-                  <DialogHeader className="space-y-3">
-                    <div className="mx-auto w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg">
-                      <User className="h-8 w-8 text-white" />
-                    </div>
-                    <DialogTitle className="text-2xl text-center bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                      Welcome to Usefulio
-                    </DialogTitle>
-                    <DialogDescription className="text-center text-gray-600">
-                      Sign in to access useful product reviews and comparisons
-                    </DialogDescription>
-                  </DialogHeader>
-                  
-                  <Tabs defaultValue="signin" className="w-full mt-4">
-                    <TabsList className="grid w-full grid-cols-2 bg-white/60 p-1">
-                      <TabsTrigger 
-                        value="signin" 
-                        className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all"
-                      >
-                        Sign In
-                      </TabsTrigger>
-                      <TabsTrigger 
-                        value="signup"
-                        className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all"
-                      >
-                        Sign Up
-                      </TabsTrigger>
-                    </TabsList>
-                    
-                    <TabsContent value="signin" className="mt-6">
-                      <form onSubmit={handleSignIn} className="space-y-5">
-                        <div className="space-y-2">
-                          <Label htmlFor="email" className="text-gray-700 font-medium">Email Address</Label>
-                          <Input
-                            id="email"
-                            type="email"
-                            placeholder="you@example.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="h-12 bg-white/80 border-2 border-blue-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                            required
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="password" className="text-gray-700 font-medium">Password</Label>
-                          <Input
-                            id="password"
-                            type="password"
-                            placeholder="••••••••"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="h-12 bg-white/80 border-2 border-blue-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                            required
-                          />
-                        </div>
-                        {authError && (
-                          <div className="p-3 rounded-lg bg-red-50 border-2 border-red-200">
-                            <p className="text-sm text-red-600 flex items-center gap-2">
-                              <span className="text-red-500">⚠</span>
-                              {authError}
-                            </p>
-                          </div>
-                        )}
-                        <Button 
-                          type="submit" 
-                          className="w-full h-12 text-base bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all font-semibold" 
-                          disabled={loading}
-                        >
-                          {loading ? (
-                            <span className="flex items-center gap-2">
-                              <span className="animate-spin">⏳</span>
-                              Signing in...
-                            </span>
-                          ) : (
-                            'Sign In'
-                          )}
-                        </Button>
-                      </form>
-                    </TabsContent>
-                    
-                    <TabsContent value="signup" className="mt-6">
-                      <form onSubmit={handleSignUp} className="space-y-5">
-                        <div className="space-y-2">
-                          <Label htmlFor="signup-email" className="text-gray-700 font-medium">Email Address</Label>
-                          <Input
-                            id="signup-email"
-                            type="email"
-                            placeholder="you@example.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="h-12 bg-white/80 border-2 border-blue-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                            required
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="signup-password" className="text-gray-700 font-medium">Password</Label>
-                          <Input
-                            id="signup-password"
-                            type="password"
-                            placeholder="••••••••"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="h-12 bg-white/80 border-2 border-blue-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                            required
-                          />
-                          <p className="text-xs text-gray-500">Minimum 6 characters required</p>
-                        </div>
-                        {authError && (
-                          <div className="p-3 rounded-lg bg-red-50 border-2 border-red-200">
-                            <p className="text-sm text-red-600 flex items-center gap-2">
-                              <span className="text-red-500">⚠</span>
-                              {authError}
-                            </p>
-                          </div>
-                        )}
-                        <Button 
-                          type="submit" 
-                          className="w-full h-12 text-base bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all font-semibold" 
-                          disabled={loading}
-                        >
-                          {loading ? (
-                            <span className="flex items-center gap-2">
-                              <span className="animate-spin">⏳</span>
-                              Creating account...
-                            </span>
-                          ) : (
-                            'Create Account'
-                          )}
-                        </Button>
-                        <p className="text-xs text-center text-gray-500">
-                          By signing up, you agree to our Terms of Service
-                        </p>
-                      </form>
-                    </TabsContent>
-                  </Tabs>
-                </DialogContent>
-              </Dialog>
+                </Link>
+                <Link href="/register">
+                  <Button variant="outline" className="border-blue-300 text-blue-600 hover:bg-blue-50">
+                    Kayıt Ol
+                  </Button>
+                </Link>
+              </div>
             )}
 
-            {/* Mobile Menu Toggle */}
-            <Button
-              variant="ghost"
-              size="sm"
+            {/* Mobile Menu Button */}
+            <Button 
+              variant="ghost" 
+              size="sm" 
               className="md:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
@@ -296,29 +122,70 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden pt-4 pb-2 space-y-2 bg-white/80 rounded-lg mt-2 p-3">
-            <Link href="/" className="flex items-center gap-2 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded px-3 transition-all">
-              <HomeIcon className="h-4 w-4" />
-              Home
+          <div className="md:hidden mt-4 pb-4 space-y-2 border-t pt-4">
+            <Link href="/" className="block px-4 py-2 rounded-lg hover:bg-white/60 transition-all">
+              <div className="flex items-center gap-2">
+                <HomeIcon className="h-4 w-4" />
+                <span>Home</span>
+              </div>
             </Link>
-            <Link href="/products" className="flex items-center gap-2 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded px-3 transition-all">
-              <FileText className="h-4 w-4" />
-              Products
+            <Link href="/products" className="block px-4 py-2 rounded-lg hover:bg-white/60 transition-all">
+              <div className="flex items-center gap-2">
+                <FileText className="h-4 w-4" />
+                <span>Products</span>
+              </div>
             </Link>
-            <Link href="/resources" className="flex items-center gap-2 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded px-3 transition-all">
-              <Library className="h-4 w-4" />
-              Resources
+            <Link href="/resources" className="block px-4 py-2 rounded-lg hover:bg-white/60 transition-all">
+              <div className="flex items-center gap-2">
+                <Library className="h-4 w-4" />
+                <span>Resources</span>
+              </div>
             </Link>
-            <Link href="/contact" className="flex items-center gap-2 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded px-3 transition-all">
-              <User className="h-4 w-4" />
-              Contact
+            <Link href="/contact" className="block px-4 py-2 rounded-lg hover:bg-white/60 transition-all">
+              <div className="flex items-center gap-2">
+                <User className="h-4 w-4" />
+                <span>Contact</span>
+              </div>
             </Link>
-            {user && (
-              <Link href="/dashboard" className="flex items-center gap-2 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded px-3 transition-all">
-                <LayoutDashboard className="h-4 w-4" />
-                Dashboard
-              </Link>
-            )}
+
+            <div className="border-t pt-2 mt-2">
+              {status === 'authenticated' ? (
+                <>
+                  {isAdmin && (
+                    <Link href="/admin-panel" className="block">
+                      <Button variant="outline" size="sm" className="w-full mb-2 border-red-300 text-red-600">
+                        <Shield className="h-4 w-4 mr-2" />
+                        Admin Panel
+                      </Button>
+                    </Link>
+                  )}
+                  <Link href={isAdmin ? '/admin-panel' : '/dashboard'} className="block">
+                    <Button variant="outline" size="sm" className="w-full mb-2">
+                      <LayoutDashboard className="h-4 w-4 mr-2" />
+                      Dashboard
+                    </Button>
+                  </Link>
+                  <Button variant="outline" size="sm" className="w-full" onClick={handleSignOut}>
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Çıkış Yap
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Link href="/login" className="block mb-2">
+                    <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600">
+                      <User className="h-4 w-4 mr-2" />
+                      Giriş Yap
+                    </Button>
+                  </Link>
+                  <Link href="/register" className="block">
+                    <Button variant="outline" className="w-full">
+                      Kayıt Ol
+                    </Button>
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
         )}
       </div>
