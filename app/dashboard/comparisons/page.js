@@ -14,8 +14,25 @@ export default function ComparisonsPage() {
   const { toast } = useToast()
 
   useEffect(() => {
+    const loadComparisons = async () => {
+      setLoading(true)
+      try {
+        const compare = JSON.parse(localStorage.getItem('compareProducts') || '[]')
+        setCompareProducts(compare)
+      } catch (error) {
+        console.error('Error loading comparisons:', error)
+        toast({
+          title: 'Error',
+          description: 'Failed to load comparisons',
+          variant: 'destructive'
+        })
+      } finally {
+        setLoading(false)
+      }
+    }
+    
     loadComparisons()
-  }, [])
+  }, [toast])
 
   const loadComparisons = async () => {
     setLoading(true)
