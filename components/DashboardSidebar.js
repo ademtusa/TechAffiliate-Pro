@@ -25,7 +25,8 @@ import {
   List,
   MessageSquare,
   BarChart3,
-  Folder
+  Folder,
+  Star
 } from 'lucide-react'
 import { signOut } from 'next-auth/react'
 
