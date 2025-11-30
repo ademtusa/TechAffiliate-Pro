@@ -44,6 +44,7 @@ export default function DashboardSidebar({ isAdmin = false, isOpen, setIsOpen })
   const adminMenuItems = [
     { id: 'overview', icon: BarChart3, label: 'Overview', href: '/admin-panel' },
     { id: 'products', icon: Package, label: 'Products', href: '/admin-panel/products' },
+    { id: 'categories', icon: Folder, label: 'Categories', href: '/admin-panel/categories' },
     { id: 'users', icon: Users, label: 'Users', href: '/admin-panel/users' },
     { id: 'blog', icon: FileText, label: 'Blog', href: '/admin-panel/blog' },
     { id: 'resources', icon: BookOpen, label: 'Resources', href: '/admin-panel/resources' },
