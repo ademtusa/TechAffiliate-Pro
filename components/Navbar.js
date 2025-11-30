@@ -138,12 +138,12 @@ export default function Navbar() {
                 <Link href="/login">
                   <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all">
                     <User className="h-4 w-4 mr-2" />
-                    Giriş Yap
+                    Sign In
                   </Button>
                 </Link>
                 <Link href="/register">
                   <Button variant="outline" className="border-blue-300 text-blue-600 hover:bg-blue-50">
-                    Kayıt Ol
+                    Sign Up
                   </Button>
                 </Link>
               </div>
