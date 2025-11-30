@@ -60,32 +60,32 @@ export default function DashboardPage() {
       {/* Quick Actions */}
       <Card className="border-purple-200 bg-white/80 backdrop-blur-sm">
         <CardHeader>
-          <CardTitle className="text-purple-800">Hızlı İşlemler</CardTitle>
-          <CardDescription>Bugün ne yapmak istersiniz?</CardDescription>
+          <CardTitle className="text-purple-800">Quick Actions</CardTitle>
+          <CardDescription>What would you like to do today?</CardDescription>
         </CardHeader>
         <CardContent className="grid md:grid-cols-2 gap-4">
           <Link href="/products">
             <Button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white" size="lg">
               <Package className="h-5 w-5 mr-2" />
-              Ürünlere Göz At
+              Browse Products
             </Button>
           </Link>
           <Link href="/resources">
             <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white" size="lg">
               <BookOpen className="h-5 w-5 mr-2" />
-              Kaynakları İncele
+              Explore Resources
             </Button>
           </Link>
           <Link href="/dashboard/favorites">
             <Button variant="outline" className="w-full border-purple-300 text-purple-600 hover:bg-purple-50" size="lg">
               <Heart className="h-5 w-5 mr-2" />
-              Favorilerim
+              My Favorites
             </Button>
           </Link>
           <Link href="/dashboard/profile">
             <Button variant="outline" className="w-full border-purple-300 text-purple-600 hover:bg-purple-50" size="lg">
               <Star className="h-5 w-5 mr-2" />
-              Profil Ayarları
+              Profile Settings
             </Button>
           </Link>
         </CardContent>
