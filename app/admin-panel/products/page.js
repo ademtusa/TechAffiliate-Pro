@@ -315,8 +315,11 @@ export default function ProductsManagementPage() {
     total: products.length,
     active: products.filter(p => p.status === 'active').length,
     inactive: products.filter(p => p.status === 'inactive').length,
-    categories: categories.length
+    categories: categories.length,
+    total_views: 0,
+    total_clicks: 0
   }
+  const [trackingStats, setTrackingStats] = useState(null)
 
   return (
     <div className="space-y-6">
