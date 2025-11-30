@@ -233,7 +233,8 @@ export default function ResourcesManagementPage() {
     return matchesSearch && matchesCategory && matchesStatus
   })
 
-  const categories = [...new Set(resources.map(r => r.category).filter(Boolean))]
+  // Extract unique category names from resources for filter dropdown
+  const resourceCategories = [...new Set(resources.map(r => r.category).filter(Boolean))]
 
   if (loading) {
     return (
