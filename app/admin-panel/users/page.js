@@ -125,16 +125,16 @@ export default function UsersManagementPage() {
 
       if (data.success) {
         toast({
-          title: 'Başarılı',
-          description: 'Kullanıcı reddedildi',
+          title: 'Success',
+          description: 'User rejected',
         })
         fetchUsers()
       }
     } catch (error) {
       console.error('Error rejecting user:', error)
       toast({
-        title: 'Hata',
-        description: 'Kullanıcı reddedilemedi',
+        title: 'Error',
+        description: 'Failed to reject user',
         variant: 'destructive'
       })
     }
