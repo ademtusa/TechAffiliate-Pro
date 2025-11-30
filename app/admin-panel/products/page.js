@@ -680,10 +680,10 @@ export default function ProductsManagementPage() {
           ) : filteredProducts.length === 0 ? (
             <div className="text-center py-12 text-slate-500">
               <Package className="h-12 w-12 mx-auto mb-4 text-slate-600" />
-              <p>Ürün bulunamadı</p>
+              <p>No products found</p>
               <Button onClick={() => setDialogOpen(true)} className="mt-4 bg-blue-600 hover:bg-blue-700">
                 <Plus className="h-4 w-4 mr-2" />
-                İlk Ürünü Ekle
+                Add First Product
               </Button>
             </div>
           ) : (
