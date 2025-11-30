@@ -298,7 +298,7 @@ export default function ComparisonReviewPage() {
                 <table className="w-full">
                   <thead>
                     <tr className="border-b-2 border-blue-200">
-                      <th className="text-left p-4 font-semibold bg-blue-50">Özellik</th>
+                      <th className="text-left p-4 font-semibold bg-blue-50">Feature</th>
                       {selectedForCompare.map(product => (
                         <th key={product.id} className="p-4 bg-gradient-to-b from-blue-50 to-purple-50">
                           <div className="text-center">
