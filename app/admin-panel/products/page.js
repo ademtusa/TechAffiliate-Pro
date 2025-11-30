@@ -651,10 +651,10 @@ export default function ProductsManagementPage() {
             </div>
             <Select value={filterCategory} onValueChange={setFilterCategory}>
               <SelectTrigger className="w-48 bg-slate-700 border-slate-600 text-white">
-                <SelectValue placeholder="Kategori" />
+                <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">Tüm Kategoriler</SelectItem>
+                <SelectItem value="all">All Categories</SelectItem>
                 {categories.map(cat => (
                   <SelectItem key={cat} value={cat}>{cat}</SelectItem>
                 ))}
