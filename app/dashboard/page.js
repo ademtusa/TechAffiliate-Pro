@@ -52,7 +52,11 @@ export default function DashboardPage() {
             <Heart className="h-5 w-5 text-pink-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-purple-600">0</div>
+            {loading ? (
+              <div className="text-2xl font-bold text-gray-400">...</div>
+            ) : (
+              <div className="text-3xl font-bold text-purple-600">{stats.favorites}</div>
+            )}
             <p className="text-xs text-gray-500 mt-1">Saved products</p>
           </CardContent>
         </Card>
@@ -63,7 +67,11 @@ export default function DashboardPage() {
             <GitCompare className="h-5 w-5 text-blue-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-purple-600">0</div>
+            {loading ? (
+              <div className="text-2xl font-bold text-gray-400">...</div>
+            ) : (
+              <div className="text-3xl font-bold text-purple-600">{stats.comparisons}</div>
+            )}
             <p className="text-xs text-gray-500 mt-1">Comparisons made</p>
           </CardContent>
         </Card>
@@ -74,7 +82,11 @@ export default function DashboardPage() {
             <BookOpen className="h-5 w-5 text-green-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-purple-600">0</div>
+            {loading ? (
+              <div className="text-2xl font-bold text-gray-400">...</div>
+            ) : (
+              <div className="text-3xl font-bold text-purple-600">{stats.resources}</div>
+            )}
             <p className="text-xs text-gray-500 mt-1">Resources accessed</p>
           </CardContent>
         </Card>
