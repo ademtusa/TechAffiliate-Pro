@@ -358,7 +358,7 @@ export default function UsersManagementPage() {
                           className="bg-green-600 hover:bg-green-700"
                         >
                           <Check className="h-4 w-4 mr-1" />
-                          Onayla
+                          Approve
                         </Button>
                         <Button
                           size="sm"
@@ -367,7 +367,7 @@ export default function UsersManagementPage() {
                           className="border-red-500 text-red-400 hover:bg-red-500/20"
                         >
                           <X className="h-4 w-4 mr-1" />
-                          Reddet
+                          Reject
                         </Button>
                       </>
                     )}
