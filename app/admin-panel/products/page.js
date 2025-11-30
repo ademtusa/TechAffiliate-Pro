@@ -432,7 +432,7 @@ export default function ProductsManagementPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="description" className="text-slate-300">Açıklama</Label>
+                    <Label htmlFor="description" className="text-slate-300">Description</Label>
                     <Textarea
                       id="description"
                       value={formData.description}
