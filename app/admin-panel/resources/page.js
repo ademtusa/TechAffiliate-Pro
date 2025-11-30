@@ -217,10 +217,10 @@ export default function ResourcesManagementPage() {
 
   const getTypeIcon = (type) => {
     switch(type) {
-      case 'pdf': return <FileText className=\"h-4 w-4\" />
-      case 'video': return <Video className=\"h-4 w-4\" />
-      case 'image': return <ImageIcon className=\"h-4 w-4\" />
-      default: return <File className=\"h-4 w-4\" />
+      case 'pdf': return <FileText className="h-4 w-4" />
+      case 'video': return <Video className="h-4 w-4" />
+      case 'image': return <ImageIcon className="h-4 w-4" />
+      default: return <File className="h-4 w-4" />
     }
   }
 
