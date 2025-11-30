@@ -409,6 +409,69 @@ export default function UsersManagementPage() {
           )}
         </CardContent>
       </Card>
+
+      {/* Edit User Dialog */}
+      <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
+        <DialogContent className="bg-slate-800 border-slate-700 text-white">
+          <DialogHeader>
+            <DialogTitle>Kullanıcı Düzenle</DialogTitle>
+            <DialogDescription className="text-slate-400">
+              {editingUser?.name} ({editingUser?.email})
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="space-y-4 py-4">
+            <div className="space-y-2">
+              <Label htmlFor="edit-role" className="text-slate-300">Rol</Label>
+              <Select 
+                value={editFormData.role} 
+                onValueChange={(value) => setEditFormData({...editFormData, role: value})}
+              >
+                <SelectTrigger id="edit-role" className="bg-slate-700 border-slate-600 text-white">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-slate-700 border-slate-600">
+                  <SelectItem value="user">User</SelectItem>
+                  <SelectItem value="admin">Admin</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="edit-status" className="text-slate-300">Durum</Label>
+              <Select 
+                value={editFormData.status} 
+                onValueChange={(value) => setEditFormData({...editFormData, status: value})}
+              >
+                <SelectTrigger id="edit-status" className="bg-slate-700 border-slate-600 text-white">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-slate-700 border-slate-600">
+                  <SelectItem value="pending">Onay Bekliyor</SelectItem>
+                  <SelectItem value="approved">Onaylı</SelectItem>
+                  <SelectItem value="rejected">Reddedildi</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+
+          <DialogFooter>
+            <Button 
+              variant="outline" 
+              onClick={() => setEditDialogOpen(false)}
+              className="border-slate-600"
+            >
+              İptal
+            </Button>
+            <Button 
+              onClick={handleUpdateUser}
+              className="bg-blue-600 hover:bg-blue-700"
+            >
+              Güncelle
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
