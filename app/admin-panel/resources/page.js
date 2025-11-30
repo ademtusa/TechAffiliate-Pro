@@ -45,7 +45,9 @@ export default function ResourcesManagementPage() {
     try {
       const response = await fetch('/api/admin/categories?type=resource&status=active')
       const data = await response.json()
+      console.log('📁 Fetched categories:', data)
       if (data.success) {
+        console.log('✅ Setting categories:', data.data.length, 'items')
         setCategories(data.data)
       }
     } catch (error) {
