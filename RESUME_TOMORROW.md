@@ -35,7 +35,7 @@ Then restart: `sudo supervisorctl restart nextjs`
 ### 2️⃣ Test Everything
 ```bash
 # Login as admin
-https://adminportal-26.preview.emergentagent.com/login
+https://marketing-hub-135.preview.emergentagent.com/login
 Email: admin@usefulio.com
 Password: admin123
 

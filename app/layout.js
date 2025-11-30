@@ -3,7 +3,7 @@ import { Providers } from './providers'
 import './globals.css'
 
 export const metadata = {
-  metadataBase: new URL('https://adminportal-26.preview.emergentagent.com'),
+  metadataBase: new URL('https://marketing-hub-135.preview.emergentagent.com'),
   title: {
     default: 'Usefulio - Find What\'s Actually Useful',
     template: '%s | Usefulio'
@@ -33,7 +33,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://adminportal-26.preview.emergentagent.com',
+    url: 'https://marketing-hub-135.preview.emergentagent.com',
     siteName: 'Usefulio',
     title: 'Usefulio - Find What\'s Actually Useful',
     description: 'Discover trusted, useful products and resources. Expert reviews and comparisons.',
@@ -105,11 +105,11 @@ export default function RootLayout({ children }) {
               '@type': 'WebSite',
               name: 'Usefulio',
               alternateName: 'Find What\'s Actually Useful',
-              url: 'https://adminportal-26.preview.emergentagent.com',
+              url: 'https://marketing-hub-135.preview.emergentagent.com',
               description: 'Discover trusted, useful products and resources',
               potentialAction: {
                 '@type': 'SearchAction',
-                target: 'https://adminportal-26.preview.emergentagent.com/products?search={search_term_string}',
+                target: 'https://marketing-hub-135.preview.emergentagent.com/products?search={search_term_string}',
                 'query-input': 'required name=search_term_string',
               },
             }),
