@@ -241,7 +241,7 @@ export default function UsersManagementPage() {
           onClick={() => setFilterStatus('all')}
         >
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Toplam</CardTitle>
+            <CardTitle className="text-sm font-medium text-gray-300">Total</CardTitle>
             <UsersIcon className="h-4 w-4 text-purple-400" />
           </CardHeader>
           <CardContent>
@@ -256,7 +256,7 @@ export default function UsersManagementPage() {
           onClick={() => setFilterStatus('pending')}
         >
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Onay Bekliyor</CardTitle>
+            <CardTitle className="text-sm font-medium text-gray-300">Pending</CardTitle>
             <Clock className="h-4 w-4 text-yellow-400" />
           </CardHeader>
           <CardContent>
@@ -271,7 +271,7 @@ export default function UsersManagementPage() {
           onClick={() => setFilterStatus('approved')}
         >
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Onaylı</CardTitle>
+            <CardTitle className="text-sm font-medium text-gray-300">Approved</CardTitle>
             <UserCheck className="h-4 w-4 text-green-400" />
           </CardHeader>
           <CardContent>
@@ -286,7 +286,7 @@ export default function UsersManagementPage() {
           onClick={() => setFilterStatus('rejected')}
         >
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Reddedildi</CardTitle>
+            <CardTitle className="text-sm font-medium text-gray-300">Rejected</CardTitle>
             <UserX className="h-4 w-4 text-red-400" />
           </CardHeader>
           <CardContent>
