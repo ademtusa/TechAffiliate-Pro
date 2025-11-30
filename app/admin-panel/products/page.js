@@ -198,6 +198,69 @@ export default function ProductsManagementPage() {
     setDialogOpen(true)
   }
 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+
+    // Validate file type
+    const validTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif', 'image/webp']
+    if (!validTypes.includes(file.type)) {
+      toast({
+        title: 'Hata',
+        description: 'Lütfen geçerli bir görsel dosyası seçin (PNG, JPEG, GIF, WebP)',
+        variant: 'destructive'
+      })
+      return
+    }
+
+    // Validate file size (max 2MB)
+    if (file.size > 2 * 1024 * 1024) {
+      toast({
+        title: 'Hata',
+        description: 'Görsel boyutu 2MB\'dan küçük olmalıdır',
+        variant: 'destructive'
+      })
+      return
+    }
+
+    setUploadingImage(true)
+    const reader = new FileReader()
+    
+    reader.onloadend = () => {
+      setFormData({
+        ...formData,
+        image_url: reader.result
+      })
+      setUploadingImage(false)
+      toast({
+        title: 'Başarılı',
+        description: 'Görsel yüklendi. Kaydetmeyi unutmayın!'
+      })
+    }
+    
+    reader.onerror = () => {
+      setUploadingImage(false)
+      toast({
+        title: 'Hata',
+        description: 'Görsel yüklenirken hata oluştu',
+        variant: 'destructive'
+      })
+    }
+    
+    reader.readAsDataURL(file)
+  }
+
+  const handleRemoveImage = () => {
+    setFormData({
+      ...formData,
+      image_url: ''
+    })
+    toast({
+      title: 'Başarılı',
+      description: 'Görsel kaldırıldı'
+    })
+  }
+
   const handleDelete = async (productId) => {
     if (!confirm('Bu ürünü silmek istediğinizden emin misiniz?')) return
 
