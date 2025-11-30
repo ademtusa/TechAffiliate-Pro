@@ -48,8 +48,7 @@ export default function DashboardSidebar({ isAdmin = false, isOpen, setIsOpen })
     { id: 'categories', icon: Folder, label: 'Categories', href: '/admin-panel/categories' },
     { id: 'resources', icon: BookOpen, label: 'Resources', href: '/admin-panel/resources' },
     { id: 'users', icon: Users, label: 'Users', href: '/admin-panel/users' },
-    // Removed: Blog (merged with Products)
-    // { id: 'blog', icon: FileText, label: 'Blog', href: '/admin-panel/blog' },
+    { id: 'testimonials', icon: Star, label: 'Testimonials', href: '/admin-panel/testimonials' },
     { id: 'messages', icon: MessageSquare, label: 'Messages', href: '/admin-panel/messages' },
     { id: 'media', icon: ImageIcon, label: 'Media', href: '/admin-panel/media' },
     { id: 'menus', icon: List, label: 'Menus', href: '/admin-panel/menus' },
