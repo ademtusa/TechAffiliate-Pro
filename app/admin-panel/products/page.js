@@ -320,19 +320,17 @@ export default function ProductsManagementPage() {
 
   const getStatusBadge = (status) => {
     return status === 'active' 
-      ? <Badge className="bg-green-600">Aktif</Badge>
-      : <Badge className="bg-gray-600">Pasif</Badge>
+      ? <Badge className="bg-green-600">Active</Badge>
+      : <Badge className="bg-gray-600">Inactive</Badge>
   }
 
+  // Calculate stats from products
   const stats = {
     total: products.length,
     active: products.filter(p => p.status === 'active').length,
     inactive: products.filter(p => p.status === 'inactive').length,
-    categories: categories.length,
-    total_views: 0,
-    total_clicks: 0
+    categories: categories.length
   }
-  const [trackingStats, setTrackingStats] = useState(null)
 
   return (
     <div className="space-y-6">
