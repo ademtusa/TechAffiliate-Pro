@@ -344,11 +344,11 @@ export default function ComparisonReviewPage() {
                       ))}
                     </tr>
                     <tr className="border-b hover:bg-blue-50/50 transition-colors">
-                      <td className="p-4 font-medium">Popülerlik</td>
+                      <td className="p-4 font-medium">Popularity</td>
                       {selectedForCompare.map(product => (
                         <td key={product.id} className="p-4 text-center">
-                          <p className="text-sm font-medium">{product.views} görüntülenme</p>
-                          <p className="text-sm font-medium text-green-600">{product.sales_count} satış</p>
+                          <p className="text-sm font-medium">{product.views} views</p>
+                          <p className="text-sm font-medium text-green-600">{product.sales_count} sales</p>
                         </td>
                       ))}
                     </tr>
