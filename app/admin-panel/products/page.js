@@ -534,44 +534,44 @@ export default function ProductsManagementPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="features" className="text-slate-300">Özellikler (Her satırda bir)</Label>
+                    <Label htmlFor="features" className="text-slate-300">Features</Label>
                     <Textarea
                       id="features"
                       value={formData.features}
                       onChange={(e) => setFormData({...formData, features: e.target.value})}
                       rows={3}
-                      placeholder="Özellik 1&#10;Özellik 2&#10;Özellik 3"
+                      placeholder="Feature 1&#10;Feature 2&#10;Feature 3"
                       className="bg-slate-700 border-slate-600 text-white"
                     />
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="pros" className="text-slate-300">Artılar (Her satırda bir)</Label>
+                      <Label htmlFor="pros" className="text-slate-300">Pros</Label>
                       <Textarea
                         id="pros"
                         value={formData.pros}
                         onChange={(e) => setFormData({...formData, pros: e.target.value})}
                         rows={3}
-                        placeholder="Artı 1&#10;Artı 2"
+                        placeholder="Pro 1&#10;Pro 2"
                         className="bg-slate-700 border-slate-600 text-white"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="cons" className="text-slate-300">Eksiler (Her satırda bir)</Label>
+                      <Label htmlFor="cons" className="text-slate-300">Cons</Label>
                       <Textarea
                         id="cons"
                         value={formData.cons}
                         onChange={(e) => setFormData({...formData, cons: e.target.value})}
                         rows={3}
-                        placeholder="Eksi 1&#10;Eksi 2"
+                        placeholder="Con 1&#10;Con 2"
                         className="bg-slate-700 border-slate-600 text-white"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="status" className="text-slate-300">Durum</Label>
+                    <Label htmlFor="status" className="text-slate-300">Status</Label>
                     <Select value={formData.status} onValueChange={(value) => setFormData({...formData, status: value})}>
                       <SelectTrigger className="bg-slate-700 border-slate-600 text-white">
                         <SelectValue />
