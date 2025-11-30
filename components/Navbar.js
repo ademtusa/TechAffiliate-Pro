@@ -59,9 +59,13 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center space-x-8">
             <Link href="/" className="flex items-center gap-3 group">
-              <UsefulioLogo />
+              {settings.logo_url ? (
+                <img src={settings.logo_url} alt={settings.site_name} className="h-10 w-10 object-contain" />
+              ) : (
+                <UsefulioLogo />
+              )}
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                Usefulio
+                {settings.site_name}
               </h1>
             </Link>
 
