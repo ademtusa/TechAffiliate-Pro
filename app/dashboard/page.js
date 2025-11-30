@@ -94,14 +94,14 @@ export default function DashboardPage() {
       {/* Recent Activity */}
       <Card className="border-purple-200 bg-white/80 backdrop-blur-sm">
         <CardHeader>
-          <CardTitle className="text-purple-800">Son Aktiviteler</CardTitle>
-          <CardDescription>Hesabınızdaki son hareketler</CardDescription>
+          <CardTitle className="text-purple-800">Recent Activity</CardTitle>
+          <CardDescription>Latest actions on your account</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="text-center py-12 text-gray-500">
             <TrendingUp className="h-12 w-12 mx-auto mb-4 text-gray-300" />
-            <p>Henüz aktivite yok</p>
-            <p className="text-sm mt-2">Başlamak için ürünleri incelemeye başlayın!</p>
+            <p>No activity yet</p>
+            <p className="text-sm mt-2">Start exploring products to get started!</p>
           </div>
         </CardContent>
       </Card>
