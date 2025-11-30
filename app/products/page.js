@@ -353,12 +353,12 @@ export default function ComparisonReviewPage() {
                       ))}
                     </tr>
                     <tr>
-                      <td className="p-4 font-medium">İşlem</td>
+                      <td className="p-4 font-medium">Action</td>
                       {selectedForCompare.map(product => (
                         <td key={product.id} className="p-4 text-center space-y-2">
                           <Link href={`/sales/${product.id}`}>
                             <Button variant="outline" className="w-full">
-                              Detayları Gör
+                              View Details
                             </Button>
                           </Link>
                           <Button 
