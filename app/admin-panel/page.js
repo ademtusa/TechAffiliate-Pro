@@ -26,21 +26,21 @@ export default function AdminPanelPage() {
     activeProducts: 0
   })
 
-  const fetchStats = async () => {
-    // TODO: Connect real API endpoints
-    setStats({
-      totalProducts: 0,
-      totalUsers: 0,
-      totalViews: 0,
-      totalReviews: 0,
-      pendingUsers: 0,
-      activeProducts: 0
-    })
-  }
-
   useEffect(() => {
+    const fetchStats = async () => {
+      // TODO: Connect real API endpoints
+      setStats({
+        totalProducts: 0,
+        totalUsers: 0,
+        totalViews: 0,
+        totalReviews: 0,
+        pendingUsers: 0,
+        activeProducts: 0
+      })
+    }
+    
     fetchStats()
-  }, [fetchStats])
+  }, [])
 
   return (
     <div className="space-y-6">
