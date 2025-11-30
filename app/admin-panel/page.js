@@ -26,10 +26,6 @@ export default function AdminPanelPage() {
     activeProducts: 0
   })
 
-  useEffect(() => {
-    fetchStats()
-  }, [])
-
   const fetchStats = async () => {
     // TODO: Connect real API endpoints
     setStats({
@@ -41,6 +37,10 @@ export default function AdminPanelPage() {
       activeProducts: 0
     })
   }
+
+  useEffect(() => {
+    fetchStats()
+  }, [fetchStats])
 
   return (
     <div className="space-y-6">
