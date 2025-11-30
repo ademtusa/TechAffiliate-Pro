@@ -45,6 +45,7 @@ export default function ProductsManagementPage() {
   const [dialogOpen, setDialogOpen] = useState(false)
   const [editingProduct, setEditingProduct] = useState(null)
   const [uploadingImage, setUploadingImage] = useState(false)
+  const [trackingStats, setTrackingStats] = useState(null)
   const { toast } = useToast()
 
   // Form state
