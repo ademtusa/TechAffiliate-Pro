@@ -383,6 +383,15 @@ export default function UsersManagementPage() {
                       </Button>
                     )}
 
+                    <Button
+                      size="sm"
+                      onClick={() => handleEdit(user)}
+                      variant="outline"
+                      className="border-blue-500 text-blue-400 hover:bg-blue-500/20"
+                    >
+                      <Edit className="h-4 w-4" />
+                    </Button>
+
                     {user.role !== 'admin' && (
                       <Button
                         size="sm"
