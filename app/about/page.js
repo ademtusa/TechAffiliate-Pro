@@ -11,27 +11,27 @@ import Footer from '@/components/Footer'
 export default function AboutPage() {
   const [featuredProduct, setFeaturedProduct] = useState(null)
 
-  const fetchFeaturedProduct = async () => {
-    try {
-      const response = await fetch('/api/products')
-      const result = await response.json()
-      
-      if (result.success && result.data && result.data.length > 0) {
-        const randomIndex = Math.floor(Math.random() * result.data.length)
-        setFeaturedProduct({
-          ...result.data[randomIndex],
-          commission_rate: 15.5,
-          reviews: 1247
-        })
-      }
-    } catch (error) {
-      console.error('Error fetching featured product:', error)
-    }
-  }
-
   useEffect(() => {
+    const fetchFeaturedProduct = async () => {
+      try {
+        const response = await fetch('/api/products')
+        const result = await response.json()
+        
+        if (result.success && result.data && result.data.length > 0) {
+          const randomIndex = Math.floor(Math.random() * result.data.length)
+          setFeaturedProduct({
+            ...result.data[randomIndex],
+            commission_rate: 15.5,
+            reviews: 1247
+          })
+        }
+      } catch (error) {
+        console.error('Error fetching featured product:', error)
+      }
+    }
+
     fetchFeaturedProduct()
-  }, [fetchFeaturedProduct])
+  }, [])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
@@ -59,7 +59,7 @@ export default function AboutPage() {
             </CardHeader>
             <CardContent className="pt-6">
               <p className="text-gray-700 leading-relaxed mb-4">
-                At <strong>Usefulio</strong>, our mission is simple: help you find what's <strong>actually useful</strong>. 
+                At <strong>Usefulio</strong>, our mission is simple: help you find what&apos;s <strong>actually useful</strong>. 
                 In a world overwhelmed with products and marketing noise, we cut through the clutter to bring you 
                 honest, detailed reviews of products that genuinely solve problems and add value to your life.
               </p>
