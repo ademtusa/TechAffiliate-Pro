@@ -11,26 +11,26 @@ export default function PrivacyPage() {
   const [featuredProduct, setFeaturedProduct] = useState(null)
 
   useEffect(() => {
+    const fetchFeaturedProduct = async () => {
+      try {
+        const response = await fetch('/api/products')
+        const result = await response.json()
+        
+        if (result.success && result.data && result.data.length > 0) {
+          const randomIndex = Math.floor(Math.random() * result.data.length)
+          setFeaturedProduct({
+            ...result.data[randomIndex],
+            commission_rate: 15.5,
+            reviews: 1247
+          })
+        }
+      } catch (error) {
+        console.error('Error fetching featured product:', error)
+      }
+    }
+
     fetchFeaturedProduct()
   }, [])
-
-  const fetchFeaturedProduct = async () => {
-    try {
-      const response = await fetch('/api/products')
-      const result = await response.json()
-      
-      if (result.success && result.data && result.data.length > 0) {
-        const randomIndex = Math.floor(Math.random() * result.data.length)
-        setFeaturedProduct({
-          ...result.data[randomIndex],
-          commission_rate: 15.5,
-          reviews: 1247
-        })
-      }
-    } catch (error) {
-      console.error('Error fetching featured product:', error)
-    }
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
