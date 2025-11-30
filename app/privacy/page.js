@@ -63,9 +63,9 @@ export default function PrivacyPage() {
           </CardHeader>
           <CardContent className="pt-6">
             <p className="text-gray-700 leading-relaxed mb-4">
-              At <strong>Usefulio</strong> ("we," "us," or "our"), we are committed to protecting your privacy and ensuring 
+              At <strong>Usefulio</strong> (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), we are committed to protecting your privacy and ensuring 
               the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and 
-              safeguard your information when you visit our website <strong>usefulio.com</strong> (the "Site").
+              safeguard your information when you visit our website <strong>usefulio.com</strong> (the &quot;Site&quot;).
             </p>
             <p className="text-gray-700 leading-relaxed">
               By using our Site, you consent to the data practices described in this policy. If you do not agree with 

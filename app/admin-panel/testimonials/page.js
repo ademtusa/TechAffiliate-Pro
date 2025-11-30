@@ -591,7 +591,7 @@ export default function TestimonialsManagementPage() {
                           {testimonial.role}{testimonial.role && testimonial.company && ' at '}{testimonial.company}
                         </p>
                       )}
-                      <p className="text-slate-300 mb-3">"{testimonial.content}"</p>
+                      <p className=&quot;text-slate-300 mb-3&quot;>&quot;{testimonial.content}&quot;</p>
                       <div className="flex items-center">
                         {[...Array(5)].map((_, i) => (
                           <Star

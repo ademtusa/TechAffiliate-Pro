@@ -65,7 +65,7 @@ export default function LoginPage() {
               </h1>
             </div>
           </Link>
-          <p className="text-gray-600">Find What's Actually Useful</p>
+          <p className="text-gray-600">Find What&apos;s Actually Useful</p>
         </div>
 
         {/* Login Card */}
@@ -132,7 +132,7 @@ export default function LoginPage() {
 
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
-                Don't have an account?{' '}
+                Don&apos;t have an account?{&apos; &apos;}
                 <Link href="/register" className="text-purple-600 hover:text-purple-700 font-semibold">
                   Sign Up
                 </Link>

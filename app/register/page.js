@@ -75,7 +75,7 @@ export default function RegisterPage() {
               </h1>
             </div>
           </Link>
-          <p className="text-gray-600">Find What's Actually Useful</p>
+          <p className="text-gray-600">Find What&apos;s Actually Useful</p>
         </div>
 
         {/* Register Card */}

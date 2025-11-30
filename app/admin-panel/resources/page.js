@@ -359,7 +359,7 @@ export default function ResourcesManagementPage() {
                     </SelectContent>
                   </Select>
                   <p className="text-xs text-slate-500">
-                    Can't find a category? <a href="/admin-panel/categories" target="_blank" className="text-violet-400 hover:underline">Add new category</a>
+                    Can&apos;t find a category? <a href="/admin-panel/categories" target="_blank" className="text-violet-400 hover:underline">Add new category</a>
                   </p>
                 </div>
 

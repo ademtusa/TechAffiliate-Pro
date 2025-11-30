@@ -178,7 +178,7 @@ export default function SettingsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-white">Site Settings</h2>
-          <p className="text-slate-400 mt-1">Configure your site's general settings and preferences</p>
+          <p className="text-slate-400 mt-1">Configure your site&apos;s general settings and preferences</p>
         </div>
         <Link href="/" target="_blank">
           <Button variant="outline" className="border-slate-600 text-slate-300">

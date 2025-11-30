@@ -63,8 +63,8 @@ export default function TermsPage() {
           </CardHeader>
           <CardContent className="pt-6">
             <p className="text-gray-700 leading-relaxed mb-4">
-              Welcome to <strong>Usefulio</strong>! These Terms of Service ("Terms") govern your access to and use of 
-              our website <strong>usefulio.com</strong> (the "Site"), including any content, functionality, and services 
+              Welcome to <strong>Usefulio</strong>! These Terms of Service (&quot;Terms&quot;) govern your access to and use of 
+              our website <strong>usefulio.com</strong> (the &quot;Site&quot;), including any content, functionality, and services 
               offered on or through the Site.
             </p>
             <p className="text-gray-700 leading-relaxed">
@@ -155,7 +155,7 @@ export default function TermsPage() {
               <div className="flex items-start gap-3 p-4 bg-red-50 rounded-lg hover:shadow-md transition-shadow">
                 <XCircle className="h-6 w-6 text-red-600 flex-shrink-0 mt-1" />
                 <p className="text-gray-700">
-                  Interfere with or disrupt the Site's functionality
+                  Interfere with or disrupt the Site&apos;s functionality
                 </p>
               </div>
             </div>
@@ -241,7 +241,7 @@ export default function TermsPage() {
           <CardContent className="pt-6">
             <div className="p-6 bg-orange-50 border-2 border-orange-300 rounded-lg">
               <p className="text-gray-700 leading-relaxed mb-4">
-                The Site and its content are provided on an <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> basis 
+                The Site and its content are provided on an <strong>&quot;AS IS&quot;</strong> and <strong>&quot;AS AVAILABLE&quot;</strong> basis 
                 without warranties of any kind, either express or implied.
               </p>
               <p className="text-gray-700 leading-relaxed">
