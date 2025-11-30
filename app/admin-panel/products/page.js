@@ -395,25 +395,26 @@ export default function ProductsManagementPage() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="title" className="text-slate-300">Ürün Adı *</Label>
+                      <Label htmlFor="title" className="text-slate-300">Product Name *</Label>
                       <Input
                         id="title"
                         value={formData.title}
                         onChange={(e) => setFormData({...formData, title: e.target.value})}
                         required
                         className="bg-slate-700 border-slate-600 text-white"
+                        placeholder="e.g., ChatGPT Plus, Midjourney"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="category" className="text-slate-300">Kategori *</Label>
+                      <Label htmlFor="category" className="text-slate-300">Category *</Label>
                       <Select value={formData.category} onValueChange={(value) => setFormData({...formData, category: value})}>
                         <SelectTrigger className="bg-slate-700 border-slate-600 text-white">
-                          <SelectValue placeholder="Kategori seçin" />
+                          <SelectValue placeholder="Select category" />
                         </SelectTrigger>
                         <SelectContent className="bg-slate-700 border-slate-600">
                           {categories.length === 0 ? (
                             <SelectItem value="uncategorized" disabled>
-                              Kategori bulunamadı - Önce kategori ekleyin
+                              No categories - Add one first
                             </SelectItem>
                           ) : (
                             categories.map((cat) => (
@@ -425,7 +426,7 @@ export default function ProductsManagementPage() {
                         </SelectContent>
                       </Select>
                       <p className="text-xs text-slate-500">
-                        Kategori bulamıyor musunuz? <a href="/admin-panel/categories" target="_blank" className="text-violet-400 hover:underline">Yeni kategori ekleyin</a>
+                        Can't find a category? <a href="/admin-panel/categories" target="_blank" className="text-violet-400 hover:underline">Add new category</a>
                       </p>
                     </div>
                   </div>
