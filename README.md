@@ -60,7 +60,7 @@ This will create all tables, insert sample data, and set up security policies.
 
 ```bash
 # The application is already running!
-# Visit: https://ui-glassmorphism.preview.emergentagent.com
+# Visit: https://cms-dashboard-8.preview.emergentagent.com
 ```
 
 ### 3️⃣ Test Authentication
