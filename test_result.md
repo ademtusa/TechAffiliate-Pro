@@ -356,14 +356,15 @@ metadata:
 
 test_plan:
   current_focus:
-    - "PRODUCTION READINESS - Full System Test"
-    - "Backend API Complete Coverage"
-    - "Frontend Critical Flows"
-    - "Admin Panel Full CRUD Operations"
-    - "User Dashboard Functionality"
+    - "NEW User Dashboard Backend Integration - Top Priority"
+    - "User Stats API (/api/user/stats)"
+    - "User Favorites API (/api/user/favorites)"
+    - "User Resources API (/api/user/resources)"
+    - "All Admin APIs"
+    - "Public APIs (Products, Resources)"
   stuck_tasks: []
   test_all: true
-  test_priority: "production_critical"
+  test_priority: "high_first"
 
 production_test_checklist:
   backend_apis:
