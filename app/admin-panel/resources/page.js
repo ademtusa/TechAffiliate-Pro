@@ -261,7 +261,7 @@ export default function ResourcesManagementPage() {
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button className="bg-violet-600 hover:bg-violet-700" onClick={resetForm}>
+            <Button className="bg-violet-600 hover:bg-violet-700" onClick={handleAddNew}>
               <Plus className="h-4 w-4 mr-2" />
               Add Resource
             </Button>
