@@ -11,10 +11,6 @@ import Footer from '@/components/Footer'
 export default function AboutPage() {
   const [featuredProduct, setFeaturedProduct] = useState(null)
 
-  useEffect(() => {
-    fetchFeaturedProduct()
-  }, [])
-
   const fetchFeaturedProduct = async () => {
     try {
       const response = await fetch('/api/products')
@@ -32,6 +28,10 @@ export default function AboutPage() {
       console.error('Error fetching featured product:', error)
     }
   }
+
+  useEffect(() => {
+    fetchFeaturedProduct()
+  }, [fetchFeaturedProduct])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
