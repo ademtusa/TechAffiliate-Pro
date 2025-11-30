@@ -15,7 +15,8 @@ import {
   Package,
   Image as ImageIcon,
   ExternalLink,
-  Filter
+  Filter,
+  X
 } from 'lucide-react'
 import { useToast } from '@/components/ui/use-toast'
 import {
