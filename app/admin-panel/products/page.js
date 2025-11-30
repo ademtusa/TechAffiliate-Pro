@@ -508,56 +508,69 @@ export default function ProductsManagementPage() {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label className="text-slate-300">Product Image</Label>
+                  {/* Image Section - Improved Layout */}
+                  <div className="space-y-3">
+                    <Label className="text-slate-300 font-semibold">Product Image</Label>
                     
-                    {/* Image Preview */}
+                    {/* Preview - Only show if image exists */}
                     {formData.image_url && (
-                      <div className="relative inline-block">
+                      <div className="relative w-full h-40 rounded-lg overflow-hidden bg-slate-900 border-2 border-slate-600">
                         <img 
                           src={formData.image_url} 
                           alt="Preview" 
-                          className="h-32 w-32 rounded-lg object-cover border-2 border-slate-600"
+                          className="w-full h-full object-contain"
                         />
                         <Button
                           type="button"
                           size="sm"
-                          variant="destructive"
-                          className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0"
-                          onClick={handleRemoveImage}
+                          variant="ghost"
+                          onClick={() => setFormData({...formData, image_url: ''})}
+                          className="absolute top-2 right-2 bg-red-600 hover:bg-red-700 text-white h-8 w-8 p-0"
                         >
-                          ×
+                          <X className="h-4 w-4" />
                         </Button>
                       </div>
                     )}
                     
-                    {/* File Upload */}
-                    <div className="space-y-2">
-                      <Input
-                        type="file"
-                        accept="image/png, image/jpeg, image/jpg, image/gif, image/webp"
-                        onChange={handleImageUpload}
-                        className="bg-slate-700 border-slate-600 text-white"
-                        disabled={uploadingImage}
-                      />
-                      {uploadingImage && (
-                        <p className="text-sm text-yellow-400">Uploading image...</p>
-                      )}
-                      <p className="text-xs text-slate-500">
-                        PNG, JPEG, GIF or WebP (Max 2MB)
-                      </p>
-                    </div>
+                    {/* Compact Upload Options */}
+                    <div className="grid grid-cols-1 gap-3">
+                      <div className="space-y-2">
+                        <Label htmlFor="file-upload" className="text-slate-400 text-sm">Upload File:</Label>
+                        <Input
+                          id="file-upload"
+                          type="file"
+                          accept="image/png, image/jpeg, image/jpg, image/gif, image/webp"
+                          onChange={handleImageUpload}
+                          className="bg-slate-700 border-slate-600 text-slate-300 file:bg-slate-600 file:text-white file:border-0 file:mr-4 file:py-2 file:px-4 file:rounded-md hover:file:bg-slate-500"
+                          disabled={uploadingImage}
+                        />
+                        {uploadingImage && (
+                          <p className="text-xs text-yellow-400 flex items-center gap-2">
+                            <span className="inline-block animate-spin rounded-full h-3 w-3 border-b-2 border-yellow-400"></span>
+                            Uploading...
+                          </p>
+                        )}
+                        {!uploadingImage && (
+                          <p className="text-xs text-slate-500">PNG, JPEG, GIF or WebP (Max 2MB)</p>
+                        )}
+                      </div>
 
-                    {/* Or URL Input */}
-                    <div className="space-y-2">
-                      <Label htmlFor="image_url" className="text-slate-400 text-sm">or enter URL:</Label>
-                      <Input
-                        id="image_url"
-                        value={formData.image_url}
-                        onChange={(e) => setFormData({...formData, image_url: e.target.value})}
-                        placeholder="https://example.com/image.jpg"
-                        className="bg-slate-700 border-slate-600 text-white"
-                      />
+                      <div className="flex items-center gap-2">
+                        <div className="flex-1 h-px bg-slate-600"></div>
+                        <span className="text-xs text-slate-500">OR</span>
+                        <div className="flex-1 h-px bg-slate-600"></div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="image_url" className="text-slate-400 text-sm">Enter Image URL:</Label>
+                        <Input
+                          id="image_url"
+                          value={formData.image_url}
+                          onChange={(e) => setFormData({...formData, image_url: e.target.value})}
+                          placeholder="https://example.com/image.jpg"
+                          className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-500"
+                        />
+                      </div>
                     </div>
                   </div>
 
