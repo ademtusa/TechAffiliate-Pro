@@ -445,7 +445,7 @@ export default function ProductsManagementPage() {
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="price" className="text-slate-300">Fiyat</Label>
+                      <Label htmlFor="price" className="text-slate-300">Price</Label>
                       <Input
                         id="price"
                         value={formData.price}
