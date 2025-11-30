@@ -334,7 +334,7 @@ export default function ProductsManagementPage() {
 
         <Card className="border-slate-700 bg-slate-800/70">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-slate-300">Aktif</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-300">Active</CardTitle>
             <Package className="h-4 w-4 text-green-400" />
           </CardHeader>
           <CardContent>
@@ -344,7 +344,7 @@ export default function ProductsManagementPage() {
 
         <Card className="border-slate-700 bg-slate-800/70">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-slate-300">Pasif</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-300">Inactive</CardTitle>
             <Package className="h-4 w-4 text-gray-400" />
           </CardHeader>
           <CardContent>
@@ -354,7 +354,7 @@ export default function ProductsManagementPage() {
 
         <Card className="border-slate-700 bg-slate-800/70">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-slate-300">Kategori</CardTitle>
+            <CardTitle className="text-sm font-medium text-slate-300">Categories</CardTitle>
             <Filter className="h-4 w-4 text-cyan-400" />
           </CardHeader>
           <CardContent>
