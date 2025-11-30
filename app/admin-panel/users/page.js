@@ -167,8 +167,8 @@ export default function UsersManagementPage() {
 
       if (data.success) {
         toast({
-          title: 'Başarılı',
-          description: 'Kullanıcı güncellendi',
+          title: 'Success',
+          description: 'User updated',
         })
         setEditDialogOpen(false)
         fetchUsers()
@@ -176,8 +176,8 @@ export default function UsersManagementPage() {
     } catch (error) {
       console.error('Error updating user:', error)
       toast({
-        title: 'Hata',
-        description: 'Kullanıcı güncellenemedi',
+        title: 'Error',
+        description: 'Failed to update user',
         variant: 'destructive'
       })
     }
