@@ -13,9 +13,13 @@ import {
   Users as UsersIcon,
   UserCheck,
   UserX,
-  Clock
+  Clock,
+  Edit
 } from 'lucide-react'
 import { useToast } from '@/components/ui/use-toast'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from '@/components/ui/dialog'
+import { Label } from '@/components/ui/label'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
 export default function UsersManagementPage() {
   const [users, setUsers] = useState([])
