@@ -312,7 +312,7 @@ export default function ComparisonReviewPage() {
                   </thead>
                   <tbody>
                     <tr className="border-b hover:bg-blue-50/50 transition-colors">
-                      <td className="p-4 font-medium">Fiyat</td>
+                      <td className="p-4 font-medium">Price</td>
                       {selectedForCompare.map(product => (
                         <td key={product.id} className="p-4 text-center">
                           <p className="text-2xl font-bold text-blue-600">${product.price}</p>
@@ -320,7 +320,7 @@ export default function ComparisonReviewPage() {
                             <>
                               <p className="text-sm text-gray-500 line-through">${product.original_price}</p>
                               <Badge className="bg-green-500 mt-1">
-                                %{Math.round(((product.original_price - product.price) / product.original_price) * 100)} indirim
+                                {Math.round(((product.original_price - product.price) / product.original_price) * 100)}% off
                               </Badge>
                             </>
                           )}
