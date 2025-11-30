@@ -739,7 +739,8 @@ export default function ProductsManagementPage() {
                         size="sm"
                         variant="ghost"
                         onClick={() => window.open(product.affiliate_link, '_blank')}
-                        className="text-slate-400 hover:text-white"
+                        className="text-blue-400 hover:text-blue-300 hover:bg-blue-500/10"
+                        title="Open Affiliate Link"
                       >
                         <ExternalLink className="h-4 w-4" />
                       </Button>
@@ -747,7 +748,8 @@ export default function ProductsManagementPage() {
                     <Button
                       size="sm"
                       onClick={() => handleEdit(product)}
-                      className="bg-blue-600 hover:bg-blue-700"
+                      className="bg-blue-600 hover:bg-blue-700 text-white"
+                      title="Edit Product"
                     >
                       <Edit2 className="h-4 w-4" />
                     </Button>
@@ -755,7 +757,8 @@ export default function ProductsManagementPage() {
                       size="sm"
                       onClick={() => handleDelete(product.id)}
                       variant="outline"
-                      className="border-red-500 text-red-400 hover:bg-red-500/20"
+                      className="border-red-500 text-red-400 hover:bg-red-500/20 hover:text-red-300 hover:border-red-400"
+                      title="Delete Product"
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
