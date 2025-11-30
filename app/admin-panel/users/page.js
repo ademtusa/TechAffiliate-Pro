@@ -98,16 +98,16 @@ export default function UsersManagementPage() {
 
       if (data.success) {
         toast({
-          title: 'Başarılı',
-          description: 'Kullanıcı onaylandı',
+          title: 'Success',
+          description: 'User approved',
         })
         fetchUsers()
       }
     } catch (error) {
       console.error('Error approving user:', error)
       toast({
-        title: 'Hata',
-        description: 'Kullanıcı onaylanamadı',
+        title: 'Error',
+        description: 'Failed to approve user',
         variant: 'destructive'
       })
     }
