@@ -347,7 +347,40 @@ export default function ResourcesManagementPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="file" className="text-slate-300">File Upload</Label>
+                <Label htmlFor="thumbnail" className="text-slate-300">Thumbnail/Preview Image</Label>
+                <Input
+                  id="thumbnail"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files[0]
+                    if (file) {
+                      const reader = new FileReader()
+                      reader.onloadend = () => {
+                        setFormData({...formData, thumbnail_url: reader.result})
+                        toast({
+                          title: 'Success',
+                          description: 'Thumbnail uploaded'
+                        })
+                      }
+                      reader.readAsDataURL(file)
+                    }
+                  }}
+                  className="bg-slate-700 border-slate-600 text-white"
+                />
+                {formData.thumbnail_url && (
+                  <div className="mt-2 border border-slate-600 rounded-lg p-2 bg-slate-900">
+                    <img 
+                      src={formData.thumbnail_url} 
+                      alt="Preview" 
+                      className="w-full h-32 object-cover rounded"
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="file" className="text-slate-300">File Upload (or URL)</Label>
                 <Input
                   id="file"
                   type="file"
