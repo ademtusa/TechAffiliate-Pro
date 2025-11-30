@@ -14,26 +14,26 @@ export default function SupportPage() {
   const [expandedFaq, setExpandedFaq] = useState(null)
 
   useEffect(() => {
+    const fetchFeaturedProduct = async () => {
+      try {
+        const response = await fetch('/api/products')
+        const result = await response.json()
+        
+        if (result.success && result.data && result.data.length > 0) {
+          const randomIndex = Math.floor(Math.random() * result.data.length)
+          setFeaturedProduct({
+            ...result.data[randomIndex],
+            commission_rate: 15.5,
+            reviews: 1247
+          })
+        }
+      } catch (error) {
+        console.error('Error fetching featured product:', error)
+      }
+    }
+
     fetchFeaturedProduct()
   }, [])
-
-  const fetchFeaturedProduct = async () => {
-    try {
-      const response = await fetch('/api/products')
-      const result = await response.json()
-      
-      if (result.success && result.data && result.data.length > 0) {
-        const randomIndex = Math.floor(Math.random() * result.data.length)
-        setFeaturedProduct({
-          ...result.data[randomIndex],
-          commission_rate: 15.5,
-          reviews: 1247
-        })
-      }
-    } catch (error) {
-      console.error('Error fetching featured product:', error)
-    }
-  }
 
   const faqs = [
     {
