@@ -213,11 +213,11 @@ export default function UsersManagementPage() {
   const getStatusBadge = (status) => {
     switch (status) {
       case 'approved':
-        return <Badge className="bg-green-600">Onaylı</Badge>
+        return <Badge className="bg-green-600">Approved</Badge>
       case 'pending':
-        return <Badge className="bg-yellow-600">Onay Bekliyor</Badge>
+        return <Badge className="bg-yellow-600">Pending</Badge>
       case 'rejected':
-        return <Badge className="bg-red-600">Reddedildi</Badge>
+        return <Badge className="bg-red-600">Rejected</Badge>
       default:
         return <Badge className="bg-gray-600">{status}</Badge>
     }
