@@ -709,6 +709,14 @@ export default function ProductsManagementPage() {
                         {product.price && <span className="text-xs text-slate-400">{product.price}</span>}
                         {product.rating && <span className="text-xs text-yellow-400">★ {product.rating}</span>}
                       </div>
+                      <div className="flex items-center space-x-3 mt-2 text-xs text-slate-500">
+                        <span className="flex items-center">
+                          👁️ {product.view_count || 0} views
+                        </span>
+                        <span className="flex items-center">
+                          🔗 {product.click_count || 0} clicks
+                        </span>
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
