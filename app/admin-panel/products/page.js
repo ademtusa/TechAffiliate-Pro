@@ -65,7 +65,20 @@ export default function ProductsManagementPage() {
   useEffect(() => {
     fetchProducts()
     fetchCategories()
+    fetchTrackingStats()
   }, [])
+
+  const fetchTrackingStats = async () => {
+    try {
+      const response = await fetch('/api/admin/products/stats')
+      const data = await response.json()
+      if (data.success) {
+        setTrackingStats(data.data)
+      }
+    } catch (error) {
+      console.error('Error fetching tracking stats:', error)
+    }
+  }
 
   useEffect(() => {
     filterProducts()
