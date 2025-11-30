@@ -292,13 +292,27 @@ export default function ResourcesManagementPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="category" className="text-slate-300">Category *</Label>
-                  <Input
-                    id="category"
-                    value={formData.category}
-                    onChange={(e) => setFormData({...formData, category: e.target.value})}
-                    className="bg-slate-700 border-slate-600 text-white"
-                    placeholder="e.g., eBook, Guide, Template"
-                  />
+                  <Select value={formData.category} onValueChange={(value) => setFormData({...formData, category: value})}>
+                    <SelectTrigger className="bg-slate-700 border-slate-600 text-white">
+                      <SelectValue placeholder="Select category" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-slate-700 border-slate-600">
+                      {categories.length === 0 ? (
+                        <SelectItem value="uncategorized" disabled>
+                          No categories - Add one first
+                        </SelectItem>
+                      ) : (
+                        categories.map((cat) => (
+                          <SelectItem key={cat.id} value={cat.name}>
+                            {cat.name}
+                          </SelectItem>
+                        ))
+                      )}
+                    </SelectContent>
+                  </Select>
+                  <p className="text-xs text-slate-500">
+                    Can't find a category? <a href="/admin-panel/categories" target="_blank" className="text-violet-400 hover:underline">Add new category</a>
+                  </p>
                 </div>
 
                 <div className="space-y-2">
