@@ -704,7 +704,7 @@ export default function ComparisonReviewPage() {
                       </Link>
                       <Button 
                         className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600"
-                        onClick={() => window.open(product.affiliate_url, '_blank')}
+                        onClick={() => handleAffiliateClick(product)}
                       >
                         Get Deal <ExternalLink className="ml-2 h-4 w-4" />
                       </Button>
