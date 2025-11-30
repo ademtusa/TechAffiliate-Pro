@@ -77,6 +77,22 @@ export default function ComparisonReviewPage() {
     }
   }
 
+  const handleAffiliateClick = async (product) => {
+    try {
+      // Track the click
+      await fetch('/api/products/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId: product.id, type: 'click' })
+      })
+    } catch (error) {
+      console.error('Error tracking click:', error)
+    }
+    
+    // Open affiliate link
+    window.open(product.affiliate_url, '_blank')
+  }
+
   const fetchProducts = async () => {
     setLoading(true)
     try {
