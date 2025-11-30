@@ -14,8 +14,36 @@ export default function MyResourcesPage() {
   const { toast } = useToast()
 
   useEffect(() => {
+    const fetchResources = async () => {
+      setLoading(true)
+      try {
+        // Fetch resources from backend
+        const response = await fetch('/api/user/resources')
+        const data = await response.json()
+        
+        if (data.success) {
+          setResources(data.data)
+          // Update localStorage for consistency
+          const downloaded = data.data.map(r => ({
+            resourceId: r.id,
+            downloadedAt: r.downloadedAt
+          }))
+          localStorage.setItem('downloadedResources', JSON.stringify(downloaded))
+        }
+      } catch (error) {
+        console.error('Error loading resources:', error)
+        toast({
+          title: 'Error',
+          description: 'Failed to load resources',
+          variant: 'destructive'
+        })
+      } finally {
+        setLoading(false)
+      }
+    }
+    
     fetchResources()
-  }, [])
+  }, [toast])
 
   const fetchResources = async () => {
     setLoading(true)
