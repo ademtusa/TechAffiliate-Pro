@@ -77,66 +77,103 @@ export default function TestimonialsSlider() {
           </p>
         </div>
 
-        {/* Grid Layout - 4 Boxes, Products Style, No Overflow */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {testimonials.slice(0, 4).map((testimonial) => (
-            <Card
-              key={testimonial.id}
-              className="bg-white border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+        {/* Horizontal Slider with 4 Boxes Visible */}
+        <div className="relative group">
+          {/* Left Arrow */}
+          {showLeftArrow && (
+            <button
+              onClick={() => scroll('left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 text-slate-700 p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110 border border-slate-200"
+              aria-label="Previous testimonials"
             >
-              <CardContent className="p-6 flex flex-col h-full">
-                {/* Stars */}
-                <div className="flex mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-4 w-4 ${
-                        i < (testimonial.rating || 5)
-                          ? 'text-yellow-500 fill-yellow-500'
-                          : 'text-slate-300'
-                      }`}
-                    />
-                  ))}
-                </div>
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+          )}
 
-                {/* Testimonial Text */}
-                <p className="text-slate-700 text-sm mb-4 leading-relaxed flex-1 line-clamp-4">
-                  {testimonial.content}
-                </p>
-
-                {/* Author Info */}
-                <div className="flex items-center space-x-3 border-t border-slate-200 pt-4 mt-auto">
-                  {testimonial.avatar_url ? (
-                    <img
-                      src={testimonial.avatar_url}
-                      alt={testimonial.name}
-                      className="h-10 w-10 rounded-full object-cover border-2 border-blue-200"
-                    />
-                  ) : (
-                    <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold text-sm">
-                        {testimonial.name?.charAt(0) || 'U'}
-                      </span>
+          {/* Scrollable Grid Container */}
+          <div
+            ref={scrollContainerRef}
+            className="overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            <div className="grid grid-flow-col auto-cols-[minmax(250px,1fr)] sm:auto-cols-[minmax(280px,1fr)] lg:auto-cols-[calc(25%-18px)] gap-6">
+              {testimonials.map((testimonial) => (
+                <Card
+                  key={testimonial.id}
+                  className="bg-white border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+                >
+                  <CardContent className="p-6 flex flex-col h-full">
+                    {/* Stars */}
+                    <div className="flex mb-3">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`h-4 w-4 ${
+                            i < (testimonial.rating || 5)
+                              ? 'text-yellow-500 fill-yellow-500'
+                              : 'text-slate-300'
+                          }`}
+                        />
+                      ))}
                     </div>
-                  )}
-                  <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-slate-800 text-sm truncate">
-                      {testimonial.name}
+
+                    {/* Testimonial Text */}
+                    <p className="text-slate-700 text-sm mb-4 leading-relaxed flex-1 line-clamp-4">
+                      {testimonial.content}
                     </p>
-                    {(testimonial.role || testimonial.company) && (
-                      <p className="text-xs text-slate-500 truncate">
-                        {testimonial.role}
-                        {testimonial.role && testimonial.company && ' • '}
-                        {testimonial.company}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+
+                    {/* Author Info */}
+                    <div className="flex items-center space-x-3 border-t border-slate-200 pt-4 mt-auto">
+                      {testimonial.avatar_url ? (
+                        <img
+                          src={testimonial.avatar_url}
+                          alt={testimonial.name}
+                          className="h-10 w-10 rounded-full object-cover border-2 border-blue-200"
+                        />
+                      ) : (
+                        <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center flex-shrink-0">
+                          <span className="text-white font-bold text-sm">
+                            {testimonial.name?.charAt(0) || 'U'}
+                          </span>
+                        </div>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <p className="font-semibold text-slate-800 text-sm truncate">
+                          {testimonial.name}
+                        </p>
+                        {(testimonial.role || testimonial.company) && (
+                          <p className="text-xs text-slate-500 truncate">
+                            {testimonial.role}
+                            {testimonial.role && testimonial.company && ' • '}
+                            {testimonial.company}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Arrow */}
+          {showRightArrow && (
+            <button
+              onClick={() => scroll('right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 text-slate-700 p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110 border border-slate-200"
+              aria-label="Next testimonials"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          )}
         </div>
       </div>
+
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   )
 }
