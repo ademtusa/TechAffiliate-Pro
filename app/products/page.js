@@ -60,7 +60,7 @@ export default function ComparisonReviewPage() {
     } else if (selectedForCompare.length < 3) {
       newCompare = [...selectedForCompare, product]
     } else {
-      alert('En fazla 3 ürün karşılaştırabilirsiniz!')
+      alert('You can compare up to 3 products maximum!')
       return
     }
     setSelectedForCompare(newCompare)
