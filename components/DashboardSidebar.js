@@ -94,23 +94,23 @@ export default function DashboardSidebar({ isAdmin = false, isOpen, setIsOpen })
           const isActive = pathname === item.href || pathname?.startsWith(item.href + '/')
           
           return (
-            <Link key={item.id} href={item.href}>
-              <button
-                className={`w-full flex items-center ${
-                  isOpen ? 'px-4' : 'px-6'
-                } py-3 space-x-3 transition-all group ${
-                  isActive
-                    ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white border-r-4 border-blue-400 shadow-lg'
-                    : 'text-slate-300 hover:bg-slate-700/70 hover:text-white'
-                }`}
-              >
-                <Icon className={`h-5 w-5 ${
-                  isActive ? 'scale-110' : 'group-hover:scale-110'
-                } transition-transform`} />
-                {isOpen && (
-                  <span className="font-medium">{item.label}</span>
-                )}
-              </button>
+            <Link 
+              key={item.id} 
+              href={item.href}
+              className={`w-full flex items-center ${
+                isOpen ? 'px-4' : 'px-6'
+              } py-3 space-x-3 transition-all group ${
+                isActive
+                  ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white border-r-4 border-blue-400 shadow-lg'
+                  : 'text-slate-300 hover:bg-slate-700/70 hover:text-white'
+              }`}
+            >
+              <Icon className={`h-5 w-5 ${
+                isActive ? 'scale-110' : 'group-hover:scale-110'
+              } transition-transform`} />
+              {isOpen && (
+                <span className="font-medium">{item.label}</span>
+              )}
             </Link>
           )
         })}
