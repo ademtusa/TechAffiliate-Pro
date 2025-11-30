@@ -119,7 +119,163 @@ backend:
         agent: "main"
         comment: "NextAuth.js authentication with MongoDB. Tested and working. Admin login successful."
 
-  - task: "Site Settings API - GET"
+  - task: "User Stats API"
+    implemented: true
+    working: "NA"
+    file: "app/api/user/stats/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "NEW: User stats endpoint (favorites, resources, comparisons count). Backend integration complete. Needs testing."
+
+  - task: "User Favorites API"
+    implemented: true
+    working: "NA"
+    file: "app/api/user/favorites/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "NEW: User favorites CRUD (GET, POST, DELETE). Backend integration complete. Needs testing."
+
+  - task: "User Resources API"
+    implemented: true
+    working: "NA"
+    file: "app/api/user/resources/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "NEW: User downloaded resources tracking. Backend integration complete. Needs testing."
+
+  - task: "Products API - All Endpoints"
+    implemented: true
+    working: "NA"
+    file: "app/api/products/route.js, app/api/products/track/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Public products list and affiliate click tracking. Needs testing."
+
+  - task: "Resources API - All Endpoints"
+    implemented: true
+    working: "NA"
+    file: "app/api/resources/route.js, app/api/resources/download/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Public resources list and download tracking with user resource tracking integration. Needs testing."
+
+  - task: "Admin Products API"
+    implemented: true
+    working: "NA"
+    file: "app/api/admin/products/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Admin CRUD for products with Base64 image upload. Needs testing."
+
+  - task: "Admin Categories API"
+    implemented: true
+    working: "NA"
+    file: "app/api/admin/categories/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Admin CRUD for categories. Needs testing."
+
+  - task: "Admin Resources API"
+    implemented: true
+    working: "NA"
+    file: "app/api/admin/resources/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Admin CRUD for resources with thumbnail upload. Needs testing."
+
+  - task: "Admin Users API"
+    implemented: true
+    working: true
+    file: "app/api/admin/users/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "User management with approve/reject functionality. Previously tested and fixed."
+
+  - task: "Admin Menus API"
+    implemented: true
+    working: "NA"
+    file: "app/api/admin/menus/route.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Menu management CRUD. Needs testing."
+
+  - task: "Admin Media API"
+    implemented: true
+    working: "NA"
+    file: "app/api/admin/media/route.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Media library management. Needs testing."
+
+  - task: "Admin Testimonials API"
+    implemented: true
+    working: "NA"
+    file: "app/api/admin/testimonials/route.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Testimonials CRUD with approve/reject. Needs testing."
+
+  - task: "Admin Messages API"
+    implemented: true
+    working: "NA"
+    file: "app/api/admin/messages/route.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Contact messages management. Needs testing."
+
+  - task: "Site Settings API"
     implemented: true
     working: "NA"
     file: "app/api/admin/settings/route.js"
@@ -129,31 +285,7 @@ backend:
     status_history:
       - working: "NA"
         agent: "main"
-        comment: "GET endpoint implemented. Needs backend testing to verify it returns settings correctly."
-
-  - task: "Site Settings API - PUT (with Base64 Logo)"
-    implemented: true
-    working: "NA"
-    file: "app/api/admin/settings/route.js"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: true
-    status_history:
-      - working: "NA"
-        agent: "main"
-        comment: "PUT endpoint implemented. Should handle Base64 encoded logo images. Needs testing to verify it saves Base64 strings to MongoDB correctly."
-
-  - task: "Settings Database Model"
-    implemented: true
-    working: "NA"
-    file: "lib/settings.js"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: true
-    status_history:
-      - working: "NA"
-        agent: "main"
-        comment: "MongoDB model with getSettings and updateSettings functions. Includes default settings creation. Needs testing."
+        comment: "Site settings with Base64 logo upload. Needs testing."
 
 frontend:
   - task: "Admin Panel Layout"
