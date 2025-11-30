@@ -259,7 +259,12 @@ export default function ResourcesManagementPage() {
           <h2 className="text-2xl font-bold text-white">Resources Management</h2>
           <p className="text-slate-400 mt-1">Manage downloadable content and track user downloads</p>
         </div>
-        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <Dialog open={isDialogOpen} onOpenChange={(open) => {
+          if (open) {
+            fetchCategories() // Refresh categories when dialog opens
+          }
+          setIsDialogOpen(open)
+        }}>
           <DialogTrigger asChild>
             <Button className="bg-violet-600 hover:bg-violet-700" onClick={handleAddNew}>
               <Plus className="h-4 w-4 mr-2" />
