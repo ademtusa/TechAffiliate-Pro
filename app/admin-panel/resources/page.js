@@ -95,6 +95,20 @@ export default function ResourcesManagementPage() {
     }
   }
 
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch('/api/admin/categories?type=resource&status=active')
+      const data = await response.json()
+      console.log('📁 Fetched categories:', data)
+      if (data.success) {
+        console.log('✅ Setting categories:', data.data.length, 'items')
+        setCategories(data.data)
+      }
+    } catch (error) {
+      console.error('Error fetching categories:', error)
+    }
+  }
+
   const handleFileUpload = (e) => {
     const file = e.target.files[0]
     if (!file) return
