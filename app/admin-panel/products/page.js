@@ -604,7 +604,7 @@ export default function ProductsManagementPage() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
               <Input
                 type="text"
-                placeholder="Ürün ara..."
+                placeholder="Search products..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10 bg-slate-700 border-slate-600 text-white"
