@@ -24,7 +24,8 @@ import {
   Image as ImageIcon,
   List,
   MessageSquare,
-  BarChart3
+  BarChart3,
+  Folder
 } from 'lucide-react'
 import { signOut } from 'next-auth/react'
 
