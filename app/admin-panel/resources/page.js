@@ -478,9 +478,19 @@ export default function ResourcesManagementPage() {
               <CardContent className="p-6">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start space-x-4 flex-1">
-                    <div className="p-3 bg-slate-700 rounded-lg">
-                      {getTypeIcon(resource.type)}
-                    </div>
+                    {resource.thumbnail_url ? (
+                      <div className="w-24 h-24 rounded-lg overflow-hidden bg-slate-700 flex-shrink-0">
+                        <img 
+                          src={resource.thumbnail_url} 
+                          alt={resource.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <div className="p-3 bg-slate-700 rounded-lg flex-shrink-0">
+                        {getTypeIcon(resource.type)}
+                      </div>
+                    )}
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <h3 className="text-lg font-semibold text-white">{resource.title}</h3>
@@ -489,7 +499,7 @@ export default function ResourcesManagementPage() {
                         </Badge>
                       </div>
                       {resource.description && (
-                        <p className="text-slate-400 text-sm mb-3">{resource.description}</p>
+                        <p className="text-slate-400 text-sm mb-3 line-clamp-2">{resource.description}</p>
                       )}
                       <div className="flex items-center gap-4 text-sm text-slate-500">
                         <span className="flex items-center">
