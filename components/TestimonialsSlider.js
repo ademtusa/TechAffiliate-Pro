@@ -1,13 +1,10 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
-import { ChevronLeft, ChevronRight, Star, User } from 'lucide-react'
+import { Star, Quote } from 'lucide-react'
 
 export default function TestimonialsSlider() {
-  const scrollContainerRef = useRef(null)
-  const [showLeftArrow, setShowLeftArrow] = useState(false)
-  const [showRightArrow, setShowRightArrow] = useState(true)
   const [testimonials, setTestimonials] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -29,40 +26,13 @@ export default function TestimonialsSlider() {
     }
   }
 
-  const checkArrows = () => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current
-      setShowLeftArrow(scrollLeft > 0)
-      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10)
-    }
-  }
-
-  const scroll = (direction) => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 400
-      scrollContainerRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      })
-      setTimeout(checkArrows, 100)
-    }
-  }
-
-  useEffect(() => {
-    checkArrows()
-    const container = scrollContainerRef.current
-    if (container) {
-      container.addEventListener('scroll', checkArrows)
-      return () => container.removeEventListener('scroll', checkArrows)
-    }
-  }, [testimonials])
-
   if (loading) {
     return (
       <div className="py-16 bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500 mb-4"></div>
+            <h2 className="text-2xl font-bold text-white">
               Loading Testimonials...
             </h2>
           </div>
