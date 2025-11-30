@@ -23,6 +23,11 @@ export async function GET(request) {
       { projection: { password: 0 } }
     ).sort({ created_at: -1 }).toArray()
     
+    console.log('✅ Found users:', allUsers.length)
+    allUsers.forEach(user => {
+      console.log(`  - ${user.name} (${user.email}) - ${user.role} - ${user.status}`)
+    })
+    
     return NextResponse.json({
       success: true,
       data: allUsers
