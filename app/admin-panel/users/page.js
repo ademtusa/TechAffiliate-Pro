@@ -33,10 +33,56 @@ export default function UsersManagementPage() {
   const { toast } = useToast()
 
   useEffect(() => {
+    const fetchUsers = async () => {
+      setLoading(true)
+      try {
+        const response = await fetch('/api/admin/users')
+        const data = await response.json()
+        
+        if (data.success) {
+          setUsers(data.data)
+        } else {
+          toast({
+            title: 'Error',
+            description: 'Failed to load users',
+            variant: 'destructive'
+          })
+        }
+      } catch (error) {
+        console.error('Error fetching users:', error)
+        toast({
+          title: 'Error',
+          description: 'An error occurred',
+          variant: 'destructive'
+        })
+      } finally {
+        setLoading(false)
+      }
+    }
+
     fetchUsers()
-  }, [])
+  }, [toast])
 
   useEffect(() => {
+    const filterUsers = () => {
+      let filtered = users
+
+      // Status filter
+      if (filterStatus !== 'all') {
+        filtered = filtered.filter(user => user.status === filterStatus)
+      }
+
+      // Search filter
+      if (searchTerm) {
+        filtered = filtered.filter(user => 
+          user.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          user.email?.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      }
+
+      setFilteredUsers(filtered)
+    }
+
     filterUsers()
   }, [searchTerm, filterStatus, users])
 
