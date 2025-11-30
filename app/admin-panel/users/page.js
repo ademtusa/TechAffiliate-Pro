@@ -342,7 +342,7 @@ export default function UsersManagementPage() {
                       <h4 className="font-semibold text-white">{user.name}</h4>
                       <p className="text-sm text-gray-400">{user.email}</p>
                       <p className="text-xs text-gray-500 mt-1">
-                        Kayıt: {new Date(user.created_at).toLocaleDateString('tr-TR')}
+                        Registered: {new Date(user.created_at).toLocaleDateString('en-US')}
                       </p>
                     </div>
                   </div>
