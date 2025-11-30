@@ -342,14 +342,27 @@ export default function ProductsManagementPage() {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="category" className="text-slate-300">Kategori *</Label>
-                      <Input
-                        id="category"
-                        value={formData.category}
-                        onChange={(e) => setFormData({...formData, category: e.target.value})}
-                        required
-                        className="bg-slate-700 border-slate-600 text-white"
-                        placeholder="Örn: AI Tools, Hosting, VPN"
-                      />
+                      <Select value={formData.category} onValueChange={(value) => setFormData({...formData, category: value})}>
+                        <SelectTrigger className="bg-slate-700 border-slate-600 text-white">
+                          <SelectValue placeholder="Kategori seçin" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-slate-700 border-slate-600">
+                          {categories.length === 0 ? (
+                            <SelectItem value="uncategorized" disabled>
+                              Kategori bulunamadı - Önce kategori ekleyin
+                            </SelectItem>
+                          ) : (
+                            categories.map((cat) => (
+                              <SelectItem key={cat.id} value={cat.name}>
+                                {cat.name}
+                              </SelectItem>
+                            ))
+                          )}
+                        </SelectContent>
+                      </Select>
+                      <p className="text-xs text-slate-500">
+                        Kategori bulamıyor musunuz? <a href="/admin-panel/categories" target="_blank" className="text-violet-400 hover:underline">Yeni kategori ekleyin</a>
+                      </p>
                     </div>
                   </div>
 
