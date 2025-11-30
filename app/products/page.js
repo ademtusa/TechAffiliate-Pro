@@ -328,7 +328,7 @@ export default function ComparisonReviewPage() {
                       ))}
                     </tr>
                     <tr className="border-b hover:bg-blue-50/50 transition-colors">
-                      <td className="p-4 font-medium">Puan</td>
+                      <td className="p-4 font-medium">Rating</td>
                       {selectedForCompare.map(product => (
                         <td key={product.id} className="p-4 text-center">
                           <div className="flex items-center justify-center">
