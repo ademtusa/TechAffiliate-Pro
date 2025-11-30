@@ -1,12 +1,15 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
-import { Star, Quote } from 'lucide-react'
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
 
 export default function TestimonialsSlider() {
   const [testimonials, setTestimonials] = useState([])
   const [loading, setLoading] = useState(true)
+  const [showLeftArrow, setShowLeftArrow] = useState(false)
+  const [showRightArrow, setShowRightArrow] = useState(true)
+  const scrollContainerRef = useRef(null)
 
   useEffect(() => {
     fetchTestimonials()
@@ -26,98 +29,148 @@ export default function TestimonialsSlider() {
     }
   }
 
+  const checkArrows = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current
+      setShowLeftArrow(scrollLeft > 10)
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10)
+    }
+  }
+
+  const scroll = (direction) => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 400
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      })
+      setTimeout(checkArrows, 100)
+    }
+  }
+
+  useEffect(() => {
+    checkArrows()
+    const container = scrollContainerRef.current
+    if (container) {
+      container.addEventListener('scroll', checkArrows)
+      return () => container.removeEventListener('scroll', checkArrows)
+    }
+  }, [testimonials])
+
   if (loading) {
-    return (
-      <div className="py-16 bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500 mb-4"></div>
-            <h2 className="text-2xl font-bold text-white">
-              Loading Testimonials...
-            </h2>
-          </div>
-        </div>
-      </div>
-    )
+    return null
   }
 
   if (testimonials.length === 0) {
-    return null // Don't show section if no testimonials
+    return null
   }
 
   return (
-    <div className="py-16 bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900">
-      <div className="container mx-auto px-4">
+    <section className="py-16 px-4 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
+      <div className="container mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-slate-800">
             What Our Users Say
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-slate-600 text-lg">
             Real feedback from real users
           </p>
         </div>
 
-        {/* Grid Layout - Responsive: 1 col mobile, 2 cols tablet, 4 cols desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {testimonials.map((testimonial) => (
-            <Card
-              key={testimonial.id}
-              className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 border-slate-700 hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20 backdrop-blur-sm h-full flex flex-col"
+        <div className="relative group">
+          {/* Left Arrow */}
+          {showLeftArrow && (
+            <button
+              onClick={() => scroll('left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 text-slate-700 p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100 border border-slate-200"
+              aria-label="Scroll left"
             >
-              <CardContent className="p-6 flex flex-col flex-1">
-                {/* Quote Icon */}
-                <Quote className="h-8 w-8 text-purple-500 mb-3 opacity-50" />
-                
-                {/* Stars */}
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-4 w-4 ${
-                        i < (testimonial.rating || 5)
-                          ? 'text-yellow-400 fill-yellow-400'
-                          : 'text-gray-600'
-                      }`}
-                    />
-                  ))}
-                </div>
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+          )}
 
-                {/* Testimonial Text */}
-                <p className="text-gray-300 text-sm mb-6 leading-relaxed flex-1">
-                  {testimonial.content}
-                </p>
-
-                {/* Author Info */}
-                <div className="flex items-center space-x-3 border-t border-slate-700 pt-4 mt-auto">
-                  {testimonial.avatar_url ? (
-                    <img
-                      src={testimonial.avatar_url}
-                      alt={testimonial.name}
-                      className="h-10 w-10 rounded-full object-cover ring-2 ring-purple-500/30"
-                    />
-                  ) : (
-                    <div className="h-10 w-10 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold text-sm">
-                        {testimonial.name?.charAt(0) || 'U'}
-                      </span>
-                    </div>
-                  )}
-                  <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-white text-sm truncate">{testimonial.name}</p>
-                    {(testimonial.role || testimonial.company) && (
-                      <p className="text-xs text-gray-400 truncate">
-                        {testimonial.role}
-                        {testimonial.role && testimonial.company && ' • '}
-                        {testimonial.company}
-                      </p>
-                    )}
+          {/* Horizontal Scrollable Container - Single Row */}
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide scroll-smooth"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {testimonials.map((testimonial) => (
+              <Card
+                key={testimonial.id}
+                className="flex-shrink-0 w-[350px] md:w-[380px] bg-white border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300"
+              >
+                <CardContent className="p-6">
+                  {/* Stars */}
+                  <div className="flex mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`h-4 w-4 ${
+                          i < (testimonial.rating || 5)
+                            ? 'text-yellow-500 fill-yellow-500'
+                            : 'text-slate-300'
+                        }`}
+                      />
+                    ))}
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+
+                  {/* Testimonial Text */}
+                  <p className="text-slate-700 text-sm mb-6 leading-relaxed line-clamp-4">
+                    {testimonial.content}
+                  </p>
+
+                  {/* Author Info */}
+                  <div className="flex items-center space-x-3 border-t border-slate-200 pt-4">
+                    {testimonial.avatar_url ? (
+                      <img
+                        src={testimonial.avatar_url}
+                        alt={testimonial.name}
+                        className="h-12 w-12 rounded-full object-cover border-2 border-blue-200"
+                      />
+                    ) : (
+                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center flex-shrink-0">
+                        <span className="text-white font-bold text-lg">
+                          {testimonial.name?.charAt(0) || 'U'}
+                        </span>
+                      </div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold text-slate-800 text-sm truncate">
+                        {testimonial.name}
+                      </p>
+                      {(testimonial.role || testimonial.company) && (
+                        <p className="text-xs text-slate-500 truncate">
+                          {testimonial.role}
+                          {testimonial.role && testimonial.company && ' • '}
+                          {testimonial.company}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Right Arrow */}
+          {showRightArrow && (
+            <button
+              onClick={() => scroll('right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 text-slate-700 p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100 border border-slate-200"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          )}
         </div>
       </div>
-    </div>
+
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+    </section>
   )
 }
