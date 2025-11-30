@@ -585,10 +585,10 @@ export default function ProductsManagementPage() {
 
                   <div className="flex justify-end space-x-2">
                     <Button type="button" variant="outline" onClick={() => setDialogOpen(false)} className="border-slate-600 text-slate-300">
-                      İptal
+                      Cancel
                     </Button>
                     <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
-                      {editingProduct ? 'Güncelle' : 'Ekle'}
+                      {editingProduct ? 'Update' : 'Save'}
                     </Button>
                   </div>
                 </form>
