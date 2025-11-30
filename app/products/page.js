@@ -278,10 +278,10 @@ export default function ComparisonReviewPage() {
                 <div>
                   <CardTitle className="text-3xl flex items-center gap-2">
                     <ArrowLeftRight className="h-8 w-8 text-blue-600" />
-                    Karşılaştırma Tablosu
+                    Comparison Table
                   </CardTitle>
                   <CardDescription className="text-lg mt-2">
-                    Seçtiğiniz {selectedForCompare.length} ürünü karşılaştırın
+                    Compare {selectedForCompare.length} selected products
                   </CardDescription>
                 </div>
                 <Button 
@@ -289,7 +289,7 @@ export default function ComparisonReviewPage() {
                   onClick={() => setSelectedForCompare([])}
                   className="border-2 border-red-300 hover:bg-red-50"
                 >
-                  Temizle
+                  Clear
                 </Button>
               </div>
             </CardHeader>
