@@ -1,5 +1,6 @@
-const { getDatabase } = require('./lib/mongodb')
-const { v4: uuidv4 } = require('uuid')
+import { getDatabase } from './lib/mongodb.js'
+import { v4 as uuidv4 } from 'uuid'
+import 'dotenv/config'
 
 async function addSampleTestimonials() {
   try {
