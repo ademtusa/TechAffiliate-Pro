@@ -239,14 +239,25 @@ export default function ResourcesPage() {
               const isDownloaded = downloadedResources.has(resource.id)
               
               return (
-                <Card key={resource.id} className="border-slate-700 bg-slate-800/70 backdrop-blur-sm hover:bg-slate-800 transition-all hover:border-violet-500/50">
+                <Card key={resource.id} className="border-slate-700 bg-slate-800/70 backdrop-blur-sm hover:bg-slate-800 transition-all hover:border-violet-500/50 overflow-hidden">
+                  {resource.thumbnail_url && (
+                    <div className="w-full h-48 bg-slate-900 overflow-hidden">
+                      <img 
+                        src={resource.thumbnail_url} 
+                        alt={resource.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
                   <CardHeader>
                     <div className="flex items-start justify-between mb-2">
-                      <div className="p-3 bg-slate-700 rounded-lg">
-                        {getTypeIcon(resource.type)}
-                      </div>
+                      {!resource.thumbnail_url && (
+                        <div className="p-3 bg-slate-700 rounded-lg">
+                          {getTypeIcon(resource.type)}
+                        </div>
+                      )}
                       {isDownloaded && (
-                        <Badge className="bg-green-600">
+                        <Badge className="bg-green-600 ml-auto">
                           <CheckCircle className="h-3 w-3 mr-1" />
                           Downloaded
                         </Badge>
@@ -254,7 +265,7 @@ export default function ResourcesPage() {
                     </div>
                     <CardTitle className="text-white text-xl">{resource.title}</CardTitle>
                     {resource.description && (
-                      <p className="text-slate-400 text-sm mt-2">{resource.description}</p>
+                      <p className="text-slate-400 text-sm mt-2 line-clamp-2">{resource.description}</p>
                     )}
                   </CardHeader>
                   <CardContent>
