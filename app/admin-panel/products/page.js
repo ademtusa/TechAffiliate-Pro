@@ -468,14 +468,56 @@ export default function ProductsManagementPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="image_url" className="text-slate-300">Görsel URL</Label>
-                    <Input
-                      id="image_url"
-                      value={formData.image_url}
-                      onChange={(e) => setFormData({...formData, image_url: e.target.value})}
-                      placeholder="https://example.com/image.jpg"
-                      className="bg-slate-700 border-slate-600 text-white"
-                    />
+                    <Label className="text-slate-300">Ürün Görseli</Label>
+                    
+                    {/* Image Preview */}
+                    {formData.image_url && (
+                      <div className="relative inline-block">
+                        <img 
+                          src={formData.image_url} 
+                          alt="Preview" 
+                          className="h-32 w-32 rounded-lg object-cover border-2 border-slate-600"
+                        />
+                        <Button
+                          type="button"
+                          size="sm"
+                          variant="destructive"
+                          className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0"
+                          onClick={handleRemoveImage}
+                        >
+                          ×
+                        </Button>
+                      </div>
+                    )}
+                    
+                    {/* File Upload */}
+                    <div className="space-y-2">
+                      <Input
+                        type="file"
+                        accept="image/png, image/jpeg, image/jpg, image/gif, image/webp"
+                        onChange={handleImageUpload}
+                        className="bg-slate-700 border-slate-600 text-white"
+                        disabled={uploadingImage}
+                      />
+                      {uploadingImage && (
+                        <p className="text-sm text-yellow-400">Görsel yükleniyor...</p>
+                      )}
+                      <p className="text-xs text-slate-500">
+                        PNG, JPEG, GIF veya WebP (Max 2MB)
+                      </p>
+                    </div>
+
+                    {/* Or URL Input */}
+                    <div className="space-y-2">
+                      <Label htmlFor="image_url" className="text-slate-400 text-sm">veya URL girin:</Label>
+                      <Input
+                        id="image_url"
+                        value={formData.image_url}
+                        onChange={(e) => setFormData({...formData, image_url: e.target.value})}
+                        placeholder="https://example.com/image.jpg"
+                        className="bg-slate-700 border-slate-600 text-white"
+                      />
+                    </div>
                   </div>
 
                   <div className="space-y-2">
