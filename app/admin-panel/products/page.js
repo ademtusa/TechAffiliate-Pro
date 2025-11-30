@@ -337,7 +337,7 @@ export default function ProductsManagementPage() {
   return (
     <div className="space-y-6">
       {/* Stats */}
-      <div className="grid md:grid-cols-4 gap-4">
+      <div className="grid md:grid-cols-6 gap-4">
         <Card className="border-slate-700 bg-slate-800/70">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-slate-300">Total Products</CardTitle>
