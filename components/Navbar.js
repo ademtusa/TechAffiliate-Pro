@@ -130,7 +130,7 @@ export default function Navbar() {
                 </Link>
                 <Button variant="ghost" size="sm" onClick={handleSignOut} className="hover:bg-white/60">
                   <LogOut className="h-4 w-4 mr-2" />
-                  Çıkış Yap
+                  Sign Out
                 </Button>
               </div>
             ) : (
