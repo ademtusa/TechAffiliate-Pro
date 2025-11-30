@@ -455,7 +455,7 @@ export default function ProductsManagementPage() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="rating" className="text-slate-300">Puan (1-5)</Label>
+                      <Label htmlFor="rating" className="text-slate-300">Rating (1-5)</Label>
                       <Input
                         id="rating"
                         type="number"
