@@ -20,6 +20,7 @@ export default function ContactPage() {
     message: ''
   })
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
   const [featuredProduct, setFeaturedProduct] = useState(null)
 
   const fetchFeaturedProduct = async () => {
