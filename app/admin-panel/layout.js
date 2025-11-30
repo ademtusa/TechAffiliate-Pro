@@ -59,13 +59,24 @@ export default function AdminPanelLayout({ children }) {
         <header className="h-16 bg-slate-800/50 backdrop-blur-xl border-b border-slate-700/50 flex items-center justify-between px-6 shadow-lg">
           <div>
             <h1 className="text-2xl font-bold text-white">
-              Admin Paneli
+              Admin Panel
             </h1>
             <p className="text-sm text-slate-400">{session?.user?.name}</p>
           </div>
           <div className="flex items-center space-x-4">
+            <a 
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+              View Site
+            </a>
             <Badge className="bg-red-600 text-white">
-              Yönetici
+              Admin
             </Badge>
             <span className="text-sm text-slate-400">{session?.user?.email}</span>
           </div>
