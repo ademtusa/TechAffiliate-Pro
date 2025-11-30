@@ -9,18 +9,37 @@ export default function TestimonialsSlider() {
   const scrollContainerRef = useRef(null)
   const [showLeftArrow, setShowLeftArrow] = useState(false)
   const [showRightArrow, setShowRightArrow] = useState(true)
+  const [testimonials, setTestimonials] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  const testimonials = [
+  useEffect(() => {
+    fetchTestimonials()
+  }, [])
+
+  const fetchTestimonials = async () => {
+    try {
+      const response = await fetch('/api/testimonials')
+      const data = await response.json()
+      if (data.success && data.data) {
+        setTestimonials(data.data)
+      }
+    } catch (error) {
+      console.error('Error fetching testimonials:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  // Fallback testimonials if none approved yet
+  const fallbackTestimonials = [
     {
       id: 1,
       name: 'Sarah Johnson',
       role: 'CEO, TechStartup',
-      avatar: 'https://i.pravatar.cc/150?img=1',
+      image_url: 'https://i.pravatar.cc/150?img=1',
       rating: 5,
-      text: 'TechAffiliate Pro helped me find the perfect AI tools for my business. The detailed comparisons and honest reviews made the decision so much easier!',
-      productUsed: 'ChatGPT Pro Plus',
-      date: '2025-06-15',
-      verified: true
+      content: 'Usefulio helped me find the perfect AI tools for my business. The detailed comparisons and honest reviews made the decision so much easier!',
+      company: 'TechStartup'
     },
     {
       id: 2,
