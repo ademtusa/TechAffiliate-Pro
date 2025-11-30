@@ -59,6 +59,50 @@ export default function SettingsPage() {
     }
   }
 
+  const handleLogoUpload = (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+
+    // Check file size (max 500KB)
+    if (file.size > 500 * 1024) {
+      toast({
+        title: 'Error',
+        description: 'Logo file size must be less than 500KB',
+        variant: 'destructive'
+      })
+      return
+    }
+
+    // Check file type
+    const validTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif', 'image/webp', 'image/svg+xml']
+    if (!validTypes.includes(file.type)) {
+      toast({
+        title: 'Error',
+        description: 'Please upload a valid image file (PNG, JPEG, GIF, WebP, SVG)',
+        variant: 'destructive'
+      })
+      return
+    }
+
+    // Convert to Base64
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      setSettings({...settings, logo_url: reader.result})
+      toast({
+        title: 'Success',
+        description: 'Logo uploaded. Click "Save Settings" to apply.'
+      })
+    }
+    reader.onerror = () => {
+      toast({
+        title: 'Error',
+        description: 'Failed to read file',
+        variant: 'destructive'
+      })
+    }
+    reader.readAsDataURL(file)
+  }
+
   const handleSave = async () => {
     setSaving(true)
     try {
