@@ -77,30 +77,45 @@ export default function TestimonialsSlider() {
           </p>
         </div>
 
-        {/* Horizontal Slider with 4 Boxes Visible on Desktop */}
-        <div className="relative group px-8 md:px-12">
-          {/* Left Arrow - Hidden on mobile */}
+        {/* Horizontal Slider - Same as Products */}
+        <div className="relative group">
+          {/* Left Arrow */}
           {showLeftArrow && (
             <button
               onClick={() => scroll('left')}
-              className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 text-slate-700 p-2 md:p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110 border border-slate-200"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all -ml-4"
               aria-label="Previous testimonials"
             >
-              <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
+              <ChevronLeft className="h-6 w-6 text-gray-700" />
             </button>
           )}
 
-          {/* Scrollable Grid Container */}
+          {/* Right Arrow */}
+          {showRightArrow && (
+            <button
+              onClick={() => scroll('right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all -mr-4"
+              aria-label="Next testimonials"
+            >
+              <ChevronRight className="h-6 w-6 text-gray-700" />
+            </button>
+          )}
+
+          {/* Scrollable Container */}
           <div
             ref={scrollContainerRef}
-            className="overflow-x-auto scrollbar-hide scroll-smooth pb-2"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            className="overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch'
+            }}
           >
-            <div className="flex gap-4 md:gap-6 lg:grid lg:grid-flow-col lg:auto-cols-[calc(25%-18px)]">
+            <div className="flex gap-4 md:gap-6">
               {testimonials.map((testimonial) => (
                 <Card
                   key={testimonial.id}
-                  className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[340px] lg:w-auto bg-white border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+                  className="flex-shrink-0 hover:shadow-xl transition-all duration-300 border overflow-hidden w-[85vw] sm:w-[45vw] md:w-[calc((100%-48px)/2)] lg:w-[calc((100%-72px)/3)] xl:w-[calc((100%-96px)/4)] bg-white border-slate-200 hover:border-blue-300"
                 >
                   <CardContent className="p-4 md:p-6 flex flex-col h-full">
                     {/* Stars */}
@@ -108,7 +123,7 @@ export default function TestimonialsSlider() {
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className={`h-3 w-3 md:h-4 md:w-4 ${
+                          className={`h-4 w-4 ${
                             i < (testimonial.rating || 5)
                               ? 'text-yellow-500 fill-yellow-500'
                               : 'text-slate-300'
@@ -118,31 +133,31 @@ export default function TestimonialsSlider() {
                     </div>
 
                     {/* Testimonial Text */}
-                    <p className="text-slate-700 text-xs md:text-sm mb-4 leading-relaxed flex-1 line-clamp-4">
+                    <p className="text-slate-700 text-sm mb-4 leading-relaxed flex-1 line-clamp-4">
                       {testimonial.content}
                     </p>
 
                     {/* Author Info */}
-                    <div className="flex items-center space-x-3 border-t border-slate-200 pt-3 md:pt-4 mt-auto">
+                    <div className="flex items-center space-x-3 border-t border-slate-200 pt-4 mt-auto">
                       {testimonial.avatar_url ? (
                         <img
                           src={testimonial.avatar_url}
                           alt={testimonial.name}
-                          className="h-8 w-8 md:h-10 md:w-10 rounded-full object-cover border-2 border-blue-200 flex-shrink-0"
+                          className="h-10 w-10 rounded-full object-cover border-2 border-blue-200 flex-shrink-0"
                         />
                       ) : (
-                        <div className="h-8 w-8 md:h-10 md:w-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center flex-shrink-0">
-                          <span className="text-white font-bold text-xs md:text-sm">
+                        <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center flex-shrink-0">
+                          <span className="text-white font-bold text-sm">
                             {testimonial.name?.charAt(0) || 'U'}
                           </span>
                         </div>
                       )}
                       <div className="flex-1 min-w-0">
-                        <p className="font-semibold text-slate-800 text-xs md:text-sm truncate">
+                        <p className="font-semibold text-slate-800 text-sm truncate">
                           {testimonial.name}
                         </p>
                         {(testimonial.role || testimonial.company) && (
-                          <p className="text-[10px] md:text-xs text-slate-500 truncate">
+                          <p className="text-xs text-slate-500 truncate">
                             {testimonial.role}
                             {testimonial.role && testimonial.company && ' • '}
                             {testimonial.company}
@@ -155,17 +170,6 @@ export default function TestimonialsSlider() {
               ))}
             </div>
           </div>
-
-          {/* Right Arrow - Hidden on mobile */}
-          {showRightArrow && (
-            <button
-              onClick={() => scroll('right')}
-              className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 text-slate-700 p-2 md:p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110 border border-slate-200"
-              aria-label="Next testimonials"
-            >
-              <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
-            </button>
-          )}
         </div>
       </div>
 
