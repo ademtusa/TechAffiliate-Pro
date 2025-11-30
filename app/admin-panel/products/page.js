@@ -470,7 +470,7 @@ export default function ProductsManagementPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-slate-300">Ürün Görseli</Label>
+                    <Label className="text-slate-300">Product Image</Label>
                     
                     {/* Image Preview */}
                     {formData.image_url && (
@@ -502,16 +502,16 @@ export default function ProductsManagementPage() {
                         disabled={uploadingImage}
                       />
                       {uploadingImage && (
-                        <p className="text-sm text-yellow-400">Görsel yükleniyor...</p>
+                        <p className="text-sm text-yellow-400">Uploading image...</p>
                       )}
                       <p className="text-xs text-slate-500">
-                        PNG, JPEG, GIF veya WebP (Max 2MB)
+                        PNG, JPEG, GIF or WebP (Max 2MB)
                       </p>
                     </div>
 
                     {/* Or URL Input */}
                     <div className="space-y-2">
-                      <Label htmlFor="image_url" className="text-slate-400 text-sm">veya URL girin:</Label>
+                      <Label htmlFor="image_url" className="text-slate-400 text-sm">or enter URL:</Label>
                       <Input
                         id="image_url"
                         value={formData.image_url}
