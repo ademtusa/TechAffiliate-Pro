@@ -290,7 +290,7 @@ DB_NAME=usefulio_db
 MONGO_URL=mongodb://localhost:27017
 DB_NAME=usefulio_db
 
-NEXTAUTH_URL=https://cms-dashboard-8.preview.emergentagent.com
+NEXTAUTH_URL=https://adminportal-26.preview.emergentagent.com
 NEXTAUTH_SECRET=usefulio-super-secret-key-2025-admin-panel-secure
 ```
 
@@ -432,10 +432,10 @@ Fix API auth → Test everything → Complete translation → Ready for producti
 
 ## 📞 QUICK REFERENCE
 
-**Login URL:** https://cms-dashboard-8.preview.emergentagent.com/login  
-**Admin Panel:** https://cms-dashboard-8.preview.emergentagent.com/admin-panel  
-**Products:** https://cms-dashboard-8.preview.emergentagent.com/admin-panel/products  
-**Users:** https://cms-dashboard-8.preview.emergentagent.com/admin-panel/users
+**Login URL:** https://adminportal-26.preview.emergentagent.com/login  
+**Admin Panel:** https://adminportal-26.preview.emergentagent.com/admin-panel  
+**Products:** https://adminportal-26.preview.emergentagent.com/admin-panel/products  
+**Users:** https://adminportal-26.preview.emergentagent.com/admin-panel/users
 
 ---
 
