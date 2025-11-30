@@ -57,94 +57,67 @@ export default function TestimonialsSlider() {
           </p>
         </div>
 
-        <div className="relative group">
-          {/* Left Arrow */}
-          {showLeftArrow && (
-            <button
-              onClick={() => scroll('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white p-3 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100"
+        {/* Grid Layout - Responsive: 1 col mobile, 2 cols tablet, 4 cols desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {testimonials.map((testimonial) => (
+            <Card
+              key={testimonial.id}
+              className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 border-slate-700 hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20 backdrop-blur-sm h-full flex flex-col"
             >
-              <ChevronLeft className="h-6 w-6" />
-            </button>
-          )}
+              <CardContent className="p-6 flex flex-col flex-1">
+                {/* Quote Icon */}
+                <Quote className="h-8 w-8 text-purple-500 mb-3 opacity-50" />
+                
+                {/* Stars */}
+                <div className="flex mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className={`h-4 w-4 ${
+                        i < (testimonial.rating || 5)
+                          ? 'text-yellow-400 fill-yellow-400'
+                          : 'text-gray-600'
+                      }`}
+                    />
+                  ))}
+                </div>
 
-          {/* Testimonials Container */}
-          <div
-            ref={scrollContainerRef}
-            className="flex space-x-6 overflow-x-auto scrollbar-hide pb-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {testimonials.map((testimonial) => (
-              <Card
-                key={testimonial.id}
-                className="flex-shrink-0 w-[380px] bg-gradient-to-br from-slate-800/90 to-slate-900/90 border-slate-700 hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20 backdrop-blur-sm"
-              >
-                <CardContent className="p-6">
-                  {/* Stars */}
-                  <div className="flex mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`h-5 w-5 ${
-                          i < (testimonial.rating || 5)
-                            ? 'text-yellow-400 fill-yellow-400'
-                            : 'text-gray-600'
-                        }`}
-                      />
-                    ))}
-                  </div>
+                {/* Testimonial Text */}
+                <p className="text-gray-300 text-sm mb-6 leading-relaxed flex-1">
+                  {testimonial.content}
+                </p>
 
-                  {/* Testimonial Text */}
-                  <p className="text-gray-300 text-base mb-6 leading-relaxed">
-                    "{testimonial.content}"
-                  </p>
-
-                  {/* Author Info */}
-                  <div className="flex items-center space-x-4 border-t border-slate-700 pt-4">
-                    {testimonial.image_url ? (
-                      <img
-                        src={testimonial.image_url}
-                        alt={testimonial.name}
-                        className="h-12 w-12 rounded-full object-cover ring-2 ring-purple-500/30"
-                      />
-                    ) : (
-                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
-                        <User className="h-6 w-6 text-white" />
-                      </div>
-                    )}
-                    <div>
-                      <p className="font-semibold text-white">{testimonial.name}</p>
-                      {(testimonial.role || testimonial.company) && (
-                        <p className="text-sm text-gray-400">
-                          {testimonial.role}
-                          {testimonial.role && testimonial.company && ' • '}
-                          {testimonial.company}
-                        </p>
-                      )}
+                {/* Author Info */}
+                <div className="flex items-center space-x-3 border-t border-slate-700 pt-4 mt-auto">
+                  {testimonial.avatar_url ? (
+                    <img
+                      src={testimonial.avatar_url}
+                      alt={testimonial.name}
+                      className="h-10 w-10 rounded-full object-cover ring-2 ring-purple-500/30"
+                    />
+                  ) : (
+                    <div className="h-10 w-10 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center flex-shrink-0">
+                      <span className="text-white font-bold text-sm">
+                        {testimonial.name?.charAt(0) || 'U'}
+                      </span>
                     </div>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-white text-sm truncate">{testimonial.name}</p>
+                    {(testimonial.role || testimonial.company) && (
+                      <p className="text-xs text-gray-400 truncate">
+                        {testimonial.role}
+                        {testimonial.role && testimonial.company && ' • '}
+                        {testimonial.company}
+                      </p>
+                    )}
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* Right Arrow */}
-          {showRightArrow && (
-            <button
-              onClick={() => scroll('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white p-3 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
-          )}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
-
-      <style jsx>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </div>
   )
 }
