@@ -377,6 +377,29 @@ export default function ProductsManagementPage() {
             <div className="text-2xl font-bold text-cyan-400">{stats.categories}</div>
           </CardContent>
         </Card>
+
+        <Card className="border-slate-700 bg-slate-800/70">
+          <CardHeader className="flex flex-row items-center justify-between pb-2">
+            <CardTitle className="text-sm font-medium text-slate-300">Total Views</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-blue-400">
+              {trackingStats ? trackingStats.total_views.toLocaleString() : '-'}
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-slate-700 bg-slate-800/70">
+          <CardHeader className="flex flex-row items-center justify-between pb-2">
+            <CardTitle className="text-sm font-medium text-slate-300">Total Clicks</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-orange-400">
+              {trackingStats ? trackingStats.total_clicks.toLocaleString() : '-'}
+            </div>
+            <p className="text-xs text-slate-500 mt-1">Affiliate link clicks</p>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Main Card */}
