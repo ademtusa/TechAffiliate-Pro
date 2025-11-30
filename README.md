@@ -60,7 +60,7 @@ This will create all tables, insert sample data, and set up security policies.
 
 ```bash
 # The application is already running!
-# Visit: https://marketing-hub-135.preview.emergentagent.com
+# Visit: https://affiliate-admin-4.preview.emergentagent.com
 ```
 
 ### 3️⃣ Test Authentication
