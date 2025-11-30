@@ -414,7 +414,7 @@ export default function UsersManagementPage() {
       <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
         <DialogContent className="bg-slate-800 border-slate-700 text-white">
           <DialogHeader>
-            <DialogTitle>Kullanıcı Düzenle</DialogTitle>
+            <DialogTitle>Edit User</DialogTitle>
             <DialogDescription className="text-slate-400">
               {editingUser?.name} ({editingUser?.email})
             </DialogDescription>
@@ -422,7 +422,7 @@ export default function UsersManagementPage() {
           
           <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <Label htmlFor="edit-role" className="text-slate-300">Rol</Label>
+              <Label htmlFor="edit-role" className="text-slate-300">Role</Label>
               <Select 
                 value={editFormData.role} 
                 onValueChange={(value) => setEditFormData({...editFormData, role: value})}
