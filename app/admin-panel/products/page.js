@@ -439,6 +439,7 @@ export default function ProductsManagementPage() {
                       onChange={(e) => setFormData({...formData, description: e.target.value})}
                       rows={3}
                       className="bg-slate-700 border-slate-600 text-white"
+                      placeholder="Brief description of the product"
                     />
                   </div>
 
