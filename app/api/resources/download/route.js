@@ -59,6 +59,9 @@ export async function POST(request) {
       )
     }
 
+    // Add to user's downloaded resources
+    await addUserResource(session.user.email, resourceId)
+
     // Return success with file URL for download
     return NextResponse.json({
       success: true,
