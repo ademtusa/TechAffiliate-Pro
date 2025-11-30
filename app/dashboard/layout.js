@@ -36,13 +36,13 @@ export default function DashboardLayout({ children }) {
         <header className="h-16 bg-white/80 backdrop-blur-xl border-b border-purple-100 flex items-center justify-between px-6 shadow-sm">
           <div>
             <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Hoş Geldiniz!
+              Welcome!
             </h1>
             <p className="text-sm text-gray-600">{session?.user?.name}</p>
           </div>
           <div className="flex items-center space-x-4">
             <Badge className="bg-gradient-to-r from-purple-500 to-pink-500 text-white">
-              Kullanıcı
+              User
             </Badge>
             <span className="text-sm text-gray-600">{session?.user?.email}</span>
           </div>
