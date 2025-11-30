@@ -59,11 +59,22 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center space-x-8">
             <Link href="/" className="flex items-center gap-3 group">
-              {settings.logo_url ? (
-                <img src={settings.logo_url} alt={settings.site_name} className="h-10 w-10 object-contain" />
-              ) : (
-                <UsefulioLogo />
-              )}
+              {settings.logo_url && settings.logo_url.trim() !== '' ? (
+                <img 
+                  src={settings.logo_url} 
+                  alt={settings.site_name} 
+                  className="h-12 w-auto max-w-[200px] object-contain"
+                  onError={(e) => {
+                    // Fallback to default logo if image fails to load
+                    e.target.style.display = 'none'
+                    e.target.nextElementSibling.style.display = 'block'
+                  }}
+                />
+              ) : null}
+              {/* Default Logo - always present as fallback */}
+              <div style={{ display: settings.logo_url && settings.logo_url.trim() !== '' ? 'none' : 'block' }}>
+                <UsefulioLogo className="h-10 w-10" />
+              </div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 {settings.site_name}
               </h1>
