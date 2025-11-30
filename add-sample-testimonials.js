@@ -1,6 +1,8 @@
 import { getDatabase } from './lib/mongodb.js'
 import { v4 as uuidv4 } from 'uuid'
-import 'dotenv/config'
+
+process.env.MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017'
+process.env.DB_NAME = process.env.DB_NAME || 'usefulio_db'
 
 async function addSampleTestimonials() {
   try {
