@@ -27,6 +27,9 @@ export default function UsersManagementPage() {
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [filterStatus, setFilterStatus] = useState('all') // all, pending, approved, rejected
+  const [editDialogOpen, setEditDialogOpen] = useState(false)
+  const [editingUser, setEditingUser] = useState(null)
+  const [editFormData, setEditFormData] = useState({ role: '', status: '' })
   const { toast } = useToast()
 
   useEffect(() => {
