@@ -44,12 +44,31 @@ export default function ComparisonReviewPage() {
     filterProducts()
   }, [products, selectedCategory, priceRange, ratingFilter, searchQuery])
 
-  const toggleLike = (product) => {
-    const newLiked = likedProducts.includes(product.id)
+  const toggleLike = async (product) => {
+    const isLiked = likedProducts.includes(product.id)
+    const newLiked = isLiked
       ? likedProducts.filter(id => id !== product.id)
       : [...likedProducts, product.id]
+    
     setLikedProducts(newLiked)
     localStorage.setItem('likedProducts', JSON.stringify(newLiked))
+    
+    // Sync with backend
+    try {
+      if (isLiked) {
+        await fetch(`/api/user/favorites?productId=${product.id}`, {
+          method: 'DELETE'
+        })
+      } else {
+        await fetch('/api/user/favorites', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ productId: product.id })
+        })
+      }
+    } catch (error) {
+      console.error('Error syncing favorite:', error)
+    }
   }
 
   const toggleCompareNew = (product) => {
