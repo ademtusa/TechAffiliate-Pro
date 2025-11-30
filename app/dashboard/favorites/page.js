@@ -15,8 +15,34 @@ export default function FavoritesPage() {
   const { toast } = useToast()
 
   useEffect(() => {
+    const loadFavorites = async () => {
+      setLoading(true)
+      try {
+        // Fetch favorites from backend
+        const response = await fetch('/api/user/favorites')
+        const data = await response.json()
+        
+        if (data.success) {
+          setProducts(data.data)
+          // Update localStorage for consistency
+          const productIds = data.data.map(p => p.id)
+          setFavorites(productIds)
+          localStorage.setItem('likedProducts', JSON.stringify(productIds))
+        }
+      } catch (error) {
+        console.error('Error loading favorites:', error)
+        toast({
+          title: 'Error',
+          description: 'Failed to load favorites',
+          variant: 'destructive'
+        })
+      } finally {
+        setLoading(false)
+      }
+    }
+    
     loadFavorites()
-  }, [])
+  }, [toast])
 
   const loadFavorites = async () => {
     setLoading(true)
