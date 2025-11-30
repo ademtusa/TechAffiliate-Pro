@@ -389,7 +389,7 @@ export default function ProductsManagementPage() {
                     {editingProduct ? 'Edit Product' : 'Add New Product'}
                   </DialogTitle>
                   <DialogDescription className="text-slate-400">
-                    Ürün bilgilerini doldurun
+                    Fill in the product details
                   </DialogDescription>
                 </DialogHeader>
                 <form onSubmit={handleSubmit} className="space-y-4">
