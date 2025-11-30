@@ -259,7 +259,7 @@ export default function HowItWorksSection() {
         <div className="mt-12 text-center">
           <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-full px-8 py-4 shadow-2xl">
             <span className="text-white font-bold">Ready to start earning?</span>
-            <Link href="/blog">
+            <Link href="/products">
               <button className="bg-white text-purple-600 px-6 py-2 rounded-full font-bold text-sm hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl">
                 Browse Products
               </button>

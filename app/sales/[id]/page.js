@@ -159,7 +159,7 @@ export default function SalesPage() {
 
       {/* Back Navigation */}
       <div className="container mx-auto px-4 py-3">
-        <Link href="/blog">
+        <Link href="/products">
           <Button variant="ghost" className="gap-2 hover:bg-white/60 border border-transparent hover:border-blue-300 transition-all">
             <ArrowLeft className="h-4 w-4" />
             Back to Products

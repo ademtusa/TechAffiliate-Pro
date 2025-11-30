@@ -92,7 +92,7 @@ export default function BlogPostPage() {
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-600 text-lg">Post not found</p>
-          <Link href="/blog">
+          <Link href="/products">
             <Button className="mt-4">Back to Blog</Button>
           </Link>
         </div>
@@ -105,7 +105,7 @@ export default function BlogPostPage() {
       {/* Navigation */}
       <nav className="bg-white border-b">
         <div className="container mx-auto px-4 py-4">
-          <Link href="/blog">
+          <Link href="/products">
             <Button variant="ghost">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Blog

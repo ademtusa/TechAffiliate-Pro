@@ -217,7 +217,7 @@ export default function ContactPage() {
                   <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
                   <span className="text-sm font-medium">Browse Products</span>
                 </a>
-                <a href="/blog" className="flex items-center text-gray-700 hover:text-blue-600 transition-colors">
+                <a href="/products" className="flex items-center text-gray-700 hover:text-blue-600 transition-colors">
                   <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
                   <span className="text-sm font-medium">Read Reviews</span>
                 </a>

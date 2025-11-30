@@ -79,7 +79,7 @@ export default function HeroSection({
             {/* CTA Buttons & Rating */}
             <div className="flex items-center gap-4">
               {/* Explore Products - Same height as Search */}
-              <Link href="/blog">
+              <Link href="/products">
                 <Button className="h-12 bg-white text-blue-600 hover:bg-blue-50 shadow-xl hover:shadow-2xl transition-all px-6 text-base">
                   Explore Products
                   <ExternalLink className="ml-2 h-4 w-4" />

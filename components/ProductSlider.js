@@ -151,7 +151,7 @@ export default function ProductSlider({ title, products, icon: Icon }) {
         </div>
 
         <div className="flex items-center gap-3">
-          <Link href="/blog">
+          <Link href="/products">
             <Button variant="outline" className="border-gray-300">
               All Products
             </Button>
