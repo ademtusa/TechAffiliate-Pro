@@ -380,7 +380,7 @@ export default function ProductsManagementPage() {
               <DialogTrigger asChild>
                 <Button className="bg-blue-600 hover:bg-blue-700">
                   <Plus className="h-4 w-4 mr-2" />
-                  Yeni Ürün
+                  Add Product
                 </Button>
               </DialogTrigger>
               <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-slate-800 text-white border-slate-700">
