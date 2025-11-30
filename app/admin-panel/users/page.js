@@ -184,7 +184,7 @@ export default function UsersManagementPage() {
   }
 
   const handleDelete = async (userId) => {
-    if (!confirm('Bu kullanıcıyı silmek istediğinizden emin misiniz?')) return
+    if (!confirm('Are you sure you want to delete this user?')) return
 
     try {
       const response = await fetch(`/api/admin/users?userId=${userId}`, {
@@ -195,16 +195,16 @@ export default function UsersManagementPage() {
 
       if (data.success) {
         toast({
-          title: 'Başarılı',
-          description: 'Kullanıcı silindi',
+          title: 'Success',
+          description: 'User deleted',
         })
         fetchUsers()
       }
     } catch (error) {
       console.error('Error deleting user:', error)
       toast({
-        title: 'Hata',
-        description: 'Kullanıcı silinemedi',
+        title: 'Error',
+        description: 'Failed to delete user',
         variant: 'destructive'
       })
     }
