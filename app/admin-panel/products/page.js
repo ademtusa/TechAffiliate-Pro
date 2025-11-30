@@ -386,7 +386,7 @@ export default function ProductsManagementPage() {
               <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-slate-800 text-white border-slate-700">
                 <DialogHeader>
                   <DialogTitle className="text-white">
-                    {editingProduct ? 'Ürünü Düzenle' : 'Yeni Ürün Ekle'}
+                    {editingProduct ? 'Edit Product' : 'Add New Product'}
                   </DialogTitle>
                   <DialogDescription className="text-slate-400">
                     Ürün bilgilerini doldurun
