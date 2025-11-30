@@ -140,6 +140,49 @@ export default function UsersManagementPage() {
     }
   }
 
+  const handleEdit = (user) => {
+    setEditingUser(user)
+    setEditFormData({
+      role: user.role || 'user',
+      status: user.status || 'pending'
+    })
+    setEditDialogOpen(true)
+  }
+
+  const handleUpdateUser = async () => {
+    if (!editingUser) return
+
+    try {
+      const response = await fetch('/api/admin/users', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          userId: editingUser.id, 
+          role: editFormData.role,
+          status: editFormData.status
+        })
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        toast({
+          title: 'Başarılı',
+          description: 'Kullanıcı güncellendi',
+        })
+        setEditDialogOpen(false)
+        fetchUsers()
+      }
+    } catch (error) {
+      console.error('Error updating user:', error)
+      toast({
+        title: 'Hata',
+        description: 'Kullanıcı güncellenemedi',
+        variant: 'destructive'
+      })
+    }
+  }
+
   const handleDelete = async (userId) => {
     if (!confirm('Bu kullanıcıyı silmek istediğinizden emin misiniz?')) return
 
