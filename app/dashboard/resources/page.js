@@ -20,27 +20,18 @@ export default function MyResourcesPage() {
   const fetchResources = async () => {
     setLoading(true)
     try {
-      // Get downloaded resources from localStorage
-      const downloaded = JSON.parse(localStorage.getItem('downloadedResources') || '[]')
+      // Fetch resources from backend
+      const response = await fetch('/api/user/resources')
+      const data = await response.json()
       
-      if (downloaded.length > 0) {
-        // Fetch resource details from API
-        const response = await fetch('/api/resources')
-        const data = await response.json()
-        
-        if (data.success) {
-          // Filter only downloaded resources
-          const myResources = data.data.filter(r => 
-            downloaded.some(d => d.resourceId === r.id)
-          ).map(resource => {
-            const downloadInfo = downloaded.find(d => d.resourceId === resource.id)
-            return {
-              ...resource,
-              downloadedAt: downloadInfo.downloadedAt
-            }
-          })
-          setResources(myResources)
-        }
+      if (data.success) {
+        setResources(data.data)
+        // Update localStorage for consistency
+        const downloaded = data.data.map(r => ({
+          resourceId: r.id,
+          downloadedAt: r.downloadedAt
+        }))
+        localStorage.setItem('downloadedResources', JSON.stringify(downloaded))
       }
     } catch (error) {
       console.error('Error loading resources:', error)
