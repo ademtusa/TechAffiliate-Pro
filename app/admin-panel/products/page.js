@@ -450,7 +450,7 @@ export default function ProductsManagementPage() {
                         id="price"
                         value={formData.price}
                         onChange={(e) => setFormData({...formData, price: e.target.value})}
-                        placeholder="$29/month"
+                        placeholder="$19.99/mo"
                         className="bg-slate-700 border-slate-600 text-white"
                       />
                     </div>
