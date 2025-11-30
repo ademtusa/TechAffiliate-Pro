@@ -397,7 +397,7 @@ export default function ResourcesManagementPage() {
               </SelectTrigger>
               <SelectContent className="bg-slate-700 border-slate-600">
                 <SelectItem value="all">All Categories</SelectItem>
-                {categories.map(cat => (
+                {resourceCategories.map(cat => (
                   <SelectItem key={cat} value={cat}>{cat}</SelectItem>
                 ))}
               </SelectContent>
