@@ -47,20 +47,33 @@ export async function PUT(request) {
       )
     }
 
-    const { userId, status } = await request.json()
+    const { userId, status, role } = await request.json()
     
-    if (!userId || !status) {
+    if (!userId) {
       return NextResponse.json(
-        { success: false, message: 'Missing required fields' },
+        { success: false, message: 'User ID required' },
         { status: 400 }
       )
     }
 
-    const updatedUser = await updateUserStatus(userId, status)
+    const db = await getDatabase()
+    const users = db.collection('users')
+    
+    const updateData = {}
+    if (status) updateData.status = status
+    if (role) updateData.role = role
+    updateData.updated_at = new Date().toISOString()
+    
+    await users.updateOne(
+      { id: userId },
+      { $set: updateData }
+    )
+    
+    const updatedUser = await users.findOne({ id: userId }, { projection: { password: 0 } })
     
     return NextResponse.json({
       success: true,
-      message: `User ${status === 'approved' ? 'approved' : 'rejected'} successfully`,
+      message: 'User updated successfully',
       data: updatedUser
     })
   } catch (error) {
