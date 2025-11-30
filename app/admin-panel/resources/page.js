@@ -521,7 +521,8 @@ export default function ResourcesManagementPage() {
                       size="sm"
                       variant="ghost"
                       onClick={() => handleEdit(resource)}
-                      className="text-blue-400 hover:text-blue-300 hover:bg-slate-700"
+                      className="text-blue-400 hover:text-blue-300 hover:bg-blue-500/10"
+                      title="Edit Resource"
                     >
                       <Edit className="h-4 w-4" />
                     </Button>
@@ -529,7 +530,8 @@ export default function ResourcesManagementPage() {
                       size="sm"
                       variant="ghost"
                       onClick={() => handleDelete(resource.id)}
-                      className="text-red-400 hover:text-red-300 hover:bg-slate-700"
+                      className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                      title="Delete Resource"
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
