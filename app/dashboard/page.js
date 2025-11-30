@@ -1,6 +1,7 @@
 'use client'
 
 import { useSession } from 'next-auth/react'
+import { useEffect, useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
@@ -8,6 +9,28 @@ import { Heart, GitCompare, BookOpen, TrendingUp, Package, Star } from 'lucide-r
 
 export default function DashboardPage() {
   const { data: session } = useSession()
+  const [stats, setStats] = useState({ favorites: 0, resources: 0, comparisons: 0 })
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    if (session) {
+      fetchStats()
+    }
+  }, [session])
+
+  const fetchStats = async () => {
+    try {
+      const response = await fetch('/api/user/stats')
+      const data = await response.json()
+      if (data.success) {
+        setStats(data.data)
+      }
+    } catch (error) {
+      console.error('Error fetching stats:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="space-y-6">
