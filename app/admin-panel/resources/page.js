@@ -14,6 +14,7 @@ import { Badge } from '@/components/ui/badge'
 
 export default function ResourcesManagementPage() {
   const [resources, setResources] = useState([])
+  const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [filterCategory, setFilterCategory] = useState('all')
@@ -37,7 +38,20 @@ export default function ResourcesManagementPage() {
 
   useEffect(() => {
     fetchResources()
+    fetchCategories()
   }, [])
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch('/api/admin/categories?type=resource&status=active')
+      const data = await response.json()
+      if (data.success) {
+        setCategories(data.data)
+      }
+    } catch (error) {
+      console.error('Error fetching categories:', error)
+    }
+  }
 
   const fetchResources = async () => {
     setLoading(true)
