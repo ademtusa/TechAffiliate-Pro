@@ -305,7 +305,10 @@ export default function ComparisonReviewPage() {
                 </div>
                 <Button 
                   variant="outline" 
-                  onClick={() => setSelectedForCompare([])}
+                  onClick={() => {
+                    setSelectedForCompare([])
+                    localStorage.setItem('compareProducts', JSON.stringify([]))
+                  }}
                   className="border-2 border-red-300 hover:bg-red-50"
                 >
                   Clear
