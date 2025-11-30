@@ -363,7 +363,7 @@ export default function ComparisonReviewPage() {
                           </Link>
                           <Button 
                             className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
-                            onClick={() => window.open(product.affiliate_url, '_blank')}
+                            onClick={() => handleAffiliateClick(product)}
                           >
                             Satın Al <ExternalLink className="ml-2 h-4 w-4" />
                           </Button>
