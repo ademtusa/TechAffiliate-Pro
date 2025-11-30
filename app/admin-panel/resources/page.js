@@ -218,6 +218,12 @@ export default function ResourcesManagementPage() {
     setEditingResource(null)
   }
 
+  const handleAddNew = () => {
+    resetForm()
+    fetchCategories() // Refresh categories when opening dialog
+    setIsDialogOpen(true)
+  }
+
   const getTypeIcon = (type) => {
     switch(type) {
       case 'pdf': return <FileText className="h-5 w-5 text-red-400" />
