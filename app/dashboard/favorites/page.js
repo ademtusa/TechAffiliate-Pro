@@ -44,16 +44,32 @@ export default function FavoritesPage() {
     }
   }
 
-  const removeFavorite = (productId) => {
-    const updatedFavorites = favorites.filter(id => id !== productId)
-    setFavorites(updatedFavorites)
-    localStorage.setItem('likedProducts', JSON.stringify(updatedFavorites))
-    setProducts(products.filter(p => p.id !== productId))
-    
-    toast({
-      title: 'Success',
-      description: 'Removed from favorites'
-    })
+  const removeFavorite = async (productId) => {
+    try {
+      // Remove from backend
+      const response = await fetch(`/api/user/favorites?productId=${productId}`, {
+        method: 'DELETE'
+      })
+      
+      if (response.ok) {
+        const updatedFavorites = favorites.filter(id => id !== productId)
+        setFavorites(updatedFavorites)
+        localStorage.setItem('likedProducts', JSON.stringify(updatedFavorites))
+        setProducts(products.filter(p => p.id !== productId))
+        
+        toast({
+          title: 'Success',
+          description: 'Removed from favorites'
+        })
+      }
+    } catch (error) {
+      console.error('Error removing favorite:', error)
+      toast({
+        title: 'Error',
+        description: 'Failed to remove from favorites',
+        variant: 'destructive'
+      })
+    }
   }
 
   if (loading) {
