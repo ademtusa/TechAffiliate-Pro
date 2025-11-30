@@ -14,9 +14,9 @@ export default function DashboardPage() {
       {/* Welcome Banner */}
       <Card className="border-transparent bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-xl">
         <CardHeader>
-          <CardTitle className="text-3xl">Merhaba, {session?.user?.name}! 👋</CardTitle>
+          <CardTitle className="text-3xl">Hello, {session?.user?.name}! 👋</CardTitle>
           <CardDescription className="text-purple-100">
-            Usefulio'ya hoş geldiniz. Panelinizden tüm aktivitelerinizi yönetebilirsiniz.
+            Welcome to Usefulio. Manage all your activities from your dashboard.
           </CardDescription>
         </CardHeader>
       </Card>
