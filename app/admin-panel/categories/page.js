@@ -380,7 +380,7 @@ export default function CategoriesManagementPage() {
                       size="sm"
                       variant="ghost"
                       onClick={() => handleEdit(category)}
-                      className="text-blue-400 hover:text-blue-300 hover:bg-slate-700"
+                      className="text-blue-400 hover:text-blue-300 hover:bg-blue-500/10"
                     >
                       <Edit className="h-4 w-4" />
                     </Button>
