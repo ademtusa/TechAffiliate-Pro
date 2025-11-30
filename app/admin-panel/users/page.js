@@ -438,7 +438,7 @@ export default function UsersManagementPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="edit-status" className="text-slate-300">Durum</Label>
+              <Label htmlFor="edit-status" className="text-slate-300">Status</Label>
               <Select 
                 value={editFormData.status} 
                 onValueChange={(value) => setEditFormData({...editFormData, status: value})}
@@ -447,9 +447,9 @@ export default function UsersManagementPage() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-slate-700 border-slate-600">
-                  <SelectItem value="pending">Onay Bekliyor</SelectItem>
-                  <SelectItem value="approved">Onaylı</SelectItem>
-                  <SelectItem value="rejected">Reddedildi</SelectItem>
+                  <SelectItem value="pending">Pending</SelectItem>
+                  <SelectItem value="approved">Approved</SelectItem>
+                  <SelectItem value="rejected">Rejected</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -461,13 +461,13 @@ export default function UsersManagementPage() {
               onClick={() => setEditDialogOpen(false)}
               className="border-slate-600"
             >
-              İptal
+              Cancel
             </Button>
             <Button 
               onClick={handleUpdateUser}
               className="bg-blue-600 hover:bg-blue-700"
             >
-              Güncelle
+              Update
             </Button>
           </DialogFooter>
         </DialogContent>
