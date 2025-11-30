@@ -216,12 +216,12 @@ export default function Navbar() {
                   <Link href="/login" className="block mb-2">
                     <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600">
                       <User className="h-4 w-4 mr-2" />
-                      Giriş Yap
+                      Sign In
                     </Button>
                   </Link>
                   <Link href="/register" className="block">
                     <Button variant="outline" className="w-full">
-                      Kayıt Ol
+                      Sign Up
                     </Button>
                   </Link>
                 </>
