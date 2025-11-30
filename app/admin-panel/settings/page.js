@@ -1,7 +1,7 @@
 'use client'
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-import { Settings, ExternalLink } from 'lucide-react'
+import { Settings, ExternalLink, Globe, Mail, Code } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
@@ -15,22 +15,54 @@ export default function SettingsPage() {
             Site Settings
           </CardTitle>
           <CardDescription className="text-slate-400">
-            General site configuration (Coming Soon)
+            Configure site-wide settings and preferences
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="text-center py-12">
             <Settings className="h-16 w-16 mx-auto mb-4 text-slate-600" />
-            <h3 className="text-xl font-semibold text-white mb-2">Site Settings</h3>
-            <p className="text-slate-400 mb-6">This feature is under development</p>
-            <p className="text-sm text-slate-500 mb-4">Planned settings:</p>
-            <ul className="text-sm text-slate-400 text-left max-w-md mx-auto space-y-2">
-              <li>• Site title and description</li>
-              <li>• Button texts and labels</li>
-              <li>• Menu headings</li>
-              <li>• SEO settings</li>
-              <li>• Analytics integration</li>
-            </ul>
+            <h3 className="text-xl font-semibold text-white mb-2">Settings Panel Coming Soon</h3>
+            <p className="text-slate-400 mb-4">Manage site configuration, SEO, and integrations.</p>
+            
+            <div className="bg-slate-700/50 rounded-lg p-6 max-w-md mx-auto mb-6">
+              <h4 className="text-white font-semibold mb-3">Current Configuration:</h4>
+              <ul className="text-sm text-slate-400 text-left space-y-2 mb-4">
+                <li>• Site Name: Usefulio</li>
+                <li>• Tagline: Find What's Actually Useful</li>
+                <li>• Environment: Production</li>
+              </ul>
+              
+              <h4 className="text-white font-semibold mb-3">Planned Settings:</h4>
+              <ul className="text-sm text-slate-400 text-left space-y-2">
+                <li className="flex items-start">
+                  <Globe className="h-4 w-4 mr-2 mt-0.5 text-violet-400" />
+                  General (Site title, description, logo)
+                </li>
+                <li className="flex items-start">
+                  <Mail className="h-4 w-4 mr-2 mt-0.5 text-blue-400" />
+                  Email & SMTP settings
+                </li>
+                <li className="flex items-start">
+                  <Code className="h-4 w-4 mr-2 mt-0.5 text-green-400" />
+                  SEO & Analytics (GA, AdSense)
+                </li>
+              </ul>
+            </div>
+
+            <div className="flex justify-center gap-4">
+              <Link href="/about" target="_blank">
+                <Button className="bg-violet-600 hover:bg-violet-700">
+                  <ExternalLink className="h-4 w-4 mr-2" />
+                  View About Page
+                </Button>
+              </Link>
+              <Link href="/" target="_blank">
+                <Button variant="outline" className="border-slate-600 text-slate-300">
+                  <ExternalLink className="h-4 w-4 mr-2" />
+                  View Home Page
+                </Button>
+              </Link>
+            </div>
           </div>
         </CardContent>
       </Card>
