@@ -300,16 +300,16 @@ export default function UsersManagementPage() {
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="text-white">Kullanıcı Yönetimi</CardTitle>
+              <CardTitle className="text-white">User Management</CardTitle>
               <CardDescription className="text-gray-400">
-                Kullanıcıları onaylayın, reddedin veya silin
+                Approve, reject, or delete users
               </CardDescription>
             </div>
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <Input
                 type="text"
-                placeholder="Kullanıcı ara..."
+                placeholder="Search users..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10 bg-gray-700 border-gray-600 text-white w-64"
@@ -325,7 +325,7 @@ export default function UsersManagementPage() {
           ) : filteredUsers.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
               <UsersIcon className="h-12 w-12 mx-auto mb-4 text-gray-600" />
-              <p>Kullanıcı bulunamadı</p>
+              <p>No users found</p>
             </div>
           ) : (
             <div className="space-y-3">
