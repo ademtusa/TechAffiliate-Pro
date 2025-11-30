@@ -50,16 +50,16 @@ export default function UsersManagementPage() {
         setUsers(data.data)
       } else {
         toast({
-          title: 'Hata',
-          description: 'Kullanıcılar yüklenemedi',
+          title: 'Error',
+          description: 'Failed to load users',
           variant: 'destructive'
         })
       }
     } catch (error) {
       console.error('Error fetching users:', error)
       toast({
-        title: 'Hata',
-        description: 'Bir hata oluştu',
+        title: 'Error',
+        description: 'An error occurred',
         variant: 'destructive'
       })
     } finally {
