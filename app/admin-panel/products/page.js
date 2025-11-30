@@ -99,7 +99,7 @@ export default function ProductsManagementPage() {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('/api/admin/products/categories')
+      const response = await fetch('/api/admin/categories?type=product&status=active')
       const data = await response.json()
       
       if (data.success) {
