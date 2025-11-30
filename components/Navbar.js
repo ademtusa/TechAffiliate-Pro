@@ -11,6 +11,11 @@ export default function Navbar() {
   const { data: session, status } = useSession()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [settings, setSettings] = useState({
+    site_name: 'Usefulio',
+    site_tagline: 'Find What\'s Actually Useful',
+    logo_url: ''
+  })
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +25,22 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    fetchSettings()
+  }, [])
+
+  const fetchSettings = async () => {
+    try {
+      const response = await fetch('/api/settings')
+      const data = await response.json()
+      if (data.success) {
+        setSettings(data.data)
+      }
+    } catch (error) {
+      console.error('Error fetching settings:', error)
+    }
+  }
 
   const handleSignOut = async () => {
     await signOut({ callbackUrl: '/' })
