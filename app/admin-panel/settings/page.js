@@ -163,15 +163,43 @@ export default function SettingsPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="logo_url" className="text-slate-300">Logo URL</Label>
-                <Input
-                  id="logo_url"
-                  value={settings.logo_url}
-                  onChange={(e) => setSettings({...settings, logo_url: e.target.value})}
-                  className="bg-slate-700 border-slate-600 text-white"
-                  placeholder="https://example.com/logo.png"
-                />
-                <p className="text-xs text-slate-500">Leave empty to use default logo</p>
+                <Label htmlFor="logo_upload" className="text-slate-300">Logo Upload</Label>
+                <div className="flex flex-col gap-3">
+                  {settings.logo_url && (
+                    <div className="flex items-center gap-3 p-3 bg-slate-700/50 rounded-lg">
+                      <img 
+                        src={settings.logo_url} 
+                        alt="Logo preview" 
+                        className="h-16 w-16 object-contain bg-white rounded"
+                      />
+                      <div className="flex-1">
+                        <p className="text-sm text-slate-300">Current Logo</p>
+                        <p className="text-xs text-slate-500">
+                          {settings.logo_url.startsWith('data:') ? 'Uploaded image' : 'External URL'}
+                        </p>
+                      </div>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setSettings({...settings, logo_url: ''})}
+                        className="border-red-500 text-red-400"
+                      >
+                        Remove
+                      </Button>
+                    </div>
+                  )}
+                  <Input
+                    id="logo_upload"
+                    type="file"
+                    accept="image/png,image/jpeg,image/jpg,image/gif,image/webp,image/svg+xml"
+                    onChange={handleLogoUpload}
+                    className="bg-slate-700 border-slate-600 text-white file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-violet-600 file:text-white hover:file:bg-violet-700"
+                  />
+                  <p className="text-xs text-slate-500">
+                    Supported: PNG, JPEG, GIF, WebP, SVG (Max 500KB recommended)
+                  </p>
+                </div>
               </div>
 
               <div className="space-y-2">
