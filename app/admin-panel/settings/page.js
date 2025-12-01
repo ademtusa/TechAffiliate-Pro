@@ -55,6 +55,10 @@ export default function SettingsPage() {
     }
   }
 
+  useEffect(() => {
+    fetchSettings()
+  }, [])
+
   const handleLogoUpload = (e) => {
     const file = e.target.files[0]
     if (!file) return
