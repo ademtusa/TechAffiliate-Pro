@@ -70,6 +70,11 @@ export default function ResourcesManagementPage() {
     }
   }
 
+  useEffect(() => {
+    fetchResources()
+    fetchCategories()
+  }, [])
+
   const handleFileUpload = (e) => {
     const file = e.target.files[0]
     if (!file) return
