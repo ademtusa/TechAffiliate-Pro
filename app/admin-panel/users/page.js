@@ -61,7 +61,7 @@ export default function UsersManagementPage() {
     }
 
     fetchUsers()
-  }, [toast])
+  }, [])
 
   const fetchUsers = async () => {
     setLoading(true)
