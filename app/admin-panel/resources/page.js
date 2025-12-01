@@ -336,11 +336,11 @@ export default function ResourcesManagementPage() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-700 border-slate-600">
-                      <SelectItem value="pdf">PDF</SelectItem>
-                      <SelectItem value="video">Video</SelectItem>
-                      <SelectItem value="image">Image</SelectItem>
-                      <SelectItem value="document">Document</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="pdf" className="text-white">PDF</SelectItem>
+                      <SelectItem value="video" className="text-white">Video</SelectItem>
+                      <SelectItem value="image" className="text-white">Image</SelectItem>
+                      <SelectItem value="document" className="text-white">Document</SelectItem>
+                      <SelectItem value="other" className="text-white">Other</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
