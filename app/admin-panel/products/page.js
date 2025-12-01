@@ -64,63 +64,63 @@ export default function ProductsManagementPage() {
     status: 'active'
   })
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true)
-      try {
-        const response = await fetch('/api/admin/products')
-        const data = await response.json()
-        
-        if (data.success) {
-          setProducts(data.data)
-        } else {
-          toast({
-            title: 'Hata',
-            description: 'Ürünler yüklenemedi',
-            variant: 'destructive'
-          })
-        }
-      } catch (error) {
-        console.error('Error fetching products:', error)
+  const fetchProducts = async () => {
+    setLoading(true)
+    try {
+      const response = await fetch('/api/admin/products')
+      const data = await response.json()
+      
+      if (data.success) {
+        setProducts(data.data)
+      } else {
         toast({
           title: 'Hata',
-          description: 'Bir hata oluştu',
+          description: 'Ürünler yüklenemedi',
           variant: 'destructive'
         })
-      } finally {
-        setLoading(false)
       }
+    } catch (error) {
+      console.error('Error fetching products:', error)
+      toast({
+        title: 'Hata',
+        description: 'Bir hata oluştu',
+        variant: 'destructive'
+      })
+    } finally {
+      setLoading(false)
     }
+  }
 
-    const fetchCategories = async () => {
-      try {
-        const response = await fetch('/api/admin/categories?type=product&status=active')
-        const data = await response.json()
-        
-        if (data.success) {
-          setCategories(data.data)
-        }
-      } catch (error) {
-        console.error('Error fetching categories:', error)
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch('/api/admin/categories?type=product&status=active')
+      const data = await response.json()
+      
+      if (data.success) {
+        setCategories(data.data)
       }
+    } catch (error) {
+      console.error('Error fetching categories:', error)
     }
+  }
 
-    const fetchTrackingStats = async () => {
-      try {
-        const response = await fetch('/api/admin/products/stats')
-        const data = await response.json()
-        if (data.success) {
-          setTrackingStats(data.data)
-        }
-      } catch (error) {
-        console.error('Error fetching tracking stats:', error)
+  const fetchTrackingStats = async () => {
+    try {
+      const response = await fetch('/api/admin/products/stats')
+      const data = await response.json()
+      if (data.success) {
+        setTrackingStats(data.data)
       }
+    } catch (error) {
+      console.error('Error fetching tracking stats:', error)
     }
+  }
 
+  useEffect(() => {
     fetchProducts()
     fetchCategories()
     fetchTrackingStats()
-  }, [toast])
+  }, [])
 
   useEffect(() => {
     const filterProducts = () => {
