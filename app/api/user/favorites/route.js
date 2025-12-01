@@ -1,5 +1,5 @@
 import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import { getUserFavorites, addUserFavorite, removeUserFavorite } from '@/lib/user-stats'
 import { NextResponse } from 'next/server'
 
