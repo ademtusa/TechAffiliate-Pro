@@ -28,7 +28,7 @@ export default function SettingsPage() {
   })
   const { toast } = useToast()
 
-  const fetchSettings = async () => {
+  const fetchSettings = useCallback(async () => {
     setLoading(true)
     try {
       const response = await fetch('/api/admin/settings')
