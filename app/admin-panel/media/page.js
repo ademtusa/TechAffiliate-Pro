@@ -26,30 +26,6 @@ export default function MediaManagementPage() {
   
   const { toast } = useToast()
 
-  useEffect(() => {
-    const fetchMedia = async () => {
-      setLoading(true)
-      try {
-        const response = await fetch('/api/admin/media')
-        const data = await response.json()
-        if (data.success) {
-          setMedia(data.data)
-        }
-      } catch (error) {
-        console.error('Error fetching media:', error)
-        toast({
-          title: 'Error',
-          description: 'Failed to load media',
-          variant: 'destructive'
-        })
-      } finally {
-        setLoading(false)
-      }
-    }
-    
-    fetchMedia()
-  }, [toast])
-
   const fetchMedia = async () => {
     setLoading(true)
     try {
