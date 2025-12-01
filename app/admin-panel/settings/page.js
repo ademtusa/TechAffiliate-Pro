@@ -28,7 +28,7 @@ export default function SettingsPage() {
   })
   const { toast } = useToast()
 
-  const fetchSettings = useCallback(async () => {
+  const fetchSettings = async () => {
     setLoading(true)
     try {
       const response = await fetch('/api/admin/settings')
@@ -53,11 +53,11 @@ export default function SettingsPage() {
     } finally {
       setLoading(false)
     }
-  }, [toast])
+  }
 
   useEffect(() => {
     fetchSettings()
-  }, [fetchSettings])
+  }, [])
 
   const handleLogoUpload = (e) => {
     const file = e.target.files[0]
