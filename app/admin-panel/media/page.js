@@ -46,6 +46,10 @@ export default function MediaManagementPage() {
     }
   }
 
+  useEffect(() => {
+    fetchMedia()
+  }, [])
+
   const handleSubmit = async () => {
     if (!formData.title || !formData.url) {
       toast({
