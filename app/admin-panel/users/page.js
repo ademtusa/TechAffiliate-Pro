@@ -478,9 +478,9 @@ export default function UsersManagementPage() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-slate-700 border-slate-600">
-                  <SelectItem value="pending">Pending</SelectItem>
-                  <SelectItem value="approved">Approved</SelectItem>
-                  <SelectItem value="rejected">Rejected</SelectItem>
+                  <SelectItem value="pending" className="text-white">Pending</SelectItem>
+                  <SelectItem value="approved" className="text-white">Approved</SelectItem>
+                  <SelectItem value="rejected" className="text-white">Rejected</SelectItem>
                 </SelectContent>
               </Select>
             </div>
