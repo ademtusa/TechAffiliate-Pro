@@ -63,29 +63,6 @@ export default function UsersManagementPage() {
     fetchUsers()
   }, [toast])
 
-  useEffect(() => {
-    const filterUsers = () => {
-      let filtered = users
-
-      // Status filter
-      if (filterStatus !== 'all') {
-        filtered = filtered.filter(user => user.status === filterStatus)
-      }
-
-      // Search filter
-      if (searchTerm) {
-        filtered = filtered.filter(user => 
-          user.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          user.email?.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      }
-
-      setFilteredUsers(filtered)
-    }
-
-    filterUsers()
-  }, [searchTerm, filterStatus, users])
-
   const fetchUsers = async () => {
     setLoading(true)
     try {
@@ -113,24 +90,32 @@ export default function UsersManagementPage() {
     }
   }
 
-  const filterUsers = () => {
-    let filtered = users
+  useEffect(() => {
+    fetchUsers()
+  }, [])
 
-    // Status filter
-    if (filterStatus !== 'all') {
-      filtered = filtered.filter(user => user.status === filterStatus)
+  useEffect(() => {
+    const filterUsers = () => {
+      let filtered = users
+
+      // Status filter
+      if (filterStatus !== 'all') {
+        filtered = filtered.filter(user => user.status === filterStatus)
+      }
+
+      // Search filter
+      if (searchTerm) {
+        filtered = filtered.filter(user => 
+          user.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          user.email?.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      }
+
+      setFilteredUsers(filtered)
     }
 
-    // Search filter
-    if (searchTerm) {
-      filtered = filtered.filter(user => 
-        user.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        user.email?.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    }
-
-    setFilteredUsers(filtered)
-  }
+    filterUsers()
+  }, [searchTerm, filterStatus, users])
 
   const handleApprove = async (userId) => {
     try {
