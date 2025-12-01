@@ -66,14 +66,17 @@ export default function TestimonialsSlider() {
   }
 
   return (
-    <section className="py-8 md:py-12 px-4 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
-      <div className="container mx-auto max-w-7xl">
+    <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 py-12">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 text-slate-800">
+          <div className="inline-block px-4 py-1 bg-white/20 backdrop-blur-sm rounded-full mb-4">
+            <span className="text-white text-sm font-medium">Customer Reviews</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">
             What Our Users Say
           </h2>
-          <p className="text-slate-600 text-sm md:text-base lg:text-lg">
-            Real feedback from real users
+          <p className="text-blue-100 text-lg">
+            Real reviews from real customers who found amazing deals
           </p>
         </div>
 
