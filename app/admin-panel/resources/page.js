@@ -36,45 +36,6 @@ export default function ResourcesManagementPage() {
   
   const { toast } = useToast()
 
-  useEffect(() => {
-    const fetchResources = async () => {
-      setLoading(true)
-      try {
-        const response = await fetch('/api/admin/resources')
-        const data = await response.json()
-        if (data.success) {
-          setResources(data.data)
-        }
-      } catch (error) {
-        console.error('Error fetching resources:', error)
-        toast({
-          title: 'Error',
-          description: 'Failed to load resources',
-          variant: 'destructive'
-        })
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    const fetchCategories = async () => {
-      try {
-        const response = await fetch('/api/admin/categories?type=resource&status=active')
-        const data = await response.json()
-        console.log('📁 Fetched categories:', data)
-        if (data.success) {
-          console.log('✅ Setting categories:', data.data.length, 'items')
-          setCategories(data.data)
-        }
-      } catch (error) {
-        console.error('Error fetching categories:', error)
-      }
-    }
-
-    fetchResources()
-    fetchCategories()
-  }, [toast])
-
   const fetchResources = async () => {
     setLoading(true)
     try {
