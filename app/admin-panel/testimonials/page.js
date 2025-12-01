@@ -34,30 +34,6 @@ export default function TestimonialsManagementPage() {
   
   const { toast } = useToast()
 
-  useEffect(() => {
-    const fetchTestimonials = async () => {
-      setLoading(true)
-      try {
-        const response = await fetch('/api/admin/testimonials')
-        const data = await response.json()
-        if (data.success) {
-          setTestimonials(data.data)
-        }
-      } catch (error) {
-        console.error('Error fetching testimonials:', error)
-        toast({
-          title: 'Error',
-          description: 'Failed to load testimonials',
-          variant: 'destructive'
-        })
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchTestimonials()
-  }, [toast])
-
   const fetchTestimonials = async () => {
     setLoading(true)
     try {
