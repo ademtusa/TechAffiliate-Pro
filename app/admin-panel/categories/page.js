@@ -52,6 +52,10 @@ export default function CategoriesManagementPage() {
     }
   }
 
+  useEffect(() => {
+    fetchCategories()
+  }, [])
+
   const handleSubmit = async () => {
     if (!formData.name) {
       toast({
