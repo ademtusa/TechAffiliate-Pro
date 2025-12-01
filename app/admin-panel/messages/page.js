@@ -15,25 +15,6 @@ export default function MessagesPage() {
   const [filterStatus, setFilterStatus] = useState('all')
   const { toast } = useToast()
 
-  useEffect(() => {
-    const fetchMessages = async () => {
-      setLoading(true)
-      try {
-        const response = await fetch('/api/admin/messages')
-        const data = await response.json()
-        if (data.success) {
-          setMessages(data.data)
-        }
-      } catch (error) {
-        toast({ title: 'Error', description: 'Failed to load messages', variant: 'destructive' })
-      } finally {
-        setLoading(false)
-      }
-    }
-    
-    fetchMessages()
-  }, [toast])
-
   const fetchMessages = async () => {
     setLoading(true)
     try {
@@ -48,6 +29,10 @@ export default function MessagesPage() {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    fetchMessages()
+  }, [])
 
   const handleMarkAsRead = async (id) => {
     try {
