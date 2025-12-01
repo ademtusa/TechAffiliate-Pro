@@ -150,46 +150,6 @@ export default function ProductsManagementPage() {
     filterProducts()
   }, [searchTerm, filterCategory, filterStatus, products])
 
-  const fetchProducts = async () => {
-    setLoading(true)
-    try {
-      const response = await fetch('/api/admin/products')
-      const data = await response.json()
-      
-      if (data.success) {
-        setProducts(data.data)
-      } else {
-        toast({
-          title: 'Hata',
-          description: 'Ürünler yüklenemedi',
-          variant: 'destructive'
-        })
-      }
-    } catch (error) {
-      console.error('Error fetching products:', error)
-      toast({
-        title: 'Hata',
-        description: 'Bir hata oluştu',
-        variant: 'destructive'
-      })
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const fetchCategories = async () => {
-    try {
-      const response = await fetch('/api/admin/categories?type=product&status=active')
-      const data = await response.json()
-      
-      if (data.success) {
-        setCategories(data.data)
-      }
-    } catch (error) {
-      console.error('Error fetching categories:', error)
-    }
-  }
-
   const filterProducts = () => {
     let filtered = products
 
