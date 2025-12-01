@@ -26,30 +26,6 @@ export default function MenuManagementPage() {
   
   const { toast } = useToast()
 
-  useEffect(() => {
-    const fetchMenus = async () => {
-      setLoading(true)
-      try {
-        const response = await fetch('/api/admin/menus')
-        const data = await response.json()
-        if (data.success) {
-          setMenus(data.data)
-        }
-      } catch (error) {
-        console.error('Error fetching menus:', error)
-        toast({
-          title: 'Error',
-          description: 'Failed to load menus',
-          variant: 'destructive'
-        })
-      } finally {
-        setLoading(false)
-      }
-    }
-    
-    fetchMenus()
-  }, [toast])
-
   const fetchMenus = async () => {
     setLoading(true)
     try {
@@ -69,6 +45,10 @@ export default function MenuManagementPage() {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    fetchMenus()
+  }, [])
 
   const handleSubmit = async () => {
     if (!formData.label || !formData.url) {
