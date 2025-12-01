@@ -28,37 +28,6 @@ export default function SettingsPage() {
   })
   const { toast } = useToast()
 
-  useEffect(() => {
-    const fetchSettings = async () => {
-      setLoading(true)
-      try {
-        const response = await fetch('/api/admin/settings')
-        const data = await response.json()
-        
-        if (data.success) {
-          setSettings(data.data)
-        } else {
-          toast({
-            title: 'Error',
-            description: 'Failed to load settings',
-            variant: 'destructive'
-          })
-        }
-      } catch (error) {
-        console.error('Error fetching settings:', error)
-        toast({
-          title: 'Error',
-          description: 'An error occurred',
-          variant: 'destructive'
-        })
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchSettings()
-  }, [toast])
-
   const fetchSettings = async () => {
     setLoading(true)
     try {
