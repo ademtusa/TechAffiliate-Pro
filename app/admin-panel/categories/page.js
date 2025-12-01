@@ -245,8 +245,8 @@ export default function CategoriesManagementPage() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-700 border-slate-600">
-                      <SelectItem value="product">Product</SelectItem>
-                      <SelectItem value="resource">Resource</SelectItem>
+                      <SelectItem value="product" className="text-white">Product</SelectItem>
+                      <SelectItem value="resource" className="text-white">Resource</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
