@@ -462,8 +462,8 @@ export default function UsersManagementPage() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-slate-700 border-slate-600">
-                  <SelectItem value="user">User</SelectItem>
-                  <SelectItem value="admin">Admin</SelectItem>
+                  <SelectItem value="user" className="text-white">User</SelectItem>
+                  <SelectItem value="admin" className="text-white">Admin</SelectItem>
                 </SelectContent>
               </Select>
             </div>
