@@ -652,9 +652,9 @@ export default function ProductsManagementPage() {
                       <SelectTrigger className="bg-slate-700 border-slate-600 text-white">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="active">Active</SelectItem>
-                        <SelectItem value="inactive">Inactive</SelectItem>
+                      <SelectContent className="bg-slate-700 border-slate-600">
+                        <SelectItem value="active" className="text-white">Active</SelectItem>
+                        <SelectItem value="inactive" className="text-white">Inactive</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
