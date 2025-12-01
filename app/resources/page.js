@@ -4,22 +4,24 @@ import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Badge } from '@/components/ui/badge'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { 
   BookOpen, 
   Download, 
   FileText, 
   Video, 
-  Image as ImageIcon, 
-  Search,
-  Filter,
   Lock,
-  CheckCircle
+  CheckCircle,
+  Gift,
+  Star,
+  TrendingUp
 } from 'lucide-react'
 import { useToast } from '@/components/ui/use-toast'
-import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import ProductSlider from '@/components/ProductSlider'
 
 export default function ResourcesPage() {
   const { data: session, status } = useSession()
