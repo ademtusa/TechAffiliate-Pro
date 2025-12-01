@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Settings, Save, ExternalLink, AlertCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
