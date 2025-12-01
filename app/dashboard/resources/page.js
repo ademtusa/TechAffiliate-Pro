@@ -41,6 +41,10 @@ export default function MyResourcesPage() {
     }
   }
 
+  useEffect(() => {
+    fetchResources()
+  }, [])
+
   const handleDownload = async (resource) => {
     try {
       // Track download
