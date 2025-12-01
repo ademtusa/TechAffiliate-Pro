@@ -481,7 +481,7 @@ export default function ProductsManagementPage() {
                             </SelectItem>
                           ) : (
                             categories.map((cat) => (
-                              <SelectItem key={cat.id} value={cat.name}>
+                              <SelectItem key={cat.id} value={cat.name} className="text-white">
                                 {cat.name}
                               </SelectItem>
                             ))
