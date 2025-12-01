@@ -54,6 +54,10 @@ export default function TestimonialsManagementPage() {
     }
   }
 
+  useEffect(() => {
+    fetchTestimonials()
+  }, [])
+
   const handleImageUpload = (e) => {
     const file = e.target.files[0]
     if (!file) return
