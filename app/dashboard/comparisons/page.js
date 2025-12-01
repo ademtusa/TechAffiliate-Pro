@@ -30,6 +30,10 @@ export default function ComparisonsPage() {
     }
   }
 
+  useEffect(() => {
+    loadComparisons()
+  }, [])
+
   const removeFromComparison = (productId) => {
     const updated = compareProducts.filter(p => p.id !== productId)
     setCompareProducts(updated)
