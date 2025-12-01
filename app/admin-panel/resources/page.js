@@ -401,8 +401,8 @@ export default function ResourcesManagementPage() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent className="bg-slate-700 border-slate-600">
-                    <SelectItem value="draft">Draft</SelectItem>
-                    <SelectItem value="published">Published</SelectItem>
+                    <SelectItem value="draft" className="text-white">Draft</SelectItem>
+                    <SelectItem value="published" className="text-white">Published</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
