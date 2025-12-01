@@ -118,9 +118,12 @@ export default function TestimonialsSlider() {
               {testimonials.map((testimonial) => (
                 <Card
                   key={testimonial.id}
-                  className="flex-shrink-0 hover:shadow-xl transition-all duration-300 border overflow-hidden w-[85vw] sm:w-[45vw] md:w-[calc((100%-48px)/2)] lg:w-[calc((100%-72px)/3)] xl:w-[calc((100%-96px)/4)] bg-white border-slate-200 hover:border-blue-300"
+                  className="flex-shrink-0 hover:shadow-2xl transition-all duration-300 overflow-hidden w-[85vw] sm:w-[45vw] md:w-[calc((100%-48px)/2)] lg:w-[calc((100%-72px)/3)] xl:w-[calc((100%-96px)/4)] bg-white border-0 shadow-lg"
                 >
-                  <CardContent className="p-4 md:p-6 flex flex-col h-full">
+                  <CardContent className="p-6 flex flex-col h-full min-h-[280px]">
+                    {/* Quote Icon */}
+                    <div className="text-5xl text-blue-200 mb-3 leading-none">&quot;</div>
+
                     {/* Stars */}
                     <div className="flex mb-3">
                       {[...Array(5)].map((_, i) => (
@@ -128,7 +131,7 @@ export default function TestimonialsSlider() {
                           key={i}
                           className={`h-4 w-4 ${
                             i < (testimonial.rating || 5)
-                              ? 'text-yellow-500 fill-yellow-500'
+                              ? 'text-yellow-400 fill-yellow-400'
                               : 'text-slate-300'
                           }`}
                         />
@@ -136,33 +139,33 @@ export default function TestimonialsSlider() {
                     </div>
 
                     {/* Testimonial Text */}
-                    <p className="text-slate-700 text-sm mb-4 leading-relaxed flex-1 line-clamp-4">
+                    <p className="text-slate-700 text-sm mb-4 leading-relaxed flex-1 line-clamp-4 italic">
                       {testimonial.content}
                     </p>
 
                     {/* Author Info */}
-                    <div className="flex items-center space-x-3 border-t border-slate-200 pt-4 mt-auto">
+                    <div className="flex items-center space-x-3 border-t border-slate-100 pt-4 mt-auto">
                       {testimonial.avatar_url ? (
                         <img
                           src={testimonial.avatar_url}
                           alt={testimonial.name}
-                          className="h-10 w-10 rounded-full object-cover border-2 border-blue-200 flex-shrink-0"
+                          className="h-12 w-12 rounded-full object-cover border-2 border-blue-100 flex-shrink-0"
                         />
                       ) : (
-                        <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center flex-shrink-0">
-                          <span className="text-white font-bold text-sm">
+                        <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-md">
+                          <span className="text-white font-bold text-lg">
                             {testimonial.name?.charAt(0) || 'U'}
                           </span>
                         </div>
                       )}
                       <div className="flex-1 min-w-0">
-                        <p className="font-semibold text-slate-800 text-sm truncate">
+                        <p className="font-bold text-slate-900 text-base truncate">
                           {testimonial.name}
                         </p>
                         {(testimonial.role || testimonial.company) && (
-                          <p className="text-xs text-slate-500 truncate">
+                          <p className="text-sm text-slate-500 truncate">
                             {testimonial.role}
-                            {testimonial.role && testimonial.company && ' • '}
+                            {testimonial.role && testimonial.company && ' at '}
                             {testimonial.company}
                           </p>
                         )}
