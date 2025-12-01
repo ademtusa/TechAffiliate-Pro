@@ -32,30 +32,6 @@ export default function CategoriesManagementPage() {
   
   const { toast } = useToast()
 
-  useEffect(() => {
-    const fetchCategories = async () => {
-      setLoading(true)
-      try {
-        const response = await fetch('/api/admin/categories?withStats=true')
-        const data = await response.json()
-        if (data.success) {
-          setCategories(data.data)
-        }
-      } catch (error) {
-        console.error('Error fetching categories:', error)
-        toast({
-          title: 'Error',
-          description: 'Failed to load categories',
-          variant: 'destructive'
-        })
-      } finally {
-        setLoading(false)
-      }
-    }
-    
-    fetchCategories()
-  }, [toast])
-
   const fetchCategories = async () => {
     setLoading(true)
     try {
