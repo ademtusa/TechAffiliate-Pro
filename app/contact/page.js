@@ -178,7 +178,7 @@ export default function ContactPage() {
             </Card>
 
             {/* Why Contact Us Card */}
-            <Card className="shadow-xl border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50">
+            <Card className="shadow-xl border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
               <CardHeader>
                 <CardTitle className="text-xl text-purple-900">Why Contact Us?</CardTitle>
               </CardHeader>
