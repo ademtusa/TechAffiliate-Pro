@@ -169,85 +169,48 @@ export default function ResourcesPage() {
                 </div>
               ) : (
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {resources.map((resource) => (
-              <Card key={resource.id} className="hover:shadow-lg transition-shadow border-2 border-gray-200 hover:border-blue-300">
-                {resource.thumbnail_url && (
-                  <div className="w-full h-48 bg-gray-100 overflow-hidden">
-                    <img 
-                      src={resource.thumbnail_url} 
-                      alt={resource.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                )}
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-lg font-bold text-gray-900 flex-1">{resource.title}</h3>
-                    {getTypeIcon(resource.type)}
-                  </div>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                    {resource.description}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <Badge className="bg-blue-100 text-blue-700 border-0">
-                      {resource.type?.toUpperCase() || 'FILE'}
-                    </Badge>
-                    <Button 
-                      onClick={() => handleDownloadClick(resource)}
-                      className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
-                    >
-                      <Lock className="h-4 w-4 mr-2" />
-                      Members Only
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        )}
-      </section>
+                  {resources.map((resource) => (
+                    <Card key={resource.id} className="hover:shadow-lg transition-shadow border-2 border-gray-200 hover:border-blue-300">
+                      {resource.thumbnail_url && (
+                        <div className="w-full h-48 bg-gray-100 overflow-hidden">
+                          <img 
+                            src={resource.thumbnail_url} 
+                            alt={resource.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      )}
+                      <CardContent className="p-6">
+                        <div className="flex items-start justify-between mb-3">
+                          <h3 className="text-lg font-bold text-gray-900 flex-1">{resource.title}</h3>
+                          {getTypeIcon(resource.type)}
+                        </div>
+                        <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                          {resource.description}
+                        </p>
+                        <div className="flex items-center justify-between">
+                          <Badge className="bg-blue-100 text-blue-700 border-0">
+                            {resource.type?.toUpperCase() || 'FILE'}
+                          </Badge>
+                          <Button 
+                            onClick={() => handleDownloadClick(resource)}
+                            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
+                          >
+                            <Lock className="h-4 w-4 mr-2" />
+                            Members Only
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
+            </section>
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-16 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <Gift className="h-16 w-16 mx-auto mb-6" />
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Want Access to All Resources?
-          </h2>
-          <p className="text-blue-100 text-lg mb-8">
-            Join for free and unlock exclusive content
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <CheckCircle className="h-8 w-8 mx-auto mb-2" />
-              <p className="font-semibold">Weekly free downloads</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <BookOpen className="h-8 w-8 mx-auto mb-2" />
-              <p className="font-semibold">Premium e-books and guides</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <Video className="h-8 w-8 mx-auto mb-2" />
-              <p className="font-semibold">Video tutorials</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <Star className="h-8 w-8 mx-auto mb-2" />
-              <p className="font-semibold">Exclusive discount codes</p>
-            </div>
-          </div>
-          <Link href="/register">
-            <Button size="lg" className="bg-yellow-400 text-blue-900 hover:bg-yellow-300 text-lg px-8">
-              Join Free Now
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      {/* Best Sellers Section */}
-      {products.length > 0 && (
-        <div className="container mx-auto px-4 py-12">
-          <ProductSlider 
-            title="Trending Products" 
+            {/* Trending Products */}
+            {products.length > 0 && (
+              <ProductSlider 
+                title="Trending Products" 
             products={products.slice(0, 8)} 
             icon={TrendingUp}
           />
