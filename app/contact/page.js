@@ -93,7 +93,7 @@ export default function ContactPage() {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Left Column - Contact Form */}
           <div className="space-y-6">
-            <Card className="shadow-2xl border-2 border-blue-200 bg-white/80 backdrop-blur-sm">
+            <Card className="shadow-2xl border-2 border-blue-200 bg-white/80 backdrop-blur-sm hover:shadow-3xl hover:scale-[1.01] transition-all duration-300">
               <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
                 <CardTitle className="text-2xl flex items-center gap-3">
                   <Send className="h-6 w-6" />
