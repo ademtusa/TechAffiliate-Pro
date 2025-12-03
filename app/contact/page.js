@@ -89,7 +89,7 @@ export default function ContactPage() {
       />
 
       {/* Contact Content - Modern Layout */}
-      <div className="container mx-auto px-4 py-12 max-w-7xl">
+      <div className="container mx-auto px-4 py-12">
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Left Column - Contact Form */}
           <div className="space-y-6">
