@@ -35,7 +35,7 @@ Your affiliate website now has a **secure admin login system** with proper authe
 ## 🚀 How to Access Admin Panel
 
 ### Step 1: Navigate to Admin Login
-Go to: **https://affiliate-admin-5.preview.emergentagent.com/admin/login**
+Go to: **https://usefulio-cms.preview.emergentagent.com/admin/login**
 
 ⚠️ **Important**: The admin login URL is not linked from the main site for security.
 
