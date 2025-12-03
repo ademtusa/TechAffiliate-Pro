@@ -129,95 +129,25 @@ export default function ResourcesPage() {
 
   const featuredProduct = products.length > 0 ? products[0] : null
 
+  const featuredProduct = products.length > 0 ? {
+    ...products[0],
+    commission_rate: 15.5,
+    reviews: 1247
+  } : null
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-16 px-4">
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex-1">
-              <div className="inline-block px-4 py-1 bg-white/20 backdrop-blur-sm rounded-full mb-4">
-                <span className="text-white text-sm font-medium">✨ Trusted by 100K+ Affiliates Worldwide</span>
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Free Resources & Downloads<span className="text-yellow-300">Worldwide</span>
-              </h1>
-              <p className="text-blue-100 text-lg mb-6">
-                Exclusive guides, tutorials, and bonuses for our affiliates
-              </p>
-              <div className="flex gap-4">
-                <Link href="/products">
-                  <Button size="lg" variant="outline" className="bg-white text-blue-600 border-0 hover:bg-blue-50">
-                    Explore Products
-                  </Button>
-                </Link>
-                <Link href="/register">
-                  <Button size="lg" className="bg-yellow-400 text-blue-900 hover:bg-yellow-300">
-                    Start Earning Now
-                  </Button>
-                </Link>
-              </div>
-              <div className="mt-6 flex items-center gap-2">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-300 fill-yellow-300" />
-                  ))}
-                </div>
-                <span className="text-blue-100">4.9/5 Rating</span>
-              </div>
-            </div>
+      <HeroSection 
+        title="Free Resources & Downloads"
+        subtitle="Exclusive guides, tutorials, and bonuses for our affiliates. Download premium content to boost your affiliate success!"
+        featuredProduct={featuredProduct}
+        featuredType="resourceOffer"
+      />
 
-            {/* Featured Product Card */}
-            {featuredProduct && (
-              <div className="w-full md:w-96">
-                <Card className="border-0 shadow-2xl overflow-hidden">
-                  <div className="relative">
-                    <Badge className="absolute top-4 left-4 z-10 bg-yellow-400 text-blue-900 border-0">
-                      Featured
-                    </Badge>
-                    <img 
-                      src={featuredProduct.image_url || 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=500'} 
-                      alt={featuredProduct.title}
-                      className="w-full h-48 object-cover"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-2">{featuredProduct.title}</h3>
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className={`h-4 w-4 ${i < Math.floor(featuredProduct.rating || 4.9) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} />
-                        ))}
-                      </div>
-                      <span className="text-sm text-gray-600">(1247)</span>
-                    </div>
-                    <div className="flex items-baseline gap-2 mb-4">
-                      <span className="text-3xl font-bold text-blue-600">${featuredProduct.price}</span>
-                      {featuredProduct.original_price && (
-                        <span className="text-lg text-gray-400 line-through">${featuredProduct.original_price}</span>
-                      )}
-                      <Badge className="bg-green-100 text-green-700 border-0">15.5% Commission</Badge>
-                    </div>
-                    <div className="text-sm text-gray-600 mb-4">
-                      💰 Earn $2.01/sale
-                    </div>
-                    <Link href={`/sales/${featuredProduct.id}`}>
-                      <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                        View & Earn 15.5%
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Resources Grid */}
-      <section className="container mx-auto px-4 py-12">
+      {/* Resources Content */}
+      <div className="container mx-auto px-4 py-12">
         {loading ? (
           <div className="flex items-center justify-center py-20">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
