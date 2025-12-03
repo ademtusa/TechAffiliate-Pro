@@ -211,8 +211,8 @@ export default function ContactPage() {
           {/* Right Column - Contact Info Sidebar */}
           <div className="space-y-6">
             {/* Contact Information */}
-            <Card className="shadow-xl border-2">
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
+            <Card className="shadow-xl border-2 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+              <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
                 <CardTitle className="text-xl">Contact Info</CardTitle>
               </CardHeader>
               <CardContent className="pt-6 space-y-4">
