@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
 import { Star, TrendingUp, Gift, BookOpen, Download, ShoppingCart } from 'lucide-react'
 import ProductSlider from '@/components/ProductSlider'
