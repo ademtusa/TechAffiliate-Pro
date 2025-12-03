@@ -49,12 +49,8 @@ export default function Home() {
   }, [])
 
   const checkUser = async () => {
-    try {
-      const { data: { user } } = await supabase.auth.getUser()
-      setUser(user)
-    } catch (error) {
-      setUser(null)
-    }
+    // User check handled by NextAuth session
+    setUser(null)
   }
 
   const fetchCategories = async () => {
