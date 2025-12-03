@@ -88,101 +88,127 @@ export default function ContactPage() {
         featuredType="specialDeal"
       />
 
-      {/* Contact Content - Compact Layout */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Contact Form - Takes 2 columns */}
-          <Card className="lg:col-span-2 shadow-2xl border-2">
-            <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
-              <CardTitle className="text-2xl flex items-center gap-3">
-                <Send className="h-6 w-6 text-blue-600" />
-                Send Us a Message
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="pt-6">
-              {submitted ? (
-                <div className="text-center py-12">
-                  <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-green-600 mb-2">Message Sent!</h3>
-                  <p className="text-gray-600">Thank you for contacting us. We&apos;ll respond within 24 hours.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
+      {/* Contact Content - Modern Layout */}
+      <div className="container mx-auto px-4 py-12 max-w-7xl">
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Left Column - Contact Form */}
+          <div className="space-y-6">
+            <Card className="shadow-2xl border-2 border-blue-200 bg-white/80 backdrop-blur-sm">
+              <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+                <CardTitle className="text-2xl flex items-center gap-3">
+                  <Send className="h-6 w-6" />
+                  Send Us a Message
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-6">
+                {submitted ? (
+                  <div className="text-center py-12">
+                    <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+                    <h3 className="text-2xl font-bold text-green-600 mb-2">Message Sent!</h3>
+                    <p className="text-gray-600">Thank you for contacting us. We&apos;ll respond within 24 hours.</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="name" className="text-gray-700 font-semibold">Full Name</Label>
+                        <Input
+                          id="name"
+                          name="name"
+                          type="text"
+                          placeholder="John Doe"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                          className="h-12 border-2 border-gray-300 focus:border-blue-500 transition-colors"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="email" className="text-gray-700 font-semibold">Email Address</Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          placeholder="john@example.com"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          required
+                          className="h-12 border-2 border-gray-300 focus:border-blue-500 transition-colors"
+                        />
+                      </div>
+                    </div>
                     <div>
-                      <Label htmlFor="name">Full Name</Label>
+                      <Label htmlFor="subject" className="text-gray-700 font-semibold">Subject</Label>
                       <Input
-                        id="name"
-                        name="name"
+                        id="subject"
+                        name="subject"
                         type="text"
-                        placeholder="John Doe"
-                        value={formData.name}
+                        placeholder="How can we help?"
+                        value={formData.subject}
                         onChange={handleInputChange}
                         required
-                        className="h-11"
+                        className="h-12 border-2 border-gray-300 focus:border-blue-500 transition-colors"
                       />
                     </div>
                     <div>
-                      <Label htmlFor="email">Email Address</Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="john@example.com"
-                        value={formData.email}
+                      <Label htmlFor="message" className="text-gray-700 font-semibold">Message</Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        placeholder="Tell us more about your inquiry..."
+                        value={formData.message}
                         onChange={handleInputChange}
                         required
-                        className="h-11"
+                        rows={6}
+                        className="resize-none border-2 border-gray-300 focus:border-blue-500 transition-colors"
                       />
                     </div>
-                  </div>
-                  <div>
-                    <Label htmlFor="subject">Subject</Label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      type="text"
-                      placeholder="How can we help?"
-                      value={formData.subject}
-                      onChange={handleInputChange}
-                      required
-                      className="h-11"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      placeholder="Tell us more about your inquiry..."
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      rows={5}
-                      className="resize-none"
-                    />
-                  </div>
-                  <Button type="submit" size="lg" className="w-full h-12 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700" disabled={submitting}>
-                    <Send className="mr-2 h-5 w-5" />
-                    {submitting ? 'Sending...' : 'Send Message'}
-                  </Button>
-                </form>
-              )}
-              
-              {/* AdSense Below Form */}
-              {!submitted && (
-                <div className="mt-6 pt-6 border-t border-gray-200">
-                  <AdSense 
-                    adSlot="1234567890"
-                    style={{ display: 'block', minHeight: '280px' }}
-                    className="my-4"
-                  />
-                </div>
-              )}
-            </CardContent>
-          </Card>
+                    <Button 
+                      type="submit" 
+                      size="lg" 
+                      className="w-full h-14 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-lg font-semibold shadow-lg hover:shadow-xl transition-all" 
+                      disabled={submitting}
+                    >
+                      <Send className="mr-2 h-5 w-5" />
+                      {submitting ? 'Sending...' : 'Send Message'}
+                    </Button>
+                  </form>
+                )}
+              </CardContent>
+            </Card>
 
-          {/* Contact Info Sidebar - Takes 1 column */}
+            {/* Why Contact Us Card */}
+            <Card className="shadow-xl border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50">
+              <CardHeader>
+                <CardTitle className="text-xl text-purple-900">Why Contact Us?</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm font-semibold text-gray-800">Fast Response Time</p>
+                    <p className="text-xs text-gray-600">We typically respond within 24 hours</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm font-semibold text-gray-800">Expert Support Team</p>
+                    <p className="text-xs text-gray-600">Our team has years of industry experience</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm font-semibold text-gray-800">Personalized Solutions</p>
+                    <p className="text-xs text-gray-600">Every inquiry gets individual attention</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Right Column - Contact Info Sidebar */}
           <div className="space-y-6">
             {/* Contact Information */}
             <Card className="shadow-xl border-2">
