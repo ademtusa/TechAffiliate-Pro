@@ -271,9 +271,9 @@ export default function ContactPage() {
             </Card>
 
             {/* Support Hours */}
-            <Card className="shadow-xl border-2 bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200">
+            <Card className="shadow-xl border-2 bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
               <CardHeader>
-                <CardTitle className="text-xl">Support Hours</CardTitle>
+                <CardTitle className="text-xl text-blue-900">Support Hours</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2 text-sm">
