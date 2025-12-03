@@ -234,3 +234,7 @@ backup_safe/BEFORE_COMPARISON_FIX_20251129_091535/backup_safe/BEFORE_AUTH_REDESI
 backup_safe/
 backups/
 *.backup
+-e 
+# Environment files
+*.env
+*.env.*
