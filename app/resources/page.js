@@ -23,6 +23,7 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ProductSlider from '@/components/ProductSlider'
+import HeroSection from '@/components/HeroSection'
 
 export default function ResourcesPage() {
   const { data: session, status } = useSession()
