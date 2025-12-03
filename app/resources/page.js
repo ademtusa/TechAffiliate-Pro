@@ -127,8 +127,6 @@ export default function ResourcesPage() {
     }
   }
 
-  const featuredProduct = products.length > 0 ? products[0] : null
-
   const featuredProduct = products.length > 0 ? {
     ...products[0],
     commission_rate: 15.5,
