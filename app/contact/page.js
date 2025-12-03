@@ -250,9 +250,9 @@ export default function ContactPage() {
             </Card>
 
             {/* Quick Links */}
-            <Card className="shadow-xl border-2 bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200">
+            <Card className="shadow-xl border-2 bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
               <CardHeader>
-                <CardTitle className="text-xl">Quick Links</CardTitle>
+                <CardTitle className="text-xl text-purple-900">Quick Links</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <a href="/" className="flex items-center text-gray-700 hover:text-blue-600 transition-colors">
