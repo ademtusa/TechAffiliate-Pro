@@ -211,11 +211,49 @@ export default function ResourcesPage() {
             {products.length > 0 && (
               <ProductSlider 
                 title="Trending Products" 
-            products={products.slice(0, 8)} 
-            icon={TrendingUp}
-          />
+                products={products.slice(0, 8)} 
+                icon={TrendingUp}
+              />
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* CTA Section - Outside container like home page */}
+      <section className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-16 px-4">
+        <div className="container mx-auto text-center">
+          <Gift className="h-16 w-16 mx-auto mb-6" />
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Want Access to All Resources?
+          </h2>
+          <p className="text-blue-100 text-lg mb-8">
+            Join for free and unlock exclusive content
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto mb-8">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <CheckCircle className="h-8 w-8 mx-auto mb-2" />
+              <p className="font-semibold">Weekly free downloads</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <BookOpen className="h-8 w-8 mx-auto mb-2" />
+              <p className="font-semibold">Premium e-books and guides</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <Video className="h-8 w-8 mx-auto mb-2" />
+              <p className="font-semibold">Video tutorials</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <Star className="h-8 w-8 mx-auto mb-2" />
+              <p className="font-semibold">Exclusive discount codes</p>
+            </div>
+          </div>
+          <Link href="/register">
+            <Button size="lg" className="bg-yellow-400 text-blue-900 hover:bg-yellow-300 text-lg px-8">
+              Join Free Now
+            </Button>
+          </Link>
         </div>
-      )}
+      </section>
 
       <Footer />
 
