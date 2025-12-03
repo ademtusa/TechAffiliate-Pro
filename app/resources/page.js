@@ -149,16 +149,26 @@ export default function ResourcesPage() {
       {/* Resources Content */}
       <div className="container mx-auto px-4 py-12">
         {loading ? (
-          <div className="flex items-center justify-center py-20">
+          <div className="text-center py-12">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-          </div>
-        ) : resources.length === 0 ? (
-          <div className="text-center py-20">
-            <BookOpen className="h-16 w-16 mx-auto mb-4 text-gray-400" />
-            <p className="text-gray-600 text-lg">No resources available yet</p>
+            <p className="mt-4 text-gray-600">Loading resources...</p>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="space-y-12">
+            {/* Resources Grid Section */}
+            <section>
+              <div className="flex items-center gap-3 mb-8">
+                <BookOpen className="h-8 w-8 text-blue-600" />
+                <h2 className="text-3xl font-bold text-gray-900">Free Resources</h2>
+              </div>
+              
+              {resources.length === 0 ? (
+                <div className="text-center py-20">
+                  <BookOpen className="h-16 w-16 mx-auto mb-4 text-gray-400" />
+                  <p className="text-gray-600 text-lg">No resources available yet</p>
+                </div>
+              ) : (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {resources.map((resource) => (
               <Card key={resource.id} className="hover:shadow-lg transition-shadow border-2 border-gray-200 hover:border-blue-300">
                 {resource.thumbnail_url && (
