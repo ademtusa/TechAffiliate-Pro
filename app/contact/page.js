@@ -90,9 +90,9 @@ export default function ContactPage() {
 
       {/* Contact Content - Modern Layout */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Left Column - Contact Form */}
-          <div className="space-y-6">
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Left Column - Contact Form (2/3 width) */}
+          <div className="lg:col-span-2 space-y-6">
             <Card className="shadow-2xl border-2 border-blue-200 bg-white/80 backdrop-blur-sm hover:shadow-3xl hover:scale-[1.01] transition-all duration-300">
               <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
                 <CardTitle className="text-2xl flex items-center gap-3">
