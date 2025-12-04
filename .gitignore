@@ -73,3 +73,7 @@ backup_safe/BEFORE_AUTH_REDESIGN_20251128_174028/node_modules/@next/swc-linux-ar
 # Environment files
 *.env
 *.env.*
+-e 
+# Environment files
+*.env
+*.env.*
