@@ -59,13 +59,28 @@ export const authOptions = {
   },
   pages: {
     signIn: '/login',
-    error: '/login'
+    error: '/login',
+    signOut: '/'
   },
   session: {
     strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60 // 30 days
   },
-  secret: process.env.NEXTAUTH_SECRET
+  secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    ...authOptions.callbacks,
+    async redirect({ url, baseUrl }) {
+      // Always redirect to base URL on signout
+      if (url.startsWith('/api/auth/signout')) {
+        return baseUrl
+      }
+      // Allows relative callback URLs
+      if (url.startsWith('/')) return `${baseUrl}${url}`
+      // Allows callback URLs on the same origin
+      if (new URL(url).origin === baseUrl) return url
+      return baseUrl
+    }
+  }
 }
 
 const handler = NextAuth(authOptions)
