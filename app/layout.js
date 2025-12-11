@@ -3,10 +3,15 @@ import { Providers } from './providers'
 import './globals.css'
 
 export const metadata = {
-  metadataBase: new URL('https://usefulio-cms.preview.emergentagent.com'),
+  metadataBase: new URL('https://usefulio.com'),
   title: {
     default: 'Usefulio - Find What\'s Actually Useful',
     template: '%s | Usefulio'
+  },
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
   },
   description: 'Discover trusted, useful products and resources. Expert reviews, comparisons, and recommendations for AI tools, hosting, VPNs, and more. Find what\'s actually useful.',
   keywords: [
