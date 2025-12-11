@@ -78,24 +78,21 @@ export default function Footer({ categories = [] }) {
                 Find what's actually useful. Your trusted guide for product reviews and comparisons that help you make smarter buying decisions.
               </p>
               <div className="flex space-x-3">
-                <div className="p-2 rounded-lg border border-gray-600 hover:border-blue-400 hover:bg-blue-900/20 transition-all duration-300 cursor-pointer group">
+                <Link href="https://www.facebook.com/profile.php?id=61584602858641" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg border border-gray-600 hover:border-blue-400 hover:bg-blue-900/20 transition-all duration-300 cursor-pointer group">
                   <Facebook className="h-5 w-5 text-gray-400 group-hover:text-blue-400 transition-colors" />
-                </div>
-                <div className="p-2 rounded-lg border border-gray-600 hover:border-blue-300 hover:bg-blue-900/20 transition-all duration-300 cursor-pointer group">
+                </Link>
+                <Link href="https://x.com/usefulioline" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg border border-gray-600 hover:border-blue-300 hover:bg-blue-900/20 transition-all duration-300 cursor-pointer group">
                   <Twitter className="h-5 w-5 text-gray-400 group-hover:text-blue-300 transition-colors" />
-                </div>
-                <div className="p-2 rounded-lg border border-gray-600 hover:border-blue-500 hover:bg-blue-900/20 transition-all duration-300 cursor-pointer group">
+                </Link>
+                <Link href="https://www.linkedin.com/in/usefulio" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg border border-gray-600 hover:border-blue-500 hover:bg-blue-900/20 transition-all duration-300 cursor-pointer group">
                   <Linkedin className="h-5 w-5 text-gray-400 group-hover:text-blue-500 transition-colors" />
-                </div>
-                <div className="p-2 rounded-lg border border-gray-600 hover:border-pink-400 hover:bg-pink-900/20 transition-all duration-300 cursor-pointer group">
+                </Link>
+                <Link href="https://www.instagram.com/usefuliolab" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg border border-gray-600 hover:border-pink-400 hover:bg-pink-900/20 transition-all duration-300 cursor-pointer group">
                   <Instagram className="h-5 w-5 text-gray-400 group-hover:text-pink-400 transition-colors" />
-                </div>
-                <div className="p-2 rounded-lg border border-gray-600 hover:border-red-500 hover:bg-red-900/20 transition-all duration-300 cursor-pointer group">
+                </Link>
+                <Link href="https://www.youtube.com/@usefullio" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg border border-gray-600 hover:border-red-500 hover:bg-red-900/20 transition-all duration-300 cursor-pointer group">
                   <Youtube className="h-5 w-5 text-gray-400 group-hover:text-red-500 transition-colors" />
-                </div>
-                <div className="p-2 rounded-lg border border-gray-600 hover:border-purple-400 hover:bg-purple-900/20 transition-all duration-300 cursor-pointer group">
-                  <Share2 className="h-5 w-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
-                </div>
+                </Link>
               </div>
             </div>
 
