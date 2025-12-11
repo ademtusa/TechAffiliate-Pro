@@ -232,8 +232,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm mb-1">Phone</h4>
-                    <p className="text-sm text-gray-600">+1 (555) 123-4567</p>
-                    <p className="text-sm text-gray-600">Mon-Fri, 9AM - 6PM EST</p>
+                    <p className="text-sm text-gray-600">+1 505 585 6267</p>
+                    <p className="text-sm text-gray-600">Mon-Fri, 9AM - 6PM MST</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -242,8 +242,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm mb-1">Office</h4>
-                    <p className="text-sm text-gray-600">123 Tech Street</p>
-                    <p className="text-sm text-gray-600">San Francisco, CA 94105</p>
+                    <p className="text-sm text-gray-600">1209 Mountain Road, PL Ne Ste N</p>
+                    <p className="text-sm text-gray-600">Albuquerque, NM 87110 USA</p>
                   </div>
                 </div>
               </CardContent>
