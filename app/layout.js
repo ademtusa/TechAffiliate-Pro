@@ -38,7 +38,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://usefulio-cms.preview.emergentagent.com',
+    url: 'https://usefulio.com',
     siteName: 'Usefulio',
     title: 'Usefulio - Find What\'s Actually Useful',
     description: 'Discover trusted, useful products and resources. Expert reviews and comparisons.',
